@@ -4,130 +4,9 @@ All URIs are relative to *https://app.merge.dev/api/ats/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**tags_create**](TagsApi.md#tags_create) | **POST** /tags | 
-[**tags_destroy**](TagsApi.md#tags_destroy) | **DELETE** /tags/{id} | 
 [**tags_list**](TagsApi.md#tags_list) | **GET** /tags | 
-[**tags_partial_update**](TagsApi.md#tags_partial_update) | **PATCH** /tags/{id} | 
 [**tags_retrieve**](TagsApi.md#tags_retrieve) | **GET** /tags/{id} | 
 
-
-
-## tags_create
-
-> Tag tags_create(opts)
-
-
-
-Creates a `Tag` object with the given values.
-
-### Example
-
-```ruby
-# load the gem
-require 'merge_ats_client'
-# setup authorization
-MergeATSClient.configure do |config|
-  # Configure API key authorization: tokenAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = MergeATSClient::TagsApi.new
-opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
-  run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
-  tag: MergeATSClient::Tag.new # Tag | 
-}
-
-begin
-  result = api_instance.tags_create(opts)
-  p result
-rescue MergeATSClient::ApiError => e
-  puts "Exception when calling TagsApi->tags_create: #{e}"
-end
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
- **run_async** | **Boolean**| Whether or not third-party updates should be run asynchronously. | [optional] 
- **tag** | [**Tag**](Tag.md)|  | [optional] 
-
-### Return type
-
-[**Tag**](Tag.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
-- **Accept**: application/json
-
-
-## tags_destroy
-
-> Tag tags_destroy(id, opts)
-
-
-
-Deletes a `Tag` object with the given `id`.
-
-### Example
-
-```ruby
-# load the gem
-require 'merge_ats_client'
-# setup authorization
-MergeATSClient.configure do |config|
-  # Configure API key authorization: tokenAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = MergeATSClient::TagsApi.new
-id = 'id_example' # String | 
-opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
-  run_async: true # Boolean | Whether or not third-party updates should be run asynchronously.
-}
-
-begin
-  result = api_instance.tags_destroy(id, opts)
-  p result
-rescue MergeATSClient::ApiError => e
-  puts "Exception when calling TagsApi->tags_destroy: #{e}"
-end
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**String**](.md)|  | 
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
- **run_async** | **Boolean**| Whether or not third-party updates should be run asynchronously. | [optional] 
-
-### Return type
-
-[**Tag**](Tag.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 
 ## tags_list
@@ -154,7 +33,6 @@ end
 api_instance = MergeATSClient::TagsApi.new
 opts = {
   x_account_token: 'x_account_token_example', # String | Token identifying the end user.
-  candidate_id: 'candidate_id_example', # String | If provided, will only return tags for this candidate.
   created_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created after this datetime.
   created_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created before this datetime.
   cursor: 56, # Integer | The pagination cursor value.
@@ -178,7 +56,6 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_account_token** | **String**| Token identifying the end user. | [optional] 
- **candidate_id** | [**String**](.md)| If provided, will only return tags for this candidate. | [optional] 
  **created_after** | **DateTime**| If provided, will only return objects created after this datetime. | [optional] 
  **created_before** | **DateTime**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **Integer**| The pagination cursor value. | [optional] 
@@ -198,67 +75,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## tags_partial_update
-
-> Tag tags_partial_update(id, opts)
-
-
-
-Updates a `Tag` object with the given `id`.
-
-### Example
-
-```ruby
-# load the gem
-require 'merge_ats_client'
-# setup authorization
-MergeATSClient.configure do |config|
-  # Configure API key authorization: tokenAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = MergeATSClient::TagsApi.new
-id = 'id_example' # String | 
-opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
-  run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
-  patched_tag: MergeATSClient::PatchedTag.new # PatchedTag | 
-}
-
-begin
-  result = api_instance.tags_partial_update(id, opts)
-  p result
-rescue MergeATSClient::ApiError => e
-  puts "Exception when calling TagsApi->tags_partial_update: #{e}"
-end
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**String**](.md)|  | 
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
- **run_async** | **Boolean**| Whether or not third-party updates should be run asynchronously. | [optional] 
- **patched_tag** | [**PatchedTag**](PatchedTag.md)|  | [optional] 
-
-### Return type
-
-[**Tag**](Tag.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
 - **Accept**: application/json
 
 

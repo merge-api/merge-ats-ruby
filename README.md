@@ -85,83 +85,38 @@ All URIs are relative to *https://app.merge.dev/api/ats/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MergeATSClient::AccountTokenApi* | [**account_token_retrieve**](docs/AccountTokenApi.md#account_token_retrieve) | **GET** /account-token/{public_token} | 
-*MergeATSClient::ActivitiesApi* | [**activities_create**](docs/ActivitiesApi.md#activities_create) | **POST** /activities | 
-*MergeATSClient::ActivitiesApi* | [**activities_destroy**](docs/ActivitiesApi.md#activities_destroy) | **DELETE** /activities/{id} | 
 *MergeATSClient::ActivitiesApi* | [**activities_list**](docs/ActivitiesApi.md#activities_list) | **GET** /activities | 
-*MergeATSClient::ActivitiesApi* | [**activities_partial_update**](docs/ActivitiesApi.md#activities_partial_update) | **PATCH** /activities/{id} | 
 *MergeATSClient::ActivitiesApi* | [**activities_retrieve**](docs/ActivitiesApi.md#activities_retrieve) | **GET** /activities/{id} | 
-*MergeATSClient::ApplicationsApi* | [**applications_create**](docs/ApplicationsApi.md#applications_create) | **POST** /applications | 
-*MergeATSClient::ApplicationsApi* | [**applications_destroy**](docs/ApplicationsApi.md#applications_destroy) | **DELETE** /applications/{id} | 
 *MergeATSClient::ApplicationsApi* | [**applications_list**](docs/ApplicationsApi.md#applications_list) | **GET** /applications | 
-*MergeATSClient::ApplicationsApi* | [**applications_partial_update**](docs/ApplicationsApi.md#applications_partial_update) | **PATCH** /applications/{id} | 
 *MergeATSClient::ApplicationsApi* | [**applications_retrieve**](docs/ApplicationsApi.md#applications_retrieve) | **GET** /applications/{id} | 
-*MergeATSClient::AttachmentsApi* | [**attachments_create**](docs/AttachmentsApi.md#attachments_create) | **POST** /attachments | 
-*MergeATSClient::AttachmentsApi* | [**attachments_destroy**](docs/AttachmentsApi.md#attachments_destroy) | **DELETE** /attachments/{id} | 
 *MergeATSClient::AttachmentsApi* | [**attachments_list**](docs/AttachmentsApi.md#attachments_list) | **GET** /attachments | 
-*MergeATSClient::AttachmentsApi* | [**attachments_partial_update**](docs/AttachmentsApi.md#attachments_partial_update) | **PATCH** /attachments/{id} | 
 *MergeATSClient::AttachmentsApi* | [**attachments_retrieve**](docs/AttachmentsApi.md#attachments_retrieve) | **GET** /attachments/{id} | 
-*MergeATSClient::CandidatesApi* | [**candidates_create**](docs/CandidatesApi.md#candidates_create) | **POST** /candidates | 
-*MergeATSClient::CandidatesApi* | [**candidates_destroy**](docs/CandidatesApi.md#candidates_destroy) | **DELETE** /candidates/{id} | 
 *MergeATSClient::CandidatesApi* | [**candidates_list**](docs/CandidatesApi.md#candidates_list) | **GET** /candidates | 
-*MergeATSClient::CandidatesApi* | [**candidates_partial_update**](docs/CandidatesApi.md#candidates_partial_update) | **PATCH** /candidates/{id} | 
 *MergeATSClient::CandidatesApi* | [**candidates_retrieve**](docs/CandidatesApi.md#candidates_retrieve) | **GET** /candidates/{id} | 
-*MergeATSClient::DepartmentsApi* | [**departments_create**](docs/DepartmentsApi.md#departments_create) | **POST** /departments | 
-*MergeATSClient::DepartmentsApi* | [**departments_destroy**](docs/DepartmentsApi.md#departments_destroy) | **DELETE** /departments/{id} | 
 *MergeATSClient::DepartmentsApi* | [**departments_list**](docs/DepartmentsApi.md#departments_list) | **GET** /departments | 
-*MergeATSClient::DepartmentsApi* | [**departments_partial_update**](docs/DepartmentsApi.md#departments_partial_update) | **PATCH** /departments/{id} | 
 *MergeATSClient::DepartmentsApi* | [**departments_retrieve**](docs/DepartmentsApi.md#departments_retrieve) | **GET** /departments/{id} | 
-*MergeATSClient::EeocsApi* | [**eeocs_create**](docs/EeocsApi.md#eeocs_create) | **POST** /eeocs | 
-*MergeATSClient::EeocsApi* | [**eeocs_destroy**](docs/EeocsApi.md#eeocs_destroy) | **DELETE** /eeocs/{id} | 
 *MergeATSClient::EeocsApi* | [**eeocs_list**](docs/EeocsApi.md#eeocs_list) | **GET** /eeocs | 
-*MergeATSClient::EeocsApi* | [**eeocs_partial_update**](docs/EeocsApi.md#eeocs_partial_update) | **PATCH** /eeocs/{id} | 
 *MergeATSClient::EeocsApi* | [**eeocs_retrieve**](docs/EeocsApi.md#eeocs_retrieve) | **GET** /eeocs/{id} | 
-*MergeATSClient::InterviewsApi* | [**interviews_create**](docs/InterviewsApi.md#interviews_create) | **POST** /interviews | 
-*MergeATSClient::InterviewsApi* | [**interviews_destroy**](docs/InterviewsApi.md#interviews_destroy) | **DELETE** /interviews/{id} | 
 *MergeATSClient::InterviewsApi* | [**interviews_list**](docs/InterviewsApi.md#interviews_list) | **GET** /interviews | 
-*MergeATSClient::InterviewsApi* | [**interviews_partial_update**](docs/InterviewsApi.md#interviews_partial_update) | **PATCH** /interviews/{id} | 
 *MergeATSClient::InterviewsApi* | [**interviews_retrieve**](docs/InterviewsApi.md#interviews_retrieve) | **GET** /interviews/{id} | 
-*MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_create**](docs/JobInterviewStagesApi.md#job_interview_stages_create) | **POST** /job-interview-stages | 
-*MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_destroy**](docs/JobInterviewStagesApi.md#job_interview_stages_destroy) | **DELETE** /job-interview-stages/{id} | 
 *MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_list**](docs/JobInterviewStagesApi.md#job_interview_stages_list) | **GET** /job-interview-stages | 
-*MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_partial_update**](docs/JobInterviewStagesApi.md#job_interview_stages_partial_update) | **PATCH** /job-interview-stages/{id} | 
 *MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_retrieve**](docs/JobInterviewStagesApi.md#job_interview_stages_retrieve) | **GET** /job-interview-stages/{id} | 
-*MergeATSClient::JobsApi* | [**jobs_create**](docs/JobsApi.md#jobs_create) | **POST** /jobs | 
-*MergeATSClient::JobsApi* | [**jobs_destroy**](docs/JobsApi.md#jobs_destroy) | **DELETE** /jobs/{id} | 
 *MergeATSClient::JobsApi* | [**jobs_list**](docs/JobsApi.md#jobs_list) | **GET** /jobs | 
-*MergeATSClient::JobsApi* | [**jobs_partial_update**](docs/JobsApi.md#jobs_partial_update) | **PATCH** /jobs/{id} | 
 *MergeATSClient::JobsApi* | [**jobs_retrieve**](docs/JobsApi.md#jobs_retrieve) | **GET** /jobs/{id} | 
 *MergeATSClient::LinkTokenApi* | [**link_token_create**](docs/LinkTokenApi.md#link_token_create) | **POST** /link-token | 
-*MergeATSClient::OffersApi* | [**offers_create**](docs/OffersApi.md#offers_create) | **POST** /offers | 
-*MergeATSClient::OffersApi* | [**offers_destroy**](docs/OffersApi.md#offers_destroy) | **DELETE** /offers/{id} | 
 *MergeATSClient::OffersApi* | [**offers_list**](docs/OffersApi.md#offers_list) | **GET** /offers | 
-*MergeATSClient::OffersApi* | [**offers_partial_update**](docs/OffersApi.md#offers_partial_update) | **PATCH** /offers/{id} | 
 *MergeATSClient::OffersApi* | [**offers_retrieve**](docs/OffersApi.md#offers_retrieve) | **GET** /offers/{id} | 
-*MergeATSClient::OfficesApi* | [**offices_create**](docs/OfficesApi.md#offices_create) | **POST** /offices | 
-*MergeATSClient::OfficesApi* | [**offices_destroy**](docs/OfficesApi.md#offices_destroy) | **DELETE** /offices/{id} | 
 *MergeATSClient::OfficesApi* | [**offices_list**](docs/OfficesApi.md#offices_list) | **GET** /offices | 
-*MergeATSClient::OfficesApi* | [**offices_partial_update**](docs/OfficesApi.md#offices_partial_update) | **PATCH** /offices/{id} | 
 *MergeATSClient::OfficesApi* | [**offices_retrieve**](docs/OfficesApi.md#offices_retrieve) | **GET** /offices/{id} | 
-*MergeATSClient::RejectReasonsApi* | [**reject_reasons_create**](docs/RejectReasonsApi.md#reject_reasons_create) | **POST** /reject-reasons | 
-*MergeATSClient::RejectReasonsApi* | [**reject_reasons_destroy**](docs/RejectReasonsApi.md#reject_reasons_destroy) | **DELETE** /reject-reasons/{id} | 
 *MergeATSClient::RejectReasonsApi* | [**reject_reasons_list**](docs/RejectReasonsApi.md#reject_reasons_list) | **GET** /reject-reasons | 
-*MergeATSClient::RejectReasonsApi* | [**reject_reasons_partial_update**](docs/RejectReasonsApi.md#reject_reasons_partial_update) | **PATCH** /reject-reasons/{id} | 
 *MergeATSClient::RejectReasonsApi* | [**reject_reasons_retrieve**](docs/RejectReasonsApi.md#reject_reasons_retrieve) | **GET** /reject-reasons/{id} | 
-*MergeATSClient::ScorecardsApi* | [**scorecards_create**](docs/ScorecardsApi.md#scorecards_create) | **POST** /scorecards | 
-*MergeATSClient::ScorecardsApi* | [**scorecards_destroy**](docs/ScorecardsApi.md#scorecards_destroy) | **DELETE** /scorecards/{id} | 
 *MergeATSClient::ScorecardsApi* | [**scorecards_list**](docs/ScorecardsApi.md#scorecards_list) | **GET** /scorecards | 
-*MergeATSClient::ScorecardsApi* | [**scorecards_partial_update**](docs/ScorecardsApi.md#scorecards_partial_update) | **PATCH** /scorecards/{id} | 
 *MergeATSClient::ScorecardsApi* | [**scorecards_retrieve**](docs/ScorecardsApi.md#scorecards_retrieve) | **GET** /scorecards/{id} | 
-*MergeATSClient::TagsApi* | [**tags_create**](docs/TagsApi.md#tags_create) | **POST** /tags | 
-*MergeATSClient::TagsApi* | [**tags_destroy**](docs/TagsApi.md#tags_destroy) | **DELETE** /tags/{id} | 
 *MergeATSClient::TagsApi* | [**tags_list**](docs/TagsApi.md#tags_list) | **GET** /tags | 
-*MergeATSClient::TagsApi* | [**tags_partial_update**](docs/TagsApi.md#tags_partial_update) | **PATCH** /tags/{id} | 
 *MergeATSClient::TagsApi* | [**tags_retrieve**](docs/TagsApi.md#tags_retrieve) | **GET** /tags/{id} | 
 *MergeATSClient::TasksApi* | [**tasks_list**](docs/TasksApi.md#tasks_list) | **GET** /tasks | 
 *MergeATSClient::TasksApi* | [**tasks_retrieve**](docs/TasksApi.md#tasks_retrieve) | **GET** /tasks/{common_model_id} | 
-*MergeATSClient::UsersApi* | [**users_create**](docs/UsersApi.md#users_create) | **POST** /users | 
-*MergeATSClient::UsersApi* | [**users_destroy**](docs/UsersApi.md#users_destroy) | **DELETE** /users/{id} | 
 *MergeATSClient::UsersApi* | [**users_list**](docs/UsersApi.md#users_list) | **GET** /users | 
-*MergeATSClient::UsersApi* | [**users_partial_update**](docs/UsersApi.md#users_partial_update) | **PATCH** /users/{id} | 
 *MergeATSClient::UsersApi* | [**users_retrieve**](docs/UsersApi.md#users_retrieve) | **GET** /users/{id} | 
 
 
@@ -207,24 +162,6 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::PaginatedScheduledInterviewList](docs/PaginatedScheduledInterviewList.md)
  - [MergeATSClient::PaginatedScorecardList](docs/PaginatedScorecardList.md)
  - [MergeATSClient::PaginatedTagList](docs/PaginatedTagList.md)
- - [MergeATSClient::PatchedActivity](docs/PatchedActivity.md)
- - [MergeATSClient::PatchedApplication](docs/PatchedApplication.md)
- - [MergeATSClient::PatchedAttachment](docs/PatchedAttachment.md)
- - [MergeATSClient::PatchedCandidate](docs/PatchedCandidate.md)
- - [MergeATSClient::PatchedDepartment](docs/PatchedDepartment.md)
- - [MergeATSClient::PatchedEEOC](docs/PatchedEEOC.md)
- - [MergeATSClient::PatchedEmailAddress](docs/PatchedEmailAddress.md)
- - [MergeATSClient::PatchedJob](docs/PatchedJob.md)
- - [MergeATSClient::PatchedJobInterviewStage](docs/PatchedJobInterviewStage.md)
- - [MergeATSClient::PatchedOffer](docs/PatchedOffer.md)
- - [MergeATSClient::PatchedOffice](docs/PatchedOffice.md)
- - [MergeATSClient::PatchedPhoneNumber](docs/PatchedPhoneNumber.md)
- - [MergeATSClient::PatchedRejectReason](docs/PatchedRejectReason.md)
- - [MergeATSClient::PatchedRemoteUser](docs/PatchedRemoteUser.md)
- - [MergeATSClient::PatchedScheduledInterview](docs/PatchedScheduledInterview.md)
- - [MergeATSClient::PatchedScorecard](docs/PatchedScorecard.md)
- - [MergeATSClient::PatchedTag](docs/PatchedTag.md)
- - [MergeATSClient::PatchedUrl](docs/PatchedUrl.md)
  - [MergeATSClient::PhoneNumber](docs/PhoneNumber.md)
  - [MergeATSClient::PhoneNumberTypeEnum](docs/PhoneNumberTypeEnum.md)
  - [MergeATSClient::RaceEnum](docs/RaceEnum.md)

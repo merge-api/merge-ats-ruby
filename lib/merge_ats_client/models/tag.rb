@@ -15,8 +15,6 @@ require 'date'
 module MergeATSClient
   # # The Tag Object ### Description The `Tag` object is used to represent a tag for a candidate.  ### Usage Example Fetch from the `GET Candidate` endpoint and view their tags.
   class Tag
-    attr_accessor :id
-
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
@@ -26,7 +24,6 @@ module MergeATSClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'remote_id' => :'remote_id',
         :'name' => :'name'
       }
@@ -35,7 +32,6 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
         :'remote_id' => :'String',
         :'name' => :'String'
       }
@@ -64,10 +60,6 @@ module MergeATSClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
       if attributes.key?(:'remote_id')
         self.remote_id = attributes[:'remote_id']
       end
@@ -95,7 +87,6 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           remote_id == o.remote_id &&
           name == o.name
     end
@@ -109,7 +100,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name].hash
+      [remote_id, name].hash
     end
 
     # Builds the object from hash
