@@ -19,140 +19,9 @@ module MergeATSClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Creates a `Tag` object with the given values.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [Tag] :tag 
-    # @return [Tag]
-    def tags_create(opts = {})
-      data, _status_code, _headers = tags_create_with_http_info(opts)
-      data
-    end
-
-    # Creates a &#x60;Tag&#x60; object with the given values.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [Tag] :tag 
-    # @return [Array<(Tag, Integer, Hash)>] Tag data, response status code and response headers
-    def tags_create_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: TagsApi.tags_create ...'
-      end
-      # resource path
-      local_var_path = '/tags'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(opts[:'tag']) 
-
-      # return_type
-      return_type = opts[:return_type] || 'Tag' 
-
-      # auth_names
-      auth_names = opts[:auth_names] || ['tokenAuth']
-
-      new_options = opts.merge(
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TagsApi#tags_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Deletes a `Tag` object with the given `id`.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @return [Tag]
-    def tags_destroy(id, opts = {})
-      data, _status_code, _headers = tags_destroy_with_http_info(id, opts)
-      data
-    end
-
-    # Deletes a &#x60;Tag&#x60; object with the given &#x60;id&#x60;.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @return [Array<(Tag, Integer, Hash)>] Tag data, response status code and response headers
-    def tags_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: TagsApi.tags_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling TagsApi.tags_destroy"
-      end
-      # resource path
-      local_var_path = '/tags/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] 
-
-      # return_type
-      return_type = opts[:return_type] || 'Tag' 
-
-      # auth_names
-      auth_names = opts[:auth_names] || ['tokenAuth']
-
-      new_options = opts.merge(
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TagsApi#tags_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Returns a list of `Tag` objects.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [String] :candidate_id If provided, will only return tags for this candidate.
     # @option opts [DateTime] :created_after If provided, will only return objects created after this datetime.
     # @option opts [DateTime] :created_before If provided, will only return objects created before this datetime.
     # @option opts [Integer] :cursor The pagination cursor value.
@@ -169,7 +38,6 @@ module MergeATSClient
     # Returns a list of &#x60;Tag&#x60; objects.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [String] :candidate_id If provided, will only return tags for this candidate.
     # @option opts [DateTime] :created_after If provided, will only return objects created after this datetime.
     # @option opts [DateTime] :created_before If provided, will only return objects created before this datetime.
     # @option opts [Integer] :cursor The pagination cursor value.
@@ -187,7 +55,6 @@ module MergeATSClient
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'candidate_id'] = opts[:'candidate_id'] if !opts[:'candidate_id'].nil?
       query_params[:'created_after'] = opts[:'created_after'] if !opts[:'created_after'].nil?
       query_params[:'created_before'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
@@ -226,76 +93,6 @@ module MergeATSClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TagsApi#tags_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Updates a `Tag` object with the given `id`.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [PatchedTag] :patched_tag 
-    # @return [Tag]
-    def tags_partial_update(id, opts = {})
-      data, _status_code, _headers = tags_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # Updates a &#x60;Tag&#x60; object with the given &#x60;id&#x60;.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [PatchedTag] :patched_tag 
-    # @return [Array<(Tag, Integer, Hash)>] Tag data, response status code and response headers
-    def tags_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: TagsApi.tags_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling TagsApi.tags_partial_update"
-      end
-      # resource path
-      local_var_path = '/tags/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(opts[:'patched_tag']) 
-
-      # return_type
-      return_type = opts[:return_type] || 'Tag' 
-
-      # auth_names
-      auth_names = opts[:auth_names] || ['tokenAuth']
-
-      new_options = opts.merge(
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TagsApi#tags_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

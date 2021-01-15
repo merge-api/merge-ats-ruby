@@ -103,7 +103,7 @@ module MergeATSClient
         :'phone_numbers' => :'Array<PhoneNumber>',
         :'email_addresses' => :'Array<EmailAddress>',
         :'urls' => :'Array<Url>',
-        :'tags' => :'Array<String>',
+        :'tags' => :'Array<Tag>',
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>'
       }

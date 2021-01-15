@@ -19,136 +19,6 @@ module MergeATSClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Creates a `Candidate` object with the given values.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [Candidate] :candidate 
-    # @return [Candidate]
-    def candidates_create(opts = {})
-      data, _status_code, _headers = candidates_create_with_http_info(opts)
-      data
-    end
-
-    # Creates a &#x60;Candidate&#x60; object with the given values.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [Candidate] :candidate 
-    # @return [Array<(Candidate, Integer, Hash)>] Candidate data, response status code and response headers
-    def candidates_create_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CandidatesApi.candidates_create ...'
-      end
-      # resource path
-      local_var_path = '/candidates'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(opts[:'candidate']) 
-
-      # return_type
-      return_type = opts[:return_type] || 'Candidate' 
-
-      # auth_names
-      auth_names = opts[:auth_names] || ['tokenAuth']
-
-      new_options = opts.merge(
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CandidatesApi#candidates_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Deletes a `Candidate` object with the given `id`.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @return [Candidate]
-    def candidates_destroy(id, opts = {})
-      data, _status_code, _headers = candidates_destroy_with_http_info(id, opts)
-      data
-    end
-
-    # Deletes a &#x60;Candidate&#x60; object with the given &#x60;id&#x60;.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @return [Array<(Candidate, Integer, Hash)>] Candidate data, response status code and response headers
-    def candidates_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CandidatesApi.candidates_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling CandidatesApi.candidates_destroy"
-      end
-      # resource path
-      local_var_path = '/candidates/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] 
-
-      # return_type
-      return_type = opts[:return_type] || 'Candidate' 
-
-      # auth_names
-      auth_names = opts[:auth_names] || ['tokenAuth']
-
-      new_options = opts.merge(
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CandidatesApi#candidates_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Returns a list of `Candidate` objects.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :x_account_token Token identifying the end user.
@@ -182,7 +52,7 @@ module MergeATSClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CandidatesApi.candidates_list ...'
       end
-      allowable_values = ["applications", "attachments", "tags"]
+      allowable_values = ["applications", "attachments"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
@@ -234,76 +104,6 @@ module MergeATSClient
       return data, status_code, headers
     end
 
-    # Updates a `Candidate` object with the given `id`.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [PatchedCandidate] :patched_candidate 
-    # @return [Candidate]
-    def candidates_partial_update(id, opts = {})
-      data, _status_code, _headers = candidates_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # Updates a &#x60;Candidate&#x60; object with the given &#x60;id&#x60;.
-    # @param id [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [PatchedCandidate] :patched_candidate 
-    # @return [Array<(Candidate, Integer, Hash)>] Candidate data, response status code and response headers
-    def candidates_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CandidatesApi.candidates_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling CandidatesApi.candidates_partial_update"
-      end
-      # resource path
-      local_var_path = '/candidates/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(opts[:'patched_candidate']) 
-
-      # return_type
-      return_type = opts[:return_type] || 'Candidate' 
-
-      # auth_names
-      auth_names = opts[:auth_names] || ['tokenAuth']
-
-      new_options = opts.merge(
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CandidatesApi#candidates_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Returns a `Candidate` object with the given `id`.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -329,7 +129,7 @@ module MergeATSClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling CandidatesApi.candidates_retrieve"
       end
-      allowable_values = ["applications", "attachments", "tags"]
+      allowable_values = ["applications", "attachments"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
