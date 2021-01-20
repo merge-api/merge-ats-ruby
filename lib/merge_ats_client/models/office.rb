@@ -20,10 +20,10 @@ module MergeATSClient
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The job's name.
+    # The office's name.
     attr_accessor :name
 
-    # The candidate's location.
+    # The office's location.
     attr_accessor :location
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] [readonly] 
 **remote_id** | **String** | The third-party API ID of the matching object. | [optional] 
-**name** | **String** | The job&#39;s name. | [optional] 
+**name** | **String** | The department&#39;s name. | [optional] 
 
 ## Code Sample
 
