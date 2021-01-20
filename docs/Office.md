@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] [readonly] 
 **remote_id** | **String** | The third-party API ID of the matching object. | [optional] 
-**name** | **String** | The job&#39;s name. | [optional] 
-**location** | **String** | The candidate&#39;s location. | [optional] 
+**name** | **String** | The office&#39;s name. | [optional] 
+**location** | **String** | The office&#39;s location. | [optional] 
 
 ## Code Sample
 

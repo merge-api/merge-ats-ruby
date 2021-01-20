@@ -114,8 +114,6 @@ Class | Method | HTTP request | Description
 *MergeATSClient::ScorecardsApi* | [**scorecards_retrieve**](docs/ScorecardsApi.md#scorecards_retrieve) | **GET** /scorecards/{id} | 
 *MergeATSClient::TagsApi* | [**tags_list**](docs/TagsApi.md#tags_list) | **GET** /tags | 
 *MergeATSClient::TagsApi* | [**tags_retrieve**](docs/TagsApi.md#tags_retrieve) | **GET** /tags/{id} | 
-*MergeATSClient::TasksApi* | [**tasks_list**](docs/TasksApi.md#tasks_list) | **GET** /tasks | 
-*MergeATSClient::TasksApi* | [**tasks_retrieve**](docs/TasksApi.md#tasks_retrieve) | **GET** /tasks/{common_model_id} | 
 *MergeATSClient::UsersApi* | [**users_list**](docs/UsersApi.md#users_list) | **GET** /users | 
 *MergeATSClient::UsersApi* | [**users_retrieve**](docs/UsersApi.md#users_retrieve) | **GET** /users/{id} | 
 
@@ -127,8 +125,6 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::Activity](docs/Activity.md)
  - [MergeATSClient::ActivityTypeEnum](docs/ActivityTypeEnum.md)
  - [MergeATSClient::Application](docs/Application.md)
- - [MergeATSClient::AsyncTaskExecution](docs/AsyncTaskExecution.md)
- - [MergeATSClient::AsyncTaskExecutionStatusEnum](docs/AsyncTaskExecutionStatusEnum.md)
  - [MergeATSClient::Attachment](docs/Attachment.md)
  - [MergeATSClient::Candidate](docs/Candidate.md)
  - [MergeATSClient::Department](docs/Department.md)
@@ -148,7 +144,6 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::OverallRecommendationEnum](docs/OverallRecommendationEnum.md)
  - [MergeATSClient::PaginatedActivityList](docs/PaginatedActivityList.md)
  - [MergeATSClient::PaginatedApplicationList](docs/PaginatedApplicationList.md)
- - [MergeATSClient::PaginatedAsyncTaskExecutionList](docs/PaginatedAsyncTaskExecutionList.md)
  - [MergeATSClient::PaginatedAttachmentList](docs/PaginatedAttachmentList.md)
  - [MergeATSClient::PaginatedCandidateList](docs/PaginatedCandidateList.md)
  - [MergeATSClient::PaginatedDepartmentList](docs/PaginatedDepartmentList.md)
