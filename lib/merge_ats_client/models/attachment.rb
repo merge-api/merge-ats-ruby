@@ -91,8 +91,8 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@file_url.nil? && @file_url.to_s.length > 400
-        invalid_properties.push('invalid value for "file_url", the character length must be smaller than or equal to 400.')
+      if !@file_url.nil? && @file_url.to_s.length > 500
+        invalid_properties.push('invalid value for "file_url", the character length must be smaller than or equal to 500.')
       end
 
       invalid_properties
@@ -101,15 +101,15 @@ module MergeATSClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@file_url.nil? && @file_url.to_s.length > 400
+      return false if !@file_url.nil? && @file_url.to_s.length > 500
       true
     end
 
     # Custom attribute writer method with validation
     # @param [Object] file_url Value to be assigned
     def file_url=(file_url)
-      if !file_url.nil? && file_url.to_s.length > 400
-        fail ArgumentError, 'invalid value for "file_url", the character length must be smaller than or equal to 400.'
+      if !file_url.nil? && file_url.to_s.length > 500
+        fail ArgumentError, 'invalid value for "file_url", the character length must be smaller than or equal to 500.'
       end
 
       @file_url = file_url

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## account_token_retrieve
 
-> AccountToken account_token_retrieve(production_key, public_token)
+> AccountToken account_token_retrieve(public_token)
 
 
 
@@ -30,11 +30,10 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::AccountTokenApi.new
-production_key = 'production_key_example' # String | The requesting organization's production key.
 public_token = 'public_token_example' # String | 
 
 begin
-  result = api_instance.account_token_retrieve(production_key, public_token)
+  result = api_instance.account_token_retrieve(public_token)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling AccountTokenApi->account_token_retrieve: #{e}"
@@ -46,7 +45,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **production_key** | **String**| The requesting organization&#39;s production key. | 
  **public_token** | **String**|  | 
 
 ### Return type
