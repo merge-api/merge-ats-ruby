@@ -20,27 +20,21 @@ module MergeATSClient
       @api_client = api_client
     end
     # Creates a link token to be used when linking a new end user.
-    # @param production_key [String] The requesting organization&#39;s production key.
     # @param end_user_details [EndUserDetails] 
     # @param [Hash] opts the optional parameters
     # @return [LinkToken]
-    def link_token_create(production_key, end_user_details, opts = {})
-      data, _status_code, _headers = link_token_create_with_http_info(production_key, end_user_details, opts)
+    def link_token_create(end_user_details, opts = {})
+      data, _status_code, _headers = link_token_create_with_http_info(end_user_details, opts)
       data
     end
 
     # Creates a link token to be used when linking a new end user.
-    # @param production_key [String] The requesting organization&#39;s production key.
     # @param end_user_details [EndUserDetails] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LinkToken, Integer, Hash)>] LinkToken data, response status code and response headers
-    def link_token_create_with_http_info(production_key, end_user_details, opts = {})
+    def link_token_create_with_http_info(end_user_details, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LinkTokenApi.link_token_create ...'
-      end
-      # verify the required parameter 'production_key' is set
-      if @api_client.config.client_side_validation && production_key.nil?
-        fail ArgumentError, "Missing the required parameter 'production_key' when calling LinkTokenApi.link_token_create"
       end
       # verify the required parameter 'end_user_details' is set
       if @api_client.config.client_side_validation && end_user_details.nil?
@@ -51,7 +45,6 @@ module MergeATSClient
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'production_key'] = production_key
 
       # header parameters
       header_params = opts[:header_params] || {}

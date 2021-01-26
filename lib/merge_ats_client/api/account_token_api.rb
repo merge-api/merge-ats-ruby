@@ -20,27 +20,21 @@ module MergeATSClient
       @api_client = api_client
     end
     # Returns the account token for the end user with the provided public token.
-    # @param production_key [String] The requesting organization&#39;s production key.
     # @param public_token [String] 
     # @param [Hash] opts the optional parameters
     # @return [AccountToken]
-    def account_token_retrieve(production_key, public_token, opts = {})
-      data, _status_code, _headers = account_token_retrieve_with_http_info(production_key, public_token, opts)
+    def account_token_retrieve(public_token, opts = {})
+      data, _status_code, _headers = account_token_retrieve_with_http_info(public_token, opts)
       data
     end
 
     # Returns the account token for the end user with the provided public token.
-    # @param production_key [String] The requesting organization&#39;s production key.
     # @param public_token [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AccountToken, Integer, Hash)>] AccountToken data, response status code and response headers
-    def account_token_retrieve_with_http_info(production_key, public_token, opts = {})
+    def account_token_retrieve_with_http_info(public_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountTokenApi.account_token_retrieve ...'
-      end
-      # verify the required parameter 'production_key' is set
-      if @api_client.config.client_side_validation && production_key.nil?
-        fail ArgumentError, "Missing the required parameter 'production_key' when calling AccountTokenApi.account_token_retrieve"
       end
       # verify the required parameter 'public_token' is set
       if @api_client.config.client_side_validation && public_token.nil?
@@ -51,7 +45,6 @@ module MergeATSClient
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'production_key'] = production_key
 
       # header parameters
       header_params = opts[:header_params] || {}

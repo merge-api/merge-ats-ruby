@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## link_token_create
 
-> LinkToken link_token_create(production_key, end_user_details)
+> LinkToken link_token_create(end_user_details)
 
 
 
@@ -30,11 +30,10 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::LinkTokenApi.new
-production_key = 'production_key_example' # String | The requesting organization's production key.
 end_user_details = MergeATSClient::EndUserDetails.new # EndUserDetails | 
 
 begin
-  result = api_instance.link_token_create(production_key, end_user_details)
+  result = api_instance.link_token_create(end_user_details)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling LinkTokenApi->link_token_create: #{e}"
@@ -46,7 +45,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **production_key** | **String**| The requesting organization&#39;s production key. | 
  **end_user_details** | [**EndUserDetails**](EndUserDetails.md)|  | 
 
 ### Return type
