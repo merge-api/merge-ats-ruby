@@ -57,8 +57,8 @@ module MergeATSClient
         @api_client.config.logger.debug 'Calling API: InterviewsApi.interviews_list ...'
       end
       allowable_values = ["interviewers", "organizer"]
-      if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
-        fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
+      if @api_client.config.client_side_validation && opts[:'expand'] && opts[:'expand'].split(",").map { |term| !allowable_values.include?(term) }.any?
+        fail ArgumentError, "invalid value for \"expand\", must be a combination of #{allowable_values}"
       end
       # resource path
       local_var_path = '/interviews'

@@ -145,8 +145,8 @@ module MergeATSClient
         fail ArgumentError, "Missing the required parameter 'id' when calling ApplicationsApi.applications_retrieve"
       end
       allowable_values = ["candidate", "credited_to", "current_stage", "job", "reject_reason"]
-      if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
-        fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
+      if @api_client.config.client_side_validation && opts[:'expand'] && opts[:'expand'].split(",").map { |term| !allowable_values.include?(term) }.any?
+        fail ArgumentError, "invalid value for \"expand\", must be a combination of #{allowable_values}"
       end
       # resource path
       local_var_path = '/applications/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
