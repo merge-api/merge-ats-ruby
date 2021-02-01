@@ -2,15 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'MergeATSClient'
+require 'merge_ats_client'
 
 instance = MergeATSClient::VisibilityEnum.new()
 ```
-
 

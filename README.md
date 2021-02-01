@@ -79,7 +79,7 @@ end
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://app.merge.dev/api/ats/v1*
+All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -112,7 +112,6 @@ Class | Method | HTTP request | Description
 *MergeATSClient::ScorecardsApi* | [**scorecards_list**](docs/ScorecardsApi.md#scorecards_list) | **GET** /scorecards | 
 *MergeATSClient::ScorecardsApi* | [**scorecards_retrieve**](docs/ScorecardsApi.md#scorecards_retrieve) | **GET** /scorecards/{id} | 
 *MergeATSClient::TagsApi* | [**tags_list**](docs/TagsApi.md#tags_list) | **GET** /tags | 
-*MergeATSClient::TagsApi* | [**tags_retrieve**](docs/TagsApi.md#tags_retrieve) | **GET** /tags/{id} | 
 *MergeATSClient::UsersApi* | [**users_list**](docs/UsersApi.md#users_list) | **GET** /users | 
 *MergeATSClient::UsersApi* | [**users_retrieve**](docs/UsersApi.md#users_retrieve) | **GET** /users/{id} | 
 
@@ -164,7 +163,6 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::ScheduledInterview](docs/ScheduledInterview.md)
  - [MergeATSClient::ScheduledInterviewStatusEnum](docs/ScheduledInterviewStatusEnum.md)
  - [MergeATSClient::Scorecard](docs/Scorecard.md)
- - [MergeATSClient::SourceEnum](docs/SourceEnum.md)
  - [MergeATSClient::Tag](docs/Tag.md)
  - [MergeATSClient::Url](docs/Url.md)
  - [MergeATSClient::UrlTypeEnum](docs/UrlTypeEnum.md)

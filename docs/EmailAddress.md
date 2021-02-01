@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **String** | The email&#39;s address. | [optional] 
-**email_address_type** | [**EmailAddressTypeEnum**](EmailAddressTypeEnum.md) | The type of email address. | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **value** | **String** | The email&#39;s address. | [optional] |
+| **email_address_type** | [**EmailAddressTypeEnum**](EmailAddressTypeEnum.md) | The type of email address. | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'MergeATSClient'
+require 'merge_ats_client'
 
-instance = MergeATSClient::EmailAddress.new(value: scooterboy443@gmail.com,
-                                 email_address_type: null)
+instance = MergeATSClient::EmailAddress.new(
+  value: scooterboy443@gmail.com,
+  email_address_type: null
+)
 ```
-
 
