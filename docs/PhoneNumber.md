@@ -2,19 +2,18 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **value** | **String** | The phone number. | [optional] |
-| **phone_number_type** | [**PhoneNumberTypeEnum**](PhoneNumberTypeEnum.md) | The type of phone number. | [optional] |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**value** | **String** | The phone number. | [optional] 
+**phone_number_type** | [**PhoneNumberTypeEnum**](PhoneNumberTypeEnum.md) | The type of phone number. | [optional] 
 
-## Example
+## Code Sample
 
 ```ruby
-require 'merge_ats_client'
+require 'MergeATSClient'
 
-instance = MergeATSClient::PhoneNumber.new(
-  value: +3198675309,
-  phone_number_type: HOME
-)
+instance = MergeATSClient::PhoneNumber.new(value: +3198675309,
+                                 phone_number_type: HOME)
 ```
+
 

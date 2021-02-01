@@ -2,17 +2,16 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **account_token** | **String** |  |  |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**account_token** | **String** |  | 
 
-## Example
+## Code Sample
 
 ```ruby
-require 'merge_ats_client'
+require 'MergeATSClient'
 
-instance = MergeATSClient::AccountToken.new(
-  account_token: T9klMDQrcHdm9jrtHuOS2Nf06BIHwMNjpPXPMB
-)
+instance = MergeATSClient::AccountToken.new(account_token: T9klMDQrcHdm9jrtHuOS2Nf06BIHwMNjpPXPMB)
 ```
+
 
