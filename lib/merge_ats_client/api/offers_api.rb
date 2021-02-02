@@ -22,10 +22,10 @@ module MergeATSClient
     # Returns a list of `Offer` objects.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :application_id If provided, will only return activities done by this user.
+    # @option opts [String] :application_id If provided, will only return offers for this application.
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
-    # @option opts [String] :creator_id If provided, will only return activities done by this user.
+    # @option opts [String] :creator_id If provided, will only return offers created by this user.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -41,10 +41,10 @@ module MergeATSClient
     # Returns a list of &#x60;Offer&#x60; objects.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :application_id If provided, will only return activities done by this user.
+    # @option opts [String] :application_id If provided, will only return offers for this application.
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
-    # @option opts [String] :creator_id If provided, will only return activities done by this user.
+    # @option opts [String] :creator_id If provided, will only return offers created by this user.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.

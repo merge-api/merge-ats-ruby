@@ -32,7 +32,7 @@ end
 api_instance = MergeATSClient::AttachmentsApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 opts = {
-  candidate_id: 'candidate_id_example', # String | If provided, will only return activities done by this user.
+  candidate_id: 'candidate_id_example', # String | If provided, will only return attachments for this candidate.
   created_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created after this datetime.
   created_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created before this datetime.
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
@@ -74,7 +74,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
-| **candidate_id** | **String** | If provided, will only return activities done by this user. | [optional] |
+| **candidate_id** | **String** | If provided, will only return attachments for this candidate. | [optional] |
 | **created_after** | **Time** | If provided, will only return objects created after this datetime. | [optional] |
 | **created_before** | **Time** | If provided, will only return objects created before this datetime. | [optional] |
 | **cursor** | **String** | The pagination cursor value. | [optional] |
