@@ -127,7 +127,7 @@ module MergeATSClient
 
     def initialize
       @scheme = 'https'
-      @host = 'app.merge.dev'
+      @host = 'api.merge.dev'
       @base_path = '/api/ats/v1'
       @api_key = {}
       @api_key_prefix = {}
@@ -207,12 +207,12 @@ module MergeATSClient
     def server_settings
       [
         {
-          url: "https://app.merge.dev/api/ats/v1",
+          url: "https://api.merge.dev/api/ats/v1",
           description: "Production",
         },
         {
-          url: "https://app-staging.merge.dev/api/ats/v1",
-          description: "Staging",
+          url: "https://api-sandbox.merge.dev/api/ats/v1",
+          description: "Sandbox",
         }
       ]
     end

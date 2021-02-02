@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] [readonly] 
 **remote_id** | **String** | The third-party API ID of the matching object. | [optional] 
 **name** | **String** | The stage&#39;s name. | [optional] 
-**job** | **String** | The job being interviewed for. | [optional] 
+**job** | **String** | The job that this stage belongs to. | [optional] 
 
 ## Code Sample
 

@@ -22,7 +22,7 @@ require 'MergeATSClient'
 
 instance = MergeATSClient::Job.new(id: 022a2bef-57e5-4def-8ed2-7c41bd9a5ed8,
                                  remote_id: 8765432,
-                                 name: Scooter Supervisor,
+                                 name: Software Engineer,
                                  status: OPEN,
                                  remote_created_at: null,
                                  remote_updated_at: null,

@@ -15,7 +15,7 @@ require 'MergeATSClient'
 
 instance = MergeATSClient::Department.new(id: 5b3c1341-a20f-4e51-b72c-f3830a16c97b,
                                  remote_id: 23456,
-                                 name: Department of Scooter Affairs)
+                                 name: Engineering)
 ```
 
 

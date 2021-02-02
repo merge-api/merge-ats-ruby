@@ -20,39 +20,43 @@ module MergeATSClient
       @api_client = api_client
     end
     # Returns a list of `Candidate` objects.
+    # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
     # @option opts [DateTime] :created_after If provided, will only return objects created after this datetime.
     # @option opts [DateTime] :created_before If provided, will only return objects created before this datetime.
-    # @option opts [Integer] :cursor The pagination cursor value.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [DateTime] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [DateTime] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @return [PaginatedCandidateList]
-    def candidates_list(opts = {})
-      data, _status_code, _headers = candidates_list_with_http_info(opts)
+    def candidates_list(x_account_token, opts = {})
+      data, _status_code, _headers = candidates_list_with_http_info(x_account_token, opts)
       data
     end
 
     # Returns a list of &#x60;Candidate&#x60; objects.
+    # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
     # @option opts [DateTime] :created_after If provided, will only return objects created after this datetime.
     # @option opts [DateTime] :created_before If provided, will only return objects created before this datetime.
-    # @option opts [Integer] :cursor The pagination cursor value.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [DateTime] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [DateTime] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @return [Array<(PaginatedCandidateList, Integer, Hash)>] PaginatedCandidateList data, response status code and response headers
-    def candidates_list_with_http_info(opts = {})
+    def candidates_list_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CandidatesApi.candidates_list ...'
       end
-      allowable_values = ["applications", "attachments"]
+      # verify the required parameter 'x_account_token' is set
+      if @api_client.config.client_side_validation && x_account_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling CandidatesApi.candidates_list"
+      end
+      allowable_values = ["applications", "applications,attachments", "attachments"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
@@ -74,7 +78,7 @@ module MergeATSClient
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
+      header_params[:'X-Account-Token'] = x_account_token
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -105,31 +109,35 @@ module MergeATSClient
     end
 
     # Returns a `Candidate` object with the given `id`.
+    # @param x_account_token [String] Token identifying the end user.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @return [Candidate]
-    def candidates_retrieve(id, opts = {})
-      data, _status_code, _headers = candidates_retrieve_with_http_info(id, opts)
+    def candidates_retrieve(x_account_token, id, opts = {})
+      data, _status_code, _headers = candidates_retrieve_with_http_info(x_account_token, id, opts)
       data
     end
 
     # Returns a &#x60;Candidate&#x60; object with the given &#x60;id&#x60;.
+    # @param x_account_token [String] Token identifying the end user.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @return [Array<(Candidate, Integer, Hash)>] Candidate data, response status code and response headers
-    def candidates_retrieve_with_http_info(id, opts = {})
+    def candidates_retrieve_with_http_info(x_account_token, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CandidatesApi.candidates_retrieve ...'
+      end
+      # verify the required parameter 'x_account_token' is set
+      if @api_client.config.client_side_validation && x_account_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling CandidatesApi.candidates_retrieve"
       end
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling CandidatesApi.candidates_retrieve"
       end
-      allowable_values = ["applications", "attachments"]
+      allowable_values = ["applications", "applications,attachments", "attachments"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
@@ -144,7 +152,7 @@ module MergeATSClient
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
+      header_params[:'X-Account-Token'] = x_account_token
 
       # form parameters
       form_params = opts[:form_params] || {}

@@ -20,15 +20,15 @@ module MergeATSClient
       @api_client = api_client
     end
     # Returns a list of `Application` objects.
+    # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
     # @option opts [String] :candidate_id If provided, will only return applications for this candidate.
     # @option opts [DateTime] :created_after If provided, will only return objects created after this datetime.
     # @option opts [DateTime] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :credited_to_id If provided, will only return applications credited to this user.
     # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
-    # @option opts [Integer] :cursor The pagination cursor value.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [String] :job_id If provided, will only return applications for this job.
     # @option opts [DateTime] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [DateTime] :modified_before If provided, will only return objects modified before this datetime.
@@ -36,21 +36,21 @@ module MergeATSClient
     # @option opts [String] :reject_reason_id If provided, will only return applications with this reject reason.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @return [PaginatedApplicationList]
-    def applications_list(opts = {})
-      data, _status_code, _headers = applications_list_with_http_info(opts)
+    def applications_list(x_account_token, opts = {})
+      data, _status_code, _headers = applications_list_with_http_info(x_account_token, opts)
       data
     end
 
     # Returns a list of &#x60;Application&#x60; objects.
+    # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
     # @option opts [String] :candidate_id If provided, will only return applications for this candidate.
     # @option opts [DateTime] :created_after If provided, will only return objects created after this datetime.
     # @option opts [DateTime] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :credited_to_id If provided, will only return applications credited to this user.
     # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
-    # @option opts [Integer] :cursor The pagination cursor value.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [String] :job_id If provided, will only return applications for this job.
     # @option opts [DateTime] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [DateTime] :modified_before If provided, will only return objects modified before this datetime.
@@ -58,11 +58,15 @@ module MergeATSClient
     # @option opts [String] :reject_reason_id If provided, will only return applications with this reject reason.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @return [Array<(PaginatedApplicationList, Integer, Hash)>] PaginatedApplicationList data, response status code and response headers
-    def applications_list_with_http_info(opts = {})
+    def applications_list_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationsApi.applications_list ...'
       end
-      allowable_values = ["candidate", "credited_to", "current_stage", "job", "reject_reason"]
+      # verify the required parameter 'x_account_token' is set
+      if @api_client.config.client_side_validation && x_account_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling ApplicationsApi.applications_list"
+      end
+      allowable_values = ["candidate", "candidate,credited_to", "candidate,credited_to,current_stage", "candidate,credited_to,current_stage,reject_reason", "candidate,credited_to,reject_reason", "candidate,current_stage", "candidate,current_stage,reject_reason", "candidate,job", "candidate,job,credited_to", "candidate,job,credited_to,current_stage", "candidate,job,credited_to,current_stage,reject_reason", "candidate,job,credited_to,reject_reason", "candidate,job,current_stage", "candidate,job,current_stage,reject_reason", "candidate,job,reject_reason", "candidate,reject_reason", "credited_to", "credited_to,current_stage", "credited_to,current_stage,reject_reason", "credited_to,reject_reason", "current_stage", "current_stage,reject_reason", "job", "job,credited_to", "job,credited_to,current_stage", "job,credited_to,current_stage,reject_reason", "job,credited_to,reject_reason", "job,current_stage", "job,current_stage,reject_reason", "job,reject_reason", "reject_reason"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
@@ -89,7 +93,7 @@ module MergeATSClient
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
+      header_params[:'X-Account-Token'] = x_account_token
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -120,31 +124,35 @@ module MergeATSClient
     end
 
     # Returns an `Application` object with the given `id`.
+    # @param x_account_token [String] Token identifying the end user.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @return [Application]
-    def applications_retrieve(id, opts = {})
-      data, _status_code, _headers = applications_retrieve_with_http_info(id, opts)
+    def applications_retrieve(x_account_token, id, opts = {})
+      data, _status_code, _headers = applications_retrieve_with_http_info(x_account_token, id, opts)
       data
     end
 
     # Returns an &#x60;Application&#x60; object with the given &#x60;id&#x60;.
+    # @param x_account_token [String] Token identifying the end user.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :x_account_token Token identifying the end user.
-    # @option opts [String] :expand Which relations should be returned in expanded form.
+    # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
-    def applications_retrieve_with_http_info(id, opts = {})
+    def applications_retrieve_with_http_info(x_account_token, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationsApi.applications_retrieve ...'
+      end
+      # verify the required parameter 'x_account_token' is set
+      if @api_client.config.client_side_validation && x_account_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling ApplicationsApi.applications_retrieve"
       end
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling ApplicationsApi.applications_retrieve"
       end
-      allowable_values = ["candidate", "credited_to", "current_stage", "job", "reject_reason"]
+      allowable_values = ["candidate", "candidate,credited_to", "candidate,credited_to,current_stage", "candidate,credited_to,current_stage,reject_reason", "candidate,credited_to,reject_reason", "candidate,current_stage", "candidate,current_stage,reject_reason", "candidate,job", "candidate,job,credited_to", "candidate,job,credited_to,current_stage", "candidate,job,credited_to,current_stage,reject_reason", "candidate,job,credited_to,reject_reason", "candidate,job,current_stage", "candidate,job,current_stage,reject_reason", "candidate,job,reject_reason", "candidate,reject_reason", "credited_to", "credited_to,current_stage", "credited_to,current_stage,reject_reason", "credited_to,reject_reason", "current_stage", "current_stage,reject_reason", "job", "job,credited_to", "job,credited_to,current_stage", "job,credited_to,current_stage,reject_reason", "job,credited_to,reject_reason", "job,current_stage", "job,current_stage,reject_reason", "job,reject_reason", "reject_reason"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
@@ -159,7 +167,7 @@ module MergeATSClient
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'X-Account-Token'] = opts[:'x_account_token'] if !opts[:'x_account_token'].nil?
+      header_params[:'X-Account-Token'] = x_account_token
 
       # form parameters
       form_params = opts[:form_params] || {}

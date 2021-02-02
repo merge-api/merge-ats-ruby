@@ -16,7 +16,7 @@ require 'MergeATSClient'
 
 instance = MergeATSClient::Office.new(id: 9871b4a9-f5d2-4f3b-a66b-dfedbed42c46,
                                  remote_id: 876556788,
-                                 name: Underground Bunker,
+                                 name: SF Office,
                                  location: Embarcadero Center 2)
 ```
 

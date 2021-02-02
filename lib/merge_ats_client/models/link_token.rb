@@ -16,17 +16,21 @@ module MergeATSClient
   class LinkToken
     attr_accessor :link_token
 
+    attr_accessor :integration_name
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'link_token' => :'link_token'
+        :'link_token' => :'link_token',
+        :'integration_name' => :'integration_name'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'link_token' => :'String'
+        :'link_token' => :'String',
+        :'integration_name' => :'String'
       }
     end
 
@@ -54,6 +58,10 @@ module MergeATSClient
       if attributes.key?(:'link_token')
         self.link_token = attributes[:'link_token']
       end
+
+      if attributes.key?(:'integration_name')
+        self.integration_name = attributes[:'integration_name']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -64,6 +72,10 @@ module MergeATSClient
         invalid_properties.push('invalid value for "link_token", link_token cannot be nil.')
       end
 
+      if @integration_name.nil?
+        invalid_properties.push('invalid value for "integration_name", integration_name cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -71,6 +83,7 @@ module MergeATSClient
     # @return true if the model is valid
     def valid?
       return false if @link_token.nil?
+      return false if @integration_name.nil?
       true
     end
 
@@ -79,7 +92,8 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          link_token == o.link_token
+          link_token == o.link_token &&
+          integration_name == o.integration_name
     end
 
     # @see the `==` method
@@ -91,7 +105,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [link_token].hash
+      [link_token, integration_name].hash
     end
 
     # Builds the object from hash

@@ -38,13 +38,13 @@ module MergeATSClient
     # The application's source.
     attr_accessor :source
 
-    # The user credited.
+    # The user credited for this application.
     attr_accessor :credited_to
 
     # The application's current stage.
     attr_accessor :current_stage
 
-    # The applications reason for rejection.
+    # The application's reason for rejection.
     attr_accessor :reject_reason
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -74,7 +74,7 @@ module MergeATSClient
         :'is_prospect' => :'Boolean',
         :'applied_at' => :'DateTime',
         :'rejected_at' => :'DateTime',
-        :'source' => :'SourceEnum',
+        :'source' => :'String',
         :'credited_to' => :'String',
         :'current_stage' => :'String',
         :'reject_reason' => :'String'

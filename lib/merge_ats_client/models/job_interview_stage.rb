@@ -23,7 +23,7 @@ module MergeATSClient
     # The stage's name.
     attr_accessor :name
 
-    # The job being interviewed for.
+    # The job that this stage belongs to.
     attr_accessor :job
 
     # Attribute mapping from ruby-style variable name to JSON key.

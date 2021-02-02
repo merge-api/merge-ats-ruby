@@ -23,7 +23,7 @@ require 'MergeATSClient'
 
 instance = MergeATSClient::ScheduledInterview.new(id: b8faf072-98b9-4445-8a9a-6b4950efca19,
                                  remote_id: 3,
-                                 application: null,
+                                 application: 92e8a369-fffe-430d-b93a-f7e8a16563f1,
                                  organizer: 52bf9b5e-0beb-4f6f-8a72-cd4dca7ca633,
                                  interviewers: [&quot;f9813dd5-e70b-484c-91d8-00acd6065b07&quot;,&quot;89a86fcf-d540-4e6b-ac3d-ce07c4ec9b3c&quot;],
                                  location: Embarcadero Center 2,
