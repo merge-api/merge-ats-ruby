@@ -2,20 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_next** | **String** |  | [optional] 
-**previous** | **String** |  | [optional] 
-**results** | [**Array&lt;RemoteUser&gt;**](RemoteUser.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_next** | **String** |  | [optional] |
+| **previous** | **String** |  | [optional] |
+| **results** | [**Array&lt;RemoteUser&gt;**](RemoteUser.md) |  | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'MergeATSClient'
+require 'merge_ats_client'
 
-instance = MergeATSClient::PaginatedRemoteUserList.new(_next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw,
-                                 previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ,
-                                 results: null)
+instance = MergeATSClient::PaginatedRemoteUserList.new(
+  _next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw,
+  previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ,
+  results: null
+)
 ```
-
 
