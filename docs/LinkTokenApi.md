@@ -1,6 +1,6 @@
 # MergeATSClient::LinkTokenApi
 
-All URIs are relative to *https://app.merge.dev/api/ats/v1*
+All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

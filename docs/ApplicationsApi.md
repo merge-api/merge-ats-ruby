@@ -1,6 +1,6 @@
 # MergeATSClient::ApplicationsApi
 
-All URIs are relative to *https://app.merge.dev/api/ats/v1*
+All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## applications_list
 
-> PaginatedApplicationList applications_list(opts)
+> PaginatedApplicationList applications_list(x_account_token, opts)
 
 
 
@@ -31,15 +31,15 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::ApplicationsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
   candidate_id: 'candidate_id_example', # String | If provided, will only return applications for this candidate.
   created_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created after this datetime.
   created_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created before this datetime.
   credited_to_id: 'credited_to_id_example', # String | If provided, will only return applications credited to this user.
   current_stage_id: 'current_stage_id_example', # String | If provided, will only return applications at this interview stage.
-  cursor: 56, # Integer | The pagination cursor value.
-  expand: 'expand_example', # String | Which relations should be returned in expanded form.
+  cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
+  expand: 'candidate,job,credited_to,current_stage,reject_reason', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   job_id: 'job_id_example', # String | If provided, will only return applications for this job.
   modified_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects modified after this datetime.
   modified_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects modified before this datetime.
@@ -49,7 +49,7 @@ opts = {
 }
 
 begin
-  result = api_instance.applications_list(opts)
+  result = api_instance.applications_list(x_account_token, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling ApplicationsApi->applications_list: #{e}"
@@ -61,14 +61,14 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
+ **x_account_token** | **String**| Token identifying the end user. | 
  **candidate_id** | [**String**](.md)| If provided, will only return applications for this candidate. | [optional] 
  **created_after** | **DateTime**| If provided, will only return objects created after this datetime. | [optional] 
  **created_before** | **DateTime**| If provided, will only return objects created before this datetime. | [optional] 
  **credited_to_id** | [**String**](.md)| If provided, will only return applications credited to this user. | [optional] 
  **current_stage_id** | [**String**](.md)| If provided, will only return applications at this interview stage. | [optional] 
- **cursor** | **Integer**| The pagination cursor value. | [optional] 
- **expand** | **String**| Which relations should be returned in expanded form. | [optional] 
+ **cursor** | **String**| The pagination cursor value. | [optional] 
+ **expand** | **String**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
  **job_id** | [**String**](.md)| If provided, will only return applications for this job. | [optional] 
  **modified_after** | **DateTime**| If provided, will only return objects modified after this datetime. | [optional] 
  **modified_before** | **DateTime**| If provided, will only return objects modified before this datetime. | [optional] 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## applications_retrieve
 
-> Application applications_retrieve(id, opts)
+> Application applications_retrieve(x_account_token, id, opts)
 
 
 
@@ -112,14 +112,14 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::ApplicationsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 id = 'id_example' # String | 
 opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
-  expand: 'expand_example' # String | Which relations should be returned in expanded form.
+  expand: 'candidate,job,credited_to,current_stage,reject_reason' # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
 }
 
 begin
-  result = api_instance.applications_retrieve(id, opts)
+  result = api_instance.applications_retrieve(x_account_token, id, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling ApplicationsApi->applications_retrieve: #{e}"
@@ -131,9 +131,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **x_account_token** | **String**| Token identifying the end user. | 
  **id** | [**String**](.md)|  | 
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
- **expand** | **String**| Which relations should be returned in expanded form. | [optional] 
+ **expand** | **String**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
 
 ### Return type
 

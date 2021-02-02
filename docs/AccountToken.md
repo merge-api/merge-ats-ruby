@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ```ruby
 require 'MergeATSClient'
 
-instance = MergeATSClient::AccountToken.new(account_token: null)
+instance = MergeATSClient::AccountToken.new(account_token: T9klMDQrcHdm9jrtHuOS2Nf06BIHwMNjpPXPMB)
 ```
 
 

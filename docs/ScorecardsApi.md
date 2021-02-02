@@ -1,6 +1,6 @@
 # MergeATSClient::ScorecardsApi
 
-All URIs are relative to *https://app.merge.dev/api/ats/v1*
+All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## scorecards_list
 
-> PaginatedScorecardList scorecards_list(opts)
+> PaginatedScorecardList scorecards_list(x_account_token, opts)
 
 
 
@@ -31,13 +31,13 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::ScorecardsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
   application_id: 'application_id_example', # String | If provided, will only return scorecards for this application.
   created_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created after this datetime.
   created_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created before this datetime.
-  cursor: 56, # Integer | The pagination cursor value.
-  expand: 'expand_example', # String | Which relations should be returned in expanded form.
+  cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
+  expand: 'application,interview,interviewer', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   interview_id: 'interview_id_example', # String | If provided, will only return scorecards for this interview.
   interviewer_id: 'interviewer_id_example', # String | If provided, will only return scorecards for this interviewer.
   modified_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects modified after this datetime.
@@ -47,7 +47,7 @@ opts = {
 }
 
 begin
-  result = api_instance.scorecards_list(opts)
+  result = api_instance.scorecards_list(x_account_token, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling ScorecardsApi->scorecards_list: #{e}"
@@ -59,12 +59,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
+ **x_account_token** | **String**| Token identifying the end user. | 
  **application_id** | [**String**](.md)| If provided, will only return scorecards for this application. | [optional] 
  **created_after** | **DateTime**| If provided, will only return objects created after this datetime. | [optional] 
  **created_before** | **DateTime**| If provided, will only return objects created before this datetime. | [optional] 
- **cursor** | **Integer**| The pagination cursor value. | [optional] 
- **expand** | **String**| Which relations should be returned in expanded form. | [optional] 
+ **cursor** | **String**| The pagination cursor value. | [optional] 
+ **expand** | **String**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
  **interview_id** | [**String**](.md)| If provided, will only return scorecards for this interview. | [optional] 
  **interviewer_id** | [**String**](.md)| If provided, will only return scorecards for this interviewer. | [optional] 
  **modified_after** | **DateTime**| If provided, will only return objects modified after this datetime. | [optional] 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## scorecards_retrieve
 
-> Scorecard scorecards_retrieve(id, opts)
+> Scorecard scorecards_retrieve(x_account_token, id, opts)
 
 
 
@@ -108,14 +108,14 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::ScorecardsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 id = 'id_example' # String | 
 opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
-  expand: 'expand_example' # String | Which relations should be returned in expanded form.
+  expand: 'application,interview,interviewer' # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
 }
 
 begin
-  result = api_instance.scorecards_retrieve(id, opts)
+  result = api_instance.scorecards_retrieve(x_account_token, id, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling ScorecardsApi->scorecards_retrieve: #{e}"
@@ -127,9 +127,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **x_account_token** | **String**| Token identifying the end user. | 
  **id** | [**String**](.md)|  | 
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
- **expand** | **String**| Which relations should be returned in expanded form. | [optional] 
+ **expand** | **String**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
 
 ### Return type
 

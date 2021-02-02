@@ -19,11 +19,11 @@ Name | Type | Description | Notes
 require 'MergeATSClient'
 
 instance = MergeATSClient::Activity.new(id: ecbe05ac-62a3-46c5-ab31-4b478b37d1b4,
-                                 remote_id: 6,
+                                 remote_id: 198123,
                                  user: 9d892439-5fab-4dbb-8bd8-34f7f96c7912,
                                  remote_created_at: null,
                                  activity_type: NOTE,
-                                 subject: Henry&#39;s applicant status,
+                                 subject: Gil Feig&#39;s applicant status,
                                  body: Candidate will only join if we provide a Barry&#39;s subsidy.,
                                  visibility: PRIVATE)
 ```

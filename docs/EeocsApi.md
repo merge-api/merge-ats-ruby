@@ -1,6 +1,6 @@
 # MergeATSClient::EeocsApi
 
-All URIs are relative to *https://app.merge.dev/api/ats/v1*
+All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## eeocs_list
 
-> PaginatedEEOCList eeocs_list(opts)
+> PaginatedEEOCList eeocs_list(x_account_token, opts)
 
 
 
@@ -31,13 +31,13 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::EeocsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
   candidate_id: 'candidate_id_example', # String | If provided, will only return EEOC info for this candidate.
   created_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created after this datetime.
   created_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects created before this datetime.
-  cursor: 56, # Integer | The pagination cursor value.
-  expand: 'expand_example', # String | Which relations should be returned in expanded form.
+  cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
+  expand: 'candidate', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   modified_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects modified after this datetime.
   modified_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | If provided, will only return objects modified before this datetime.
   page_size: 56, # Integer | Number of results to return per page.
@@ -45,7 +45,7 @@ opts = {
 }
 
 begin
-  result = api_instance.eeocs_list(opts)
+  result = api_instance.eeocs_list(x_account_token, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling EeocsApi->eeocs_list: #{e}"
@@ -57,12 +57,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
+ **x_account_token** | **String**| Token identifying the end user. | 
  **candidate_id** | [**String**](.md)| If provided, will only return EEOC info for this candidate. | [optional] 
  **created_after** | **DateTime**| If provided, will only return objects created after this datetime. | [optional] 
  **created_before** | **DateTime**| If provided, will only return objects created before this datetime. | [optional] 
- **cursor** | **Integer**| The pagination cursor value. | [optional] 
- **expand** | **String**| Which relations should be returned in expanded form. | [optional] 
+ **cursor** | **String**| The pagination cursor value. | [optional] 
+ **expand** | **String**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
  **modified_after** | **DateTime**| If provided, will only return objects modified after this datetime. | [optional] 
  **modified_before** | **DateTime**| If provided, will only return objects modified before this datetime. | [optional] 
  **page_size** | **Integer**| Number of results to return per page. | [optional] 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## eeocs_retrieve
 
-> EEOC eeocs_retrieve(id, opts)
+> EEOC eeocs_retrieve(x_account_token, id, opts)
 
 
 
@@ -104,14 +104,14 @@ MergeATSClient.configure do |config|
 end
 
 api_instance = MergeATSClient::EeocsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 id = 'id_example' # String | 
 opts = {
-  x_account_token: 'x_account_token_example', # String | Token identifying the end user.
-  expand: 'expand_example' # String | Which relations should be returned in expanded form.
+  expand: 'candidate' # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
 }
 
 begin
-  result = api_instance.eeocs_retrieve(id, opts)
+  result = api_instance.eeocs_retrieve(x_account_token, id, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Exception when calling EeocsApi->eeocs_retrieve: #{e}"
@@ -123,9 +123,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **x_account_token** | **String**| Token identifying the end user. | 
  **id** | [**String**](.md)|  | 
- **x_account_token** | **String**| Token identifying the end user. | [optional] 
- **expand** | **String**| Which relations should be returned in expanded form. | [optional] 
+ **expand** | **String**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
 
 ### Return type
 

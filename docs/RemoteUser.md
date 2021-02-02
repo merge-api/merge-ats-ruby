@@ -20,9 +20,9 @@ require 'MergeATSClient'
 
 instance = MergeATSClient::RemoteUser.new(id: b82302de-852e-4e60-b050-edf9da3b7c02,
                                  remote_id: 344321,
-                                 first_name: Dan,
-                                 last_name: Rothman,
-                                 email: dan@merge.dev,
+                                 first_name: Shensi,
+                                 last_name: Ding,
+                                 email: hello@merge.dev,
                                  disabled: null,
                                  remote_created_at: null,
                                  access_role: SUPER_ADMIN)
