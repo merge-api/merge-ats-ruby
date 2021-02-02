@@ -40,7 +40,7 @@ opts = {
   modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified before this datetime.
   page_size: 56, # Integer | Number of results to return per page.
   remote_id: 'remote_id_example', # String | The API provider's ID for the given object.
-  user_id: TODO # String | If provided, will only return activities done by this user.
+  user_id: 'user_id_example' # String | If provided, will only return activities done by this user.
 }
 
 begin
@@ -83,7 +83,7 @@ end
 | **modified_before** | **Time** | If provided, will only return objects modified before this datetime. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **remote_id** | **String** | The API provider&#39;s ID for the given object. | [optional] |
-| **user_id** | [**String**](.md) | If provided, will only return activities done by this user. | [optional] |
+| **user_id** | **String** | If provided, will only return activities done by this user. | [optional] |
 
 ### Return type
 

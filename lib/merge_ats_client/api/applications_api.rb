@@ -22,18 +22,18 @@ module MergeATSClient
     # Returns a list of `Application` objects.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :candidate_id If provided, will only return applications for this candidate.
+    # @option opts [String] :candidate_id If provided, will only return activities done by this user.
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
-    # @option opts [String] :credited_to_id If provided, will only return applications credited to this user.
-    # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
+    # @option opts [String] :credited_to_id If provided, will only return activities done by this user.
+    # @option opts [String] :current_stage_id If provided, will only return activities done by this user.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [String] :job_id If provided, will only return applications for this job.
+    # @option opts [String] :job_id If provided, will only return activities done by this user.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :reject_reason_id If provided, will only return applications with this reject reason.
+    # @option opts [String] :reject_reason_id If provided, will only return activities done by this user.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @return [PaginatedApplicationList]
     def applications_list(x_account_token, opts = {})
@@ -44,18 +44,18 @@ module MergeATSClient
     # Returns a list of &#x60;Application&#x60; objects.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :candidate_id If provided, will only return applications for this candidate.
+    # @option opts [String] :candidate_id If provided, will only return activities done by this user.
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
-    # @option opts [String] :credited_to_id If provided, will only return applications credited to this user.
-    # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
+    # @option opts [String] :credited_to_id If provided, will only return activities done by this user.
+    # @option opts [String] :current_stage_id If provided, will only return activities done by this user.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [String] :job_id If provided, will only return applications for this job.
+    # @option opts [String] :job_id If provided, will only return activities done by this user.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :reject_reason_id If provided, will only return applications with this reject reason.
+    # @option opts [String] :reject_reason_id If provided, will only return activities done by this user.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @return [Array<(PaginatedApplicationList, Integer, Hash)>] PaginatedApplicationList data, response status code and response headers
     def applications_list_with_http_info(x_account_token, opts = {})

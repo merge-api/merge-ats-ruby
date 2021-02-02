@@ -22,13 +22,13 @@ module MergeATSClient
     # Returns a list of `Scorecard` objects.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :application_id If provided, will only return scorecards for this application.
+    # @option opts [String] :application_id If provided, will only return activities done by this user.
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [String] :interview_id If provided, will only return scorecards for this interview.
-    # @option opts [String] :interviewer_id If provided, will only return scorecards for this interviewer.
+    # @option opts [String] :interview_id If provided, will only return activities done by this user.
+    # @option opts [String] :interviewer_id If provided, will only return activities done by this user.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -42,13 +42,13 @@ module MergeATSClient
     # Returns a list of &#x60;Scorecard&#x60; objects.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :application_id If provided, will only return scorecards for this application.
+    # @option opts [String] :application_id If provided, will only return activities done by this user.
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [String] :interview_id If provided, will only return scorecards for this interview.
-    # @option opts [String] :interviewer_id If provided, will only return scorecards for this interviewer.
+    # @option opts [String] :interview_id If provided, will only return activities done by this user.
+    # @option opts [String] :interviewer_id If provided, will only return activities done by this user.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
