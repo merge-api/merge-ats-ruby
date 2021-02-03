@@ -32,10 +32,10 @@ end
 api_instance = MergeATSClient::OffersApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 opts = {
-  application_id: TODO, # String | If provided, will only return offers for this application.
+  application_id: 'application_id_example', # String | If provided, will only return offers for this application.
   created_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created after this datetime.
   created_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created before this datetime.
-  creator_id: TODO, # String | If provided, will only return offers created by this user.
+  creator_id: 'creator_id_example', # String | If provided, will only return offers created by this user.
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
   expand: 'application', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
@@ -76,10 +76,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
-| **application_id** | [**String**](.md) | If provided, will only return offers for this application. | [optional] |
+| **application_id** | **String** | If provided, will only return offers for this application. | [optional] |
 | **created_after** | **Time** | If provided, will only return objects created after this datetime. | [optional] |
 | **created_before** | **Time** | If provided, will only return objects created before this datetime. | [optional] |
-| **creator_id** | [**String**](.md) | If provided, will only return offers created by this user. | [optional] |
+| **creator_id** | **String** | If provided, will only return offers created by this user. | [optional] |
 | **cursor** | **String** | The pagination cursor value. | [optional] |
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
 | **modified_after** | **Time** | If provided, will only return objects modified after this datetime. | [optional] |
