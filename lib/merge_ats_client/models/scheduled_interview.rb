@@ -24,6 +24,9 @@ module MergeATSClient
     # The application being interviewed.
     attr_accessor :application
 
+    # The stage of the interview.
+    attr_accessor :job_interview_stage
+
     # The user organizing the interview.
     attr_accessor :organizer
 
@@ -53,6 +56,7 @@ module MergeATSClient
         :'id' => :'id',
         :'remote_id' => :'remote_id',
         :'application' => :'application',
+        :'job_interview_stage' => :'job_interview_stage',
         :'organizer' => :'organizer',
         :'interviewers' => :'interviewers',
         :'location' => :'location',
@@ -75,6 +79,7 @@ module MergeATSClient
         :'id' => :'String',
         :'remote_id' => :'String',
         :'application' => :'String',
+        :'job_interview_stage' => :'String',
         :'organizer' => :'String',
         :'interviewers' => :'Array<String>',
         :'location' => :'String',
@@ -91,6 +96,7 @@ module MergeATSClient
       Set.new([
         :'remote_id',
         :'application',
+        :'job_interview_stage',
         :'organizer',
         :'location',
         :'start_at',
@@ -126,6 +132,10 @@ module MergeATSClient
 
       if attributes.key?(:'application')
         self.application = attributes[:'application']
+      end
+
+      if attributes.key?(:'job_interview_stage')
+        self.job_interview_stage = attributes[:'job_interview_stage']
       end
 
       if attributes.key?(:'organizer')
@@ -184,6 +194,7 @@ module MergeATSClient
           id == o.id &&
           remote_id == o.remote_id &&
           application == o.application &&
+          job_interview_stage == o.job_interview_stage &&
           organizer == o.organizer &&
           interviewers == o.interviewers &&
           location == o.location &&
@@ -203,7 +214,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, application, organizer, interviewers, location, start_at, end_at, remote_created_at, remote_updated_at, status].hash
+      [id, remote_id, application, job_interview_stage, organizer, interviewers, location, start_at, end_at, remote_created_at, remote_updated_at, status].hash
     end
 
     # Builds the object from hash

@@ -27,6 +27,7 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [String] :job_interview_stage_id If provided, will only return interviews at this stage.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [String] :organizer_id If provided, will only return interviews organized by this user.
@@ -46,6 +47,7 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [String] :job_interview_stage_id If provided, will only return interviews at this stage.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [String] :organizer_id If provided, will only return interviews organized by this user.
@@ -60,7 +62,7 @@ module MergeATSClient
       if @api_client.config.client_side_validation && x_account_token.nil?
         fail ArgumentError, "Missing the required parameter 'x_account_token' when calling InterviewsApi.interviews_list"
       end
-      allowable_values = ["application", "interviewers", "interviewers,application", "interviewers,organizer", "interviewers,organizer,application", "organizer", "organizer,application"]
+      allowable_values = ["application", "application,job_interview_stage", "interviewers", "interviewers,application", "interviewers,application,job_interview_stage", "interviewers,job_interview_stage", "interviewers,organizer", "interviewers,organizer,application", "interviewers,organizer,application,job_interview_stage", "interviewers,organizer,job_interview_stage", "job_interview_stage", "organizer", "organizer,application", "organizer,application,job_interview_stage", "organizer,job_interview_stage"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
@@ -74,6 +76,7 @@ module MergeATSClient
       query_params[:'created_before'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
+      query_params[:'job_interview_stage_id'] = opts[:'job_interview_stage_id'] if !opts[:'job_interview_stage_id'].nil?
       query_params[:'modified_after'] = opts[:'modified_after'] if !opts[:'modified_after'].nil?
       query_params[:'modified_before'] = opts[:'modified_before'] if !opts[:'modified_before'].nil?
       query_params[:'organizer_id'] = opts[:'organizer_id'] if !opts[:'organizer_id'].nil?
@@ -144,7 +147,7 @@ module MergeATSClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling InterviewsApi.interviews_retrieve"
       end
-      allowable_values = ["application", "interviewers", "interviewers,application", "interviewers,organizer", "interviewers,organizer,application", "organizer", "organizer,application"]
+      allowable_values = ["application", "application,job_interview_stage", "interviewers", "interviewers,application", "interviewers,application,job_interview_stage", "interviewers,job_interview_stage", "interviewers,organizer", "interviewers,organizer,application", "interviewers,organizer,application,job_interview_stage", "interviewers,organizer,job_interview_stage", "job_interview_stage", "organizer", "organizer,application", "organizer,application,job_interview_stage", "organizer,job_interview_stage"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end

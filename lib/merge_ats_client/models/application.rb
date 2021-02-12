@@ -45,6 +45,8 @@ module MergeATSClient
     # The application's current stage.
     attr_accessor :current_stage
 
+    attr_accessor :stage_changes
+
     # The application's reason for rejection.
     attr_accessor :reject_reason
 
@@ -61,6 +63,7 @@ module MergeATSClient
         :'source' => :'source',
         :'credited_to' => :'credited_to',
         :'current_stage' => :'current_stage',
+        :'stage_changes' => :'stage_changes',
         :'reject_reason' => :'reject_reason'
       }
     end
@@ -83,6 +86,7 @@ module MergeATSClient
         :'source' => :'String',
         :'credited_to' => :'String',
         :'current_stage' => :'String',
+        :'stage_changes' => :'Array<JobInterviewStageChange>',
         :'reject_reason' => :'String'
       }
     end
@@ -158,6 +162,12 @@ module MergeATSClient
         self.current_stage = attributes[:'current_stage']
       end
 
+      if attributes.key?(:'stage_changes')
+        if (value = attributes[:'stage_changes']).is_a?(Array)
+          self.stage_changes = value
+        end
+      end
+
       if attributes.key?(:'reject_reason')
         self.reject_reason = attributes[:'reject_reason']
       end
@@ -191,6 +201,7 @@ module MergeATSClient
           source == o.source &&
           credited_to == o.credited_to &&
           current_stage == o.current_stage &&
+          stage_changes == o.stage_changes &&
           reject_reason == o.reject_reason
     end
 
@@ -203,7 +214,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, candidate, job, is_prospect, applied_at, rejected_at, source, credited_to, current_stage, reject_reason].hash
+      [id, remote_id, candidate, job, is_prospect, applied_at, rejected_at, source, credited_to, current_stage, stage_changes, reject_reason].hash
     end
 
     # Builds the object from hash

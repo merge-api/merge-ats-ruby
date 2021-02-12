@@ -14,19 +14,19 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Url Object ### Description The `Url` object is used to represent a candidate's website.  ### Usage Example Fetch from the `GET Candidate` endpoint and view their website urls.
-  class Url
-    # The site's url.
-    attr_accessor :value
+  # # The JobInterviewStageChange Object ### Description The `JobInterviewStageChange` object is used to represent a change in interview stage for an Application  ### Usage Example Fetch from the `LIST JobInterviewStageChange` endpoint and filter by `application` to show all stage changes for an applicant.
+  class JobInterviewStageChange
+    # The stage the application changed to.
+    attr_accessor :to_stage
 
-    # The type of site.
-    attr_accessor :url_type
+    # The date and time of the change.
+    attr_accessor :remote_updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'value' => :'value',
-        :'url_type' => :'url_type'
+        :'to_stage' => :'to_stage',
+        :'remote_updated_at' => :'remote_updated_at'
       }
     end
 
@@ -38,16 +38,16 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'value' => :'String',
-        :'url_type' => :'UrlTypeEnum'
+        :'to_stage' => :'String',
+        :'remote_updated_at' => :'Time'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'value',
-        :'url_type'
+        :'to_stage',
+        :'remote_updated_at'
       ])
     end
 
@@ -55,23 +55,23 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::Url` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::JobInterviewStageChange` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::Url`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::JobInterviewStageChange`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'to_stage')
+        self.to_stage = attributes[:'to_stage']
       end
 
-      if attributes.key?(:'url_type')
-        self.url_type = attributes[:'url_type']
+      if attributes.key?(:'remote_updated_at')
+        self.remote_updated_at = attributes[:'remote_updated_at']
       end
     end
 
@@ -79,28 +79,13 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@value.nil? && @value.to_s.length > 400
-        invalid_properties.push('invalid value for "value", the character length must be smaller than or equal to 400.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@value.nil? && @value.to_s.length > 400
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] value Value to be assigned
-    def value=(value)
-      if !value.nil? && value.to_s.length > 400
-        fail ArgumentError, 'invalid value for "value", the character length must be smaller than or equal to 400.'
-      end
-
-      @value = value
     end
 
     # Checks equality by comparing each attribute.
@@ -108,8 +93,8 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          value == o.value &&
-          url_type == o.url_type
+          to_stage == o.to_stage &&
+          remote_updated_at == o.remote_updated_at
     end
 
     # @see the `==` method
@@ -121,7 +106,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [value, url_type].hash
+      [to_stage, remote_updated_at].hash
     end
 
     # Builds the object from hash
