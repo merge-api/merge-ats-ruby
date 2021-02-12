@@ -90,7 +90,7 @@ Class | Method | HTTP request | Description
 *MergeATSClient::ApplicationsApi* | [**applications_retrieve**](docs/ApplicationsApi.md#applications_retrieve) | **GET** /applications/{id} | 
 *MergeATSClient::AttachmentsApi* | [**attachments_list**](docs/AttachmentsApi.md#attachments_list) | **GET** /attachments | 
 *MergeATSClient::AttachmentsApi* | [**attachments_retrieve**](docs/AttachmentsApi.md#attachments_retrieve) | **GET** /attachments/{id} | 
-*MergeATSClient::AvailableModelsApi* | [**available_models_retrieve**](docs/AvailableModelsApi.md#available_models_retrieve) | **GET** /available-models | 
+*MergeATSClient::AvailableActionsApi* | [**available_actions_retrieve**](docs/AvailableActionsApi.md#available_actions_retrieve) | **GET** /available-actions | 
 *MergeATSClient::CandidatesApi* | [**candidates_list**](docs/CandidatesApi.md#candidates_list) | **GET** /candidates | 
 *MergeATSClient::CandidatesApi* | [**candidates_retrieve**](docs/CandidatesApi.md#candidates_retrieve) | **GET** /candidates/{id} | 
 *MergeATSClient::DepartmentsApi* | [**departments_list**](docs/DepartmentsApi.md#departments_list) | **GET** /departments | 
@@ -125,7 +125,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::ActivityTypeEnum](docs/ActivityTypeEnum.md)
  - [MergeATSClient::Application](docs/Application.md)
  - [MergeATSClient::Attachment](docs/Attachment.md)
- - [MergeATSClient::AvailableActionsSerialzier](docs/AvailableActionsSerialzier.md)
+ - [MergeATSClient::AvailableActions](docs/AvailableActions.md)
  - [MergeATSClient::Candidate](docs/Candidate.md)
  - [MergeATSClient::Department](docs/Department.md)
  - [MergeATSClient::DisabilityStatusEnum](docs/DisabilityStatusEnum.md)

@@ -13,7 +13,7 @@ OpenAPI Generator version: 5.0.0
 require 'cgi'
 
 module MergeATSClient
-  class AvailableModelsApi
+  class AvailableActionsApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
@@ -22,26 +22,26 @@ module MergeATSClient
     # Returns a list of models and actions available for an account.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @return [AvailableActionsSerialzier]
-    def available_models_retrieve(x_account_token, opts = {})
-      data, _status_code, _headers = available_models_retrieve_with_http_info(x_account_token, opts)
+    # @return [AvailableActions]
+    def available_actions_retrieve(x_account_token, opts = {})
+      data, _status_code, _headers = available_actions_retrieve_with_http_info(x_account_token, opts)
       data
     end
 
     # Returns a list of models and actions available for an account.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AvailableActionsSerialzier, Integer, Hash)>] AvailableActionsSerialzier data, response status code and response headers
-    def available_models_retrieve_with_http_info(x_account_token, opts = {})
+    # @return [Array<(AvailableActions, Integer, Hash)>] AvailableActions data, response status code and response headers
+    def available_actions_retrieve_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: AvailableModelsApi.available_models_retrieve ...'
+        @api_client.config.logger.debug 'Calling API: AvailableActionsApi.available_actions_retrieve ...'
       end
       # verify the required parameter 'x_account_token' is set
       if @api_client.config.client_side_validation && x_account_token.nil?
-        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling AvailableModelsApi.available_models_retrieve"
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling AvailableActionsApi.available_actions_retrieve"
       end
       # resource path
-      local_var_path = '/available-models'
+      local_var_path = '/available-actions'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -59,13 +59,13 @@ module MergeATSClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'AvailableActionsSerialzier'
+      return_type = opts[:debug_return_type] || 'AvailableActions'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['tokenAuth']
 
       new_options = opts.merge(
-        :operation => :"AvailableModelsApi.available_models_retrieve",
+        :operation => :"AvailableActionsApi.available_actions_retrieve",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -76,7 +76,7 @@ module MergeATSClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AvailableModelsApi#available_models_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: AvailableActionsApi#available_actions_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

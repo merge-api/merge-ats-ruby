@@ -1,15 +1,15 @@
-# MergeATSClient::AvailableModelsApi
+# MergeATSClient::AvailableActionsApi
 
 All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**available_models_retrieve**](AvailableModelsApi.md#available_models_retrieve) | **GET** /available-models |  |
+| [**available_actions_retrieve**](AvailableActionsApi.md#available_actions_retrieve) | **GET** /available-actions |  |
 
 
-## available_models_retrieve
+## available_actions_retrieve
 
-> <AvailableActionsSerialzier> available_models_retrieve(x_account_token)
+> <AvailableActions> available_actions_retrieve(x_account_token)
 
 
 
@@ -28,33 +28,33 @@ MergeATSClient.configure do |config|
   # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = MergeATSClient::AvailableModelsApi.new
+api_instance = MergeATSClient::AvailableActionsApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 
 begin
   
-  result = api_instance.available_models_retrieve(x_account_token)
+  result = api_instance.available_actions_retrieve(x_account_token)
   p result
 rescue MergeATSClient::ApiError => e
-  puts "Error when calling AvailableModelsApi->available_models_retrieve: #{e}"
+  puts "Error when calling AvailableActionsApi->available_actions_retrieve: #{e}"
 end
 ```
 
-#### Using the available_models_retrieve_with_http_info variant
+#### Using the available_actions_retrieve_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AvailableActionsSerialzier>, Integer, Hash)> available_models_retrieve_with_http_info(x_account_token)
+> <Array(<AvailableActions>, Integer, Hash)> available_actions_retrieve_with_http_info(x_account_token)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.available_models_retrieve_with_http_info(x_account_token)
+  data, status_code, headers = api_instance.available_actions_retrieve_with_http_info(x_account_token)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AvailableActionsSerialzier>
+  p data # => <AvailableActions>
 rescue MergeATSClient::ApiError => e
-  puts "Error when calling AvailableModelsApi->available_models_retrieve_with_http_info: #{e}"
+  puts "Error when calling AvailableActionsApi->available_actions_retrieve_with_http_info: #{e}"
 end
 ```
 
@@ -66,7 +66,7 @@ end
 
 ### Return type
 
-[**AvailableActionsSerialzier**](AvailableActionsSerialzier.md)
+[**AvailableActions**](AvailableActions.md)
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-# MergeATSClient::AvailableActionsSerialzier
+# MergeATSClient::AvailableActions
 
 ## Properties
 
@@ -12,9 +12,9 @@
 ```ruby
 require 'merge_ats_client'
 
-instance = MergeATSClient::AvailableActionsSerialzier.new(
+instance = MergeATSClient::AvailableActions.new(
   model_name: Candidate,
-  available_operations: null
+  available_operations: [&quot;FETCH&quot;,&quot;CREATE&quot;]
 )
 ```
 

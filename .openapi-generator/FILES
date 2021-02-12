@@ -15,8 +15,8 @@ docs/Application.md
 docs/ApplicationsApi.md
 docs/Attachment.md
 docs/AttachmentsApi.md
-docs/AvailableActionsSerialzier.md
-docs/AvailableModelsApi.md
+docs/AvailableActions.md
+docs/AvailableActionsApi.md
 docs/Candidate.md
 docs/CandidatesApi.md
 docs/Department.md
@@ -81,7 +81,7 @@ lib/merge_ats_client/api/account_token_api.rb
 lib/merge_ats_client/api/activities_api.rb
 lib/merge_ats_client/api/applications_api.rb
 lib/merge_ats_client/api/attachments_api.rb
-lib/merge_ats_client/api/available_models_api.rb
+lib/merge_ats_client/api/available_actions_api.rb
 lib/merge_ats_client/api/candidates_api.rb
 lib/merge_ats_client/api/departments_api.rb
 lib/merge_ats_client/api/eeocs_api.rb
@@ -105,7 +105,7 @@ lib/merge_ats_client/models/activity.rb
 lib/merge_ats_client/models/activity_type_enum.rb
 lib/merge_ats_client/models/application.rb
 lib/merge_ats_client/models/attachment.rb
-lib/merge_ats_client/models/available_actions_serialzier.rb
+lib/merge_ats_client/models/available_actions.rb
 lib/merge_ats_client/models/candidate.rb
 lib/merge_ats_client/models/department.rb
 lib/merge_ats_client/models/disability_status_enum.rb
@@ -153,9 +153,6 @@ lib/merge_ats_client/models/veteran_status_enum.rb
 lib/merge_ats_client/models/visibility_enum.rb
 lib/merge_ats_client/version.rb
 merge_ats_client.gemspec
-spec/api/available_models_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/available_actions_serialzier_spec.rb
-spec/models/job_interview_stage_change_spec.rb
 spec/spec_helper.rb
