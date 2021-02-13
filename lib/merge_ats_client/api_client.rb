@@ -88,8 +88,6 @@ module MergeATSClient
     # @return [Typhoeus::Request] A Typhoeus Request
     def build_request(http_method, path, opts = {})
       url = build_request_url(path, opts)
-      url = "http://127.0.0.1:8000/api/ats/v1/available-actions"
-
       http_method = http_method.to_sym.downcase
 
       header_params = @default_headers.merge(opts[:header_params] || {})
