@@ -15,6 +15,8 @@ docs/Application.md
 docs/ApplicationsApi.md
 docs/Attachment.md
 docs/AttachmentsApi.md
+docs/AvailableActions.md
+docs/AvailableActionsApi.md
 docs/Candidate.md
 docs/CandidatesApi.md
 docs/Department.md
@@ -29,6 +31,7 @@ docs/GenderEnum.md
 docs/InterviewsApi.md
 docs/Job.md
 docs/JobInterviewStage.md
+docs/JobInterviewStageChange.md
 docs/JobInterviewStagesApi.md
 docs/JobStatusEnum.md
 docs/JobsApi.md
@@ -78,6 +81,7 @@ lib/merge_ats_client/api/account_token_api.rb
 lib/merge_ats_client/api/activities_api.rb
 lib/merge_ats_client/api/applications_api.rb
 lib/merge_ats_client/api/attachments_api.rb
+lib/merge_ats_client/api/available_actions_api.rb
 lib/merge_ats_client/api/candidates_api.rb
 lib/merge_ats_client/api/departments_api.rb
 lib/merge_ats_client/api/eeocs_api.rb
@@ -101,6 +105,7 @@ lib/merge_ats_client/models/activity.rb
 lib/merge_ats_client/models/activity_type_enum.rb
 lib/merge_ats_client/models/application.rb
 lib/merge_ats_client/models/attachment.rb
+lib/merge_ats_client/models/available_actions.rb
 lib/merge_ats_client/models/candidate.rb
 lib/merge_ats_client/models/department.rb
 lib/merge_ats_client/models/disability_status_enum.rb
@@ -111,6 +116,7 @@ lib/merge_ats_client/models/end_user_details.rb
 lib/merge_ats_client/models/gender_enum.rb
 lib/merge_ats_client/models/job.rb
 lib/merge_ats_client/models/job_interview_stage.rb
+lib/merge_ats_client/models/job_interview_stage_change.rb
 lib/merge_ats_client/models/job_status_enum.rb
 lib/merge_ats_client/models/link_token.rb
 lib/merge_ats_client/models/offer.rb
