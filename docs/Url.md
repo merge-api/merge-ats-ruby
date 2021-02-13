@@ -14,7 +14,7 @@ require 'merge_ats_client'
 
 instance = MergeATSClient::Url.new(
   value: http://alturl.com/p749b,
-  url_type: null
+  url_type: PERSONAL
 )
 ```
 

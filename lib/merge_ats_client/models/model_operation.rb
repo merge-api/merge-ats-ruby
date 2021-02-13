@@ -14,13 +14,16 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  class AvailableActions
-    attr_accessor :available_model_operations
+  class ModelOperation
+    attr_accessor :model_name
+
+    attr_accessor :available_operations
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'available_model_operations' => :'available_model_operations'
+        :'model_name' => :'model_name',
+        :'available_operations' => :'available_operations'
       }
     end
 
@@ -32,7 +35,8 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'available_model_operations' => :'Array<ModelOperation>'
+        :'model_name' => :'String',
+        :'available_operations' => :'Array<String>'
       }
     end
 
@@ -46,20 +50,24 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AvailableActions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::ModelOperation` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AvailableActions`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::ModelOperation`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'available_model_operations')
-        if (value = attributes[:'available_model_operations']).is_a?(Array)
-          self.available_model_operations = value
+      if attributes.key?(:'model_name')
+        self.model_name = attributes[:'model_name']
+      end
+
+      if attributes.key?(:'available_operations')
+        if (value = attributes[:'available_operations']).is_a?(Array)
+          self.available_operations = value
         end
       end
     end
@@ -68,12 +76,22 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @model_name.nil?
+        invalid_properties.push('invalid value for "model_name", model_name cannot be nil.')
+      end
+
+      if @available_operations.nil?
+        invalid_properties.push('invalid value for "available_operations", available_operations cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @model_name.nil?
+      return false if @available_operations.nil?
       true
     end
 
@@ -82,7 +100,8 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          available_model_operations == o.available_model_operations
+          model_name == o.model_name &&
+          available_operations == o.available_operations
     end
 
     # @see the `==` method
@@ -94,7 +113,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [available_model_operations].hash
+      [model_name, available_operations].hash
     end
 
     # Builds the object from hash
