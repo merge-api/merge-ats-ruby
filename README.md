@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::JobInterviewStageChange](docs/JobInterviewStageChange.md)
  - [MergeATSClient::JobStatusEnum](docs/JobStatusEnum.md)
  - [MergeATSClient::LinkToken](docs/LinkToken.md)
+ - [MergeATSClient::ModelOperation](docs/ModelOperation.md)
  - [MergeATSClient::Offer](docs/Offer.md)
  - [MergeATSClient::OfferStatusEnum](docs/OfferStatusEnum.md)
  - [MergeATSClient::Office](docs/Office.md)
