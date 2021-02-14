@@ -25,13 +25,7 @@ describe MergeATSClient::AvailableActions do
       expect(instance).to be_instance_of(MergeATSClient::AvailableActions)
     end
   end
-  describe 'test attribute "model_name"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "available_operations"' do
+  describe 'test attribute "available_model_operations"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
