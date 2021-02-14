@@ -136,7 +136,6 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::GenderEnum](docs/GenderEnum.md)
  - [MergeATSClient::Job](docs/Job.md)
  - [MergeATSClient::JobInterviewStage](docs/JobInterviewStage.md)
- - [MergeATSClient::JobInterviewStageChange](docs/JobInterviewStageChange.md)
  - [MergeATSClient::JobStatusEnum](docs/JobStatusEnum.md)
  - [MergeATSClient::LinkToken](docs/LinkToken.md)
  - [MergeATSClient::ModelOperation](docs/ModelOperation.md)
