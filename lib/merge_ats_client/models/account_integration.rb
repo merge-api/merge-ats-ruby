@@ -18,6 +18,7 @@ module MergeATSClient
     # Company name.
     attr_accessor :name
 
+    # Category or categories this integration belongs to. Multiple categories should be comma separated.<br />For [ats, hris], enter <i>ats,hris</i>
     attr_accessor :categories
 
     # Company logo.
@@ -28,6 +29,28 @@ module MergeATSClient
 
     # The color of this integration used for buttons and text throughout the app and landing pages. Choose a darker, saturated color.
     attr_accessor :color
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -49,7 +72,7 @@ module MergeATSClient
     def self.openapi_types
       {
         :'name' => :'String',
-        :'categories' => :'String',
+        :'categories' => :'Array<String>',
         :'image' => :'String',
         :'square_image' => :'String',
         :'color' => :'String'
@@ -84,7 +107,9 @@ module MergeATSClient
       end
 
       if attributes.key?(:'categories')
-        self.categories = attributes[:'categories']
+        if (value = attributes[:'categories']).is_a?(Array)
+          self.categories = value
+        end
       end
 
       if attributes.key?(:'image')
