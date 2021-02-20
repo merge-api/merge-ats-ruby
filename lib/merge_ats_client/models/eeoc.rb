@@ -39,6 +39,8 @@ module MergeATSClient
     # The candidate's disability status.
     attr_accessor :disability_status
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +51,8 @@ module MergeATSClient
         :'race' => :'race',
         :'gender' => :'gender',
         :'veteran_status' => :'veteran_status',
-        :'disability_status' => :'disability_status'
+        :'disability_status' => :'disability_status',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -68,7 +71,8 @@ module MergeATSClient
         :'race' => :'RaceEnum',
         :'gender' => :'GenderEnum',
         :'veteran_status' => :'VeteranStatusEnum',
-        :'disability_status' => :'DisabilityStatusEnum'
+        :'disability_status' => :'DisabilityStatusEnum',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -81,7 +85,8 @@ module MergeATSClient
         :'race',
         :'gender',
         :'veteran_status',
-        :'disability_status'
+        :'disability_status',
+        :'remote_data'
       ])
     end
 
@@ -131,6 +136,12 @@ module MergeATSClient
       if attributes.key?(:'disability_status')
         self.disability_status = attributes[:'disability_status']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -158,7 +169,8 @@ module MergeATSClient
           race == o.race &&
           gender == o.gender &&
           veteran_status == o.veteran_status &&
-          disability_status == o.disability_status
+          disability_status == o.disability_status &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -170,7 +182,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, candidate, submitted_at, race, gender, veteran_status, disability_status].hash
+      [id, remote_id, candidate, submitted_at, race, gender, veteran_status, disability_status, remote_data].hash
     end
 
     # Builds the object from hash

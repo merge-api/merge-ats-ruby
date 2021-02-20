@@ -39,6 +39,8 @@ module MergeATSClient
     # The user's role.
     attr_accessor :access_role
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +51,8 @@ module MergeATSClient
         :'email' => :'email',
         :'disabled' => :'disabled',
         :'remote_created_at' => :'remote_created_at',
-        :'access_role' => :'access_role'
+        :'access_role' => :'access_role',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -68,7 +71,8 @@ module MergeATSClient
         :'email' => :'String',
         :'disabled' => :'Boolean',
         :'remote_created_at' => :'Time',
-        :'access_role' => :'AccessRoleEnum'
+        :'access_role' => :'AccessRoleEnum',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -81,7 +85,8 @@ module MergeATSClient
         :'email',
         :'disabled',
         :'remote_created_at',
-        :'access_role'
+        :'access_role',
+        :'remote_data'
       ])
     end
 
@@ -131,6 +136,12 @@ module MergeATSClient
       if attributes.key?(:'access_role')
         self.access_role = attributes[:'access_role']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -173,7 +184,8 @@ module MergeATSClient
           email == o.email &&
           disabled == o.disabled &&
           remote_created_at == o.remote_created_at &&
-          access_role == o.access_role
+          access_role == o.access_role &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -185,7 +197,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, first_name, last_name, email, disabled, remote_created_at, access_role].hash
+      [id, remote_id, first_name, last_name, email, disabled, remote_created_at, access_role, remote_data].hash
     end
 
     # Builds the object from hash

@@ -27,13 +27,16 @@ module MergeATSClient
     # The attachment's url.
     attr_accessor :file_url
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'remote_id' => :'remote_id',
         :'file_name' => :'file_name',
-        :'file_url' => :'file_url'
+        :'file_url' => :'file_url',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -48,7 +51,8 @@ module MergeATSClient
         :'id' => :'String',
         :'remote_id' => :'String',
         :'file_name' => :'String',
-        :'file_url' => :'String'
+        :'file_url' => :'String',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -57,7 +61,8 @@ module MergeATSClient
       Set.new([
         :'remote_id',
         :'file_name',
-        :'file_url'
+        :'file_url',
+        :'remote_data'
       ])
     end
 
@@ -90,6 +95,12 @@ module MergeATSClient
 
       if attributes.key?(:'file_url')
         self.file_url = attributes[:'file_url']
+      end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
       end
     end
 
@@ -129,7 +140,8 @@ module MergeATSClient
           id == o.id &&
           remote_id == o.remote_id &&
           file_name == o.file_name &&
-          file_url == o.file_url
+          file_url == o.file_url &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -141,7 +153,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, file_name, file_url].hash
+      [id, remote_id, file_name, file_url, remote_data].hash
     end
 
     # Builds the object from hash

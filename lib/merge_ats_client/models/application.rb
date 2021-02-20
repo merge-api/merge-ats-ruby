@@ -48,6 +48,8 @@ module MergeATSClient
     # The application's reason for rejection.
     attr_accessor :reject_reason
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -61,7 +63,8 @@ module MergeATSClient
         :'source' => :'source',
         :'credited_to' => :'credited_to',
         :'current_stage' => :'current_stage',
-        :'reject_reason' => :'reject_reason'
+        :'reject_reason' => :'reject_reason',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -83,7 +86,8 @@ module MergeATSClient
         :'source' => :'String',
         :'credited_to' => :'String',
         :'current_stage' => :'String',
-        :'reject_reason' => :'String'
+        :'reject_reason' => :'String',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -99,7 +103,8 @@ module MergeATSClient
         :'source',
         :'credited_to',
         :'current_stage',
-        :'reject_reason'
+        :'reject_reason',
+        :'remote_data'
       ])
     end
 
@@ -161,6 +166,12 @@ module MergeATSClient
       if attributes.key?(:'reject_reason')
         self.reject_reason = attributes[:'reject_reason']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -191,7 +202,8 @@ module MergeATSClient
           source == o.source &&
           credited_to == o.credited_to &&
           current_stage == o.current_stage &&
-          reject_reason == o.reject_reason
+          reject_reason == o.reject_reason &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -203,7 +215,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, candidate, job, is_prospect, applied_at, rejected_at, source, credited_to, current_stage, reject_reason].hash
+      [id, remote_id, candidate, job, is_prospect, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_data].hash
     end
 
     # Builds the object from hash

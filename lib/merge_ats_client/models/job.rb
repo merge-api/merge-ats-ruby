@@ -42,6 +42,8 @@ module MergeATSClient
 
     attr_accessor :hiring_managers
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -54,7 +56,8 @@ module MergeATSClient
         :'confidential' => :'confidential',
         :'departments' => :'departments',
         :'offices' => :'offices',
-        :'hiring_managers' => :'hiring_managers'
+        :'hiring_managers' => :'hiring_managers',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -75,7 +78,8 @@ module MergeATSClient
         :'confidential' => :'Boolean',
         :'departments' => :'Array<String>',
         :'offices' => :'Array<String>',
-        :'hiring_managers' => :'Array<String>'
+        :'hiring_managers' => :'Array<String>',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -88,6 +92,7 @@ module MergeATSClient
         :'remote_created_at',
         :'remote_updated_at',
         :'confidential',
+        :'remote_data'
       ])
     end
 
@@ -151,6 +156,12 @@ module MergeATSClient
           self.hiring_managers = value
         end
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -180,7 +191,8 @@ module MergeATSClient
           confidential == o.confidential &&
           departments == o.departments &&
           offices == o.offices &&
-          hiring_managers == o.hiring_managers
+          hiring_managers == o.hiring_managers &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -192,7 +204,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers].hash
+      [id, remote_id, name, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, remote_data].hash
     end
 
     # Builds the object from hash

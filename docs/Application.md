@@ -15,6 +15,7 @@
 | **credited_to** | **String** | The user credited for this application. | [optional] |
 | **current_stage** | **String** | The application&#39;s current stage. | [optional] |
 | **reject_reason** | **String** | The application&#39;s reason for rejection. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = MergeATSClient::Application.new(
   source: Campus recruiting event,
   credited_to: 58166795-8d68-4b30-9bfb-bfd402479484,
   current_stage: d578dfdc-7b0a-4ab6-a2b0-4b40f20eb9ea,
-  reject_reason: 59b25f2b-da02-40f5-9656-9fa0db555784
+  reject_reason: 59b25f2b-da02-40f5-9656-9fa0db555784,
+  remote_data: [{&quot;path&quot;:&quot;/candidacies&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

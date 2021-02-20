@@ -12,6 +12,7 @@
 | **remote_created_at** | **Time** | When the third party&#39;s scorecard was created. | [optional] |
 | **submitted_at** | **Time** | When the scorecard was submitted. | [optional] |
 | **overall_recommendation** | [**OverallRecommendationEnum**](OverallRecommendationEnum.md) | The inteviewer&#39;s recommendation. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = MergeATSClient::Scorecard.new(
   interviewer: bbb519a3-246e-4b95-b6b3-dba16107ba6b,
   remote_created_at: null,
   submitted_at: null,
-  overall_recommendation: STRONG_YES
+  overall_recommendation: STRONG_YES,
+  remote_data: [{&quot;path&quot;:&quot;/ratings&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

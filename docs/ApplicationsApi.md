@@ -39,6 +39,7 @@ opts = {
   current_stage_id: 'current_stage_id_example', # String | If provided, will only return applications at this interview stage.
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
   expand: 'candidate', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+  include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
   job_id: 'job_id_example', # String | If provided, will only return applications for this job.
   modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
   modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified before this datetime.
@@ -86,6 +87,7 @@ end
 | **current_stage_id** | **String** | If provided, will only return applications at this interview stage. | [optional] |
 | **cursor** | **String** | The pagination cursor value. | [optional] |
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
+| **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 | **job_id** | **String** | If provided, will only return applications for this job. | [optional] |
 | **modified_after** | **Time** | If provided, will only return objects modified after this datetime. | [optional] |
 | **modified_before** | **Time** | If provided, will only return objects modified before this datetime. | [optional] |
@@ -132,7 +134,8 @@ api_instance = MergeATSClient::ApplicationsApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 id = TODO # String | 
 opts = {
-  expand: 'candidate' # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+  expand: 'candidate', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+  include_remote_data: true # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
 }
 
 begin
@@ -169,6 +172,7 @@ end
 | **x_account_token** | **String** | Token identifying the end user. |  |
 | **id** | [**String**](.md) |  |  |
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
+| **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 
 ### Return type
 

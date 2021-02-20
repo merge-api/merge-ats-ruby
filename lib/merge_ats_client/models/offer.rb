@@ -42,6 +42,8 @@ module MergeATSClient
     # The offer's status.
     attr_accessor :status
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -53,7 +55,8 @@ module MergeATSClient
         :'closed_at' => :'closed_at',
         :'sent_at' => :'sent_at',
         :'start_date' => :'start_date',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -73,7 +76,8 @@ module MergeATSClient
         :'closed_at' => :'Time',
         :'sent_at' => :'Time',
         :'start_date' => :'Time',
-        :'status' => :'OfferStatusEnum'
+        :'status' => :'OfferStatusEnum',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -87,7 +91,8 @@ module MergeATSClient
         :'closed_at',
         :'sent_at',
         :'start_date',
-        :'status'
+        :'status',
+        :'remote_data'
       ])
     end
 
@@ -141,6 +146,12 @@ module MergeATSClient
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -169,7 +180,8 @@ module MergeATSClient
           closed_at == o.closed_at &&
           sent_at == o.sent_at &&
           start_date == o.start_date &&
-          status == o.status
+          status == o.status &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -181,7 +193,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, application, creator, remote_created_at, closed_at, sent_at, start_date, status].hash
+      [id, remote_id, application, creator, remote_created_at, closed_at, sent_at, start_date, status, remote_data].hash
     end
 
     # Builds the object from hash
