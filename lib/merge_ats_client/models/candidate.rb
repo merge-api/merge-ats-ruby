@@ -62,6 +62,8 @@ module MergeATSClient
 
     attr_accessor :attachments
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -82,7 +84,8 @@ module MergeATSClient
         :'urls' => :'urls',
         :'tags' => :'tags',
         :'applications' => :'applications',
-        :'attachments' => :'attachments'
+        :'attachments' => :'attachments',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -111,7 +114,8 @@ module MergeATSClient
         :'urls' => :'Array<Url>',
         :'tags' => :'Array<Tag>',
         :'applications' => :'Array<String>',
-        :'attachments' => :'Array<String>'
+        :'attachments' => :'Array<String>',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -129,6 +133,7 @@ module MergeATSClient
         :'is_private',
         :'can_email',
         :'locations',
+        :'remote_data'
       ])
     end
 
@@ -232,6 +237,12 @@ module MergeATSClient
           self.attachments = value
         end
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -269,7 +280,8 @@ module MergeATSClient
           urls == o.urls &&
           tags == o.tags &&
           applications == o.applications &&
-          attachments == o.attachments
+          attachments == o.attachments &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -281,7 +293,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments].hash
+      [id, remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_data].hash
     end
 
     # Builds the object from hash

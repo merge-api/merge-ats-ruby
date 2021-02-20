@@ -14,6 +14,7 @@
 | **departments** | **Array&lt;String&gt;** |  | [optional] |
 | **offices** | **Array&lt;String&gt;** |  | [optional] |
 | **hiring_managers** | **Array&lt;String&gt;** |  | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = MergeATSClient::Job.new(
   confidential: true,
   departments: [&quot;5b3c1341-a20f-4e51-b72c-f3830a16c97b&quot;,&quot;d6e687d6-0c36-48a1-8114-35324b5cb38f&quot;],
   offices: [&quot;9871b4a9-f5d2-4f3b-a66b-dfedbed42c46&quot;],
-  hiring_managers: [&quot;787ed912-33ec-444e-a215-8d71cc42fc12&quot;]
+  hiring_managers: [&quot;787ed912-33ec-444e-a215-8d71cc42fc12&quot;],
+  remote_data: [{&quot;path&quot;:&quot;/positions&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

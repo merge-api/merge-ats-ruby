@@ -13,6 +13,7 @@
 | **sent_at** | **Time** | When the offer was sent. | [optional] |
 | **start_date** | **Time** | The offered start date. | [optional] |
 | **status** | [**OfferStatusEnum**](OfferStatusEnum.md) | The offer&#39;s status. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = MergeATSClient::Offer.new(
   closed_at: null,
   sent_at: null,
   start_date: null,
-  status: SENT
+  status: SENT,
+  remote_data: [{&quot;path&quot;:&quot;/offers&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

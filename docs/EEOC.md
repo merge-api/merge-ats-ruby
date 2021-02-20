@@ -12,6 +12,7 @@
 | **gender** | [**GenderEnum**](GenderEnum.md) | The candidate&#39;s gender. | [optional] |
 | **veteran_status** | [**VeteranStatusEnum**](VeteranStatusEnum.md) | The candidate&#39;s veteran status. | [optional] |
 | **disability_status** | [**DisabilityStatusEnum**](DisabilityStatusEnum.md) | The candidate&#39;s disability status. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = MergeATSClient::EEOC.new(
   race: HISPANIC_OR_LATINO,
   gender: FEMALE,
   veteran_status: I_AM_NOT_A_PROTECTED_VETERAN,
-  disability_status: I_DONT_WISH_TO_ANSWER
+  disability_status: I_DONT_WISH_TO_ANSWER,
+  remote_data: [{&quot;path&quot;:&quot;/eeoc&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

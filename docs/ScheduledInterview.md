@@ -16,6 +16,7 @@
 | **remote_created_at** | **Time** | When the third party&#39;s interview was created. | [optional] |
 | **remote_updated_at** | **Time** | When the third party&#39;s interview was updated. | [optional] |
 | **status** | [**ScheduledInterviewStatusEnum**](ScheduledInterviewStatusEnum.md) | The interview&#39;s status. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = MergeATSClient::ScheduledInterview.new(
   end_at: null,
   remote_created_at: null,
   remote_updated_at: null,
-  status: SCHEDULED
+  status: SCHEDULED,
+  remote_data: [{&quot;path&quot;:&quot;/interviews&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

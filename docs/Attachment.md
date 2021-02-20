@@ -8,6 +8,7 @@
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
 | **file_name** | **String** | The attachment&#39;s name. | [optional] |
 | **file_url** | **String** | The attachment&#39;s url. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = MergeATSClient::Attachment.new(
   id: c640b80b-fac9-409f-aa19-1f9221aec445,
   remote_id: 11167,
   file_name: Candidate Resume,
-  file_url: http://alturl.com/p749b
+  file_url: http://alturl.com/p749b,
+  remote_data: [{&quot;path&quot;:&quot;/attachments&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

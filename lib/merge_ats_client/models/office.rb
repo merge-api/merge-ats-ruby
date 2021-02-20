@@ -27,13 +27,16 @@ module MergeATSClient
     # The office's location.
     attr_accessor :location
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'remote_id' => :'remote_id',
         :'name' => :'name',
-        :'location' => :'location'
+        :'location' => :'location',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -48,7 +51,8 @@ module MergeATSClient
         :'id' => :'String',
         :'remote_id' => :'String',
         :'name' => :'String',
-        :'location' => :'String'
+        :'location' => :'String',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -57,7 +61,8 @@ module MergeATSClient
       Set.new([
         :'remote_id',
         :'name',
-        :'location'
+        :'location',
+        :'remote_data'
       ])
     end
 
@@ -91,6 +96,12 @@ module MergeATSClient
       if attributes.key?(:'location')
         self.location = attributes[:'location']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -114,7 +125,8 @@ module MergeATSClient
           id == o.id &&
           remote_id == o.remote_id &&
           name == o.name &&
-          location == o.location
+          location == o.location &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -126,7 +138,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, location].hash
+      [id, remote_id, name, location, remote_data].hash
     end
 
     # Builds the object from hash

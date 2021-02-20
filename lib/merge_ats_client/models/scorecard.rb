@@ -39,6 +39,8 @@ module MergeATSClient
     # The inteviewer's recommendation.
     attr_accessor :overall_recommendation
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +51,8 @@ module MergeATSClient
         :'interviewer' => :'interviewer',
         :'remote_created_at' => :'remote_created_at',
         :'submitted_at' => :'submitted_at',
-        :'overall_recommendation' => :'overall_recommendation'
+        :'overall_recommendation' => :'overall_recommendation',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -68,7 +71,8 @@ module MergeATSClient
         :'interviewer' => :'String',
         :'remote_created_at' => :'Time',
         :'submitted_at' => :'Time',
-        :'overall_recommendation' => :'OverallRecommendationEnum'
+        :'overall_recommendation' => :'OverallRecommendationEnum',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -81,7 +85,8 @@ module MergeATSClient
         :'interviewer',
         :'remote_created_at',
         :'submitted_at',
-        :'overall_recommendation'
+        :'overall_recommendation',
+        :'remote_data'
       ])
     end
 
@@ -131,6 +136,12 @@ module MergeATSClient
       if attributes.key?(:'overall_recommendation')
         self.overall_recommendation = attributes[:'overall_recommendation']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -158,7 +169,8 @@ module MergeATSClient
           interviewer == o.interviewer &&
           remote_created_at == o.remote_created_at &&
           submitted_at == o.submitted_at &&
-          overall_recommendation == o.overall_recommendation
+          overall_recommendation == o.overall_recommendation &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -170,7 +182,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, application, interview, interviewer, remote_created_at, submitted_at, overall_recommendation].hash
+      [id, remote_id, application, interview, interviewer, remote_created_at, submitted_at, overall_recommendation, remote_data].hash
     end
 
     # Builds the object from hash

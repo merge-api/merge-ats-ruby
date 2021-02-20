@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *MergeATSClient::OffersApi* | [**offers_retrieve**](docs/OffersApi.md#offers_retrieve) | **GET** /offers/{id} | 
 *MergeATSClient::OfficesApi* | [**offices_list**](docs/OfficesApi.md#offices_list) | **GET** /offices | 
 *MergeATSClient::OfficesApi* | [**offices_retrieve**](docs/OfficesApi.md#offices_retrieve) | **GET** /offices/{id} | 
+*MergeATSClient::PassthroughApi* | [**passthrough_create**](docs/PassthroughApi.md#passthrough_create) | **POST** /passthrough | 
 *MergeATSClient::RejectReasonsApi* | [**reject_reasons_list**](docs/RejectReasonsApi.md#reject_reasons_list) | **GET** /reject-reasons | 
 *MergeATSClient::RejectReasonsApi* | [**reject_reasons_retrieve**](docs/RejectReasonsApi.md#reject_reasons_retrieve) | **GET** /reject-reasons/{id} | 
 *MergeATSClient::ScorecardsApi* | [**scorecards_list**](docs/ScorecardsApi.md#scorecards_list) | **GET** /scorecards | 
@@ -120,6 +121,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [MergeATSClient::AccessRoleEnum](docs/AccessRoleEnum.md)
+ - [MergeATSClient::AccountIntegration](docs/AccountIntegration.md)
  - [MergeATSClient::AccountToken](docs/AccountToken.md)
  - [MergeATSClient::Activity](docs/Activity.md)
  - [MergeATSClient::ActivityTypeEnum](docs/ActivityTypeEnum.md)
@@ -127,6 +129,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::Attachment](docs/Attachment.md)
  - [MergeATSClient::AvailableActions](docs/AvailableActions.md)
  - [MergeATSClient::Candidate](docs/Candidate.md)
+ - [MergeATSClient::DataPassthrough](docs/DataPassthrough.md)
  - [MergeATSClient::Department](docs/Department.md)
  - [MergeATSClient::DisabilityStatusEnum](docs/DisabilityStatusEnum.md)
  - [MergeATSClient::EEOC](docs/EEOC.md)
@@ -138,6 +141,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::JobInterviewStage](docs/JobInterviewStage.md)
  - [MergeATSClient::JobStatusEnum](docs/JobStatusEnum.md)
  - [MergeATSClient::LinkToken](docs/LinkToken.md)
+ - [MergeATSClient::MethodEnum](docs/MethodEnum.md)
  - [MergeATSClient::ModelOperation](docs/ModelOperation.md)
  - [MergeATSClient::Offer](docs/Offer.md)
  - [MergeATSClient::OfferStatusEnum](docs/OfferStatusEnum.md)
@@ -162,6 +166,8 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::PhoneNumberTypeEnum](docs/PhoneNumberTypeEnum.md)
  - [MergeATSClient::RaceEnum](docs/RaceEnum.md)
  - [MergeATSClient::RejectReason](docs/RejectReason.md)
+ - [MergeATSClient::RemoteData](docs/RemoteData.md)
+ - [MergeATSClient::RemoteResponse](docs/RemoteResponse.md)
  - [MergeATSClient::RemoteUser](docs/RemoteUser.md)
  - [MergeATSClient::ScheduledInterview](docs/ScheduledInterview.md)
  - [MergeATSClient::ScheduledInterviewStatusEnum](docs/ScheduledInterviewStatusEnum.md)

@@ -24,12 +24,15 @@ module MergeATSClient
     # The department's name.
     attr_accessor :name
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'remote_id' => :'remote_id',
-        :'name' => :'name'
+        :'name' => :'name',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -43,7 +46,8 @@ module MergeATSClient
       {
         :'id' => :'String',
         :'remote_id' => :'String',
-        :'name' => :'String'
+        :'name' => :'String',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -51,7 +55,8 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'remote_id',
-        :'name'
+        :'name',
+        :'remote_data'
       ])
     end
 
@@ -81,6 +86,12 @@ module MergeATSClient
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -103,7 +114,8 @@ module MergeATSClient
       self.class == o.class &&
           id == o.id &&
           remote_id == o.remote_id &&
-          name == o.name
+          name == o.name &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -115,7 +127,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name].hash
+      [id, remote_id, name, remote_data].hash
     end
 
     # Builds the object from hash

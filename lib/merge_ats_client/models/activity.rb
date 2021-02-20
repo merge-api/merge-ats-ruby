@@ -39,6 +39,8 @@ module MergeATSClient
     # The activity's visibility.
     attr_accessor :visibility
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +51,8 @@ module MergeATSClient
         :'activity_type' => :'activity_type',
         :'subject' => :'subject',
         :'body' => :'body',
-        :'visibility' => :'visibility'
+        :'visibility' => :'visibility',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -68,7 +71,8 @@ module MergeATSClient
         :'activity_type' => :'ActivityTypeEnum',
         :'subject' => :'String',
         :'body' => :'String',
-        :'visibility' => :'VisibilityEnum'
+        :'visibility' => :'VisibilityEnum',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -81,7 +85,8 @@ module MergeATSClient
         :'activity_type',
         :'subject',
         :'body',
-        :'visibility'
+        :'visibility',
+        :'remote_data'
       ])
     end
 
@@ -131,6 +136,12 @@ module MergeATSClient
       if attributes.key?(:'visibility')
         self.visibility = attributes[:'visibility']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -158,7 +169,8 @@ module MergeATSClient
           activity_type == o.activity_type &&
           subject == o.subject &&
           body == o.body &&
-          visibility == o.visibility
+          visibility == o.visibility &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -170,7 +182,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, user, remote_created_at, activity_type, subject, body, visibility].hash
+      [id, remote_id, user, remote_created_at, activity_type, subject, body, visibility, remote_data].hash
     end
 
     # Builds the object from hash

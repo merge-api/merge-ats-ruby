@@ -27,6 +27,7 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :interview_id If provided, will only return scorecards for this interview.
     # @option opts [String] :interviewer_id If provided, will only return scorecards for this interviewer.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -47,6 +48,7 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :interview_id If provided, will only return scorecards for this interview.
     # @option opts [String] :interviewer_id If provided, will only return scorecards for this interviewer.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -76,6 +78,7 @@ module MergeATSClient
       query_params[:'created_before'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
+      query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
       query_params[:'interview_id'] = opts[:'interview_id'] if !opts[:'interview_id'].nil?
       query_params[:'interviewer_id'] = opts[:'interviewer_id'] if !opts[:'interviewer_id'].nil?
       query_params[:'modified_after'] = opts[:'modified_after'] if !opts[:'modified_after'].nil?
@@ -123,6 +126,7 @@ module MergeATSClient
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [Scorecard]
     def scorecards_retrieve(x_account_token, id, opts = {})
       data, _status_code, _headers = scorecards_retrieve_with_http_info(x_account_token, id, opts)
@@ -134,6 +138,7 @@ module MergeATSClient
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [Array<(Scorecard, Integer, Hash)>] Scorecard data, response status code and response headers
     def scorecards_retrieve_with_http_info(x_account_token, id, opts = {})
       if @api_client.config.debugging
@@ -157,6 +162,7 @@ module MergeATSClient
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
+      query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

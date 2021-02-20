@@ -9,7 +9,7 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 ## available_actions_retrieve
 
-> <AvailableActions> available_actions_retrieve(x_account_token)
+> <AvailableActions> available_actions_retrieve(x_account_token, opts)
 
 
 
@@ -30,10 +30,13 @@ end
 
 api_instance = MergeATSClient::AvailableActionsApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+opts = {
+  include_remote_data: true # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
+}
 
 begin
   
-  result = api_instance.available_actions_retrieve(x_account_token)
+  result = api_instance.available_actions_retrieve(x_account_token, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Error when calling AvailableActionsApi->available_actions_retrieve: #{e}"
@@ -44,12 +47,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AvailableActions>, Integer, Hash)> available_actions_retrieve_with_http_info(x_account_token)
+> <Array(<AvailableActions>, Integer, Hash)> available_actions_retrieve_with_http_info(x_account_token, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.available_actions_retrieve_with_http_info(x_account_token)
+  data, status_code, headers = api_instance.available_actions_retrieve_with_http_info(x_account_token, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AvailableActions>
@@ -63,6 +66,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
+| **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 
 ### Return type
 

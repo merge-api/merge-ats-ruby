@@ -50,6 +50,8 @@ module MergeATSClient
     # The interview's status.
     attr_accessor :status
 
+    attr_accessor :remote_data
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -64,7 +66,8 @@ module MergeATSClient
         :'end_at' => :'end_at',
         :'remote_created_at' => :'remote_created_at',
         :'remote_updated_at' => :'remote_updated_at',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -87,7 +90,8 @@ module MergeATSClient
         :'end_at' => :'Time',
         :'remote_created_at' => :'Time',
         :'remote_updated_at' => :'Time',
-        :'status' => :'ScheduledInterviewStatusEnum'
+        :'status' => :'ScheduledInterviewStatusEnum',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -103,7 +107,8 @@ module MergeATSClient
         :'end_at',
         :'remote_created_at',
         :'remote_updated_at',
-        :'status'
+        :'status',
+        :'remote_data'
       ])
     end
 
@@ -171,6 +176,12 @@ module MergeATSClient
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -202,7 +213,8 @@ module MergeATSClient
           end_at == o.end_at &&
           remote_created_at == o.remote_created_at &&
           remote_updated_at == o.remote_updated_at &&
-          status == o.status
+          status == o.status &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -214,7 +226,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, application, job_interview_stage, organizer, interviewers, location, start_at, end_at, remote_created_at, remote_updated_at, status].hash
+      [id, remote_id, application, job_interview_stage, organizer, interviewers, location, start_at, end_at, remote_created_at, remote_updated_at, status, remote_data].hash
     end
 
     # Builds the object from hash

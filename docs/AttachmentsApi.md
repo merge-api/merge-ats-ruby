@@ -36,6 +36,7 @@ opts = {
   created_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created after this datetime.
   created_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created before this datetime.
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
+  include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
   modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
   modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified before this datetime.
   page_size: 56, # Integer | Number of results to return per page.
@@ -78,6 +79,7 @@ end
 | **created_after** | **Time** | If provided, will only return objects created after this datetime. | [optional] |
 | **created_before** | **Time** | If provided, will only return objects created before this datetime. | [optional] |
 | **cursor** | **String** | The pagination cursor value. | [optional] |
+| **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 | **modified_after** | **Time** | If provided, will only return objects modified after this datetime. | [optional] |
 | **modified_before** | **Time** | If provided, will only return objects modified before this datetime. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
@@ -99,7 +101,7 @@ end
 
 ## attachments_retrieve
 
-> <Attachment> attachments_retrieve(x_account_token, id)
+> <Attachment> attachments_retrieve(x_account_token, id, opts)
 
 
 
@@ -121,10 +123,13 @@ end
 api_instance = MergeATSClient::AttachmentsApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 id = TODO # String | 
+opts = {
+  include_remote_data: true # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
+}
 
 begin
   
-  result = api_instance.attachments_retrieve(x_account_token, id)
+  result = api_instance.attachments_retrieve(x_account_token, id, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Error when calling AttachmentsApi->attachments_retrieve: #{e}"
@@ -135,12 +140,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Attachment>, Integer, Hash)> attachments_retrieve_with_http_info(x_account_token, id)
+> <Array(<Attachment>, Integer, Hash)> attachments_retrieve_with_http_info(x_account_token, id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.attachments_retrieve_with_http_info(x_account_token, id)
+  data, status_code, headers = api_instance.attachments_retrieve_with_http_info(x_account_token, id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Attachment>
@@ -155,6 +160,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
 | **id** | [**String**](.md) |  |  |
+| **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 
 ### Return type
 

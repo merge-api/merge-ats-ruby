@@ -12,6 +12,7 @@
 | **disabled** | **Boolean** | Whether the user&#39;s account had been disabled. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s user was created. | [optional] |
 | **access_role** | [**AccessRoleEnum**](AccessRoleEnum.md) | The user&#39;s role. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = MergeATSClient::RemoteUser.new(
   email: hello@merge.dev,
   disabled: null,
   remote_created_at: null,
-  access_role: SUPER_ADMIN
+  access_role: SUPER_ADMIN,
+  remote_data: [{&quot;path&quot;:&quot;/users&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

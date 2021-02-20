@@ -12,6 +12,7 @@
 | **subject** | **String** | The activity&#39;s subject. | [optional] |
 | **body** | **String** | The activity&#39;s body. | [optional] |
 | **visibility** | [**VisibilityEnum**](VisibilityEnum.md) | The activity&#39;s visibility. | [optional] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = MergeATSClient::Activity.new(
   activity_type: NOTE,
   subject: Gil Feig&#39;s applicant status,
   body: Candidate will only join if we provide a Barry&#39;s subsidy.,
-  visibility: PRIVATE
+  visibility: PRIVATE,
+  remote_data: [{&quot;path&quot;:&quot;/actions&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

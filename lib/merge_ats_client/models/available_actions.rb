@@ -14,12 +14,19 @@ require 'date'
 require 'time'
 
 module MergeATSClient
+  # # The AvailableActions Object ### Description The `Activity` object is used to see all available model/operation combinations for an integration.  ### Usage Example Fetch all the actions available for the `Zenefits` integration.
   class AvailableActions
+    attr_accessor :integration
+
+    attr_accessor :passthrough_available
+
     attr_accessor :available_model_operations
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'integration' => :'integration',
+        :'passthrough_available' => :'passthrough_available',
         :'available_model_operations' => :'available_model_operations'
       }
     end
@@ -32,6 +39,8 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'integration' => :'AccountIntegration',
+        :'passthrough_available' => :'Boolean',
         :'available_model_operations' => :'Array<ModelOperation>'
       }
     end
@@ -57,6 +66,14 @@ module MergeATSClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'integration')
+        self.integration = attributes[:'integration']
+      end
+
+      if attributes.key?(:'passthrough_available')
+        self.passthrough_available = attributes[:'passthrough_available']
+      end
+
       if attributes.key?(:'available_model_operations')
         if (value = attributes[:'available_model_operations']).is_a?(Array)
           self.available_model_operations = value
@@ -68,12 +85,22 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @integration.nil?
+        invalid_properties.push('invalid value for "integration", integration cannot be nil.')
+      end
+
+      if @passthrough_available.nil?
+        invalid_properties.push('invalid value for "passthrough_available", passthrough_available cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @integration.nil?
+      return false if @passthrough_available.nil?
       true
     end
 
@@ -82,6 +109,8 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          integration == o.integration &&
+          passthrough_available == o.passthrough_available &&
           available_model_operations == o.available_model_operations
     end
 
@@ -94,7 +123,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [available_model_operations].hash
+      [integration, passthrough_available, available_model_operations].hash
     end
 
     # Builds the object from hash
