@@ -7,6 +7,7 @@
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
 | **name** | **String** | The job&#39;s name. | [optional] |
+| **description** | **String** | The job&#39;s description. | [optional] |
 | **status** | [**JobStatusEnum**](JobStatusEnum.md) | The job&#39;s status. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s job was created. | [optional] |
 | **remote_updated_at** | **Time** | When the third party&#39;s job was updated. | [optional] |
@@ -25,6 +26,7 @@ instance = MergeATSClient::Job.new(
   id: 022a2bef-57e5-4def-8ed2-7c41bd9a5ed8,
   remote_id: 8765432,
   name: Software Engineer,
+  description: Engineer to own our Integrations,
   status: OPEN,
   remote_created_at: null,
   remote_updated_at: null,
