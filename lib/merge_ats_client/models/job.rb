@@ -24,6 +24,9 @@ module MergeATSClient
     # The job's name.
     attr_accessor :name
 
+    # The job's description.
+    attr_accessor :description
+
     # The job's status.
     attr_accessor :status
 
@@ -50,6 +53,7 @@ module MergeATSClient
         :'id' => :'id',
         :'remote_id' => :'remote_id',
         :'name' => :'name',
+        :'description' => :'description',
         :'status' => :'status',
         :'remote_created_at' => :'remote_created_at',
         :'remote_updated_at' => :'remote_updated_at',
@@ -72,6 +76,7 @@ module MergeATSClient
         :'id' => :'String',
         :'remote_id' => :'String',
         :'name' => :'String',
+        :'description' => :'String',
         :'status' => :'JobStatusEnum',
         :'remote_created_at' => :'Time',
         :'remote_updated_at' => :'Time',
@@ -88,6 +93,7 @@ module MergeATSClient
       Set.new([
         :'remote_id',
         :'name',
+        :'description',
         :'status',
         :'remote_created_at',
         :'remote_updated_at',
@@ -121,6 +127,10 @@ module MergeATSClient
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'status')
@@ -185,6 +195,7 @@ module MergeATSClient
           id == o.id &&
           remote_id == o.remote_id &&
           name == o.name &&
+          description == o.description &&
           status == o.status &&
           remote_created_at == o.remote_created_at &&
           remote_updated_at == o.remote_updated_at &&
@@ -204,7 +215,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, remote_data].hash
+      [id, remote_id, name, description, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, remote_data].hash
     end
 
     # Builds the object from hash
