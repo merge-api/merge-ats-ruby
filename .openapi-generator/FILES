@@ -20,7 +20,7 @@ docs/AvailableActions.md
 docs/AvailableActionsApi.md
 docs/Candidate.md
 docs/CandidatesApi.md
-docs/DataPassthrough.md
+docs/DataPassthroughRequest.md
 docs/Department.md
 docs/DepartmentsApi.md
 docs/DisabilityStatusEnum.md
@@ -28,7 +28,7 @@ docs/EEOC.md
 docs/EeocsApi.md
 docs/EmailAddress.md
 docs/EmailAddressTypeEnum.md
-docs/EndUserDetails.md
+docs/EndUserDetailsRequest.md
 docs/GenderEnum.md
 docs/InterviewsApi.md
 docs/Job.md
@@ -65,9 +65,12 @@ docs/PassthroughApi.md
 docs/PhoneNumber.md
 docs/PhoneNumberTypeEnum.md
 docs/RaceEnum.md
+docs/RegenerateKeyApi.md
 docs/RejectReason.md
 docs/RejectReasonsApi.md
 docs/RemoteData.md
+docs/RemoteKey.md
+docs/RemoteKeyForRegenerationRequest.md
 docs/RemoteResponse.md
 docs/RemoteUser.md
 docs/ScheduledInterview.md
@@ -98,6 +101,7 @@ lib/merge_ats_client/api/link_token_api.rb
 lib/merge_ats_client/api/offers_api.rb
 lib/merge_ats_client/api/offices_api.rb
 lib/merge_ats_client/api/passthrough_api.rb
+lib/merge_ats_client/api/regenerate_key_api.rb
 lib/merge_ats_client/api/reject_reasons_api.rb
 lib/merge_ats_client/api/scorecards_api.rb
 lib/merge_ats_client/api/tags_api.rb
@@ -115,13 +119,13 @@ lib/merge_ats_client/models/application.rb
 lib/merge_ats_client/models/attachment.rb
 lib/merge_ats_client/models/available_actions.rb
 lib/merge_ats_client/models/candidate.rb
-lib/merge_ats_client/models/data_passthrough.rb
+lib/merge_ats_client/models/data_passthrough_request.rb
 lib/merge_ats_client/models/department.rb
 lib/merge_ats_client/models/disability_status_enum.rb
 lib/merge_ats_client/models/eeoc.rb
 lib/merge_ats_client/models/email_address.rb
 lib/merge_ats_client/models/email_address_type_enum.rb
-lib/merge_ats_client/models/end_user_details.rb
+lib/merge_ats_client/models/end_user_details_request.rb
 lib/merge_ats_client/models/gender_enum.rb
 lib/merge_ats_client/models/job.rb
 lib/merge_ats_client/models/job_interview_stage.rb
@@ -153,6 +157,8 @@ lib/merge_ats_client/models/phone_number_type_enum.rb
 lib/merge_ats_client/models/race_enum.rb
 lib/merge_ats_client/models/reject_reason.rb
 lib/merge_ats_client/models/remote_data.rb
+lib/merge_ats_client/models/remote_key.rb
+lib/merge_ats_client/models/remote_key_for_regeneration_request.rb
 lib/merge_ats_client/models/remote_response.rb
 lib/merge_ats_client/models/remote_user.rb
 lib/merge_ats_client/models/scheduled_interview.rb
@@ -167,5 +173,7 @@ lib/merge_ats_client/version.rb
 merge_ats_client.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/remote_data_spec.rb
+spec/models/data_passthrough_request_spec.rb
+spec/models/end_user_details_request_spec.rb
+spec/models/remote_key_for_regeneration_request_spec.rb
 spec/spec_helper.rb

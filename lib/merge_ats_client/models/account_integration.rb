@@ -18,16 +18,16 @@ module MergeATSClient
     # Company name.
     attr_accessor :name
 
-    # Category or categories this integration belongs to. Multiple categories should be comma separated.<br />For [ats, hris], enter <i>ats,hris</i>
+    # Category or categories this integration belongs to.
     attr_accessor :categories
 
-    # Company logo.
+    # Company logo in rectangular shape.
     attr_accessor :image
 
     # Company logo in square shape.
     attr_accessor :square_image
 
-    # The color of this integration used for buttons and text throughout the app and landing pages. Choose a darker, saturated color.
+    # The color of this integration used for buttons and text throughout the app and landing pages.
     attr_accessor :color
 
     class EnumAttributeValidator

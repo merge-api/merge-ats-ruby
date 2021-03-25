@@ -17,6 +17,8 @@ module MergeATSClient
   class GenderEnum
     MALE = "MALE".freeze
     FEMALE = "FEMALE".freeze
+    NON_BINARY = "NON-BINARY".freeze
+    OTHER = "OTHER".freeze
     DECLINE_TO_SELF_IDENTIFY = "DECLINE_TO_SELF_IDENTIFY".freeze
 
     # Builds the enum from string

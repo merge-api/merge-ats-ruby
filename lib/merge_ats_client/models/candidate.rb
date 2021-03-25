@@ -48,6 +48,7 @@ module MergeATSClient
     # Whether or not the candidate can be emailed.
     attr_accessor :can_email
 
+    # The candidate's locations.
     attr_accessor :locations
 
     attr_accessor :phone_numbers
@@ -112,7 +113,7 @@ module MergeATSClient
         :'phone_numbers' => :'Array<PhoneNumber>',
         :'email_addresses' => :'Array<EmailAddress>',
         :'urls' => :'Array<Url>',
-        :'tags' => :'Array<Tag>',
+        :'tags' => :'Array<String>',
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
         :'remote_data' => :'Array<RemoteData>'

@@ -14,22 +14,44 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Tag Object ### Description The `Tag` object is used to represent a tag for a candidate.  ### Usage Example Fetch from the `LIST Tags` endpoint and view the tags used within a company.
-  class Tag
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
+  class EndUserDetailsRequest
+    attr_accessor :end_user_email_address
 
-    # The tag's name.
-    attr_accessor :name
+    attr_accessor :end_user_organization_name
 
-    attr_accessor :remote_data
+    attr_accessor :end_user_origin_id
+
+    attr_accessor :categories
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'remote_id' => :'remote_id',
-        :'name' => :'name',
-        :'remote_data' => :'remote_data'
+        :'end_user_email_address' => :'end_user_email_address',
+        :'end_user_organization_name' => :'end_user_organization_name',
+        :'end_user_origin_id' => :'end_user_origin_id',
+        :'categories' => :'categories'
       }
     end
 
@@ -41,18 +63,16 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'remote_id' => :'String',
-        :'name' => :'String',
-        :'remote_data' => :'Array<Hash<String, AnyType>>'
+        :'end_user_email_address' => :'String',
+        :'end_user_organization_name' => :'String',
+        :'end_user_origin_id' => :'String',
+        :'categories' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
-        :'name',
-        :'remote_data'
       ])
     end
 
@@ -60,28 +80,32 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::Tag` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::EndUserDetailsRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::Tag`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::EndUserDetailsRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
+      if attributes.key?(:'end_user_email_address')
+        self.end_user_email_address = attributes[:'end_user_email_address']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'end_user_organization_name')
+        self.end_user_organization_name = attributes[:'end_user_organization_name']
       end
 
-      if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
+      if attributes.key?(:'end_user_origin_id')
+        self.end_user_origin_id = attributes[:'end_user_origin_id']
+      end
+
+      if attributes.key?(:'categories')
+        if (value = attributes[:'categories']).is_a?(Array)
+          self.categories = value
         end
       end
     end
@@ -90,12 +114,32 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @end_user_email_address.nil?
+        invalid_properties.push('invalid value for "end_user_email_address", end_user_email_address cannot be nil.')
+      end
+
+      if @end_user_organization_name.nil?
+        invalid_properties.push('invalid value for "end_user_organization_name", end_user_organization_name cannot be nil.')
+      end
+
+      if @end_user_origin_id.nil?
+        invalid_properties.push('invalid value for "end_user_origin_id", end_user_origin_id cannot be nil.')
+      end
+
+      if @categories.nil?
+        invalid_properties.push('invalid value for "categories", categories cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @end_user_email_address.nil?
+      return false if @end_user_organization_name.nil?
+      return false if @end_user_origin_id.nil?
+      return false if @categories.nil?
       true
     end
 
@@ -104,9 +148,10 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          remote_id == o.remote_id &&
-          name == o.name &&
-          remote_data == o.remote_data
+          end_user_email_address == o.end_user_email_address &&
+          end_user_organization_name == o.end_user_organization_name &&
+          end_user_origin_id == o.end_user_origin_id &&
+          categories == o.categories
     end
 
     # @see the `==` method
@@ -118,7 +163,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, name, remote_data].hash
+      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories].hash
     end
 
     # Builds the object from hash

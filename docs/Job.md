@@ -25,8 +25,8 @@ require 'merge_ats_client'
 instance = MergeATSClient::Job.new(
   id: 022a2bef-57e5-4def-8ed2-7c41bd9a5ed8,
   remote_id: 8765432,
-  name: Software Engineer,
-  description: Engineer to own our Integrations,
+  name: Software Engineer (Merge is actually hiring btw),
+  description: If you&#39;re reading this documentation. You might be a good fit!,
   status: OPEN,
   remote_created_at: null,
   remote_updated_at: null,

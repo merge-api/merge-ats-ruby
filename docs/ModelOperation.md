@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **model_name** | **String** |  |  |
 | **available_operations** | **Array&lt;String&gt;** |  |  |
+| **required_post_parameters** | **Array&lt;String&gt;** |  |  |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'merge_ats_client'
 
 instance = MergeATSClient::ModelOperation.new(
   model_name: Candidate,
-  available_operations: [&quot;FETCH&quot;,&quot;CREATE&quot;]
+  available_operations: [&quot;FETCH&quot;,&quot;CREATE&quot;],
+  required_post_parameters: [&quot;remote_user_id&quot;]
 )
 ```
 

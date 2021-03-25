@@ -36,7 +36,7 @@ module MergeATSClient
     def self.openapi_types
       {
         :'path' => :'String',
-        :'data' => :'Hash<String, Object>'
+        :'data' => :'Hash<String, AnyType>'
       }
     end
 

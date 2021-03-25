@@ -5,10 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | Company name. |  |
-| **categories** | **Array&lt;String&gt;** | Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br /&gt;For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt; | [optional] |
-| **image** | **String** | Company logo. | [optional] |
+| **categories** | **Array&lt;String&gt;** | Category or categories this integration belongs to. | [optional] |
+| **image** | **String** | Company logo in rectangular shape. | [optional] |
 | **square_image** | **String** | Company logo in square shape. | [optional] |
-| **color** | **String** | The color of this integration used for buttons and text throughout the app and landing pages. Choose a darker, saturated color. | [optional] |
+| **color** | **String** | The color of this integration used for buttons and text throughout the app and landing pages. | [optional] |
 
 ## Example
 

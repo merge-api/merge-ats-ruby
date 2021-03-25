@@ -20,11 +20,14 @@ module MergeATSClient
 
     attr_accessor :available_operations
 
+    attr_accessor :required_post_parameters
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'model_name' => :'model_name',
-        :'available_operations' => :'available_operations'
+        :'available_operations' => :'available_operations',
+        :'required_post_parameters' => :'required_post_parameters'
       }
     end
 
@@ -37,7 +40,8 @@ module MergeATSClient
     def self.openapi_types
       {
         :'model_name' => :'String',
-        :'available_operations' => :'Array<String>'
+        :'available_operations' => :'Array<String>',
+        :'required_post_parameters' => :'Array<String>'
       }
     end
 
@@ -71,6 +75,12 @@ module MergeATSClient
           self.available_operations = value
         end
       end
+
+      if attributes.key?(:'required_post_parameters')
+        if (value = attributes[:'required_post_parameters']).is_a?(Array)
+          self.required_post_parameters = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -85,6 +95,10 @@ module MergeATSClient
         invalid_properties.push('invalid value for "available_operations", available_operations cannot be nil.')
       end
 
+      if @required_post_parameters.nil?
+        invalid_properties.push('invalid value for "required_post_parameters", required_post_parameters cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -93,6 +107,7 @@ module MergeATSClient
     def valid?
       return false if @model_name.nil?
       return false if @available_operations.nil?
+      return false if @required_post_parameters.nil?
       true
     end
 
@@ -102,7 +117,8 @@ module MergeATSClient
       return true if self.equal?(o)
       self.class == o.class &&
           model_name == o.model_name &&
-          available_operations == o.available_operations
+          available_operations == o.available_operations &&
+          required_post_parameters == o.required_post_parameters
     end
 
     # @see the `==` method
@@ -114,7 +130,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [model_name, available_operations].hash
+      [model_name, available_operations, required_post_parameters].hash
     end
 
     # Builds the object from hash

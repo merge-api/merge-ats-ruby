@@ -8,7 +8,6 @@
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
 | **candidate** | **String** | The candidate applying. | [optional] |
 | **job** | **String** | The job being applied for. | [optional] |
-| **is_prospect** | **Boolean** | Whether or not the application is a prospect. | [optional] |
 | **applied_at** | **Time** | When the application was submitted. | [optional] |
 | **rejected_at** | **Time** | When the application was rejected. | [optional] |
 | **source** | **String** | The application&#39;s source. | [optional] |
@@ -27,7 +26,6 @@ instance = MergeATSClient::Application.new(
   remote_id: 98796,
   candidate: 2872ba14-4084-492b-be96-e5eee6fc33ef,
   job: 52bf9b5e-0beb-4f6f-8a72-cd4dca7ca633,
-  is_prospect: null,
   applied_at: null,
   rejected_at: null,
   source: Campus recruiting event,

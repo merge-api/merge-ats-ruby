@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
 | **name** | **String** | The tag&#39;s name. | [optional] |
+| **remote_data** | **Array&lt;Hash&lt;String, AnyType&gt;&gt;** |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'merge_ats_client'
 
 instance = MergeATSClient::Tag.new(
   remote_id: 4567,
-  name: High-Priority
+  name: High-Priority,
+  remote_data: [{&quot;path&quot;:&quot;/tags&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 
