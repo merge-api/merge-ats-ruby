@@ -27,9 +27,6 @@ module MergeATSClient
     # The job being applied for.
     attr_accessor :job
 
-    # Whether or not the application is a prospect.
-    attr_accessor :is_prospect
-
     # When the application was submitted.
     attr_accessor :applied_at
 
@@ -57,7 +54,6 @@ module MergeATSClient
         :'remote_id' => :'remote_id',
         :'candidate' => :'candidate',
         :'job' => :'job',
-        :'is_prospect' => :'is_prospect',
         :'applied_at' => :'applied_at',
         :'rejected_at' => :'rejected_at',
         :'source' => :'source',
@@ -80,7 +76,6 @@ module MergeATSClient
         :'remote_id' => :'String',
         :'candidate' => :'String',
         :'job' => :'String',
-        :'is_prospect' => :'Boolean',
         :'applied_at' => :'Time',
         :'rejected_at' => :'Time',
         :'source' => :'String',
@@ -97,7 +92,6 @@ module MergeATSClient
         :'remote_id',
         :'candidate',
         :'job',
-        :'is_prospect',
         :'applied_at',
         :'rejected_at',
         :'source',
@@ -137,10 +131,6 @@ module MergeATSClient
 
       if attributes.key?(:'job')
         self.job = attributes[:'job']
-      end
-
-      if attributes.key?(:'is_prospect')
-        self.is_prospect = attributes[:'is_prospect']
       end
 
       if attributes.key?(:'applied_at')
@@ -196,7 +186,6 @@ module MergeATSClient
           remote_id == o.remote_id &&
           candidate == o.candidate &&
           job == o.job &&
-          is_prospect == o.is_prospect &&
           applied_at == o.applied_at &&
           rejected_at == o.rejected_at &&
           source == o.source &&
@@ -215,7 +204,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, candidate, job, is_prospect, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_data].hash
+      [id, remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_data].hash
     end
 
     # Builds the object from hash

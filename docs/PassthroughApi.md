@@ -9,7 +9,7 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 ## passthrough_create
 
-> <RemoteResponse> passthrough_create(x_account_token, data_passthrough, opts)
+> <RemoteResponse> passthrough_create(x_account_token, data_passthrough_request, opts)
 
 
 
@@ -30,14 +30,14 @@ end
 
 api_instance = MergeATSClient::PassthroughApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
-data_passthrough = MergeATSClient::DataPassthrough.new({method: MergeATSClient::MethodEnum::GET, path: '/scooters'}) # DataPassthrough | 
+data_passthrough_request = MergeATSClient::DataPassthroughRequest.new({method: MergeATSClient::MethodEnum::GET, path: '/scooters'}) # DataPassthroughRequest | 
 opts = {
   include_remote_data: true # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
 }
 
 begin
   
-  result = api_instance.passthrough_create(x_account_token, data_passthrough, opts)
+  result = api_instance.passthrough_create(x_account_token, data_passthrough_request, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Error when calling PassthroughApi->passthrough_create: #{e}"
@@ -48,12 +48,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RemoteResponse>, Integer, Hash)> passthrough_create_with_http_info(x_account_token, data_passthrough, opts)
+> <Array(<RemoteResponse>, Integer, Hash)> passthrough_create_with_http_info(x_account_token, data_passthrough_request, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.passthrough_create_with_http_info(x_account_token, data_passthrough, opts)
+  data, status_code, headers = api_instance.passthrough_create_with_http_info(x_account_token, data_passthrough_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RemoteResponse>
@@ -67,7 +67,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
-| **data_passthrough** | [**DataPassthrough**](DataPassthrough.md) |  |  |
+| **data_passthrough_request** | [**DataPassthroughRequest**](DataPassthroughRequest.md) |  |  |
 | **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 
 ### Return type

@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *MergeATSClient::OfficesApi* | [**offices_list**](docs/OfficesApi.md#offices_list) | **GET** /offices | 
 *MergeATSClient::OfficesApi* | [**offices_retrieve**](docs/OfficesApi.md#offices_retrieve) | **GET** /offices/{id} | 
 *MergeATSClient::PassthroughApi* | [**passthrough_create**](docs/PassthroughApi.md#passthrough_create) | **POST** /passthrough | 
+*MergeATSClient::RegenerateKeyApi* | [**regenerate_key_create**](docs/RegenerateKeyApi.md#regenerate_key_create) | **POST** /regenerate-key | 
 *MergeATSClient::RejectReasonsApi* | [**reject_reasons_list**](docs/RejectReasonsApi.md#reject_reasons_list) | **GET** /reject-reasons | 
 *MergeATSClient::RejectReasonsApi* | [**reject_reasons_retrieve**](docs/RejectReasonsApi.md#reject_reasons_retrieve) | **GET** /reject-reasons/{id} | 
 *MergeATSClient::ScorecardsApi* | [**scorecards_list**](docs/ScorecardsApi.md#scorecards_list) | **GET** /scorecards | 
@@ -129,13 +130,13 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::Attachment](docs/Attachment.md)
  - [MergeATSClient::AvailableActions](docs/AvailableActions.md)
  - [MergeATSClient::Candidate](docs/Candidate.md)
- - [MergeATSClient::DataPassthrough](docs/DataPassthrough.md)
+ - [MergeATSClient::DataPassthroughRequest](docs/DataPassthroughRequest.md)
  - [MergeATSClient::Department](docs/Department.md)
  - [MergeATSClient::DisabilityStatusEnum](docs/DisabilityStatusEnum.md)
  - [MergeATSClient::EEOC](docs/EEOC.md)
  - [MergeATSClient::EmailAddress](docs/EmailAddress.md)
  - [MergeATSClient::EmailAddressTypeEnum](docs/EmailAddressTypeEnum.md)
- - [MergeATSClient::EndUserDetails](docs/EndUserDetails.md)
+ - [MergeATSClient::EndUserDetailsRequest](docs/EndUserDetailsRequest.md)
  - [MergeATSClient::GenderEnum](docs/GenderEnum.md)
  - [MergeATSClient::Job](docs/Job.md)
  - [MergeATSClient::JobInterviewStage](docs/JobInterviewStage.md)
@@ -167,6 +168,8 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::RaceEnum](docs/RaceEnum.md)
  - [MergeATSClient::RejectReason](docs/RejectReason.md)
  - [MergeATSClient::RemoteData](docs/RemoteData.md)
+ - [MergeATSClient::RemoteKey](docs/RemoteKey.md)
+ - [MergeATSClient::RemoteKeyForRegenerationRequest](docs/RemoteKeyForRegenerationRequest.md)
  - [MergeATSClient::RemoteResponse](docs/RemoteResponse.md)
  - [MergeATSClient::RemoteUser](docs/RemoteUser.md)
  - [MergeATSClient::ScheduledInterview](docs/ScheduledInterview.md)

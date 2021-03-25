@@ -21,22 +21,22 @@ module MergeATSClient
     end
     # Pull data from an endpoint not currently supported by Merge.
     # @param x_account_token [String] Token identifying the end user.
-    # @param data_passthrough [DataPassthrough] 
+    # @param data_passthrough_request [DataPassthroughRequest] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [RemoteResponse]
-    def passthrough_create(x_account_token, data_passthrough, opts = {})
-      data, _status_code, _headers = passthrough_create_with_http_info(x_account_token, data_passthrough, opts)
+    def passthrough_create(x_account_token, data_passthrough_request, opts = {})
+      data, _status_code, _headers = passthrough_create_with_http_info(x_account_token, data_passthrough_request, opts)
       data
     end
 
     # Pull data from an endpoint not currently supported by Merge.
     # @param x_account_token [String] Token identifying the end user.
-    # @param data_passthrough [DataPassthrough] 
+    # @param data_passthrough_request [DataPassthroughRequest] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [Array<(RemoteResponse, Integer, Hash)>] RemoteResponse data, response status code and response headers
-    def passthrough_create_with_http_info(x_account_token, data_passthrough, opts = {})
+    def passthrough_create_with_http_info(x_account_token, data_passthrough_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PassthroughApi.passthrough_create ...'
       end
@@ -44,9 +44,9 @@ module MergeATSClient
       if @api_client.config.client_side_validation && x_account_token.nil?
         fail ArgumentError, "Missing the required parameter 'x_account_token' when calling PassthroughApi.passthrough_create"
       end
-      # verify the required parameter 'data_passthrough' is set
-      if @api_client.config.client_side_validation && data_passthrough.nil?
-        fail ArgumentError, "Missing the required parameter 'data_passthrough' when calling PassthroughApi.passthrough_create"
+      # verify the required parameter 'data_passthrough_request' is set
+      if @api_client.config.client_side_validation && data_passthrough_request.nil?
+        fail ArgumentError, "Missing the required parameter 'data_passthrough_request' when calling PassthroughApi.passthrough_create"
       end
       # resource path
       local_var_path = '/passthrough'
@@ -67,7 +67,7 @@ module MergeATSClient
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(data_passthrough)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(data_passthrough_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'RemoteResponse'

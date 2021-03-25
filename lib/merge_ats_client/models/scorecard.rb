@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview  ### Usage Example Fetch from the `LIST Scorecard` endpoint and filter by `application` to show all scorecard for an applicant.
+  # # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview  ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
   class Scorecard
     attr_accessor :id
 

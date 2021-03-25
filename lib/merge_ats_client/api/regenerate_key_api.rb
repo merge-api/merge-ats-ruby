@@ -13,35 +13,35 @@ OpenAPI Generator version: 5.0.0
 require 'cgi'
 
 module MergeATSClient
-  class LinkTokenApi
+  class RegenerateKeyApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Creates a link token to be used when linking a new end user.
-    # @param end_user_details_request [EndUserDetailsRequest] 
+    # Exchange remote keys.
+    # @param remote_key_for_regeneration_request [RemoteKeyForRegenerationRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [LinkToken]
-    def link_token_create(end_user_details_request, opts = {})
-      data, _status_code, _headers = link_token_create_with_http_info(end_user_details_request, opts)
+    # @return [RemoteKey]
+    def regenerate_key_create(remote_key_for_regeneration_request, opts = {})
+      data, _status_code, _headers = regenerate_key_create_with_http_info(remote_key_for_regeneration_request, opts)
       data
     end
 
-    # Creates a link token to be used when linking a new end user.
-    # @param end_user_details_request [EndUserDetailsRequest] 
+    # Exchange remote keys.
+    # @param remote_key_for_regeneration_request [RemoteKeyForRegenerationRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(LinkToken, Integer, Hash)>] LinkToken data, response status code and response headers
-    def link_token_create_with_http_info(end_user_details_request, opts = {})
+    # @return [Array<(RemoteKey, Integer, Hash)>] RemoteKey data, response status code and response headers
+    def regenerate_key_create_with_http_info(remote_key_for_regeneration_request, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: LinkTokenApi.link_token_create ...'
+        @api_client.config.logger.debug 'Calling API: RegenerateKeyApi.regenerate_key_create ...'
       end
-      # verify the required parameter 'end_user_details_request' is set
-      if @api_client.config.client_side_validation && end_user_details_request.nil?
-        fail ArgumentError, "Missing the required parameter 'end_user_details_request' when calling LinkTokenApi.link_token_create"
+      # verify the required parameter 'remote_key_for_regeneration_request' is set
+      if @api_client.config.client_side_validation && remote_key_for_regeneration_request.nil?
+        fail ArgumentError, "Missing the required parameter 'remote_key_for_regeneration_request' when calling RegenerateKeyApi.regenerate_key_create"
       end
       # resource path
-      local_var_path = '/link-token'
+      local_var_path = '/regenerate-key'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -57,16 +57,16 @@ module MergeATSClient
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(end_user_details_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(remote_key_for_regeneration_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'LinkToken'
+      return_type = opts[:debug_return_type] || 'RemoteKey'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['tokenAuth']
 
       new_options = opts.merge(
-        :operation => :"LinkTokenApi.link_token_create",
+        :operation => :"RegenerateKeyApi.regenerate_key_create",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -77,7 +77,7 @@ module MergeATSClient
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: LinkTokenApi#link_token_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: RegenerateKeyApi#regenerate_key_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -13,7 +13,7 @@
 require 'merge_ats_client'
 
 instance = MergeATSClient::EmailAddress.new(
-  value: scooterboy443@gmail.com,
+  value: merge_is_hiring@gmail.com,
   email_address_type: PERSONAL
 )
 ```
