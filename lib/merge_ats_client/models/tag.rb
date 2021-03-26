@@ -43,7 +43,7 @@ module MergeATSClient
       {
         :'remote_id' => :'String',
         :'name' => :'String',
-        :'remote_data' => :'Array<Hash<String, AnyType>>'
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
