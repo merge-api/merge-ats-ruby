@@ -35,8 +35,6 @@ module MergeATSClient
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      constantValues = RaceEnum.constants.select { |c| RaceEnum::const_get(c) == value }
-      raise "Invalid ENUM value #{value} for class #RaceEnum" if constantValues.empty?
       value
     end
   end
