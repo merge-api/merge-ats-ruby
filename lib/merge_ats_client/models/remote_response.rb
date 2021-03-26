@@ -48,8 +48,8 @@ module MergeATSClient
         :'method' => :'String',
         :'path' => :'String',
         :'status' => :'Integer',
-        :'response' => :'Hash<String, AnyType>',
-        :'headers' => :'Hash<String, AnyType>'
+        :'response' => :'Hash<String, Object>',
+        :'headers' => :'Hash<String, Object>'
       }
     end
 
