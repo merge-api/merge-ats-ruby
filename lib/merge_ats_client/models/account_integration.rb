@@ -18,17 +18,19 @@ module MergeATSClient
     # Company name.
     attr_accessor :name
 
-    # Category or categories this integration belongs to.
+    # Category or categories this integration belongs to. Multiple categories should be comma separated.<br/><br>Example: For [ats, hris], enter <i>ats,hris</i>
     attr_accessor :categories
 
-    # Company logo in rectangular shape.
+    # Company logo in rectangular shape. <b>Upload an image with a clear background.</b>
     attr_accessor :image
 
-    # Company logo in square shape.
+    # Company logo in square shape. <b>Upload an image with a white background.</b>
     attr_accessor :square_image
 
-    # The color of this integration used for buttons and text throughout the app and landing pages.
+    # The color of this integration used for buttons and text throughout the app and landing pages. <b>Choose a darker, saturated color.</b>
     attr_accessor :color
+
+    attr_accessor :slug
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -59,7 +61,8 @@ module MergeATSClient
         :'categories' => :'categories',
         :'image' => :'image',
         :'square_image' => :'square_image',
-        :'color' => :'color'
+        :'color' => :'color',
+        :'slug' => :'slug'
       }
     end
 
@@ -75,7 +78,8 @@ module MergeATSClient
         :'categories' => :'Array<String>',
         :'image' => :'String',
         :'square_image' => :'String',
-        :'color' => :'String'
+        :'color' => :'String',
+        :'slug' => :'String'
       }
     end
 
@@ -122,6 +126,10 @@ module MergeATSClient
 
       if attributes.key?(:'color')
         self.color = attributes[:'color']
+      end
+
+      if attributes.key?(:'slug')
+        self.slug = attributes[:'slug']
       end
     end
 
@@ -178,7 +186,8 @@ module MergeATSClient
           categories == o.categories &&
           image == o.image &&
           square_image == o.square_image &&
-          color == o.color
+          color == o.color &&
+          slug == o.slug
     end
 
     # @see the `==` method
@@ -190,7 +199,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, categories, image, square_image, color].hash
+      [name, categories, image, square_image, color, slug].hash
     end
 
     # Builds the object from hash

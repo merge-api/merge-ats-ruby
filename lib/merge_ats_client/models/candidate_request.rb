@@ -14,54 +14,67 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Job Object ### Description The `Job` object is used to represent a Job offering at a company.  ### Usage Example Fetch from the `LIST Jobs` endpoint to show all job postings.
-  class Job
-    attr_accessor :id
-
+  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions.  ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+  class CandidateRequest
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The job's name.
-    attr_accessor :name
+    # The user's first name.
+    attr_accessor :first_name
 
-    # The job's description.
-    attr_accessor :description
+    # The user's last name.
+    attr_accessor :last_name
 
-    # The job's status.
-    attr_accessor :status
+    # The candidate's current company.
+    attr_accessor :company
 
-    # When the third party's job was created.
+    # The candidate's current title.
+    attr_accessor :title
+
+    # When the third party's candidate was created.
     attr_accessor :remote_created_at
 
-    # When the third party's job was updated.
+    # When the third party's candidate was updated.
     attr_accessor :remote_updated_at
 
-    # Whether the job is confidential.
-    attr_accessor :confidential
+    # When the most recent candidate interaction occurred.
+    attr_accessor :last_interaction_at
 
-    attr_accessor :departments
+    # Whether or not the candidate is private.
+    attr_accessor :is_private
 
-    attr_accessor :offices
+    # Whether or not the candidate can be emailed.
+    attr_accessor :can_email
 
-    attr_accessor :hiring_managers
+    # The candidate's locations.
+    attr_accessor :locations
 
-    attr_accessor :remote_data
+    attr_accessor :phone_numbers
+
+    attr_accessor :email_addresses
+
+    attr_accessor :urls
+
+    attr_accessor :tags
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'remote_id' => :'remote_id',
-        :'name' => :'name',
-        :'description' => :'description',
-        :'status' => :'status',
+        :'first_name' => :'first_name',
+        :'last_name' => :'last_name',
+        :'company' => :'company',
+        :'title' => :'title',
         :'remote_created_at' => :'remote_created_at',
         :'remote_updated_at' => :'remote_updated_at',
-        :'confidential' => :'confidential',
-        :'departments' => :'departments',
-        :'offices' => :'offices',
-        :'hiring_managers' => :'hiring_managers',
-        :'remote_data' => :'remote_data'
+        :'last_interaction_at' => :'last_interaction_at',
+        :'is_private' => :'is_private',
+        :'can_email' => :'can_email',
+        :'locations' => :'locations',
+        :'phone_numbers' => :'phone_numbers',
+        :'email_addresses' => :'email_addresses',
+        :'urls' => :'urls',
+        :'tags' => :'tags'
       }
     end
 
@@ -73,18 +86,21 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
         :'remote_id' => :'String',
-        :'name' => :'String',
-        :'description' => :'String',
-        :'status' => :'JobStatusEnum',
+        :'first_name' => :'String',
+        :'last_name' => :'String',
+        :'company' => :'String',
+        :'title' => :'String',
         :'remote_created_at' => :'Time',
         :'remote_updated_at' => :'Time',
-        :'confidential' => :'Boolean',
-        :'departments' => :'Array<String>',
-        :'offices' => :'Array<String>',
-        :'hiring_managers' => :'Array<String>',
-        :'remote_data' => :'Array<RemoteData>'
+        :'last_interaction_at' => :'Time',
+        :'is_private' => :'Boolean',
+        :'can_email' => :'Boolean',
+        :'locations' => :'Array<String>',
+        :'phone_numbers' => :'Array<PhoneNumberRequest>',
+        :'email_addresses' => :'Array<EmailAddressRequest>',
+        :'urls' => :'Array<UrlRequest>',
+        :'tags' => :'Array<String>'
       }
     end
 
@@ -92,13 +108,16 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'remote_id',
-        :'name',
-        :'description',
-        :'status',
+        :'first_name',
+        :'last_name',
+        :'company',
+        :'title',
         :'remote_created_at',
         :'remote_updated_at',
-        :'confidential',
-        :'remote_data'
+        :'last_interaction_at',
+        :'is_private',
+        :'can_email',
+        :'locations',
       ])
     end
 
@@ -106,35 +125,35 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::Job` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::CandidateRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::Job`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::CandidateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
 
       if attributes.key?(:'remote_id')
         self.remote_id = attributes[:'remote_id']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'first_name')
+        self.first_name = attributes[:'first_name']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'last_name')
+        self.last_name = attributes[:'last_name']
       end
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'company')
+        self.company = attributes[:'company']
+      end
+
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
       end
 
       if attributes.key?(:'remote_created_at')
@@ -145,31 +164,45 @@ module MergeATSClient
         self.remote_updated_at = attributes[:'remote_updated_at']
       end
 
-      if attributes.key?(:'confidential')
-        self.confidential = attributes[:'confidential']
+      if attributes.key?(:'last_interaction_at')
+        self.last_interaction_at = attributes[:'last_interaction_at']
       end
 
-      if attributes.key?(:'departments')
-        if (value = attributes[:'departments']).is_a?(Array)
-          self.departments = value
+      if attributes.key?(:'is_private')
+        self.is_private = attributes[:'is_private']
+      end
+
+      if attributes.key?(:'can_email')
+        self.can_email = attributes[:'can_email']
+      end
+
+      if attributes.key?(:'locations')
+        if (value = attributes[:'locations']).is_a?(Array)
+          self.locations = value
         end
       end
 
-      if attributes.key?(:'offices')
-        if (value = attributes[:'offices']).is_a?(Array)
-          self.offices = value
+      if attributes.key?(:'phone_numbers')
+        if (value = attributes[:'phone_numbers']).is_a?(Array)
+          self.phone_numbers = value
         end
       end
 
-      if attributes.key?(:'hiring_managers')
-        if (value = attributes[:'hiring_managers']).is_a?(Array)
-          self.hiring_managers = value
+      if attributes.key?(:'email_addresses')
+        if (value = attributes[:'email_addresses']).is_a?(Array)
+          self.email_addresses = value
         end
       end
 
-      if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
+      if attributes.key?(:'urls')
+        if (value = attributes[:'urls']).is_a?(Array)
+          self.urls = value
+        end
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
         end
       end
     end
@@ -192,18 +225,21 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           remote_id == o.remote_id &&
-          name == o.name &&
-          description == o.description &&
-          status == o.status &&
+          first_name == o.first_name &&
+          last_name == o.last_name &&
+          company == o.company &&
+          title == o.title &&
           remote_created_at == o.remote_created_at &&
           remote_updated_at == o.remote_updated_at &&
-          confidential == o.confidential &&
-          departments == o.departments &&
-          offices == o.offices &&
-          hiring_managers == o.hiring_managers &&
-          remote_data == o.remote_data
+          last_interaction_at == o.last_interaction_at &&
+          is_private == o.is_private &&
+          can_email == o.can_email &&
+          locations == o.locations &&
+          phone_numbers == o.phone_numbers &&
+          email_addresses == o.email_addresses &&
+          urls == o.urls &&
+          tags == o.tags
     end
 
     # @see the `==` method
@@ -215,7 +251,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, description, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, remote_data].hash
+      [remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags].hash
     end
 
     # Builds the object from hash

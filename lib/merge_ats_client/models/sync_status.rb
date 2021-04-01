@@ -14,54 +14,29 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Job Object ### Description The `Job` object is used to represent a Job offering at a company.  ### Usage Example Fetch from the `LIST Jobs` endpoint to show all job postings.
-  class Job
-    attr_accessor :id
+  # # The RemoteResponse Object ### Description The `RemoteResponse` object is used to represent information returned from a third-party endpoint.  ### Usage Example View the `RemoteResponse` returned from your `DataPassthrough`.
+  class SyncStatus
+    attr_accessor :model_name
 
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
+    attr_accessor :model_id
 
-    # The job's name.
-    attr_accessor :name
+    attr_accessor :last_sync_start
 
-    # The job's description.
-    attr_accessor :description
+    attr_accessor :next_sync_start
 
-    # The job's status.
     attr_accessor :status
 
-    # When the third party's job was created.
-    attr_accessor :remote_created_at
-
-    # When the third party's job was updated.
-    attr_accessor :remote_updated_at
-
-    # Whether the job is confidential.
-    attr_accessor :confidential
-
-    attr_accessor :departments
-
-    attr_accessor :offices
-
-    attr_accessor :hiring_managers
-
-    attr_accessor :remote_data
+    attr_accessor :is_initial_sync
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'remote_id' => :'remote_id',
-        :'name' => :'name',
-        :'description' => :'description',
+        :'model_name' => :'model_name',
+        :'model_id' => :'model_id',
+        :'last_sync_start' => :'last_sync_start',
+        :'next_sync_start' => :'next_sync_start',
         :'status' => :'status',
-        :'remote_created_at' => :'remote_created_at',
-        :'remote_updated_at' => :'remote_updated_at',
-        :'confidential' => :'confidential',
-        :'departments' => :'departments',
-        :'offices' => :'offices',
-        :'hiring_managers' => :'hiring_managers',
-        :'remote_data' => :'remote_data'
+        :'is_initial_sync' => :'is_initial_sync'
       }
     end
 
@@ -73,32 +48,18 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'remote_id' => :'String',
-        :'name' => :'String',
-        :'description' => :'String',
-        :'status' => :'JobStatusEnum',
-        :'remote_created_at' => :'Time',
-        :'remote_updated_at' => :'Time',
-        :'confidential' => :'Boolean',
-        :'departments' => :'Array<String>',
-        :'offices' => :'Array<String>',
-        :'hiring_managers' => :'Array<String>',
-        :'remote_data' => :'Array<RemoteData>'
+        :'model_name' => :'String',
+        :'model_id' => :'String',
+        :'last_sync_start' => :'Time',
+        :'next_sync_start' => :'Time',
+        :'status' => :'String',
+        :'is_initial_sync' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
-        :'name',
-        :'description',
-        :'status',
-        :'remote_created_at',
-        :'remote_updated_at',
-        :'confidential',
-        :'remote_data'
       ])
     end
 
@@ -106,71 +67,39 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::Job` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::SyncStatus` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::Job`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::SyncStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'model_name')
+        self.model_name = attributes[:'model_name']
       end
 
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
+      if attributes.key?(:'model_id')
+        self.model_id = attributes[:'model_id']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'last_sync_start')
+        self.last_sync_start = attributes[:'last_sync_start']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'next_sync_start')
+        self.next_sync_start = attributes[:'next_sync_start']
       end
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
 
-      if attributes.key?(:'remote_created_at')
-        self.remote_created_at = attributes[:'remote_created_at']
-      end
-
-      if attributes.key?(:'remote_updated_at')
-        self.remote_updated_at = attributes[:'remote_updated_at']
-      end
-
-      if attributes.key?(:'confidential')
-        self.confidential = attributes[:'confidential']
-      end
-
-      if attributes.key?(:'departments')
-        if (value = attributes[:'departments']).is_a?(Array)
-          self.departments = value
-        end
-      end
-
-      if attributes.key?(:'offices')
-        if (value = attributes[:'offices']).is_a?(Array)
-          self.offices = value
-        end
-      end
-
-      if attributes.key?(:'hiring_managers')
-        if (value = attributes[:'hiring_managers']).is_a?(Array)
-          self.hiring_managers = value
-        end
-      end
-
-      if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
-        end
+      if attributes.key?(:'is_initial_sync')
+        self.is_initial_sync = attributes[:'is_initial_sync']
       end
     end
 
@@ -178,12 +107,42 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @model_name.nil?
+        invalid_properties.push('invalid value for "model_name", model_name cannot be nil.')
+      end
+
+      if @model_id.nil?
+        invalid_properties.push('invalid value for "model_id", model_id cannot be nil.')
+      end
+
+      if @last_sync_start.nil?
+        invalid_properties.push('invalid value for "last_sync_start", last_sync_start cannot be nil.')
+      end
+
+      if @next_sync_start.nil?
+        invalid_properties.push('invalid value for "next_sync_start", next_sync_start cannot be nil.')
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
+      if @is_initial_sync.nil?
+        invalid_properties.push('invalid value for "is_initial_sync", is_initial_sync cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @model_name.nil?
+      return false if @model_id.nil?
+      return false if @last_sync_start.nil?
+      return false if @next_sync_start.nil?
+      return false if @status.nil?
+      return false if @is_initial_sync.nil?
       true
     end
 
@@ -192,18 +151,12 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          remote_id == o.remote_id &&
-          name == o.name &&
-          description == o.description &&
+          model_name == o.model_name &&
+          model_id == o.model_id &&
+          last_sync_start == o.last_sync_start &&
+          next_sync_start == o.next_sync_start &&
           status == o.status &&
-          remote_created_at == o.remote_created_at &&
-          remote_updated_at == o.remote_updated_at &&
-          confidential == o.confidential &&
-          departments == o.departments &&
-          offices == o.offices &&
-          hiring_managers == o.hiring_managers &&
-          remote_data == o.remote_data
+          is_initial_sync == o.is_initial_sync
     end
 
     # @see the `==` method
@@ -215,7 +168,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, description, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, remote_data].hash
+      [model_name, model_id, last_sync_start, next_sync_start, status, is_initial_sync].hash
     end
 
     # Builds the object from hash

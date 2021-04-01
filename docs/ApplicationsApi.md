@@ -4,8 +4,89 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**applications_create**](ApplicationsApi.md#applications_create) | **POST** /applications |  |
 | [**applications_list**](ApplicationsApi.md#applications_list) | **GET** /applications |  |
+| [**applications_partial_update**](ApplicationsApi.md#applications_partial_update) | **PATCH** /applications/{id} |  |
 | [**applications_retrieve**](ApplicationsApi.md#applications_retrieve) | **GET** /applications/{id} |  |
+
+
+## applications_create
+
+> <Application> applications_create(x_account_token, remote_user_id, opts)
+
+
+
+Creates an `Application` object with the given values.
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::ApplicationsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+remote_user_id = 'remote_user_id_example' # String | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+opts = {
+  run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
+  application_request: MergeATSClient::ApplicationRequest.new # ApplicationRequest | 
+}
+
+begin
+  
+  result = api_instance.applications_create(x_account_token, remote_user_id, opts)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ApplicationsApi->applications_create: #{e}"
+end
+```
+
+#### Using the applications_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Application>, Integer, Hash)> applications_create_with_http_info(x_account_token, remote_user_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.applications_create_with_http_info(x_account_token, remote_user_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Application>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ApplicationsApi->applications_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+| **remote_user_id** | **String** | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. |  |
+| **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
+| **application_request** | [**ApplicationRequest**](ApplicationRequest.md) |  | [optional] |
+
+### Return type
+
+[**Application**](Application.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Accept**: application/json
 
 
 ## applications_list
@@ -106,6 +187,87 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## applications_partial_update
+
+> <Application> applications_partial_update(x_account_token, id, remote_user_id, opts)
+
+
+
+Updates an `Application` object with the given `id`.
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::ApplicationsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+id = TODO # String | 
+remote_user_id = 'remote_user_id_example' # String | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+opts = {
+  run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
+  patched_application_request: MergeATSClient::PatchedApplicationRequest.new # PatchedApplicationRequest | 
+}
+
+begin
+  
+  result = api_instance.applications_partial_update(x_account_token, id, remote_user_id, opts)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ApplicationsApi->applications_partial_update: #{e}"
+end
+```
+
+#### Using the applications_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Application>, Integer, Hash)> applications_partial_update_with_http_info(x_account_token, id, remote_user_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.applications_partial_update_with_http_info(x_account_token, id, remote_user_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Application>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ApplicationsApi->applications_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+| **id** | [**String**](.md) |  |  |
+| **remote_user_id** | **String** | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. |  |
+| **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
+| **patched_application_request** | [**PatchedApplicationRequest**](PatchedApplicationRequest.md) |  | [optional] |
+
+### Return type
+
+[**Application**](Application.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
 - **Accept**: application/json
 
 

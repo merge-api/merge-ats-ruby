@@ -86,11 +86,14 @@ Class | Method | HTTP request | Description
 *MergeATSClient::AccountTokenApi* | [**account_token_retrieve**](docs/AccountTokenApi.md#account_token_retrieve) | **GET** /account-token/{public_token} | 
 *MergeATSClient::ActivitiesApi* | [**activities_list**](docs/ActivitiesApi.md#activities_list) | **GET** /activities | 
 *MergeATSClient::ActivitiesApi* | [**activities_retrieve**](docs/ActivitiesApi.md#activities_retrieve) | **GET** /activities/{id} | 
+*MergeATSClient::ApplicationsApi* | [**applications_create**](docs/ApplicationsApi.md#applications_create) | **POST** /applications | 
 *MergeATSClient::ApplicationsApi* | [**applications_list**](docs/ApplicationsApi.md#applications_list) | **GET** /applications | 
+*MergeATSClient::ApplicationsApi* | [**applications_partial_update**](docs/ApplicationsApi.md#applications_partial_update) | **PATCH** /applications/{id} | 
 *MergeATSClient::ApplicationsApi* | [**applications_retrieve**](docs/ApplicationsApi.md#applications_retrieve) | **GET** /applications/{id} | 
 *MergeATSClient::AttachmentsApi* | [**attachments_list**](docs/AttachmentsApi.md#attachments_list) | **GET** /attachments | 
 *MergeATSClient::AttachmentsApi* | [**attachments_retrieve**](docs/AttachmentsApi.md#attachments_retrieve) | **GET** /attachments/{id} | 
 *MergeATSClient::AvailableActionsApi* | [**available_actions_retrieve**](docs/AvailableActionsApi.md#available_actions_retrieve) | **GET** /available-actions | 
+*MergeATSClient::CandidatesApi* | [**candidates_create**](docs/CandidatesApi.md#candidates_create) | **POST** /candidates | 
 *MergeATSClient::CandidatesApi* | [**candidates_list**](docs/CandidatesApi.md#candidates_list) | **GET** /candidates | 
 *MergeATSClient::CandidatesApi* | [**candidates_retrieve**](docs/CandidatesApi.md#candidates_retrieve) | **GET** /candidates/{id} | 
 *MergeATSClient::DepartmentsApi* | [**departments_list**](docs/DepartmentsApi.md#departments_list) | **GET** /departments | 
@@ -114,6 +117,7 @@ Class | Method | HTTP request | Description
 *MergeATSClient::RejectReasonsApi* | [**reject_reasons_retrieve**](docs/RejectReasonsApi.md#reject_reasons_retrieve) | **GET** /reject-reasons/{id} | 
 *MergeATSClient::ScorecardsApi* | [**scorecards_list**](docs/ScorecardsApi.md#scorecards_list) | **GET** /scorecards | 
 *MergeATSClient::ScorecardsApi* | [**scorecards_retrieve**](docs/ScorecardsApi.md#scorecards_retrieve) | **GET** /scorecards/{id} | 
+*MergeATSClient::SyncStatusApi* | [**sync_status_retrieve**](docs/SyncStatusApi.md#sync_status_retrieve) | **GET** /sync-status | 
 *MergeATSClient::TagsApi* | [**tags_list**](docs/TagsApi.md#tags_list) | **GET** /tags | 
 *MergeATSClient::UsersApi* | [**users_list**](docs/UsersApi.md#users_list) | **GET** /users | 
 *MergeATSClient::UsersApi* | [**users_retrieve**](docs/UsersApi.md#users_retrieve) | **GET** /users/{id} | 
@@ -127,14 +131,17 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::Activity](docs/Activity.md)
  - [MergeATSClient::ActivityTypeEnum](docs/ActivityTypeEnum.md)
  - [MergeATSClient::Application](docs/Application.md)
+ - [MergeATSClient::ApplicationRequest](docs/ApplicationRequest.md)
  - [MergeATSClient::Attachment](docs/Attachment.md)
  - [MergeATSClient::AvailableActions](docs/AvailableActions.md)
  - [MergeATSClient::Candidate](docs/Candidate.md)
+ - [MergeATSClient::CandidateRequest](docs/CandidateRequest.md)
  - [MergeATSClient::DataPassthroughRequest](docs/DataPassthroughRequest.md)
  - [MergeATSClient::Department](docs/Department.md)
  - [MergeATSClient::DisabilityStatusEnum](docs/DisabilityStatusEnum.md)
  - [MergeATSClient::EEOC](docs/EEOC.md)
  - [MergeATSClient::EmailAddress](docs/EmailAddress.md)
+ - [MergeATSClient::EmailAddressRequest](docs/EmailAddressRequest.md)
  - [MergeATSClient::EmailAddressTypeEnum](docs/EmailAddressTypeEnum.md)
  - [MergeATSClient::EndUserDetailsRequest](docs/EndUserDetailsRequest.md)
  - [MergeATSClient::GenderEnum](docs/GenderEnum.md)
@@ -163,11 +170,14 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::PaginatedScheduledInterviewList](docs/PaginatedScheduledInterviewList.md)
  - [MergeATSClient::PaginatedScorecardList](docs/PaginatedScorecardList.md)
  - [MergeATSClient::PaginatedTagList](docs/PaginatedTagList.md)
+ - [MergeATSClient::PatchedApplicationRequest](docs/PatchedApplicationRequest.md)
  - [MergeATSClient::PhoneNumber](docs/PhoneNumber.md)
+ - [MergeATSClient::PhoneNumberRequest](docs/PhoneNumberRequest.md)
  - [MergeATSClient::PhoneNumberTypeEnum](docs/PhoneNumberTypeEnum.md)
  - [MergeATSClient::RaceEnum](docs/RaceEnum.md)
  - [MergeATSClient::RejectReason](docs/RejectReason.md)
  - [MergeATSClient::RemoteData](docs/RemoteData.md)
+ - [MergeATSClient::RemoteDataRequest](docs/RemoteDataRequest.md)
  - [MergeATSClient::RemoteKey](docs/RemoteKey.md)
  - [MergeATSClient::RemoteKeyForRegenerationRequest](docs/RemoteKeyForRegenerationRequest.md)
  - [MergeATSClient::RemoteResponse](docs/RemoteResponse.md)
@@ -175,8 +185,10 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::ScheduledInterview](docs/ScheduledInterview.md)
  - [MergeATSClient::ScheduledInterviewStatusEnum](docs/ScheduledInterviewStatusEnum.md)
  - [MergeATSClient::Scorecard](docs/Scorecard.md)
+ - [MergeATSClient::SyncStatus](docs/SyncStatus.md)
  - [MergeATSClient::Tag](docs/Tag.md)
  - [MergeATSClient::Url](docs/Url.md)
+ - [MergeATSClient::UrlRequest](docs/UrlRequest.md)
  - [MergeATSClient::UrlTypeEnum](docs/UrlTypeEnum.md)
  - [MergeATSClient::VeteranStatusEnum](docs/VeteranStatusEnum.md)
  - [MergeATSClient::VisibilityEnum](docs/VisibilityEnum.md)
