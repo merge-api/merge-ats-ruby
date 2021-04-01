@@ -9,6 +9,7 @@
 | **image** | **String** | Company logo in rectangular shape. | [optional] |
 | **square_image** | **String** | Company logo in square shape. | [optional] |
 | **color** | **String** | The color of this integration used for buttons and text throughout the app and landing pages. | [optional] |
+| **slug** | **String** |  | [optional][readonly] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = MergeATSClient::AccountIntegration.new(
   categories: null,
   image: null,
   square_image: null,
-  color: null
+  color: null,
+  slug: null
 )
 ```
 

@@ -14,55 +14,47 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  class AccountIntegration
-    # Company name.
-    attr_accessor :name
+  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+  class PatchedApplicationRequest
+    # The third-party API ID of the matching object.
+    attr_accessor :remote_id
 
-    # Category or categories this integration belongs to.
-    attr_accessor :categories
+    # The candidate applying.
+    attr_accessor :candidate
 
-    # Company logo in rectangular shape.
-    attr_accessor :image
+    # The job being applied for.
+    attr_accessor :job
 
-    # Company logo in square shape.
-    attr_accessor :square_image
+    # When the application was submitted.
+    attr_accessor :applied_at
 
-    # The color of this integration used for buttons and text throughout the app and landing pages.
-    attr_accessor :color
+    # When the application was rejected.
+    attr_accessor :rejected_at
 
-    attr_accessor :slug
+    # The application's source.
+    attr_accessor :source
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    # The user credited for this application.
+    attr_accessor :credited_to
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
+    # The application's current stage.
+    attr_accessor :current_stage
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # The application's reason for rejection.
+    attr_accessor :reject_reason
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'categories' => :'categories',
-        :'image' => :'image',
-        :'square_image' => :'square_image',
-        :'color' => :'color',
-        :'slug' => :'slug'
+        :'remote_id' => :'remote_id',
+        :'candidate' => :'candidate',
+        :'job' => :'job',
+        :'applied_at' => :'applied_at',
+        :'rejected_at' => :'rejected_at',
+        :'source' => :'source',
+        :'credited_to' => :'credited_to',
+        :'current_stage' => :'current_stage',
+        :'reject_reason' => :'reject_reason'
       }
     end
 
@@ -74,20 +66,30 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'categories' => :'Array<String>',
-        :'image' => :'String',
-        :'square_image' => :'String',
-        :'color' => :'String',
-        :'slug' => :'String'
+        :'remote_id' => :'String',
+        :'candidate' => :'String',
+        :'job' => :'String',
+        :'applied_at' => :'Time',
+        :'rejected_at' => :'Time',
+        :'source' => :'String',
+        :'credited_to' => :'String',
+        :'current_stage' => :'String',
+        :'reject_reason' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'image',
-        :'square_image',
+        :'remote_id',
+        :'candidate',
+        :'job',
+        :'applied_at',
+        :'rejected_at',
+        :'source',
+        :'credited_to',
+        :'current_stage',
+        :'reject_reason'
       ])
     end
 
@@ -95,41 +97,51 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AccountIntegration` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::PatchedApplicationRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AccountIntegration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::PatchedApplicationRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'remote_id')
+        self.remote_id = attributes[:'remote_id']
       end
 
-      if attributes.key?(:'categories')
-        if (value = attributes[:'categories']).is_a?(Array)
-          self.categories = value
-        end
+      if attributes.key?(:'candidate')
+        self.candidate = attributes[:'candidate']
       end
 
-      if attributes.key?(:'image')
-        self.image = attributes[:'image']
+      if attributes.key?(:'job')
+        self.job = attributes[:'job']
       end
 
-      if attributes.key?(:'square_image')
-        self.square_image = attributes[:'square_image']
+      if attributes.key?(:'applied_at')
+        self.applied_at = attributes[:'applied_at']
       end
 
-      if attributes.key?(:'color')
-        self.color = attributes[:'color']
+      if attributes.key?(:'rejected_at')
+        self.rejected_at = attributes[:'rejected_at']
       end
 
-      if attributes.key?(:'slug')
-        self.slug = attributes[:'slug']
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
+      end
+
+      if attributes.key?(:'credited_to')
+        self.credited_to = attributes[:'credited_to']
+      end
+
+      if attributes.key?(:'current_stage')
+        self.current_stage = attributes[:'current_stage']
+      end
+
+      if attributes.key?(:'reject_reason')
+        self.reject_reason = attributes[:'reject_reason']
       end
     end
 
@@ -137,44 +149,13 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if !@color.nil? && @color.to_s.length > 18
-        invalid_properties.push('invalid value for "color", the character length must be smaller than or equal to 18.')
-      end
-
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !@color.nil? && @color !~ pattern
-        invalid_properties.push("invalid value for \"color\", must conform to the pattern #{pattern}.")
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if !@color.nil? && @color.to_s.length > 18
-      return false if !@color.nil? && @color !~ Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] color Value to be assigned
-    def color=(color)
-      if !color.nil? && color.to_s.length > 18
-        fail ArgumentError, 'invalid value for "color", the character length must be smaller than or equal to 18.'
-      end
-
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !color.nil? && color !~ pattern
-        fail ArgumentError, "invalid value for \"color\", must conform to the pattern #{pattern}."
-      end
-
-      @color = color
     end
 
     # Checks equality by comparing each attribute.
@@ -182,12 +163,15 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          categories == o.categories &&
-          image == o.image &&
-          square_image == o.square_image &&
-          color == o.color &&
-          slug == o.slug
+          remote_id == o.remote_id &&
+          candidate == o.candidate &&
+          job == o.job &&
+          applied_at == o.applied_at &&
+          rejected_at == o.rejected_at &&
+          source == o.source &&
+          credited_to == o.credited_to &&
+          current_stage == o.current_stage &&
+          reject_reason == o.reject_reason
     end
 
     # @see the `==` method
@@ -199,7 +183,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, categories, image, square_image, color, slug].hash
+      [remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason].hash
     end
 
     # Builds the object from hash

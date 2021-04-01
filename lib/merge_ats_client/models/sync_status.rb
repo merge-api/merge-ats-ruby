@@ -14,55 +14,29 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  class AccountIntegration
-    # Company name.
-    attr_accessor :name
+  # # The RemoteResponse Object ### Description The `RemoteResponse` object is used to represent information returned from a third-party endpoint.  ### Usage Example View the `RemoteResponse` returned from your `DataPassthrough`.
+  class SyncStatus
+    attr_accessor :model_name
 
-    # Category or categories this integration belongs to.
-    attr_accessor :categories
+    attr_accessor :model_id
 
-    # Company logo in rectangular shape.
-    attr_accessor :image
+    attr_accessor :last_sync_start
 
-    # Company logo in square shape.
-    attr_accessor :square_image
+    attr_accessor :next_sync_start
 
-    # The color of this integration used for buttons and text throughout the app and landing pages.
-    attr_accessor :color
+    attr_accessor :status
 
-    attr_accessor :slug
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :is_initial_sync
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'categories' => :'categories',
-        :'image' => :'image',
-        :'square_image' => :'square_image',
-        :'color' => :'color',
-        :'slug' => :'slug'
+        :'model_name' => :'model_name',
+        :'model_id' => :'model_id',
+        :'last_sync_start' => :'last_sync_start',
+        :'next_sync_start' => :'next_sync_start',
+        :'status' => :'status',
+        :'is_initial_sync' => :'is_initial_sync'
       }
     end
 
@@ -74,20 +48,18 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'categories' => :'Array<String>',
-        :'image' => :'String',
-        :'square_image' => :'String',
-        :'color' => :'String',
-        :'slug' => :'String'
+        :'model_name' => :'String',
+        :'model_id' => :'String',
+        :'last_sync_start' => :'Time',
+        :'next_sync_start' => :'Time',
+        :'status' => :'String',
+        :'is_initial_sync' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'image',
-        :'square_image',
       ])
     end
 
@@ -95,41 +67,39 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AccountIntegration` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::SyncStatus` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AccountIntegration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::SyncStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'model_name')
+        self.model_name = attributes[:'model_name']
       end
 
-      if attributes.key?(:'categories')
-        if (value = attributes[:'categories']).is_a?(Array)
-          self.categories = value
-        end
+      if attributes.key?(:'model_id')
+        self.model_id = attributes[:'model_id']
       end
 
-      if attributes.key?(:'image')
-        self.image = attributes[:'image']
+      if attributes.key?(:'last_sync_start')
+        self.last_sync_start = attributes[:'last_sync_start']
       end
 
-      if attributes.key?(:'square_image')
-        self.square_image = attributes[:'square_image']
+      if attributes.key?(:'next_sync_start')
+        self.next_sync_start = attributes[:'next_sync_start']
       end
 
-      if attributes.key?(:'color')
-        self.color = attributes[:'color']
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
       end
 
-      if attributes.key?(:'slug')
-        self.slug = attributes[:'slug']
+      if attributes.key?(:'is_initial_sync')
+        self.is_initial_sync = attributes[:'is_initial_sync']
       end
     end
 
@@ -137,17 +107,28 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @model_name.nil?
+        invalid_properties.push('invalid value for "model_name", model_name cannot be nil.')
       end
 
-      if !@color.nil? && @color.to_s.length > 18
-        invalid_properties.push('invalid value for "color", the character length must be smaller than or equal to 18.')
+      if @model_id.nil?
+        invalid_properties.push('invalid value for "model_id", model_id cannot be nil.')
       end
 
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !@color.nil? && @color !~ pattern
-        invalid_properties.push("invalid value for \"color\", must conform to the pattern #{pattern}.")
+      if @last_sync_start.nil?
+        invalid_properties.push('invalid value for "last_sync_start", last_sync_start cannot be nil.')
+      end
+
+      if @next_sync_start.nil?
+        invalid_properties.push('invalid value for "next_sync_start", next_sync_start cannot be nil.')
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
+      if @is_initial_sync.nil?
+        invalid_properties.push('invalid value for "is_initial_sync", is_initial_sync cannot be nil.')
       end
 
       invalid_properties
@@ -156,25 +137,13 @@ module MergeATSClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if !@color.nil? && @color.to_s.length > 18
-      return false if !@color.nil? && @color !~ Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
+      return false if @model_name.nil?
+      return false if @model_id.nil?
+      return false if @last_sync_start.nil?
+      return false if @next_sync_start.nil?
+      return false if @status.nil?
+      return false if @is_initial_sync.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] color Value to be assigned
-    def color=(color)
-      if !color.nil? && color.to_s.length > 18
-        fail ArgumentError, 'invalid value for "color", the character length must be smaller than or equal to 18.'
-      end
-
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !color.nil? && color !~ pattern
-        fail ArgumentError, "invalid value for \"color\", must conform to the pattern #{pattern}."
-      end
-
-      @color = color
     end
 
     # Checks equality by comparing each attribute.
@@ -182,12 +151,12 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          categories == o.categories &&
-          image == o.image &&
-          square_image == o.square_image &&
-          color == o.color &&
-          slug == o.slug
+          model_name == o.model_name &&
+          model_id == o.model_id &&
+          last_sync_start == o.last_sync_start &&
+          next_sync_start == o.next_sync_start &&
+          status == o.status &&
+          is_initial_sync == o.is_initial_sync
     end
 
     # @see the `==` method
@@ -199,7 +168,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, categories, image, square_image, color, slug].hash
+      [model_name, model_id, last_sync_start, next_sync_start, status, is_initial_sync].hash
     end
 
     # Builds the object from hash
