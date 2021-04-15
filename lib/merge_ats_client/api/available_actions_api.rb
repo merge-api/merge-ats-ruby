@@ -22,7 +22,6 @@ module MergeATSClient
     # Returns a list of models and actions available for an account.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [AvailableActions]
     def available_actions_retrieve(x_account_token, opts = {})
       data, _status_code, _headers = available_actions_retrieve_with_http_info(x_account_token, opts)
@@ -32,7 +31,6 @@ module MergeATSClient
     # Returns a list of models and actions available for an account.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
-    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [Array<(AvailableActions, Integer, Hash)>] AvailableActions data, response status code and response headers
     def available_actions_retrieve_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
@@ -47,7 +45,6 @@ module MergeATSClient
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

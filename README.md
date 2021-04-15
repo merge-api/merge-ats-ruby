@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 *MergeATSClient::DepartmentsApi* | [**departments_retrieve**](docs/DepartmentsApi.md#departments_retrieve) | **GET** /departments/{id} | 
 *MergeATSClient::EeocsApi* | [**eeocs_list**](docs/EeocsApi.md#eeocs_list) | **GET** /eeocs | 
 *MergeATSClient::EeocsApi* | [**eeocs_retrieve**](docs/EeocsApi.md#eeocs_retrieve) | **GET** /eeocs/{id} | 
+*MergeATSClient::GenerateKeyApi* | [**generate_key_create**](docs/GenerateKeyApi.md#generate_key_create) | **POST** /generate-key | 
 *MergeATSClient::InterviewsApi* | [**interviews_list**](docs/InterviewsApi.md#interviews_list) | **GET** /interviews | 
 *MergeATSClient::InterviewsApi* | [**interviews_retrieve**](docs/InterviewsApi.md#interviews_retrieve) | **GET** /interviews/{id} | 
 *MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_list**](docs/JobInterviewStagesApi.md#job_interview_stages_list) | **GET** /job-interview-stages | 
@@ -145,6 +146,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::EmailAddressTypeEnum](docs/EmailAddressTypeEnum.md)
  - [MergeATSClient::EndUserDetailsRequest](docs/EndUserDetailsRequest.md)
  - [MergeATSClient::GenderEnum](docs/GenderEnum.md)
+ - [MergeATSClient::GenerateRemoteKeyRequest](docs/GenerateRemoteKeyRequest.md)
  - [MergeATSClient::Job](docs/Job.md)
  - [MergeATSClient::JobInterviewStage](docs/JobInterviewStage.md)
  - [MergeATSClient::JobStatusEnum](docs/JobStatusEnum.md)

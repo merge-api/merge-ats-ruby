@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **first_name** | **String** | The user&#39;s first name. | [optional] |
-| **last_name** | **String** | The user&#39;s last name. | [optional] |
+| **first_name** | **String** | The candidate&#39;s first name. | [optional] |
+| **last_name** | **String** | The candidate&#39;s last name. | [optional] |
 | **company** | **String** | The candidate&#39;s current company. | [optional] |
 | **title** | **String** | The candidate&#39;s current title. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s candidate was created. | [optional] |

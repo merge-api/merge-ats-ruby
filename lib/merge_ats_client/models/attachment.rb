@@ -27,6 +27,8 @@ module MergeATSClient
     # The attachment's url.
     attr_accessor :file_url
 
+    attr_accessor :candidate
+
     attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -36,6 +38,7 @@ module MergeATSClient
         :'remote_id' => :'remote_id',
         :'file_name' => :'file_name',
         :'file_url' => :'file_url',
+        :'candidate' => :'candidate',
         :'remote_data' => :'remote_data'
       }
     end
@@ -52,6 +55,7 @@ module MergeATSClient
         :'remote_id' => :'String',
         :'file_name' => :'String',
         :'file_url' => :'String',
+        :'candidate' => :'String',
         :'remote_data' => :'Array<RemoteData>'
       }
     end
@@ -62,6 +66,7 @@ module MergeATSClient
         :'remote_id',
         :'file_name',
         :'file_url',
+        :'candidate',
         :'remote_data'
       ])
     end
@@ -97,6 +102,10 @@ module MergeATSClient
         self.file_url = attributes[:'file_url']
       end
 
+      if attributes.key?(:'candidate')
+        self.candidate = attributes[:'candidate']
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
@@ -108,8 +117,8 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@file_url.nil? && @file_url.to_s.length > 500
-        invalid_properties.push('invalid value for "file_url", the character length must be smaller than or equal to 500.')
+      if !@file_url.nil? && @file_url.to_s.length > 2000
+        invalid_properties.push('invalid value for "file_url", the character length must be smaller than or equal to 2000.')
       end
 
       invalid_properties
@@ -118,15 +127,15 @@ module MergeATSClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@file_url.nil? && @file_url.to_s.length > 500
+      return false if !@file_url.nil? && @file_url.to_s.length > 2000
       true
     end
 
     # Custom attribute writer method with validation
     # @param [Object] file_url Value to be assigned
     def file_url=(file_url)
-      if !file_url.nil? && file_url.to_s.length > 500
-        fail ArgumentError, 'invalid value for "file_url", the character length must be smaller than or equal to 500.'
+      if !file_url.nil? && file_url.to_s.length > 2000
+        fail ArgumentError, 'invalid value for "file_url", the character length must be smaller than or equal to 2000.'
       end
 
       @file_url = file_url
@@ -141,6 +150,7 @@ module MergeATSClient
           remote_id == o.remote_id &&
           file_name == o.file_name &&
           file_url == o.file_url &&
+          candidate == o.candidate &&
           remote_data == o.remote_data
     end
 
@@ -153,7 +163,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, file_name, file_url, remote_data].hash
+      [id, remote_id, file_name, file_url, candidate, remote_data].hash
     end
 
     # Builds the object from hash

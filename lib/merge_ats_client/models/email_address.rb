@@ -16,7 +16,7 @@ require 'time'
 module MergeATSClient
   # # The EmailAddress Object ### Description The `EmailAddress` object is used to represent a candidate's email address.  ### Usage Example Fetch from the `GET Candidate` endpoint and view their email addresses.
   class EmailAddress
-    # The email's address.
+    # The email address.
     attr_accessor :value
 
     # The type of email address.

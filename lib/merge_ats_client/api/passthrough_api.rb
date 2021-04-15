@@ -23,7 +23,6 @@ module MergeATSClient
     # @param x_account_token [String] Token identifying the end user.
     # @param data_passthrough_request [DataPassthroughRequest] 
     # @param [Hash] opts the optional parameters
-    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [RemoteResponse]
     def passthrough_create(x_account_token, data_passthrough_request, opts = {})
       data, _status_code, _headers = passthrough_create_with_http_info(x_account_token, data_passthrough_request, opts)
@@ -34,7 +33,6 @@ module MergeATSClient
     # @param x_account_token [String] Token identifying the end user.
     # @param data_passthrough_request [DataPassthroughRequest] 
     # @param [Hash] opts the optional parameters
-    # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @return [Array<(RemoteResponse, Integer, Hash)>] RemoteResponse data, response status code and response headers
     def passthrough_create_with_http_info(x_account_token, data_passthrough_request, opts = {})
       if @api_client.config.debugging
@@ -53,7 +51,6 @@ module MergeATSClient
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

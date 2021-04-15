@@ -6,12 +6,12 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **application** | **String** | The application being for the offer. | [optional] |
+| **application** | **String** | The application who is receiving the offer. | [optional] |
 | **creator** | **String** | The user who created the offer. | [optional] |
-| **remote_created_at** | **Time** | When the third party&#39;s scorecard was created. | [optional] |
+| **remote_created_at** | **Time** | When the third party&#39;s offer was created. | [optional] |
 | **closed_at** | **Time** | When the offer was closed. | [optional] |
 | **sent_at** | **Time** | When the offer was sent. | [optional] |
-| **start_date** | **Time** | The offered start date. | [optional] |
+| **start_date** | **Time** | The employment start date on the offer. | [optional] |
 | **status** | [**OfferStatusEnum**](OfferStatusEnum.md) | The offer&#39;s status. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 

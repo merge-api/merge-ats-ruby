@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **value** | **String** | The email&#39;s address. | [optional] |
+| **value** | **String** | The email address. | [optional] |
 | **email_address_type** | [**EmailAddressTypeEnum**](EmailAddressTypeEnum.md) | The type of email address. | [optional] |
 
 ## Example

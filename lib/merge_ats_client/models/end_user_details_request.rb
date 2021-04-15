@@ -23,6 +23,8 @@ module MergeATSClient
 
     attr_accessor :categories
 
+    attr_accessor :integration
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -51,7 +53,8 @@ module MergeATSClient
         :'end_user_email_address' => :'end_user_email_address',
         :'end_user_organization_name' => :'end_user_organization_name',
         :'end_user_origin_id' => :'end_user_origin_id',
-        :'categories' => :'categories'
+        :'categories' => :'categories',
+        :'integration' => :'integration'
       }
     end
 
@@ -66,7 +69,8 @@ module MergeATSClient
         :'end_user_email_address' => :'String',
         :'end_user_organization_name' => :'String',
         :'end_user_origin_id' => :'String',
-        :'categories' => :'Array<String>'
+        :'categories' => :'Array<String>',
+        :'integration' => :'String'
       }
     end
 
@@ -107,6 +111,10 @@ module MergeATSClient
         if (value = attributes[:'categories']).is_a?(Array)
           self.categories = value
         end
+      end
+
+      if attributes.key?(:'integration')
+        self.integration = attributes[:'integration']
       end
     end
 
@@ -151,7 +159,8 @@ module MergeATSClient
           end_user_email_address == o.end_user_email_address &&
           end_user_organization_name == o.end_user_organization_name &&
           end_user_origin_id == o.end_user_origin_id &&
-          categories == o.categories
+          categories == o.categories &&
+          integration == o.integration
     end
 
     # @see the `==` method
@@ -163,7 +172,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories].hash
+      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories, integration].hash
     end
 
     # Builds the object from hash

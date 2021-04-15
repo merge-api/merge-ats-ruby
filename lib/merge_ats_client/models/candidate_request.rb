@@ -19,10 +19,10 @@ module MergeATSClient
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The user's first name.
+    # The candidate's first name.
     attr_accessor :first_name
 
-    # The user's last name.
+    # The candidate's last name.
     attr_accessor :last_name
 
     # The candidate's current company.
