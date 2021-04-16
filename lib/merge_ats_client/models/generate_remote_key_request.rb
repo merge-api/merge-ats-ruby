@@ -14,29 +14,14 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The SyncStatus Object ### Description The `SyncStatus` object is used to represent the syncing state of an account  ### Usage Example View the `SyncStatus` for an account to see how recently its models were synced.
-  class SyncStatus
-    attr_accessor :model_name
-
-    attr_accessor :model_id
-
-    attr_accessor :last_sync_start
-
-    attr_accessor :next_sync_start
-
-    attr_accessor :status
-
-    attr_accessor :is_initial_sync
+  # # The GenerateRemoteKey Object ### Description The `GenerateRemoteKey` object is used to represent a request for a new remote key.  ### Usage Example Post a `GenerateRemoteKey` to create a new remote key.
+  class GenerateRemoteKeyRequest
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'model_name' => :'model_name',
-        :'model_id' => :'model_id',
-        :'last_sync_start' => :'last_sync_start',
-        :'next_sync_start' => :'next_sync_start',
-        :'status' => :'status',
-        :'is_initial_sync' => :'is_initial_sync'
+        :'name' => :'name'
       }
     end
 
@@ -48,12 +33,7 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'model_name' => :'String',
-        :'model_id' => :'String',
-        :'last_sync_start' => :'Time',
-        :'next_sync_start' => :'Time',
-        :'status' => :'String',
-        :'is_initial_sync' => :'Boolean'
+        :'name' => :'String'
       }
     end
 
@@ -67,39 +47,19 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::SyncStatus` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::GenerateRemoteKeyRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::SyncStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::GenerateRemoteKeyRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'model_name')
-        self.model_name = attributes[:'model_name']
-      end
-
-      if attributes.key?(:'model_id')
-        self.model_id = attributes[:'model_id']
-      end
-
-      if attributes.key?(:'last_sync_start')
-        self.last_sync_start = attributes[:'last_sync_start']
-      end
-
-      if attributes.key?(:'next_sync_start')
-        self.next_sync_start = attributes[:'next_sync_start']
-      end
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'is_initial_sync')
-        self.is_initial_sync = attributes[:'is_initial_sync']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -107,28 +67,8 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @model_name.nil?
-        invalid_properties.push('invalid value for "model_name", model_name cannot be nil.')
-      end
-
-      if @model_id.nil?
-        invalid_properties.push('invalid value for "model_id", model_id cannot be nil.')
-      end
-
-      if @last_sync_start.nil?
-        invalid_properties.push('invalid value for "last_sync_start", last_sync_start cannot be nil.')
-      end
-
-      if @next_sync_start.nil?
-        invalid_properties.push('invalid value for "next_sync_start", next_sync_start cannot be nil.')
-      end
-
-      if @status.nil?
-        invalid_properties.push('invalid value for "status", status cannot be nil.')
-      end
-
-      if @is_initial_sync.nil?
-        invalid_properties.push('invalid value for "is_initial_sync", is_initial_sync cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       invalid_properties
@@ -137,12 +77,7 @@ module MergeATSClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @model_name.nil?
-      return false if @model_id.nil?
-      return false if @last_sync_start.nil?
-      return false if @next_sync_start.nil?
-      return false if @status.nil?
-      return false if @is_initial_sync.nil?
+      return false if @name.nil?
       true
     end
 
@@ -151,12 +86,7 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          model_name == o.model_name &&
-          model_id == o.model_id &&
-          last_sync_start == o.last_sync_start &&
-          next_sync_start == o.next_sync_start &&
-          status == o.status &&
-          is_initial_sync == o.is_initial_sync
+          name == o.name
     end
 
     # @see the `==` method
@@ -168,7 +98,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [model_name, model_id, last_sync_start, next_sync_start, status, is_initial_sync].hash
+      [name].hash
     end
 
     # Builds the object from hash

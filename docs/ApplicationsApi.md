@@ -196,7 +196,7 @@ end
 
 
 
-Updates current stage for an `Application` object with the given `id`.
+Updates an `Application` object with the given `id`.
 
 ### Examples
 

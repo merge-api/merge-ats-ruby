@@ -21,13 +21,13 @@ module MergeATSClient
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The application being for the offer.
+    # The application who is receiving the offer.
     attr_accessor :application
 
     # The user who created the offer.
     attr_accessor :creator
 
-    # When the third party's scorecard was created.
+    # When the third party's offer was created.
     attr_accessor :remote_created_at
 
     # When the offer was closed.
@@ -36,7 +36,7 @@ module MergeATSClient
     # When the offer was sent.
     attr_accessor :sent_at
 
-    # The offered start date.
+    # The employment start date on the offer.
     attr_accessor :start_date
 
     # The offer's status.
