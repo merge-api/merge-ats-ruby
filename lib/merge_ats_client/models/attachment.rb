@@ -29,6 +29,9 @@ module MergeATSClient
 
     attr_accessor :candidate
 
+    # The attachment's type.
+    attr_accessor :attachment_type
+
     attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -39,6 +42,7 @@ module MergeATSClient
         :'file_name' => :'file_name',
         :'file_url' => :'file_url',
         :'candidate' => :'candidate',
+        :'attachment_type' => :'attachment_type',
         :'remote_data' => :'remote_data'
       }
     end
@@ -56,6 +60,7 @@ module MergeATSClient
         :'file_name' => :'String',
         :'file_url' => :'String',
         :'candidate' => :'String',
+        :'attachment_type' => :'AttachmentTypeEnum',
         :'remote_data' => :'Array<RemoteData>'
       }
     end
@@ -67,6 +72,7 @@ module MergeATSClient
         :'file_name',
         :'file_url',
         :'candidate',
+        :'attachment_type',
         :'remote_data'
       ])
     end
@@ -104,6 +110,10 @@ module MergeATSClient
 
       if attributes.key?(:'candidate')
         self.candidate = attributes[:'candidate']
+      end
+
+      if attributes.key?(:'attachment_type')
+        self.attachment_type = attributes[:'attachment_type']
       end
 
       if attributes.key?(:'remote_data')
@@ -151,6 +161,7 @@ module MergeATSClient
           file_name == o.file_name &&
           file_url == o.file_url &&
           candidate == o.candidate &&
+          attachment_type == o.attachment_type &&
           remote_data == o.remote_data
     end
 
@@ -163,7 +174,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, file_name, file_url, candidate, remote_data].hash
+      [id, remote_id, file_name, file_url, candidate, attachment_type, remote_data].hash
     end
 
     # Builds the object from hash

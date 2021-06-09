@@ -77,6 +77,7 @@ module MergeATSClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'integration'
       ])
     end
 
@@ -134,10 +135,6 @@ module MergeATSClient
         invalid_properties.push('invalid value for "end_user_origin_id", end_user_origin_id cannot be nil.')
       end
 
-      if @categories.nil?
-        invalid_properties.push('invalid value for "categories", categories cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -147,7 +144,6 @@ module MergeATSClient
       return false if @end_user_email_address.nil?
       return false if @end_user_organization_name.nil?
       return false if @end_user_origin_id.nil?
-      return false if @categories.nil?
       true
     end
 

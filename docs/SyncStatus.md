@@ -8,7 +8,7 @@
 | **model_id** | **String** |  |  |
 | **last_sync_start** | **Time** |  |  |
 | **next_sync_start** | **Time** |  |  |
-| **status** | **String** |  |  |
+| **status** | [**SyncStatusStatusEnum**](SyncStatusStatusEnum.md) |  |  |
 | **is_initial_sync** | **Boolean** |  |  |
 
 ## Example

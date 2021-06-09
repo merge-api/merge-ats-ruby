@@ -17,10 +17,13 @@ module MergeATSClient
   class AccountToken
     attr_accessor :account_token
 
+    attr_accessor :integration
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_token' => :'account_token'
+        :'account_token' => :'account_token',
+        :'integration' => :'integration'
       }
     end
 
@@ -32,7 +35,8 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account_token' => :'String'
+        :'account_token' => :'String',
+        :'integration' => :'AccountIntegration'
       }
     end
 
@@ -60,6 +64,10 @@ module MergeATSClient
       if attributes.key?(:'account_token')
         self.account_token = attributes[:'account_token']
       end
+
+      if attributes.key?(:'integration')
+        self.integration = attributes[:'integration']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -70,6 +78,10 @@ module MergeATSClient
         invalid_properties.push('invalid value for "account_token", account_token cannot be nil.')
       end
 
+      if @integration.nil?
+        invalid_properties.push('invalid value for "integration", integration cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -77,6 +89,7 @@ module MergeATSClient
     # @return true if the model is valid
     def valid?
       return false if @account_token.nil?
+      return false if @integration.nil?
       true
     end
 
@@ -85,7 +98,8 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_token == o.account_token
+          account_token == o.account_token &&
+          integration == o.integration
     end
 
     # @see the `==` method
@@ -97,7 +111,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_token].hash
+      [account_token, integration].hash
     end
 
     # Builds the object from hash
