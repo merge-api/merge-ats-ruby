@@ -31,6 +31,7 @@ module MergeATSClient
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :status If provided, will only return jobs with this status. Options: (&#39;OPEN&#39;, &#39;CLOSED&#39;, &#39;DRAFT&#39;, &#39;ARCHIVED&#39;, &#39;PENDING&#39;)
     # @return [PaginatedJobList]
     def jobs_list(x_account_token, opts = {})
       data, _status_code, _headers = jobs_list_with_http_info(x_account_token, opts)
@@ -49,6 +50,7 @@ module MergeATSClient
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :status If provided, will only return jobs with this status. Options: (&#39;OPEN&#39;, &#39;CLOSED&#39;, &#39;DRAFT&#39;, &#39;ARCHIVED&#39;, &#39;PENDING&#39;)
     # @return [Array<(PaginatedJobList, Integer, Hash)>] PaginatedJobList data, response status code and response headers
     def jobs_list_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
@@ -61,6 +63,10 @@ module MergeATSClient
       allowable_values = ["departments", "departments,hiring_managers", "departments,offices", "departments,offices,hiring_managers", "hiring_managers", "offices", "offices,hiring_managers"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["OPEN", "CLOSED", "DRAFT", "ARCHIVED", "PENDING", "", "null"]
+      if @api_client.config.client_side_validation && opts[:'status'] && !allowable_values.include?(opts[:'status'])
+        fail ArgumentError, "invalid value for \"status\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/jobs'
@@ -76,6 +82,7 @@ module MergeATSClient
       query_params[:'modified_before'] = opts[:'modified_before'] if !opts[:'modified_before'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'remote_id'] = opts[:'remote_id'] if !opts[:'remote_id'].nil?
+      query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

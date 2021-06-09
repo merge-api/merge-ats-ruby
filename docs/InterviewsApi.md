@@ -4,8 +4,88 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**interviews_create**](InterviewsApi.md#interviews_create) | **POST** /interviews |  |
 | [**interviews_list**](InterviewsApi.md#interviews_list) | **GET** /interviews |  |
 | [**interviews_retrieve**](InterviewsApi.md#interviews_retrieve) | **GET** /interviews/{id} |  |
+
+
+## interviews_create
+
+> <ScheduledInterview> interviews_create(x_account_token, remote_user_id, opts)
+
+
+
+Creates a `ScheduledInterview` object with the given values.
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['tokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['tokenAuth'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::InterviewsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+remote_user_id = 'remote_user_id_example' # String | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+opts = {
+  run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
+  scheduled_interview_request: MergeATSClient::ScheduledInterviewRequest.new # ScheduledInterviewRequest | 
+}
+
+begin
+  
+  result = api_instance.interviews_create(x_account_token, remote_user_id, opts)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling InterviewsApi->interviews_create: #{e}"
+end
+```
+
+#### Using the interviews_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduledInterview>, Integer, Hash)> interviews_create_with_http_info(x_account_token, remote_user_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.interviews_create_with_http_info(x_account_token, remote_user_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduledInterview>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling InterviewsApi->interviews_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+| **remote_user_id** | **String** | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. |  |
+| **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
+| **scheduled_interview_request** | [**ScheduledInterviewRequest**](ScheduledInterviewRequest.md) |  | [optional] |
+
+### Return type
+
+[**ScheduledInterview**](ScheduledInterview.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Accept**: application/json
 
 
 ## interviews_list

@@ -20,8 +20,8 @@
 | **email_addresses** | [**Array&lt;EmailAddress&gt;**](EmailAddress.md) |  | [optional] |
 | **urls** | [**Array&lt;Url&gt;**](Url.md) |  | [optional] |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
-| **applications** | **Array&lt;String&gt;** |  | [optional][readonly] |
-| **attachments** | **Array&lt;String&gt;** |  | [optional][readonly] |
+| **applications** | **Array&lt;String&gt;** |  | [optional] |
+| **attachments** | **Array&lt;String&gt;** |  | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
