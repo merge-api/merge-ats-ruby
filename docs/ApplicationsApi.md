@@ -11,7 +11,7 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 ## applications_create
 
-> <Application> applications_create(x_account_token, remote_user_id, opts)
+> <Application> applications_create(x_account_token, opts)
 
 
 
@@ -26,21 +26,20 @@ require 'merge_ats_client'
 MergeATSClient.configure do |config|
   # Configure API key authorization: tokenAuth
   config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
+  config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = MergeATSClient::ApplicationsApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
-remote_user_id = 'remote_user_id_example' # String | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
 opts = {
+  remote_user_id: 'remote_user_id_example', # String | The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
   run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
   application_request: MergeATSClient::ApplicationRequest.new # ApplicationRequest | 
 }
 
 begin
   
-  result = api_instance.applications_create(x_account_token, remote_user_id, opts)
+  result = api_instance.applications_create(x_account_token, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Error when calling ApplicationsApi->applications_create: #{e}"
@@ -51,12 +50,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Application>, Integer, Hash)> applications_create_with_http_info(x_account_token, remote_user_id, opts)
+> <Array(<Application>, Integer, Hash)> applications_create_with_http_info(x_account_token, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.applications_create_with_http_info(x_account_token, remote_user_id, opts)
+  data, status_code, headers = api_instance.applications_create_with_http_info(x_account_token, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Application>
@@ -70,7 +69,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
-| **remote_user_id** | **String** | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. |  |
+| **remote_user_id** | **String** | The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. | [optional] |
 | **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
 | **application_request** | [**ApplicationRequest**](ApplicationRequest.md) |  | [optional] |
 

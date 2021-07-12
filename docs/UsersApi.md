@@ -11,7 +11,7 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 ## users_create
 
-> <RemoteUser> users_create(x_account_token, remote_user_id, opts)
+> <RemoteUser> users_create(x_account_token, opts)
 
 
 
@@ -32,15 +32,15 @@ end
 
 api_instance = MergeATSClient::UsersApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
-remote_user_id = 'remote_user_id_example' # String | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
 opts = {
+  remote_user_id: 'remote_user_id_example', # String | The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
   run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
   remote_user_request: MergeATSClient::RemoteUserRequest.new # RemoteUserRequest | 
 }
 
 begin
   
-  result = api_instance.users_create(x_account_token, remote_user_id, opts)
+  result = api_instance.users_create(x_account_token, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Error when calling UsersApi->users_create: #{e}"
@@ -51,12 +51,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RemoteUser>, Integer, Hash)> users_create_with_http_info(x_account_token, remote_user_id, opts)
+> <Array(<RemoteUser>, Integer, Hash)> users_create_with_http_info(x_account_token, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.users_create_with_http_info(x_account_token, remote_user_id, opts)
+  data, status_code, headers = api_instance.users_create_with_http_info(x_account_token, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RemoteUser>
@@ -70,7 +70,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
-| **remote_user_id** | **String** | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. |  |
+| **remote_user_id** | **String** | The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. | [optional] |
 | **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
 | **remote_user_request** | [**RemoteUserRequest**](RemoteUserRequest.md) |  | [optional] |
 
@@ -115,6 +115,7 @@ opts = {
   created_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created after this datetime.
   created_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects created before this datetime.
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
+  email: TODO, # String | If provided, will only return remote users with the given email address
   include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
   modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
   modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified before this datetime.

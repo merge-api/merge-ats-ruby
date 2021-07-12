@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 *MergeATSClient::CandidatesApi* | [**candidates_create**](docs/CandidatesApi.md#candidates_create) | **POST** /candidates | 
 *MergeATSClient::CandidatesApi* | [**candidates_list**](docs/CandidatesApi.md#candidates_list) | **GET** /candidates | 
 *MergeATSClient::CandidatesApi* | [**candidates_retrieve**](docs/CandidatesApi.md#candidates_retrieve) | **GET** /candidates/{id} | 
+*MergeATSClient::DeleteAccountApi* | [**delete_account_create**](docs/DeleteAccountApi.md#delete_account_create) | **POST** /delete-account | 
 *MergeATSClient::DepartmentsApi* | [**departments_list**](docs/DepartmentsApi.md#departments_list) | **GET** /departments | 
 *MergeATSClient::DepartmentsApi* | [**departments_retrieve**](docs/DepartmentsApi.md#departments_retrieve) | **GET** /departments/{id} | 
 *MergeATSClient::EeocsApi* | [**eeocs_list**](docs/EeocsApi.md#eeocs_list) | **GET** /eeocs | 
@@ -104,6 +105,8 @@ Class | Method | HTTP request | Description
 *MergeATSClient::InterviewsApi* | [**interviews_create**](docs/InterviewsApi.md#interviews_create) | **POST** /interviews | 
 *MergeATSClient::InterviewsApi* | [**interviews_list**](docs/InterviewsApi.md#interviews_list) | **GET** /interviews | 
 *MergeATSClient::InterviewsApi* | [**interviews_retrieve**](docs/InterviewsApi.md#interviews_retrieve) | **GET** /interviews/{id} | 
+*MergeATSClient::IssuesApi* | [**issues_list**](docs/IssuesApi.md#issues_list) | **GET** /issues | 
+*MergeATSClient::IssuesApi* | [**issues_retrieve**](docs/IssuesApi.md#issues_retrieve) | **GET** /issues/{id} | 
 *MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_list**](docs/JobInterviewStagesApi.md#job_interview_stages_list) | **GET** /job-interview-stages | 
 *MergeATSClient::JobInterviewStagesApi* | [**job_interview_stages_retrieve**](docs/JobInterviewStagesApi.md#job_interview_stages_retrieve) | **GET** /job-interview-stages/{id} | 
 *MergeATSClient::JobsApi* | [**jobs_list**](docs/JobsApi.md#jobs_list) | **GET** /jobs | 
@@ -153,6 +156,8 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::EndUserDetailsRequest](docs/EndUserDetailsRequest.md)
  - [MergeATSClient::GenderEnum](docs/GenderEnum.md)
  - [MergeATSClient::GenerateRemoteKeyRequest](docs/GenerateRemoteKeyRequest.md)
+ - [MergeATSClient::Issue](docs/Issue.md)
+ - [MergeATSClient::IssueStatusEnum](docs/IssueStatusEnum.md)
  - [MergeATSClient::Job](docs/Job.md)
  - [MergeATSClient::JobInterviewStage](docs/JobInterviewStage.md)
  - [MergeATSClient::JobStatusEnum](docs/JobStatusEnum.md)
@@ -169,6 +174,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::PaginatedCandidateList](docs/PaginatedCandidateList.md)
  - [MergeATSClient::PaginatedDepartmentList](docs/PaginatedDepartmentList.md)
  - [MergeATSClient::PaginatedEEOCList](docs/PaginatedEEOCList.md)
+ - [MergeATSClient::PaginatedIssueList](docs/PaginatedIssueList.md)
  - [MergeATSClient::PaginatedJobInterviewStageList](docs/PaginatedJobInterviewStageList.md)
  - [MergeATSClient::PaginatedJobList](docs/PaginatedJobList.md)
  - [MergeATSClient::PaginatedOfferList](docs/PaginatedOfferList.md)

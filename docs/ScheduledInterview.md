@@ -9,7 +9,7 @@
 | **application** | **String** | The application being interviewed. | [optional] |
 | **job_interview_stage** | **String** | The stage of the interview. | [optional] |
 | **organizer** | **String** | The user organizing the interview. | [optional] |
-| **interviewers** | **Array&lt;String&gt;** |  | [optional] |
+| **interviewers** | **Array&lt;String&gt;** | Array of &#x60;RemoteUser&#x60; IDs. | [optional] |
 | **location** | **String** | The interview&#39;s location. | [optional] |
 | **start_at** | **Time** | When the interview was started. | [optional] |
 | **end_at** | **Time** | When the interview was ended. | [optional] |

@@ -25,6 +25,7 @@ docs/Candidate.md
 docs/CandidateRequest.md
 docs/CandidatesApi.md
 docs/DataPassthroughRequest.md
+docs/DeleteAccountApi.md
 docs/Department.md
 docs/DepartmentsApi.md
 docs/DisabilityStatusEnum.md
@@ -38,6 +39,9 @@ docs/GenderEnum.md
 docs/GenerateKeyApi.md
 docs/GenerateRemoteKeyRequest.md
 docs/InterviewsApi.md
+docs/Issue.md
+docs/IssueStatusEnum.md
+docs/IssuesApi.md
 docs/Job.md
 docs/JobInterviewStage.md
 docs/JobInterviewStagesApi.md
@@ -59,6 +63,7 @@ docs/PaginatedAttachmentList.md
 docs/PaginatedCandidateList.md
 docs/PaginatedDepartmentList.md
 docs/PaginatedEEOCList.md
+docs/PaginatedIssueList.md
 docs/PaginatedJobInterviewStageList.md
 docs/PaginatedJobList.md
 docs/PaginatedOfferList.md
@@ -109,10 +114,12 @@ lib/merge_ats_client/api/applications_api.rb
 lib/merge_ats_client/api/attachments_api.rb
 lib/merge_ats_client/api/available_actions_api.rb
 lib/merge_ats_client/api/candidates_api.rb
+lib/merge_ats_client/api/delete_account_api.rb
 lib/merge_ats_client/api/departments_api.rb
 lib/merge_ats_client/api/eeocs_api.rb
 lib/merge_ats_client/api/generate_key_api.rb
 lib/merge_ats_client/api/interviews_api.rb
+lib/merge_ats_client/api/issues_api.rb
 lib/merge_ats_client/api/job_interview_stages_api.rb
 lib/merge_ats_client/api/jobs_api.rb
 lib/merge_ats_client/api/link_token_api.rb
@@ -151,6 +158,8 @@ lib/merge_ats_client/models/email_address_type_enum.rb
 lib/merge_ats_client/models/end_user_details_request.rb
 lib/merge_ats_client/models/gender_enum.rb
 lib/merge_ats_client/models/generate_remote_key_request.rb
+lib/merge_ats_client/models/issue.rb
+lib/merge_ats_client/models/issue_status_enum.rb
 lib/merge_ats_client/models/job.rb
 lib/merge_ats_client/models/job_interview_stage.rb
 lib/merge_ats_client/models/job_status_enum.rb
@@ -167,6 +176,7 @@ lib/merge_ats_client/models/paginated_attachment_list.rb
 lib/merge_ats_client/models/paginated_candidate_list.rb
 lib/merge_ats_client/models/paginated_department_list.rb
 lib/merge_ats_client/models/paginated_eeoc_list.rb
+lib/merge_ats_client/models/paginated_issue_list.rb
 lib/merge_ats_client/models/paginated_job_interview_stage_list.rb
 lib/merge_ats_client/models/paginated_job_list.rb
 lib/merge_ats_client/models/paginated_offer_list.rb
@@ -204,6 +214,11 @@ lib/merge_ats_client/models/veteran_status_enum.rb
 lib/merge_ats_client/models/visibility_enum.rb
 lib/merge_ats_client/version.rb
 merge_ats_client.gemspec
+spec/api/delete_account_api_spec.rb
+spec/api/issues_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/issue_spec.rb
+spec/models/issue_status_enum_spec.rb
+spec/models/paginated_issue_list_spec.rb
 spec/spec_helper.rb
