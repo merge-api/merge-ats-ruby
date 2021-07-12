@@ -39,10 +39,13 @@ module MergeATSClient
     # Whether the job is confidential.
     attr_accessor :confidential
 
+    # IDs of `Department` objects for this `Job`.
     attr_accessor :departments
 
+    # IDs of `Office` objects for this `Job`.
     attr_accessor :offices
 
+    # IDs of `RemoteUser` objects that serve as hiring managers for this `Job`.
     attr_accessor :hiring_managers
 
     attr_accessor :remote_data

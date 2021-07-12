@@ -19,9 +19,9 @@
 | **phone_numbers** | [**Array&lt;PhoneNumber&gt;**](PhoneNumber.md) |  | [optional] |
 | **email_addresses** | [**Array&lt;EmailAddress&gt;**](EmailAddress.md) |  | [optional] |
 | **urls** | [**Array&lt;Url&gt;**](Url.md) |  | [optional] |
-| **tags** | **Array&lt;String&gt;** |  | [optional] |
-| **applications** | **Array&lt;String&gt;** |  | [optional] |
-| **attachments** | **Array&lt;String&gt;** |  | [optional] |
+| **tags** | **Array&lt;String&gt;** | Array of &#x60;Tag&#x60; names as strings. | [optional] |
+| **applications** | **Array&lt;String&gt;** | Array of &#x60;Application&#x60; object IDs. | [optional] |
+| **attachments** | **Array&lt;String&gt;** | Array of &#x60;Attachment&#x60; object IDs. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example

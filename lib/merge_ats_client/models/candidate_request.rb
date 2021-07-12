@@ -55,10 +55,13 @@ module MergeATSClient
 
     attr_accessor :urls
 
+    # Array of `Tag` names as strings.
     attr_accessor :tags
 
+    # Array of `Application` object IDs.
     attr_accessor :applications
 
+    # Array of `Attachment` object IDs.
     attr_accessor :attachments
 
     # Attribute mapping from ruby-style variable name to JSON key.

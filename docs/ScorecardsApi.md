@@ -11,7 +11,7 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 ## scorecards_create
 
-> <Scorecard> scorecards_create(x_account_token, remote_user_id, opts)
+> <Scorecard> scorecards_create(x_account_token, opts)
 
 
 
@@ -32,15 +32,15 @@ end
 
 api_instance = MergeATSClient::ScorecardsApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
-remote_user_id = 'remote_user_id_example' # String | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
 opts = {
+  remote_user_id: 'remote_user_id_example', # String | The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
   run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
   scorecard_request: MergeATSClient::ScorecardRequest.new # ScorecardRequest | 
 }
 
 begin
   
-  result = api_instance.scorecards_create(x_account_token, remote_user_id, opts)
+  result = api_instance.scorecards_create(x_account_token, opts)
   p result
 rescue MergeATSClient::ApiError => e
   puts "Error when calling ScorecardsApi->scorecards_create: #{e}"
@@ -51,12 +51,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Scorecard>, Integer, Hash)> scorecards_create_with_http_info(x_account_token, remote_user_id, opts)
+> <Array(<Scorecard>, Integer, Hash)> scorecards_create_with_http_info(x_account_token, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.scorecards_create_with_http_info(x_account_token, remote_user_id, opts)
+  data, status_code, headers = api_instance.scorecards_create_with_http_info(x_account_token, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Scorecard>
@@ -70,7 +70,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
-| **remote_user_id** | **String** | The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. |  |
+| **remote_user_id** | **String** | The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table. | [optional] |
 | **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
 | **scorecard_request** | [**ScorecardRequest**](ScorecardRequest.md) |  | [optional] |
 
