@@ -14,55 +14,19 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview  ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
-  class ScheduledInterviewRequest
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
+  class PaginatedIssueList
+    attr_accessor :_next
 
-    # The application being interviewed.
-    attr_accessor :application
+    attr_accessor :previous
 
-    # The stage of the interview.
-    attr_accessor :job_interview_stage
-
-    # The user organizing the interview.
-    attr_accessor :organizer
-
-    # Array of `RemoteUser` IDs.
-    attr_accessor :interviewers
-
-    # The interview's location.
-    attr_accessor :location
-
-    # When the interview was started.
-    attr_accessor :start_at
-
-    # When the interview was ended.
-    attr_accessor :end_at
-
-    # When the third party's interview was created.
-    attr_accessor :remote_created_at
-
-    # When the third party's interview was updated.
-    attr_accessor :remote_updated_at
-
-    # The interview's status.
-    attr_accessor :status
+    attr_accessor :results
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'remote_id' => :'remote_id',
-        :'application' => :'application',
-        :'job_interview_stage' => :'job_interview_stage',
-        :'organizer' => :'organizer',
-        :'interviewers' => :'interviewers',
-        :'location' => :'location',
-        :'start_at' => :'start_at',
-        :'end_at' => :'end_at',
-        :'remote_created_at' => :'remote_created_at',
-        :'remote_updated_at' => :'remote_updated_at',
-        :'status' => :'status'
+        :'_next' => :'next',
+        :'previous' => :'previous',
+        :'results' => :'results'
       }
     end
 
@@ -74,33 +38,17 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'remote_id' => :'String',
-        :'application' => :'String',
-        :'job_interview_stage' => :'String',
-        :'organizer' => :'String',
-        :'interviewers' => :'Array<String>',
-        :'location' => :'String',
-        :'start_at' => :'Time',
-        :'end_at' => :'Time',
-        :'remote_created_at' => :'Time',
-        :'remote_updated_at' => :'Time',
-        :'status' => :'ScheduledInterviewStatusEnum'
+        :'_next' => :'String',
+        :'previous' => :'String',
+        :'results' => :'Array<Issue>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
-        :'application',
-        :'job_interview_stage',
-        :'organizer',
-        :'location',
-        :'start_at',
-        :'end_at',
-        :'remote_created_at',
-        :'remote_updated_at',
-        :'status'
+        :'_next',
+        :'previous',
       ])
     end
 
@@ -108,61 +56,29 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::ScheduledInterviewRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::PaginatedIssueList` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::ScheduledInterviewRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::PaginatedIssueList`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
+      if attributes.key?(:'_next')
+        self._next = attributes[:'_next']
       end
 
-      if attributes.key?(:'application')
-        self.application = attributes[:'application']
+      if attributes.key?(:'previous')
+        self.previous = attributes[:'previous']
       end
 
-      if attributes.key?(:'job_interview_stage')
-        self.job_interview_stage = attributes[:'job_interview_stage']
-      end
-
-      if attributes.key?(:'organizer')
-        self.organizer = attributes[:'organizer']
-      end
-
-      if attributes.key?(:'interviewers')
-        if (value = attributes[:'interviewers']).is_a?(Array)
-          self.interviewers = value
+      if attributes.key?(:'results')
+        if (value = attributes[:'results']).is_a?(Array)
+          self.results = value
         end
-      end
-
-      if attributes.key?(:'location')
-        self.location = attributes[:'location']
-      end
-
-      if attributes.key?(:'start_at')
-        self.start_at = attributes[:'start_at']
-      end
-
-      if attributes.key?(:'end_at')
-        self.end_at = attributes[:'end_at']
-      end
-
-      if attributes.key?(:'remote_created_at')
-        self.remote_created_at = attributes[:'remote_created_at']
-      end
-
-      if attributes.key?(:'remote_updated_at')
-        self.remote_updated_at = attributes[:'remote_updated_at']
-      end
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
       end
     end
 
@@ -184,17 +100,9 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          remote_id == o.remote_id &&
-          application == o.application &&
-          job_interview_stage == o.job_interview_stage &&
-          organizer == o.organizer &&
-          interviewers == o.interviewers &&
-          location == o.location &&
-          start_at == o.start_at &&
-          end_at == o.end_at &&
-          remote_created_at == o.remote_created_at &&
-          remote_updated_at == o.remote_updated_at &&
-          status == o.status
+          _next == o._next &&
+          previous == o.previous &&
+          results == o.results
     end
 
     # @see the `==` method
@@ -206,7 +114,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, application, job_interview_stage, organizer, interviewers, location, start_at, end_at, remote_created_at, remote_updated_at, status].hash
+      [_next, previous, results].hash
     end
 
     # Builds the object from hash

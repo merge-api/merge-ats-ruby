@@ -7,7 +7,7 @@
 | **end_user_email_address** | **String** |  |  |
 | **end_user_organization_name** | **String** |  |  |
 | **end_user_origin_id** | **String** |  |  |
-| **categories** | **Array&lt;String&gt;** |  |  |
+| **categories** | **Array&lt;String&gt;** |  | [optional] |
 | **integration** | **String** |  | [optional] |
 
 ## Example

@@ -12,9 +12,9 @@
 | **remote_created_at** | **Time** | When the third party&#39;s job was created. | [optional] |
 | **remote_updated_at** | **Time** | When the third party&#39;s job was updated. | [optional] |
 | **confidential** | **Boolean** | Whether the job is confidential. | [optional] |
-| **departments** | **Array&lt;String&gt;** |  | [optional] |
-| **offices** | **Array&lt;String&gt;** |  | [optional] |
-| **hiring_managers** | **Array&lt;String&gt;** |  | [optional] |
+| **departments** | **Array&lt;String&gt;** | IDs of &#x60;Department&#x60; objects for this &#x60;Job&#x60;. | [optional] |
+| **offices** | **Array&lt;String&gt;** | IDs of &#x60;Office&#x60; objects for this &#x60;Job&#x60;. | [optional] |
+| **hiring_managers** | **Array&lt;String&gt;** | IDs of &#x60;RemoteUser&#x60; objects that serve as hiring managers for this &#x60;Job&#x60;. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example

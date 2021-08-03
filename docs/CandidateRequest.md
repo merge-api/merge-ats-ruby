@@ -18,9 +18,9 @@
 | **phone_numbers** | [**Array&lt;PhoneNumberRequest&gt;**](PhoneNumberRequest.md) |  | [optional] |
 | **email_addresses** | [**Array&lt;EmailAddressRequest&gt;**](EmailAddressRequest.md) |  | [optional] |
 | **urls** | [**Array&lt;UrlRequest&gt;**](UrlRequest.md) |  | [optional] |
-| **tags** | **Array&lt;String&gt;** |  | [optional] |
-| **applications** | **Array&lt;String&gt;** |  | [optional] |
-| **attachments** | **Array&lt;String&gt;** |  | [optional] |
+| **tags** | **Array&lt;String&gt;** | Array of &#x60;Tag&#x60; names as strings. | [optional] |
+| **applications** | **Array&lt;String&gt;** | Array of &#x60;Application&#x60; object IDs. | [optional] |
+| **attachments** | **Array&lt;String&gt;** | Array of &#x60;Attachment&#x60; object IDs. | [optional] |
 
 ## Example
 
