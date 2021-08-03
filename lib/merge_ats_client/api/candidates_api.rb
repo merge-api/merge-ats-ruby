@@ -101,8 +101,11 @@ module MergeATSClient
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :email_address If provided, will only return candidates with this email_address.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [String] :first_name If provided, will only return candidates with this first name.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
+    # @option opts [String] :last_name If provided, will only return candidates with this last name.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -119,8 +122,11 @@ module MergeATSClient
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :email_address If provided, will only return candidates with this email_address.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [String] :first_name If provided, will only return candidates with this first name.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
+    # @option opts [String] :last_name If provided, will only return candidates with this last name.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -146,8 +152,11 @@ module MergeATSClient
       query_params[:'created_after'] = opts[:'created_after'] if !opts[:'created_after'].nil?
       query_params[:'created_before'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'email_address'] = opts[:'email_address'] if !opts[:'email_address'].nil?
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
+      query_params[:'first_name'] = opts[:'first_name'] if !opts[:'first_name'].nil?
       query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
+      query_params[:'last_name'] = opts[:'last_name'] if !opts[:'last_name'].nil?
       query_params[:'modified_after'] = opts[:'modified_after'] if !opts[:'modified_after'].nil?
       query_params[:'modified_before'] = opts[:'modified_before'] if !opts[:'modified_before'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?

@@ -30,6 +30,7 @@ module MergeATSClient
     # The user organizing the interview.
     attr_accessor :organizer
 
+    # Array of `RemoteUser` IDs.
     attr_accessor :interviewers
 
     # The interview's location.
