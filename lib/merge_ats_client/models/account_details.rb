@@ -14,55 +14,31 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  class AccountIntegration
-    # Company name.
-    attr_accessor :name
+  class AccountDetails
+    attr_accessor :id
 
-    # Category or categories this integration belongs to. Multiple categories should be comma separated.<br/><br>Example: For [ats, hris], enter <i>ats,hris</i>
-    attr_accessor :categories
+    attr_accessor :integration
 
-    # Company logo in rectangular shape. <b>Upload an image with a clear background.</b>
-    attr_accessor :image
+    attr_accessor :category
 
-    # Company logo in square shape. <b>Upload an image with a white background.</b>
-    attr_accessor :square_image
+    attr_accessor :end_user_origin_id
 
-    # The color of this integration used for buttons and text throughout the app and landing pages. <b>Choose a darker, saturated color.</b>
-    attr_accessor :color
+    attr_accessor :end_user_organization_name
 
-    attr_accessor :slug
+    attr_accessor :end_user_email_address
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :status
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'categories' => :'categories',
-        :'image' => :'image',
-        :'square_image' => :'square_image',
-        :'color' => :'color',
-        :'slug' => :'slug'
+        :'id' => :'id',
+        :'integration' => :'integration',
+        :'category' => :'category',
+        :'end_user_origin_id' => :'end_user_origin_id',
+        :'end_user_organization_name' => :'end_user_organization_name',
+        :'end_user_email_address' => :'end_user_email_address',
+        :'status' => :'status'
       }
     end
 
@@ -74,20 +50,20 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'categories' => :'Array<String>',
-        :'image' => :'String',
-        :'square_image' => :'String',
-        :'color' => :'String',
-        :'slug' => :'String'
+        :'id' => :'String',
+        :'integration' => :'String',
+        :'category' => :'CategoryEnum',
+        :'end_user_origin_id' => :'String',
+        :'end_user_organization_name' => :'String',
+        :'end_user_email_address' => :'String',
+        :'status' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'image',
-        :'square_image',
+        :'category',
       ])
     end
 
@@ -95,41 +71,43 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AccountIntegration` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AccountDetails` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AccountIntegration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AccountDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'categories')
-        if (value = attributes[:'categories']).is_a?(Array)
-          self.categories = value
-        end
+      if attributes.key?(:'integration')
+        self.integration = attributes[:'integration']
       end
 
-      if attributes.key?(:'image')
-        self.image = attributes[:'image']
+      if attributes.key?(:'category')
+        self.category = attributes[:'category']
       end
 
-      if attributes.key?(:'square_image')
-        self.square_image = attributes[:'square_image']
+      if attributes.key?(:'end_user_origin_id')
+        self.end_user_origin_id = attributes[:'end_user_origin_id']
       end
 
-      if attributes.key?(:'color')
-        self.color = attributes[:'color']
+      if attributes.key?(:'end_user_organization_name')
+        self.end_user_organization_name = attributes[:'end_user_organization_name']
       end
 
-      if attributes.key?(:'slug')
-        self.slug = attributes[:'slug']
+      if attributes.key?(:'end_user_email_address')
+        self.end_user_email_address = attributes[:'end_user_email_address']
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
       end
     end
 
@@ -137,44 +115,13 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if !@color.nil? && @color.to_s.length > 18
-        invalid_properties.push('invalid value for "color", the character length must be smaller than or equal to 18.')
-      end
-
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !@color.nil? && @color !~ pattern
-        invalid_properties.push("invalid value for \"color\", must conform to the pattern #{pattern}.")
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if !@color.nil? && @color.to_s.length > 18
-      return false if !@color.nil? && @color !~ Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] color Value to be assigned
-    def color=(color)
-      if !color.nil? && color.to_s.length > 18
-        fail ArgumentError, 'invalid value for "color", the character length must be smaller than or equal to 18.'
-      end
-
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !color.nil? && color !~ pattern
-        fail ArgumentError, "invalid value for \"color\", must conform to the pattern #{pattern}."
-      end
-
-      @color = color
     end
 
     # Checks equality by comparing each attribute.
@@ -182,12 +129,13 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          categories == o.categories &&
-          image == o.image &&
-          square_image == o.square_image &&
-          color == o.color &&
-          slug == o.slug
+          id == o.id &&
+          integration == o.integration &&
+          category == o.category &&
+          end_user_origin_id == o.end_user_origin_id &&
+          end_user_organization_name == o.end_user_organization_name &&
+          end_user_email_address == o.end_user_email_address &&
+          status == o.status
     end
 
     # @see the `==` method
@@ -199,7 +147,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, categories, image, square_image, color, slug].hash
+      [id, integration, category, end_user_origin_id, end_user_organization_name, end_user_email_address, status].hash
     end
 
     # Builds the object from hash
@@ -242,7 +190,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

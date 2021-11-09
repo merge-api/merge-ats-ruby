@@ -14,45 +14,22 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  class AccountIntegration
-    # Company name.
+  class AccountDetailsAndActionsIntegration
     attr_accessor :name
 
-    # Category or categories this integration belongs to. Multiple categories should be comma separated.<br/><br>Example: For [ats, hris], enter <i>ats,hris</i>
     attr_accessor :categories
 
-    # Company logo in rectangular shape. <b>Upload an image with a clear background.</b>
     attr_accessor :image
 
-    # Company logo in square shape. <b>Upload an image with a white background.</b>
     attr_accessor :square_image
 
-    # The color of this integration used for buttons and text throughout the app and landing pages. <b>Choose a darker, saturated color.</b>
     attr_accessor :color
 
     attr_accessor :slug
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    attr_accessor :passthrough_available
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :available_model_operations
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -62,7 +39,9 @@ module MergeATSClient
         :'image' => :'image',
         :'square_image' => :'square_image',
         :'color' => :'color',
-        :'slug' => :'slug'
+        :'slug' => :'slug',
+        :'passthrough_available' => :'passthrough_available',
+        :'available_model_operations' => :'available_model_operations'
       }
     end
 
@@ -75,19 +54,19 @@ module MergeATSClient
     def self.openapi_types
       {
         :'name' => :'String',
-        :'categories' => :'Array<String>',
+        :'categories' => :'CategoriesEnum',
         :'image' => :'String',
         :'square_image' => :'String',
         :'color' => :'String',
-        :'slug' => :'String'
+        :'slug' => :'String',
+        :'passthrough_available' => :'Boolean',
+        :'available_model_operations' => :'Array<ModelOperation>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'image',
-        :'square_image',
       ])
     end
 
@@ -95,13 +74,13 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AccountIntegration` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AccountDetailsAndActionsIntegration` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AccountIntegration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AccountDetailsAndActionsIntegration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -111,9 +90,7 @@ module MergeATSClient
       end
 
       if attributes.key?(:'categories')
-        if (value = attributes[:'categories']).is_a?(Array)
-          self.categories = value
-        end
+        self.categories = attributes[:'categories']
       end
 
       if attributes.key?(:'image')
@@ -131,6 +108,16 @@ module MergeATSClient
       if attributes.key?(:'slug')
         self.slug = attributes[:'slug']
       end
+
+      if attributes.key?(:'passthrough_available')
+        self.passthrough_available = attributes[:'passthrough_available']
+      end
+
+      if attributes.key?(:'available_model_operations')
+        if (value = attributes[:'available_model_operations']).is_a?(Array)
+          self.available_model_operations = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -141,13 +128,20 @@ module MergeATSClient
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if !@color.nil? && @color.to_s.length > 18
-        invalid_properties.push('invalid value for "color", the character length must be smaller than or equal to 18.')
+      if @categories.nil?
+        invalid_properties.push('invalid value for "categories", categories cannot be nil.')
       end
 
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !@color.nil? && @color !~ pattern
-        invalid_properties.push("invalid value for \"color\", must conform to the pattern #{pattern}.")
+      if @color.nil?
+        invalid_properties.push('invalid value for "color", color cannot be nil.')
+      end
+
+      if @slug.nil?
+        invalid_properties.push('invalid value for "slug", slug cannot be nil.')
+      end
+
+      if @passthrough_available.nil?
+        invalid_properties.push('invalid value for "passthrough_available", passthrough_available cannot be nil.')
       end
 
       invalid_properties
@@ -157,24 +151,11 @@ module MergeATSClient
     # @return true if the model is valid
     def valid?
       return false if @name.nil?
-      return false if !@color.nil? && @color.to_s.length > 18
-      return false if !@color.nil? && @color !~ Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
+      return false if @categories.nil?
+      return false if @color.nil?
+      return false if @slug.nil?
+      return false if @passthrough_available.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] color Value to be assigned
-    def color=(color)
-      if !color.nil? && color.to_s.length > 18
-        fail ArgumentError, 'invalid value for "color", the character length must be smaller than or equal to 18.'
-      end
-
-      pattern = Regexp.new(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)
-      if !color.nil? && color !~ pattern
-        fail ArgumentError, "invalid value for \"color\", must conform to the pattern #{pattern}."
-      end
-
-      @color = color
     end
 
     # Checks equality by comparing each attribute.
@@ -187,7 +168,9 @@ module MergeATSClient
           image == o.image &&
           square_image == o.square_image &&
           color == o.color &&
-          slug == o.slug
+          slug == o.slug &&
+          passthrough_available == o.passthrough_available &&
+          available_model_operations == o.available_model_operations
     end
 
     # @see the `==` method
@@ -199,7 +182,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, categories, image, square_image, color, slug].hash
+      [name, categories, image, square_image, color, slug, passthrough_available, available_model_operations].hash
     end
 
     # Builds the object from hash
@@ -242,7 +225,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float
