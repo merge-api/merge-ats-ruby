@@ -79,7 +79,7 @@ module MergeATSClient
         :'credited_to' => :'String',
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
-        :'custom_fields' => :'Hash<String, AnyType>'
+        :'custom_fields' => :'Hash<String, Object>'
       }
     end
 

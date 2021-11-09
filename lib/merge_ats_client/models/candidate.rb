@@ -124,7 +124,7 @@ module MergeATSClient
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
         :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, AnyType>'
+        :'custom_fields' => :'Hash<String, Object>'
       }
     end
 

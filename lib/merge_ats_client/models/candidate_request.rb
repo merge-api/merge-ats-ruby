@@ -116,7 +116,7 @@ module MergeATSClient
         :'tags' => :'Array<String>',
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
-        :'custom_fields' => :'Hash<String, AnyType>'
+        :'custom_fields' => :'Hash<String, Object>'
       }
     end
 
