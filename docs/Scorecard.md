@@ -25,8 +25,8 @@ instance = MergeATSClient::Scorecard.new(
   application: 2872ba14-4084-492b-be96-e5eee6fc33ef,
   interview: 52bf9b5e-0beb-4f6f-8a72-cd4dca7ca633,
   interviewer: bbb519a3-246e-4b95-b6b3-dba16107ba6b,
-  remote_created_at: null,
-  submitted_at: null,
+  remote_created_at: 2021-10-15T00:00Z,
+  submitted_at: 2021-10-15T00:00Z,
   overall_recommendation: STRONG_YES,
   remote_data: [{&quot;path&quot;:&quot;/ratings&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )

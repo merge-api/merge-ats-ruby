@@ -23,7 +23,7 @@ instance = MergeATSClient::EEOC.new(
   id: f7dd7b4f-237e-4772-8bd4-3246384c6c58,
   remote_id: 76,
   candidate: f963f34d-3d2f-4f77-b557-cf36bc7e6498,
-  submitted_at: null,
+  submitted_at: 2021-10-15T00:00Z,
   race: HISPANIC_OR_LATINO,
   gender: FEMALE,
   veteran_status: I_AM_NOT_A_PROTECTED_VETERAN,

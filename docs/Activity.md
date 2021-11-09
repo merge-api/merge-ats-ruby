@@ -23,10 +23,10 @@ instance = MergeATSClient::Activity.new(
   id: ecbe05ac-62a3-46c5-ab31-4b478b37d1b4,
   remote_id: 198123,
   user: 9d892439-5fab-4dbb-8bd8-34f7f96c7912,
-  remote_created_at: null,
+  remote_created_at: 2021-10-15T00:00Z,
   activity_type: NOTE,
-  subject: Gil Feig&#39;s applicant status,
-  body: Candidate will only join if we provide a Barry&#39;s subsidy.,
+  subject: Gil Feig&#39;s interview,
+  body: Candidate loves integrations!!.,
   visibility: PRIVATE,
   remote_data: [{&quot;path&quot;:&quot;/actions&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )

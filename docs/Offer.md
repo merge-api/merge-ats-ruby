@@ -25,10 +25,10 @@ instance = MergeATSClient::Offer.new(
   remote_id: 9876,
   application: 2872ba14-4084-492b-be96-e5eee6fc33ef,
   creator: 52bf9b5e-0beb-4f6f-8a72-cd4dca7ca633,
-  remote_created_at: null,
-  closed_at: null,
-  sent_at: null,
-  start_date: null,
+  remote_created_at: 2021-10-15T00:00Z,
+  closed_at: 2021-10-16T00:00Z,
+  sent_at: 2021-10-15T00:00Z,
+  start_date: 2021-11-15T00:00Z,
   status: SENT,
   remote_data: [{&quot;path&quot;:&quot;/offers&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )

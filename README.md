@@ -83,6 +83,7 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*MergeATSClient::AccountDetailsApi* | [**account_details_retrieve**](docs/AccountDetailsApi.md#account_details_retrieve) | **GET** /account-details | 
 *MergeATSClient::AccountTokenApi* | [**account_token_retrieve**](docs/AccountTokenApi.md#account_token_retrieve) | **GET** /account-token/{public_token} | 
 *MergeATSClient::ActivitiesApi* | [**activities_list**](docs/ActivitiesApi.md#activities_list) | **GET** /activities | 
 *MergeATSClient::ActivitiesApi* | [**activities_retrieve**](docs/ActivitiesApi.md#activities_retrieve) | **GET** /activities/{id} | 
@@ -112,6 +113,7 @@ Class | Method | HTTP request | Description
 *MergeATSClient::JobsApi* | [**jobs_list**](docs/JobsApi.md#jobs_list) | **GET** /jobs | 
 *MergeATSClient::JobsApi* | [**jobs_retrieve**](docs/JobsApi.md#jobs_retrieve) | **GET** /jobs/{id} | 
 *MergeATSClient::LinkTokenApi* | [**link_token_create**](docs/LinkTokenApi.md#link_token_create) | **POST** /link-token | 
+*MergeATSClient::LinkedAccountsApi* | [**linked_accounts_list**](docs/LinkedAccountsApi.md#linked_accounts_list) | **GET** /linked-accounts | 
 *MergeATSClient::OffersApi* | [**offers_list**](docs/OffersApi.md#offers_list) | **GET** /offers | 
 *MergeATSClient::OffersApi* | [**offers_retrieve**](docs/OffersApi.md#offers_retrieve) | **GET** /offers/{id} | 
 *MergeATSClient::OfficesApi* | [**offices_list**](docs/OfficesApi.md#offices_list) | **GET** /offices | 
@@ -134,6 +136,10 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [MergeATSClient::AccessRoleEnum](docs/AccessRoleEnum.md)
+ - [MergeATSClient::AccountDetails](docs/AccountDetails.md)
+ - [MergeATSClient::AccountDetailsAndActions](docs/AccountDetailsAndActions.md)
+ - [MergeATSClient::AccountDetailsAndActionsIntegration](docs/AccountDetailsAndActionsIntegration.md)
+ - [MergeATSClient::AccountDetailsAndActionsStatusEnum](docs/AccountDetailsAndActionsStatusEnum.md)
  - [MergeATSClient::AccountIntegration](docs/AccountIntegration.md)
  - [MergeATSClient::AccountToken](docs/AccountToken.md)
  - [MergeATSClient::Activity](docs/Activity.md)
@@ -146,6 +152,8 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::AvailableActions](docs/AvailableActions.md)
  - [MergeATSClient::Candidate](docs/Candidate.md)
  - [MergeATSClient::CandidateRequest](docs/CandidateRequest.md)
+ - [MergeATSClient::CategoriesEnum](docs/CategoriesEnum.md)
+ - [MergeATSClient::CategoryEnum](docs/CategoryEnum.md)
  - [MergeATSClient::DataPassthroughRequest](docs/DataPassthroughRequest.md)
  - [MergeATSClient::Department](docs/Department.md)
  - [MergeATSClient::DisabilityStatusEnum](docs/DisabilityStatusEnum.md)
@@ -168,6 +176,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::OfferStatusEnum](docs/OfferStatusEnum.md)
  - [MergeATSClient::Office](docs/Office.md)
  - [MergeATSClient::OverallRecommendationEnum](docs/OverallRecommendationEnum.md)
+ - [MergeATSClient::PaginatedAccountDetailsAndActionsList](docs/PaginatedAccountDetailsAndActionsList.md)
  - [MergeATSClient::PaginatedActivityList](docs/PaginatedActivityList.md)
  - [MergeATSClient::PaginatedApplicationList](docs/PaginatedApplicationList.md)
  - [MergeATSClient::PaginatedAttachmentList](docs/PaginatedAttachmentList.md)
@@ -197,6 +206,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::RemoteResponse](docs/RemoteResponse.md)
  - [MergeATSClient::RemoteUser](docs/RemoteUser.md)
  - [MergeATSClient::RemoteUserRequest](docs/RemoteUserRequest.md)
+ - [MergeATSClient::RequestFormatEnum](docs/RequestFormatEnum.md)
  - [MergeATSClient::ScheduledInterview](docs/ScheduledInterview.md)
  - [MergeATSClient::ScheduledInterviewRequest](docs/ScheduledInterviewRequest.md)
  - [MergeATSClient::ScheduledInterviewStatusEnum](docs/ScheduledInterviewStatusEnum.md)
