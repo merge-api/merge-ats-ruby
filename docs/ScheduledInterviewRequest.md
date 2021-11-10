@@ -28,10 +28,10 @@ instance = MergeATSClient::ScheduledInterviewRequest.new(
   organizer: 52bf9b5e-0beb-4f6f-8a72-cd4dca7ca633,
   interviewers: [&quot;f9813dd5-e70b-484c-91d8-00acd6065b07&quot;,&quot;89a86fcf-d540-4e6b-ac3d-ce07c4ec9b3c&quot;],
   location: Embarcadero Center 2,
-  start_at: null,
-  end_at: null,
-  remote_created_at: null,
-  remote_updated_at: null,
+  start_at: 2021-10-15T00:00Z,
+  end_at: 2021-10-15T02:00Z,
+  remote_created_at: 2021-10-15T00:00Z,
+  remote_updated_at: 2021-10-15T00:00Z,
   status: SCHEDULED
 )
 ```

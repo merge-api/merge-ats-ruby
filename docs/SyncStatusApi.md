@@ -91,7 +91,7 @@ end
 
 
 
-Force resync of all models.
+Force re-sync of all models. This is only available for organizations on Merge's Grow and Expand plans.
 
 ### Examples
 

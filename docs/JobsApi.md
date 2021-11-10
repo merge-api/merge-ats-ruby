@@ -76,6 +76,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
+| **code** | **String** | If provided, will only return jobs with this code. | [optional] |
 | **created_after** | **Time** | If provided, will only return objects created after this datetime. | [optional] |
 | **created_before** | **Time** | If provided, will only return objects created before this datetime. | [optional] |
 | **cursor** | **String** | The pagination cursor value. | [optional] |

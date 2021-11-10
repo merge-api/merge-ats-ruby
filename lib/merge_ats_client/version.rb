@@ -11,5 +11,5 @@ OpenAPI Generator version: 5.1.1
 =end
 
 module MergeATSClient
-  VERSION = '1.0.2'
+  VERSION = '1.0.3'
 end

@@ -14,8 +14,8 @@
 require 'merge_ats_client'
 
 instance = MergeATSClient::PaginatedIssueList.new(
-  _next: null,
-  previous: null,
+  _next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw,
+  previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ,
   results: null
 )
 ```

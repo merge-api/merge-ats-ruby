@@ -26,7 +26,7 @@ instance = MergeATSClient::RemoteUser.new(
   last_name: Ding,
   email: hello@merge.dev,
   disabled: null,
-  remote_created_at: null,
+  remote_created_at: 2020-11-10T00:00Z,
   access_role: SUPER_ADMIN,
   remote_data: [{&quot;path&quot;:&quot;/users&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )

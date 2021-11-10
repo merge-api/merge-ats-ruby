@@ -8,6 +8,7 @@
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
 | **name** | **String** | The job&#39;s name. | [optional] |
 | **description** | **String** | The job&#39;s description. | [optional] |
+| **code** | **String** | The job&#39;s code. Typically an additional identifier used to reference the particular job that is displayed on the ATS. | [optional] |
 | **status** | [**JobStatusEnum**](JobStatusEnum.md) | The job&#39;s status. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s job was created. | [optional] |
 | **remote_updated_at** | **Time** | When the third party&#39;s job was updated. | [optional] |
@@ -26,10 +27,11 @@ instance = MergeATSClient::Job.new(
   id: 022a2bef-57e5-4def-8ed2-7c41bd9a5ed8,
   remote_id: 8765432,
   name: Software Engineer (Merge is actually hiring btw),
-  description: If you&#39;re reading this documentation. You might be a good fit!,
+  description: &lt;b&gt;If you&#39;re reading this documentation, you might be a good fit for Merge!&lt;/b&gt;,
+  code: C0025,
   status: OPEN,
-  remote_created_at: null,
-  remote_updated_at: null,
+  remote_created_at: 2021-10-15T00:00Z,
+  remote_updated_at: 2021-10-16T00:00Z,
   confidential: true,
   departments: [&quot;5b3c1341-a20f-4e51-b72c-f3830a16c97b&quot;,&quot;d6e687d6-0c36-48a1-8114-35324b5cb38f&quot;],
   offices: [&quot;9871b4a9-f5d2-4f3b-a66b-dfedbed42c46&quot;],
