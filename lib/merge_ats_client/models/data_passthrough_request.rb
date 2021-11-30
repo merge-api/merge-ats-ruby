@@ -52,7 +52,7 @@ module MergeATSClient
         :'path' => :'String',
         :'base_url_override' => :'String',
         :'data' => :'Hash<String, Object>',
-        :'headers' => :'Hash<String, Object>'
+        :'headers' => :'Hash<String, Object>',
         :'request_format' => :'RequestFormatEnum'
       }
     end
