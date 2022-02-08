@@ -14,14 +14,13 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Activity Object ### Description The `Activity` object is used to represent an activity performed by a user.  ### Usage Example Fetch from the `LIST Activities` endpoint and filter by `ID` to show all activities.
+  # # The Activity Object ### Description The `Activity` object is used to represent an activity performed by a user. ### Usage Example Fetch from the `LIST Activities` endpoint and filter by `ID` to show all activities.
   class Activity
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The user the performed the action.
     attr_accessor :user
 
     # When the third party's activity was created.

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **candidate** | **String** | The candidate being represented. | [optional] |
+| **candidate** | **String** |  | [optional] |
 | **submitted_at** | **Time** | When the information was submitted. | [optional] |
 | **race** | [**RaceEnum**](RaceEnum.md) | The candidate&#39;s race. | [optional] |
 | **gender** | [**GenderEnum**](GenderEnum.md) | The candidate&#39;s gender. | [optional] |

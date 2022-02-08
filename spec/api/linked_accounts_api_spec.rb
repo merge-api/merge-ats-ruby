@@ -35,15 +35,15 @@ describe 'LinkedAccountsApi' do
   # unit tests for linked_accounts_list
   # List linked accounts for your organization.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :category category
-  # @option opts [Integer] :cursor The pagination cursor value.
-  # @option opts [String] :end_user_email_address end_user_email_address
-  # @option opts [String] :end_user_organization_name end_user_organization_name
-  # @option opts [String] :end_user_origin_id end_user_origin_id
+  # @option opts [String] :category 
+  # @option opts [String] :cursor The pagination cursor value.
+  # @option opts [String] :end_user_email_address 
+  # @option opts [String] :end_user_organization_name 
+  # @option opts [String] :end_user_origin_id 
   # @option opts [String] :end_user_origin_ids Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once
-  # @option opts [String] :id id
+  # @option opts [String] :id 
   # @option opts [String] :ids Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once
-  # @option opts [String] :integration_name integration_name
+  # @option opts [String] :integration_name 
   # @option opts [String] :is_test_account If included, will only include test linked accounts. If not included, will only include non-test linked accounts
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :status Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60;

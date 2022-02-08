@@ -51,8 +51,8 @@ module MergeATSClient
         :'method' => :'MethodEnum',
         :'path' => :'String',
         :'base_url_override' => :'String',
-        :'data' => :'Hash<String, Object>',
-        :'headers' => :'Hash<String, Object>'
+        :'data' => :'String',
+        :'headers' => :'Hash<String, AnyType>',
         :'request_format' => :'RequestFormatEnum'
       }
     end
@@ -121,6 +121,18 @@ module MergeATSClient
         invalid_properties.push('invalid value for "path", path cannot be nil.')
       end
 
+      if @path.to_s.length < 1
+        invalid_properties.push('invalid value for "path", the character length must be great than or equal to 1.')
+      end
+
+      if !@base_url_override.nil? && @base_url_override.to_s.length < 1
+        invalid_properties.push('invalid value for "base_url_override", the character length must be great than or equal to 1.')
+      end
+
+      if !@data.nil? && @data.to_s.length < 1
+        invalid_properties.push('invalid value for "data", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -129,7 +141,44 @@ module MergeATSClient
     def valid?
       return false if @method.nil?
       return false if @path.nil?
+      return false if @path.to_s.length < 1
+      return false if !@base_url_override.nil? && @base_url_override.to_s.length < 1
+      return false if !@data.nil? && @data.to_s.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] path Value to be assigned
+    def path=(path)
+      if path.nil?
+        fail ArgumentError, 'path cannot be nil'
+      end
+
+      if path.to_s.length < 1
+        fail ArgumentError, 'invalid value for "path", the character length must be great than or equal to 1.'
+      end
+
+      @path = path
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] base_url_override Value to be assigned
+    def base_url_override=(base_url_override)
+      if !base_url_override.nil? && base_url_override.to_s.length < 1
+        fail ArgumentError, 'invalid value for "base_url_override", the character length must be great than or equal to 1.'
+      end
+
+      @base_url_override = base_url_override
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] data Value to be assigned
+    def data=(data)
+      if !data.nil? && data.to_s.length < 1
+        fail ArgumentError, 'invalid value for "data", the character length must be great than or equal to 1.'
+      end
+
+      @data = data
     end
 
     # Checks equality by comparing each attribute.
@@ -197,7 +246,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

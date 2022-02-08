@@ -6,9 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **application** | **String** | The application being interviewed. | [optional] |
-| **job_interview_stage** | **String** | The stage of the interview. | [optional] |
-| **organizer** | **String** | The user organizing the interview. | [optional] |
+| **application** | **String** |  | [optional] |
+| **job_interview_stage** | **String** |  | [optional] |
+| **organizer** | **String** |  | [optional] |
 | **interviewers** | **Array&lt;String&gt;** | Array of &#x60;RemoteUser&#x60; IDs. | [optional] |
 | **location** | **String** | The interview&#39;s location. | [optional] |
 | **start_at** | **Time** | When the interview was started. | [optional] |

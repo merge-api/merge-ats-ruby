@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **user** | **String** | The user the performed the action. | [optional] |
+| **user** | **String** |  | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s activity was created. | [optional] |
 | **activity_type** | [**ActivityTypeEnum**](ActivityTypeEnum.md) | The activity&#39;s type. | [optional] |
 | **subject** | **String** | The activity&#39;s subject. | [optional] |

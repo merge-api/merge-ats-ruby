@@ -30,6 +30,8 @@ module MergeATSClient
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
+      constantValues = DisabilityStatusEnum.constants.select { |c| DisabilityStatusEnum::const_get(c) == value }
+      raise "Invalid ENUM value #{value} for class #DisabilityStatusEnum" if constantValues.empty?
       value
     end
   end

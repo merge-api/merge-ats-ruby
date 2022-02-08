@@ -22,6 +22,8 @@ module MergeATSClient
 
     attr_accessor :status
 
+    attr_accessor :status_detail
+
     attr_accessor :end_user_origin_id
 
     attr_accessor :end_user_organization_name
@@ -36,6 +38,7 @@ module MergeATSClient
         :'id' => :'id',
         :'category' => :'category',
         :'status' => :'status',
+        :'status_detail' => :'status_detail',
         :'end_user_origin_id' => :'end_user_origin_id',
         :'end_user_organization_name' => :'end_user_organization_name',
         :'end_user_email_address' => :'end_user_email_address',
@@ -54,6 +57,7 @@ module MergeATSClient
         :'id' => :'String',
         :'category' => :'CategoryEnum',
         :'status' => :'AccountDetailsAndActionsStatusEnum',
+        :'status_detail' => :'String',
         :'end_user_origin_id' => :'String',
         :'end_user_organization_name' => :'String',
         :'end_user_email_address' => :'String',
@@ -92,6 +96,10 @@ module MergeATSClient
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'status_detail')
+        self.status_detail = attributes[:'status_detail']
       end
 
       if attributes.key?(:'end_user_origin_id')
@@ -152,6 +160,7 @@ module MergeATSClient
           id == o.id &&
           category == o.category &&
           status == o.status &&
+          status_detail == o.status_detail &&
           end_user_origin_id == o.end_user_origin_id &&
           end_user_organization_name == o.end_user_organization_name &&
           end_user_email_address == o.end_user_email_address &&
@@ -167,7 +176,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, category, status, end_user_origin_id, end_user_organization_name, end_user_email_address, integration].hash
+      [id, category, status, status_detail, end_user_origin_id, end_user_organization_name, end_user_email_address, integration].hash
     end
 
     # Builds the object from hash

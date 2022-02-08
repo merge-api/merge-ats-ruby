@@ -35,15 +35,15 @@ describe 'IssuesApi' do
   # unit tests for issues_list
   # Gets issues.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :account_token account_token
-  # @option opts [Integer] :cursor The pagination cursor value.
+  # @option opts [String] :account_token 
+  # @option opts [String] :cursor The pagination cursor value.
   # @option opts [String] :end_date If included, will only include issues whose most recent action occurred before this time
-  # @option opts [String] :end_user_organization_name end_user_organization_name
+  # @option opts [String] :end_user_organization_name 
   # @option opts [String] :include_muted If True, will include muted issues
-  # @option opts [String] :integration_name integration_name
+  # @option opts [String] :integration_name 
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :start_date If included, will only include issues whose most recent action occurred after this time
-  # @option opts [String] :status status
+  # @option opts [String] :status 
   # @return [PaginatedIssueList]
   describe 'issues_list test' do
     it 'should work' do

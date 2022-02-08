@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
 | **name** | **String** | The tag&#39;s name. | [optional] |
-| **remote_data** | **Array&lt;Hash&lt;String, AnyType&gt;&gt;** |  | [optional] |
+| **remote_data** | **String** |  | [optional][readonly] |
 
 ## Example
 

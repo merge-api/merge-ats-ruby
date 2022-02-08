@@ -14,20 +14,17 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview  ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
+  # # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
   class Scorecard
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The application being scored.
     attr_accessor :application
 
-    # The interview being scored.
     attr_accessor :interview
 
-    # The interviewer doing the scoring.
     attr_accessor :interviewer
 
     # When the third party's scorecard was created.

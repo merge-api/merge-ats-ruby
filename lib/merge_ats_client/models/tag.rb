@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Tag Object ### Description The `Tag` object is used to represent a tag for a candidate.  ### Usage Example Fetch from the `LIST Tags` endpoint and view the tags used within a company.
+  # # The Tag Object ### Description The `Tag` object is used to represent a tag for a candidate. ### Usage Example Fetch from the `LIST Tags` endpoint and view the tags used within a company.
   class Tag
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
@@ -43,7 +43,7 @@ module MergeATSClient
       {
         :'remote_id' => :'String',
         :'name' => :'String',
-        :'remote_data' => :'Array<RemoteData>'
+        :'remote_data' => :'String'
       }
     end
 
@@ -52,7 +52,6 @@ module MergeATSClient
       Set.new([
         :'remote_id',
         :'name',
-        :'remote_data'
       ])
     end
 
@@ -80,9 +79,7 @@ module MergeATSClient
       end
 
       if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
-        end
+        self.remote_data = attributes[:'remote_data']
       end
     end
 
@@ -161,7 +158,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

@@ -16,9 +16,9 @@
 | **is_private** | **Boolean** | Whether or not the candidate is private. | [optional] |
 | **can_email** | **Boolean** | Whether or not the candidate can be emailed. | [optional] |
 | **locations** | **Array&lt;String&gt;** | The candidate&#39;s locations. | [optional] |
-| **phone_numbers** | [**Array&lt;PhoneNumber&gt;**](PhoneNumber.md) |  | [optional] |
-| **email_addresses** | [**Array&lt;EmailAddress&gt;**](EmailAddress.md) |  | [optional] |
-| **urls** | [**Array&lt;Url&gt;**](Url.md) |  | [optional] |
+| **phone_numbers** | [**Array&lt;PhoneNumber&gt;**](PhoneNumber.md) |  | [optional][readonly] |
+| **email_addresses** | [**Array&lt;EmailAddress&gt;**](EmailAddress.md) |  | [optional][readonly] |
+| **urls** | [**Array&lt;Url&gt;**](Url.md) |  | [optional][readonly] |
 | **tags** | **Array&lt;String&gt;** | Array of &#x60;Tag&#x60; names as strings. | [optional] |
 | **applications** | **Array&lt;String&gt;** | Array of &#x60;Application&#x60; object IDs. | [optional] |
 | **attachments** | **Array&lt;String&gt;** | Array of &#x60;Attachment&#x60; object IDs. | [optional] |

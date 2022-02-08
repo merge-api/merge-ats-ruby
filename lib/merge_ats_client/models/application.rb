@@ -14,17 +14,15 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position. ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
   class Application
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The candidate applying.
     attr_accessor :candidate
 
-    # The job being applied for.
     attr_accessor :job
 
     # When the application was submitted.
@@ -39,10 +37,8 @@ module MergeATSClient
     # The user credited for this application.
     attr_accessor :credited_to
 
-    # The application's current stage.
     attr_accessor :current_stage
 
-    # The application's reason for rejection.
     attr_accessor :reject_reason
 
     attr_accessor :remote_data
@@ -87,7 +83,7 @@ module MergeATSClient
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
         :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, Object>'
+        :'custom_fields' => :'Hash<String, AnyType>'
       }
     end
 

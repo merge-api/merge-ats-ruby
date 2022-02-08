@@ -14,20 +14,17 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview  ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
+  # # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
   class ScheduledInterview
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The application being interviewed.
     attr_accessor :application
 
-    # The stage of the interview.
     attr_accessor :job_interview_stage
 
-    # The user organizing the interview.
     attr_accessor :organizer
 
     # Array of `RemoteUser` IDs.

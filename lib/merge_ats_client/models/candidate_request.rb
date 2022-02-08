@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions.  ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
   class CandidateRequest
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
@@ -49,12 +49,6 @@ module MergeATSClient
     # The candidate's locations.
     attr_accessor :locations
 
-    attr_accessor :phone_numbers
-
-    attr_accessor :email_addresses
-
-    attr_accessor :urls
-
     # Array of `Tag` names as strings.
     attr_accessor :tags
 
@@ -66,6 +60,12 @@ module MergeATSClient
 
     # Custom fields configured for a given model.
     attr_accessor :custom_fields
+
+    attr_accessor :remote_template_id
+
+    attr_accessor :integration_params
+
+    attr_accessor :linked_account_params
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -81,13 +81,13 @@ module MergeATSClient
         :'is_private' => :'is_private',
         :'can_email' => :'can_email',
         :'locations' => :'locations',
-        :'phone_numbers' => :'phone_numbers',
-        :'email_addresses' => :'email_addresses',
-        :'urls' => :'urls',
         :'tags' => :'tags',
         :'applications' => :'applications',
         :'attachments' => :'attachments',
-        :'custom_fields' => :'custom_fields'
+        :'custom_fields' => :'custom_fields',
+        :'remote_template_id' => :'remote_template_id',
+        :'integration_params' => :'integration_params',
+        :'linked_account_params' => :'linked_account_params'
       }
     end
 
@@ -110,13 +110,13 @@ module MergeATSClient
         :'is_private' => :'Boolean',
         :'can_email' => :'Boolean',
         :'locations' => :'Array<String>',
-        :'phone_numbers' => :'Array<PhoneNumberRequest>',
-        :'email_addresses' => :'Array<EmailAddressRequest>',
-        :'urls' => :'Array<UrlRequest>',
         :'tags' => :'Array<String>',
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
-        :'custom_fields' => :'Hash<String, Object>'
+        :'custom_fields' => :'Hash<String, AnyType>',
+        :'remote_template_id' => :'String',
+        :'integration_params' => :'Hash<String, AnyType>',
+        :'linked_account_params' => :'Hash<String, AnyType>'
       }
     end
 
@@ -134,7 +134,10 @@ module MergeATSClient
         :'is_private',
         :'can_email',
         :'locations',
-        :'custom_fields'
+        :'custom_fields',
+        :'remote_template_id',
+        :'integration_params',
+        :'linked_account_params'
       ])
     end
 
@@ -199,24 +202,6 @@ module MergeATSClient
         end
       end
 
-      if attributes.key?(:'phone_numbers')
-        if (value = attributes[:'phone_numbers']).is_a?(Array)
-          self.phone_numbers = value
-        end
-      end
-
-      if attributes.key?(:'email_addresses')
-        if (value = attributes[:'email_addresses']).is_a?(Array)
-          self.email_addresses = value
-        end
-      end
-
-      if attributes.key?(:'urls')
-        if (value = attributes[:'urls']).is_a?(Array)
-          self.urls = value
-        end
-      end
-
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -240,19 +225,50 @@ module MergeATSClient
           self.custom_fields = value
         end
       end
+
+      if attributes.key?(:'remote_template_id')
+        self.remote_template_id = attributes[:'remote_template_id']
+      end
+
+      if attributes.key?(:'integration_params')
+        if (value = attributes[:'integration_params']).is_a?(Hash)
+          self.integration_params = value
+        end
+      end
+
+      if attributes.key?(:'linked_account_params')
+        if (value = attributes[:'linked_account_params']).is_a?(Hash)
+          self.linked_account_params = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@remote_template_id.nil? && @remote_template_id.to_s.length < 1
+        invalid_properties.push('invalid value for "remote_template_id", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@remote_template_id.nil? && @remote_template_id.to_s.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] remote_template_id Value to be assigned
+    def remote_template_id=(remote_template_id)
+      if !remote_template_id.nil? && remote_template_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "remote_template_id", the character length must be great than or equal to 1.'
+      end
+
+      @remote_template_id = remote_template_id
     end
 
     # Checks equality by comparing each attribute.
@@ -271,13 +287,13 @@ module MergeATSClient
           is_private == o.is_private &&
           can_email == o.can_email &&
           locations == o.locations &&
-          phone_numbers == o.phone_numbers &&
-          email_addresses == o.email_addresses &&
-          urls == o.urls &&
           tags == o.tags &&
           applications == o.applications &&
           attachments == o.attachments &&
-          custom_fields == o.custom_fields
+          custom_fields == o.custom_fields &&
+          remote_template_id == o.remote_template_id &&
+          integration_params == o.integration_params &&
+          linked_account_params == o.linked_account_params
     end
 
     # @see the `==` method
@@ -289,7 +305,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, custom_fields].hash
+      [remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, tags, applications, attachments, custom_fields, remote_template_id, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash
@@ -332,7 +348,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

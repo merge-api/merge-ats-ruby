@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent the stage of an interview  ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
+  # # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent the stage of an interview ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
   class JobInterviewStage
     attr_accessor :id
 
@@ -24,7 +24,6 @@ module MergeATSClient
     # The stage's name.
     attr_accessor :name
 
-    # If stages are specific to a job, this is the job that this stage belongs to.
     attr_accessor :job
 
     attr_accessor :remote_data

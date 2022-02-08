@@ -14,17 +14,15 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Offer Object ### Description The `Offer` object is used to represent an offer for an application.  ### Usage Example Fetch from the `LIST Offers` endpoint and filter by `ID` to show all offers.
+  # # The Offer Object ### Description The `Offer` object is used to represent an offer for an application. ### Usage Example Fetch from the `LIST Offers` endpoint and filter by `ID` to show all offers.
   class Offer
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The application who is receiving the offer.
     attr_accessor :application
 
-    # The user who created the offer.
     attr_accessor :creator
 
     # When the third party's offer was created.

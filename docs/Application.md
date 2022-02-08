@@ -6,14 +6,14 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **candidate** | **String** | The candidate applying. | [optional] |
-| **job** | **String** | The job being applied for. | [optional] |
+| **candidate** | **String** |  | [optional] |
+| **job** | **String** |  | [optional] |
 | **applied_at** | **Time** | When the application was submitted. | [optional] |
 | **rejected_at** | **Time** | When the application was rejected. | [optional] |
 | **source** | **String** | The application&#39;s source. | [optional] |
 | **credited_to** | **String** | The user credited for this application. | [optional] |
-| **current_stage** | **String** | The application&#39;s current stage. | [optional] |
-| **reject_reason** | **String** | The application&#39;s reason for rejection. | [optional] |
+| **current_stage** | **String** |  | [optional] |
+| **reject_reason** | **String** |  | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 | **custom_fields** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) | Custom fields configured for a given model. | [optional] |
 

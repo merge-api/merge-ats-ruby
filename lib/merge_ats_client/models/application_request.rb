@@ -14,15 +14,13 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position. ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
   class ApplicationRequest
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The candidate applying.
     attr_accessor :candidate
 
-    # The job being applied for.
     attr_accessor :job
 
     # When the application was submitted.
@@ -37,14 +35,18 @@ module MergeATSClient
     # The user credited for this application.
     attr_accessor :credited_to
 
-    # The application's current stage.
     attr_accessor :current_stage
 
-    # The application's reason for rejection.
     attr_accessor :reject_reason
 
     # Custom fields configured for a given model.
     attr_accessor :custom_fields
+
+    attr_accessor :remote_template_id
+
+    attr_accessor :integration_params
+
+    attr_accessor :linked_account_params
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -58,7 +60,10 @@ module MergeATSClient
         :'credited_to' => :'credited_to',
         :'current_stage' => :'current_stage',
         :'reject_reason' => :'reject_reason',
-        :'custom_fields' => :'custom_fields'
+        :'custom_fields' => :'custom_fields',
+        :'remote_template_id' => :'remote_template_id',
+        :'integration_params' => :'integration_params',
+        :'linked_account_params' => :'linked_account_params'
       }
     end
 
@@ -79,7 +84,10 @@ module MergeATSClient
         :'credited_to' => :'String',
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
-        :'custom_fields' => :'Hash<String, Object>'
+        :'custom_fields' => :'Hash<String, AnyType>',
+        :'remote_template_id' => :'String',
+        :'integration_params' => :'Hash<String, AnyType>',
+        :'linked_account_params' => :'Hash<String, AnyType>'
       }
     end
 
@@ -95,7 +103,10 @@ module MergeATSClient
         :'credited_to',
         :'current_stage',
         :'reject_reason',
-        :'custom_fields'
+        :'custom_fields',
+        :'remote_template_id',
+        :'integration_params',
+        :'linked_account_params'
       ])
     end
 
@@ -155,19 +166,50 @@ module MergeATSClient
           self.custom_fields = value
         end
       end
+
+      if attributes.key?(:'remote_template_id')
+        self.remote_template_id = attributes[:'remote_template_id']
+      end
+
+      if attributes.key?(:'integration_params')
+        if (value = attributes[:'integration_params']).is_a?(Hash)
+          self.integration_params = value
+        end
+      end
+
+      if attributes.key?(:'linked_account_params')
+        if (value = attributes[:'linked_account_params']).is_a?(Hash)
+          self.linked_account_params = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@remote_template_id.nil? && @remote_template_id.to_s.length < 1
+        invalid_properties.push('invalid value for "remote_template_id", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@remote_template_id.nil? && @remote_template_id.to_s.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] remote_template_id Value to be assigned
+    def remote_template_id=(remote_template_id)
+      if !remote_template_id.nil? && remote_template_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "remote_template_id", the character length must be great than or equal to 1.'
+      end
+
+      @remote_template_id = remote_template_id
     end
 
     # Checks equality by comparing each attribute.
@@ -184,7 +226,10 @@ module MergeATSClient
           credited_to == o.credited_to &&
           current_stage == o.current_stage &&
           reject_reason == o.reject_reason &&
-          custom_fields == o.custom_fields
+          custom_fields == o.custom_fields &&
+          remote_template_id == o.remote_template_id &&
+          integration_params == o.integration_params &&
+          linked_account_params == o.linked_account_params
     end
 
     # @see the `==` method
@@ -196,7 +241,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, custom_fields].hash
+      [remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, custom_fields, remote_template_id, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash
@@ -239,7 +284,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

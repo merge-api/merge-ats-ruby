@@ -21,24 +21,24 @@ module MergeATSClient
     end
     # Creates an `Application` object with the given values.
     # @param x_account_token [String] Token identifying the end user.
-    # @param remote_user_id [String] The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+    # @param application_endpoint_request [ApplicationEndpointRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :is_debug_mode Whether to include debug fields (such as log file links) in the response.
     # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [ApplicationRequest] :application_request 
-    # @return [Application]
-    def applications_create(x_account_token, remote_user_id, opts = {})
-      data, _status_code, _headers = applications_create_with_http_info(x_account_token, remote_user_id, opts)
+    # @return [ApplicationResponse]
+    def applications_create(x_account_token, application_endpoint_request, opts = {})
+      data, _status_code, _headers = applications_create_with_http_info(x_account_token, application_endpoint_request, opts)
       data
     end
 
     # Creates an &#x60;Application&#x60; object with the given values.
     # @param x_account_token [String] Token identifying the end user.
-    # @param remote_user_id [String] The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+    # @param application_endpoint_request [ApplicationEndpointRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :is_debug_mode Whether to include debug fields (such as log file links) in the response.
     # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
-    # @option opts [ApplicationRequest] :application_request 
-    # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
-    def applications_create_with_http_info(x_account_token, remote_user_id, opts = {})
+    # @return [Array<(ApplicationResponse, Integer, Hash)>] ApplicationResponse data, response status code and response headers
+    def applications_create_with_http_info(x_account_token, application_endpoint_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationsApi.applications_create ...'
       end
@@ -46,16 +46,16 @@ module MergeATSClient
       if @api_client.config.client_side_validation && x_account_token.nil?
         fail ArgumentError, "Missing the required parameter 'x_account_token' when calling ApplicationsApi.applications_create"
       end
-      # verify the required parameter 'remote_user_id' is set
-      if @api_client.config.client_side_validation && remote_user_id.nil?
-        fail ArgumentError, "Missing the required parameter 'remote_user_id' when calling ApplicationsApi.applications_create"
+      # verify the required parameter 'application_endpoint_request' is set
+      if @api_client.config.client_side_validation && application_endpoint_request.nil?
+        fail ArgumentError, "Missing the required parameter 'application_endpoint_request' when calling ApplicationsApi.applications_create"
       end
       # resource path
       local_var_path = '/applications'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'remote_user_id'] = remote_user_id
+      query_params[:'is_debug_mode'] = opts[:'is_debug_mode'] if !opts[:'is_debug_mode'].nil?
       query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
 
       # header parameters
@@ -70,10 +70,10 @@ module MergeATSClient
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'application_request'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(application_endpoint_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Application'
+      return_type = opts[:debug_return_type] || 'ApplicationResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['tokenAuth']
@@ -105,6 +105,7 @@ module MergeATSClient
     # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_id If provided, will only return applications for this job.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -128,6 +129,7 @@ module MergeATSClient
     # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_id If provided, will only return applications for this job.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -160,6 +162,7 @@ module MergeATSClient
       query_params[:'current_stage_id'] = opts[:'current_stage_id'] if !opts[:'current_stage_id'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
+      query_params[:'include_deleted_data'] = opts[:'include_deleted_data'] if !opts[:'include_deleted_data'].nil?
       query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
       query_params[:'job_id'] = opts[:'job_id'] if !opts[:'job_id'].nil?
       query_params[:'modified_after'] = opts[:'modified_after'] if !opts[:'modified_after'].nil?

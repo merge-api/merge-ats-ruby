@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions.  ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
   class Candidate
     attr_accessor :id
 
@@ -124,7 +124,7 @@ module MergeATSClient
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
         :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, Object>'
+        :'custom_fields' => :'Hash<String, AnyType>'
       }
     end
 

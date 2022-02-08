@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The RejectReason Object ### Description The `RejectReason` object is used to represent a reason for rejecting an application.  ### Usage Example Fetch from the `LIST RejectReasons` endpoint and filter by `ID` to show all reasons.
+  # # The RejectReason Object ### Description The `RejectReason` object is used to represent a reason for rejecting an application. ### Usage Example Fetch from the `LIST RejectReasons` endpoint and filter by `ID` to show all reasons.
   class RejectReason
     attr_accessor :id
 
@@ -170,7 +170,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

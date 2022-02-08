@@ -18,13 +18,13 @@
 require 'merge_ats_client'
 
 instance = MergeATSClient::AccountDetails.new(
-  id: null,
-  integration: null,
-  category: null,
-  end_user_origin_id: null,
-  end_user_organization_name: null,
-  end_user_email_address: null,
-  status: null
+  id: 0496d4c2-42e6-4072-80b3-7b69bfdc76fd,
+  integration: BambooHR,
+  category: hris,
+  end_user_origin_id: 3fa85f64-5717-4562-b3fc-2c963f66afa6,
+  end_user_organization_name: Waystar Royco,
+  end_user_email_address: kendall.roy@waystar-royco.com,
+  status: COMPLETE
 )
 ```
 

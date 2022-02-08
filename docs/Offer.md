@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **application** | **String** | The application who is receiving the offer. | [optional] |
-| **creator** | **String** | The user who created the offer. | [optional] |
+| **application** | **String** |  | [optional] |
+| **creator** | **String** |  | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s offer was created. | [optional] |
 | **closed_at** | **Time** | When the offer was closed. | [optional] |
 | **sent_at** | **Time** | When the offer was sent. | [optional] |
