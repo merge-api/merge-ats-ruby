@@ -43,6 +43,12 @@ describe MergeATSClient::AccountDetailsAndActions do
     end
   end
 
+  describe 'test attribute "status_detail"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "end_user_origin_id"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -56,6 +62,12 @@ describe MergeATSClient::AccountDetailsAndActions do
   end
 
   describe 'test attribute "end_user_email_address"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "webhook_listener_url"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

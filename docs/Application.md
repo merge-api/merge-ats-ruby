@@ -6,16 +6,17 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **candidate** | **String** | The candidate applying. | [optional] |
-| **job** | **String** | The job being applied for. | [optional] |
+| **candidate** | **String** |  | [optional] |
+| **job** | **String** |  | [optional] |
 | **applied_at** | **Time** | When the application was submitted. | [optional] |
 | **rejected_at** | **Time** | When the application was rejected. | [optional] |
 | **source** | **String** | The application&#39;s source. | [optional] |
-| **credited_to** | **String** | The user credited for this application. | [optional] |
-| **current_stage** | **String** | The application&#39;s current stage. | [optional] |
-| **reject_reason** | **String** | The application&#39;s reason for rejection. | [optional] |
+| **credited_to** | **String** |  | [optional] |
+| **current_stage** | **String** |  | [optional] |
+| **reject_reason** | **String** |  | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 | **custom_fields** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) | Custom fields configured for a given model. | [optional] |
+| **remote_was_deleted** | **Boolean** |  | [optional][readonly] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = MergeATSClient::Application.new(
   current_stage: d578dfdc-7b0a-4ab6-a2b0-4b40f20eb9ea,
   reject_reason: 59b25f2b-da02-40f5-9656-9fa0db555784,
   remote_data: [{&quot;path&quot;:&quot;/candidacies&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
-  custom_fields: null
+  custom_fields: null,
+  remote_was_deleted: null
 )
 ```
 

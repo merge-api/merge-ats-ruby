@@ -24,6 +24,7 @@
 | **attachments** | **Array&lt;String&gt;** | Array of &#x60;Attachment&#x60; object IDs. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 | **custom_fields** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) | Custom fields configured for a given model. | [optional] |
+| **remote_was_deleted** | **Boolean** |  | [optional][readonly] |
 
 ## Example
 
@@ -50,7 +51,8 @@ instance = MergeATSClient::Candidate.new(
   applications: [&quot;29eb9867-ce2a-403f-b8ce-f2844b89f078&quot;,&quot;b4d08e5c-de00-4d64-a29f-66addac9af99&quot;,&quot;4ff877d2-fb3e-4a5b-a7a5-168ddf2ffa56&quot;],
   attachments: [&quot;bea08964-32b4-4a20-8bb4-2612ba09de1d&quot;],
   remote_data: [{&quot;path&quot;:&quot;/candidates&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
-  custom_fields: null
+  custom_fields: null,
+  remote_was_deleted: null
 )
 ```
 

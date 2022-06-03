@@ -26,6 +26,7 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_id If provided, will only return interview stages for this job.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -45,6 +46,7 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_id If provided, will only return interview stages for this job.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -60,7 +62,7 @@ module MergeATSClient
       if @api_client.config.client_side_validation && x_account_token.nil?
         fail ArgumentError, "Missing the required parameter 'x_account_token' when calling JobInterviewStagesApi.job_interview_stages_list"
       end
-      allowable_values = ["departments", "departments,job", "departments,offices", "departments,offices,job", "job", "offices", "offices,job"]
+      allowable_values = ["job"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
@@ -73,6 +75,7 @@ module MergeATSClient
       query_params[:'created_before'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
+      query_params[:'include_deleted_data'] = opts[:'include_deleted_data'] if !opts[:'include_deleted_data'].nil?
       query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
       query_params[:'job_id'] = opts[:'job_id'] if !opts[:'job_id'].nil?
       query_params[:'modified_after'] = opts[:'modified_after'] if !opts[:'modified_after'].nil?
@@ -146,7 +149,7 @@ module MergeATSClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling JobInterviewStagesApi.job_interview_stages_retrieve"
       end
-      allowable_values = ["departments", "departments,job", "departments,offices", "departments,offices,job", "job", "offices", "offices,job"]
+      allowable_values = ["job"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end

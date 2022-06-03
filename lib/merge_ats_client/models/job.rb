@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Job Object ### Description The `Job` object is used to represent a Job offering at a company.  ### Usage Example Fetch from the `LIST Jobs` endpoint to show all job postings.
+  # # The Job Object ### Description The `Job` object is used to represent a Job offering at a company. ### Usage Example Fetch from the `LIST Jobs` endpoint to show all job postings.
   class Job
     attr_accessor :id
 
@@ -51,7 +51,13 @@ module MergeATSClient
     # IDs of `RemoteUser` objects that serve as hiring managers for this `Job`.
     attr_accessor :hiring_managers
 
+    # IDs of RemoteUser objects that serve as recruiters for this Job.
+    attr_accessor :recruiters
+
     attr_accessor :remote_data
+
+    # Indicates whether or not this object has been deleted on the third-party.
+    attr_accessor :remote_was_deleted
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -68,7 +74,9 @@ module MergeATSClient
         :'departments' => :'departments',
         :'offices' => :'offices',
         :'hiring_managers' => :'hiring_managers',
-        :'remote_data' => :'remote_data'
+        :'recruiters' => :'recruiters',
+        :'remote_data' => :'remote_data',
+        :'remote_was_deleted' => :'remote_was_deleted'
       }
     end
 
@@ -92,7 +100,9 @@ module MergeATSClient
         :'departments' => :'Array<String>',
         :'offices' => :'Array<String>',
         :'hiring_managers' => :'Array<String>',
-        :'remote_data' => :'Array<RemoteData>'
+        :'recruiters' => :'Array<String>',
+        :'remote_data' => :'Array<RemoteData>',
+        :'remote_was_deleted' => :'Boolean'
       }
     end
 
@@ -107,7 +117,7 @@ module MergeATSClient
         :'remote_created_at',
         :'remote_updated_at',
         :'confidential',
-        :'remote_data'
+        :'remote_data',
       ])
     end
 
@@ -180,10 +190,20 @@ module MergeATSClient
         end
       end
 
+      if attributes.key?(:'recruiters')
+        if (value = attributes[:'recruiters']).is_a?(Array)
+          self.recruiters = value
+        end
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
         end
+      end
+
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
     end
 
@@ -217,7 +237,9 @@ module MergeATSClient
           departments == o.departments &&
           offices == o.offices &&
           hiring_managers == o.hiring_managers &&
-          remote_data == o.remote_data
+          recruiters == o.recruiters &&
+          remote_data == o.remote_data &&
+          remote_was_deleted == o.remote_was_deleted
     end
 
     # @see the `==` method
@@ -229,7 +251,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, description, code, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, remote_data].hash
+      [id, remote_id, name, description, code, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, recruiters, remote_data, remote_was_deleted].hash
     end
 
     # Builds the object from hash

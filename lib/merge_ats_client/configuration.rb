@@ -197,11 +197,13 @@ module MergeATSClient
 
     # Gets API key (with prefix if set).
     # @param [String] param_name the parameter name of API key auth
-    def api_key_with_prefix(param_name)
+    def api_key_with_prefix(param_name, param_alias = nil)
+      key = @api_key[param_name]
+      key = @api_key.fetch(param_alias, key) unless param_alias.nil?
       if @api_key_prefix[param_name]
-        "#{@api_key_prefix[param_name]} #{@api_key[param_name]}"
+        "#{@api_key_prefix[param_name]} #{key}"
       else
-        @api_key[param_name]
+        key
       end
     end
 
@@ -218,7 +220,7 @@ module MergeATSClient
             type: 'api_key',
             in: 'header',
             key: 'Authorization',
-            value: api_key_with_prefix('Authorization')
+            value: api_key_with_prefix('tokenAuth')
           },
       }
     end

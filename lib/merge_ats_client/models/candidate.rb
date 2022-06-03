@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions.  ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
   class Candidate
     attr_accessor :id
 
@@ -71,6 +71,8 @@ module MergeATSClient
     # Custom fields configured for a given model.
     attr_accessor :custom_fields
 
+    attr_accessor :remote_was_deleted
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -93,7 +95,8 @@ module MergeATSClient
         :'applications' => :'applications',
         :'attachments' => :'attachments',
         :'remote_data' => :'remote_data',
-        :'custom_fields' => :'custom_fields'
+        :'custom_fields' => :'custom_fields',
+        :'remote_was_deleted' => :'remote_was_deleted'
       }
     end
 
@@ -124,7 +127,8 @@ module MergeATSClient
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
         :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, Object>'
+        :'custom_fields' => :'Hash<String, AnyType>',
+        :'remote_was_deleted' => :'Boolean'
       }
     end
 
@@ -143,7 +147,7 @@ module MergeATSClient
         :'can_email',
         :'locations',
         :'remote_data',
-        :'custom_fields'
+        :'custom_fields',
       ])
     end
 
@@ -259,6 +263,10 @@ module MergeATSClient
           self.custom_fields = value
         end
       end
+
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -298,7 +306,8 @@ module MergeATSClient
           applications == o.applications &&
           attachments == o.attachments &&
           remote_data == o.remote_data &&
-          custom_fields == o.custom_fields
+          custom_fields == o.custom_fields &&
+          remote_was_deleted == o.remote_was_deleted
     end
 
     # @see the `==` method
@@ -310,7 +319,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_data, custom_fields].hash
+      [id, remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_data, custom_fields, remote_was_deleted].hash
     end
 
     # Builds the object from hash

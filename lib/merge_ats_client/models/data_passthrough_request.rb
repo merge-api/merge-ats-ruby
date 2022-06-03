@@ -24,6 +24,10 @@ module MergeATSClient
 
     attr_accessor :data
 
+    # Pass an array of `MultipartFormField` objects in here instead of using the `data` param if `request_format` is set to `MULTIPART`.
+    attr_accessor :multipart_form_data
+
+    # The headers to use for the request (Merge will handle the account's authorization headers). `Content-Type` header is required for passthrough. Choose content type corresponding to expected format of receiving server.
     attr_accessor :headers
 
     attr_accessor :request_format
@@ -35,6 +39,7 @@ module MergeATSClient
         :'path' => :'path',
         :'base_url_override' => :'base_url_override',
         :'data' => :'data',
+        :'multipart_form_data' => :'multipart_form_data',
         :'headers' => :'headers',
         :'request_format' => :'request_format'
       }
@@ -51,8 +56,9 @@ module MergeATSClient
         :'method' => :'MethodEnum',
         :'path' => :'String',
         :'base_url_override' => :'String',
-        :'data' => :'Hash<String, Object>',
-        :'headers' => :'Hash<String, Object>',
+        :'data' => :'String',
+        :'multipart_form_data' => :'Array<MultipartFormFieldRequest>',
+        :'headers' => :'Hash<String, AnyType>',
         :'request_format' => :'RequestFormatEnum'
       }
     end
@@ -62,6 +68,7 @@ module MergeATSClient
       Set.new([
         :'base_url_override',
         :'data',
+        :'multipart_form_data',
         :'headers',
         :'request_format'
       ])
@@ -98,6 +105,12 @@ module MergeATSClient
         self.data = attributes[:'data']
       end
 
+      if attributes.key?(:'multipart_form_data')
+        if (value = attributes[:'multipart_form_data']).is_a?(Array)
+          self.multipart_form_data = value
+        end
+      end
+
       if attributes.key?(:'headers')
         if (value = attributes[:'headers']).is_a?(Hash)
           self.headers = value
@@ -121,6 +134,18 @@ module MergeATSClient
         invalid_properties.push('invalid value for "path", path cannot be nil.')
       end
 
+      if @path.to_s.length < 1
+        invalid_properties.push('invalid value for "path", the character length must be great than or equal to 1.')
+      end
+
+      if !@base_url_override.nil? && @base_url_override.to_s.length < 1
+        invalid_properties.push('invalid value for "base_url_override", the character length must be great than or equal to 1.')
+      end
+
+      if !@data.nil? && @data.to_s.length < 1
+        invalid_properties.push('invalid value for "data", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -129,7 +154,44 @@ module MergeATSClient
     def valid?
       return false if @method.nil?
       return false if @path.nil?
+      return false if @path.to_s.length < 1
+      return false if !@base_url_override.nil? && @base_url_override.to_s.length < 1
+      return false if !@data.nil? && @data.to_s.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] path Value to be assigned
+    def path=(path)
+      if path.nil?
+        fail ArgumentError, 'path cannot be nil'
+      end
+
+      if path.to_s.length < 1
+        fail ArgumentError, 'invalid value for "path", the character length must be great than or equal to 1.'
+      end
+
+      @path = path
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] base_url_override Value to be assigned
+    def base_url_override=(base_url_override)
+      if !base_url_override.nil? && base_url_override.to_s.length < 1
+        fail ArgumentError, 'invalid value for "base_url_override", the character length must be great than or equal to 1.'
+      end
+
+      @base_url_override = base_url_override
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] data Value to be assigned
+    def data=(data)
+      if !data.nil? && data.to_s.length < 1
+        fail ArgumentError, 'invalid value for "data", the character length must be great than or equal to 1.'
+      end
+
+      @data = data
     end
 
     # Checks equality by comparing each attribute.
@@ -141,6 +203,7 @@ module MergeATSClient
           path == o.path &&
           base_url_override == o.base_url_override &&
           data == o.data &&
+          multipart_form_data == o.multipart_form_data &&
           headers == o.headers &&
           request_format == o.request_format
     end
@@ -154,7 +217,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [method, path, base_url_override, data, headers, request_format].hash
+      [method, path, base_url_override, data, multipart_form_data, headers, request_format].hash
     end
 
     # Builds the object from hash
@@ -197,7 +260,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

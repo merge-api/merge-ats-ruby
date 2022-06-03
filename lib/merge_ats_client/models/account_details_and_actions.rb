@@ -22,11 +22,15 @@ module MergeATSClient
 
     attr_accessor :status
 
+    attr_accessor :status_detail
+
     attr_accessor :end_user_origin_id
 
     attr_accessor :end_user_organization_name
 
     attr_accessor :end_user_email_address
+
+    attr_accessor :webhook_listener_url
 
     attr_accessor :integration
 
@@ -36,9 +40,11 @@ module MergeATSClient
         :'id' => :'id',
         :'category' => :'category',
         :'status' => :'status',
+        :'status_detail' => :'status_detail',
         :'end_user_origin_id' => :'end_user_origin_id',
         :'end_user_organization_name' => :'end_user_organization_name',
         :'end_user_email_address' => :'end_user_email_address',
+        :'webhook_listener_url' => :'webhook_listener_url',
         :'integration' => :'integration'
       }
     end
@@ -54,9 +60,11 @@ module MergeATSClient
         :'id' => :'String',
         :'category' => :'CategoryEnum',
         :'status' => :'AccountDetailsAndActionsStatusEnum',
+        :'status_detail' => :'String',
         :'end_user_origin_id' => :'String',
         :'end_user_organization_name' => :'String',
         :'end_user_email_address' => :'String',
+        :'webhook_listener_url' => :'String',
         :'integration' => :'AccountDetailsAndActionsIntegration'
       }
     end
@@ -94,6 +102,10 @@ module MergeATSClient
         self.status = attributes[:'status']
       end
 
+      if attributes.key?(:'status_detail')
+        self.status_detail = attributes[:'status_detail']
+      end
+
       if attributes.key?(:'end_user_origin_id')
         self.end_user_origin_id = attributes[:'end_user_origin_id']
       end
@@ -104,6 +116,10 @@ module MergeATSClient
 
       if attributes.key?(:'end_user_email_address')
         self.end_user_email_address = attributes[:'end_user_email_address']
+      end
+
+      if attributes.key?(:'webhook_listener_url')
+        self.webhook_listener_url = attributes[:'webhook_listener_url']
       end
 
       if attributes.key?(:'integration')
@@ -131,6 +147,10 @@ module MergeATSClient
         invalid_properties.push('invalid value for "end_user_email_address", end_user_email_address cannot be nil.')
       end
 
+      if @webhook_listener_url.nil?
+        invalid_properties.push('invalid value for "webhook_listener_url", webhook_listener_url cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -141,6 +161,7 @@ module MergeATSClient
       return false if @status.nil?
       return false if @end_user_organization_name.nil?
       return false if @end_user_email_address.nil?
+      return false if @webhook_listener_url.nil?
       true
     end
 
@@ -152,9 +173,11 @@ module MergeATSClient
           id == o.id &&
           category == o.category &&
           status == o.status &&
+          status_detail == o.status_detail &&
           end_user_origin_id == o.end_user_origin_id &&
           end_user_organization_name == o.end_user_organization_name &&
           end_user_email_address == o.end_user_email_address &&
+          webhook_listener_url == o.webhook_listener_url &&
           integration == o.integration
     end
 
@@ -167,7 +190,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, category, status, end_user_origin_id, end_user_organization_name, end_user_email_address, integration].hash
+      [id, category, status, status_detail, end_user_origin_id, end_user_organization_name, end_user_email_address, webhook_listener_url, integration].hash
     end
 
     # Builds the object from hash

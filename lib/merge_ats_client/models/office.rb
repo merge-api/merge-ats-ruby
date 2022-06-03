@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Office Object ### Description The `Office` object is used to represent an office within a company.  ### Usage Example Fetch from the `LIST Offices` endpoint and view the offices within a company.
+  # # The Office Object ### Description The `Office` object is used to represent an office within a company. ### Usage Example Fetch from the `LIST Offices` endpoint and view the offices within a company.
   class Office
     attr_accessor :id
 
@@ -29,6 +29,9 @@ module MergeATSClient
 
     attr_accessor :remote_data
 
+    # Indicates whether or not this object has been deleted on the third-party.
+    attr_accessor :remote_was_deleted
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -36,7 +39,8 @@ module MergeATSClient
         :'remote_id' => :'remote_id',
         :'name' => :'name',
         :'location' => :'location',
-        :'remote_data' => :'remote_data'
+        :'remote_data' => :'remote_data',
+        :'remote_was_deleted' => :'remote_was_deleted'
       }
     end
 
@@ -52,7 +56,8 @@ module MergeATSClient
         :'remote_id' => :'String',
         :'name' => :'String',
         :'location' => :'String',
-        :'remote_data' => :'Array<RemoteData>'
+        :'remote_data' => :'Array<RemoteData>',
+        :'remote_was_deleted' => :'Boolean'
       }
     end
 
@@ -62,7 +67,7 @@ module MergeATSClient
         :'remote_id',
         :'name',
         :'location',
-        :'remote_data'
+        :'remote_data',
       ])
     end
 
@@ -102,6 +107,10 @@ module MergeATSClient
           self.remote_data = value
         end
       end
+
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -126,7 +135,8 @@ module MergeATSClient
           remote_id == o.remote_id &&
           name == o.name &&
           location == o.location &&
-          remote_data == o.remote_data
+          remote_data == o.remote_data &&
+          remote_was_deleted == o.remote_was_deleted
     end
 
     # @see the `==` method
@@ -138,7 +148,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, location, remote_data].hash
+      [id, remote_id, name, location, remote_data, remote_was_deleted].hash
     end
 
     # Builds the object from hash
@@ -181,7 +191,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

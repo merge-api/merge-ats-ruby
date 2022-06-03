@@ -18,6 +18,7 @@ module MergeATSClient
     SYNCING = "SYNCING".freeze
     DONE = "DONE".freeze
     FAILED = "FAILED".freeze
+    DISABLED = "DISABLED".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
@@ -30,8 +31,6 @@ module MergeATSClient
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      constantValues = SyncStatusStatusEnum.constants.select { |c| SyncStatusStatusEnum::const_get(c) == value }
-      raise "Invalid ENUM value #{value} for class #SyncStatusStatusEnum" if constantValues.empty?
       value
     end
   end

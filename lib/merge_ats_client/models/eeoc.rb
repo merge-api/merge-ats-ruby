@@ -14,14 +14,13 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The EEOC Object ### Description The `EEOC` object is used to represent the Equal Employment Opportunity Commission information for a candidate.  ### Usage Example Fetch from the `LIST EEOCs` endpoint and filter by `candidate` to show all EEOC information for a candidate.
+  # # The EEOC Object ### Description The `EEOC` object is used to represent the Equal Employment Opportunity Commission information for a candidate. ### Usage Example Fetch from the `LIST EEOCs` endpoint and filter by `candidate` to show all EEOC information for a candidate.
   class EEOC
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The candidate being represented.
     attr_accessor :candidate
 
     # When the information was submitted.
@@ -41,6 +40,9 @@ module MergeATSClient
 
     attr_accessor :remote_data
 
+    # Indicates whether or not this object has been deleted on the third-party.
+    attr_accessor :remote_was_deleted
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -52,7 +54,8 @@ module MergeATSClient
         :'gender' => :'gender',
         :'veteran_status' => :'veteran_status',
         :'disability_status' => :'disability_status',
-        :'remote_data' => :'remote_data'
+        :'remote_data' => :'remote_data',
+        :'remote_was_deleted' => :'remote_was_deleted'
       }
     end
 
@@ -72,7 +75,8 @@ module MergeATSClient
         :'gender' => :'GenderEnum',
         :'veteran_status' => :'VeteranStatusEnum',
         :'disability_status' => :'DisabilityStatusEnum',
-        :'remote_data' => :'Array<RemoteData>'
+        :'remote_data' => :'Array<RemoteData>',
+        :'remote_was_deleted' => :'Boolean'
       }
     end
 
@@ -86,7 +90,7 @@ module MergeATSClient
         :'gender',
         :'veteran_status',
         :'disability_status',
-        :'remote_data'
+        :'remote_data',
       ])
     end
 
@@ -142,6 +146,10 @@ module MergeATSClient
           self.remote_data = value
         end
       end
+
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -170,7 +178,8 @@ module MergeATSClient
           gender == o.gender &&
           veteran_status == o.veteran_status &&
           disability_status == o.disability_status &&
-          remote_data == o.remote_data
+          remote_data == o.remote_data &&
+          remote_was_deleted == o.remote_was_deleted
     end
 
     # @see the `==` method
@@ -182,7 +191,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, candidate, submitted_at, race, gender, veteran_status, disability_status, remote_data].hash
+      [id, remote_id, candidate, submitted_at, race, gender, veteran_status, disability_status, remote_data, remote_was_deleted].hash
     end
 
     # Builds the object from hash

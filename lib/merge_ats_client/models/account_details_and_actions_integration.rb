@@ -54,7 +54,7 @@ module MergeATSClient
     def self.openapi_types
       {
         :'name' => :'String',
-        :'categories' => :'CategoriesEnum',
+        :'categories' => :'Array<CategoriesEnum>',
         :'image' => :'String',
         :'square_image' => :'String',
         :'color' => :'String',
@@ -90,7 +90,9 @@ module MergeATSClient
       end
 
       if attributes.key?(:'categories')
-        self.categories = attributes[:'categories']
+        if (value = attributes[:'categories']).is_a?(Array)
+          self.categories = value
+        end
       end
 
       if attributes.key?(:'image')

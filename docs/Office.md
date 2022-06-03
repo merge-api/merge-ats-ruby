@@ -9,6 +9,7 @@
 | **name** | **String** | The office&#39;s name. | [optional] |
 | **location** | **String** | The office&#39;s location. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted on the third-party. | [optional][readonly] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = MergeATSClient::Office.new(
   remote_id: 876556788,
   name: SF Office,
   location: Embarcadero Center 2,
-  remote_data: [{&quot;path&quot;:&quot;/locations&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
+  remote_data: [{&quot;path&quot;:&quot;/locations&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
+  remote_was_deleted: null
 )
 ```
 

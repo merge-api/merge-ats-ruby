@@ -13,6 +13,7 @@
 | **remote_created_at** | **Time** | When the third party&#39;s user was created. | [optional] |
 | **access_role** | [**AccessRoleEnum**](AccessRoleEnum.md) | The user&#39;s role. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted on the third-party. | [optional][readonly] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = MergeATSClient::RemoteUser.new(
   disabled: null,
   remote_created_at: 2020-11-10T00:00Z,
   access_role: SUPER_ADMIN,
-  remote_data: [{&quot;path&quot;:&quot;/users&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
+  remote_data: [{&quot;path&quot;:&quot;/users&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
+  remote_was_deleted: null
 )
 ```
 

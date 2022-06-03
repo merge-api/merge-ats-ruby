@@ -6,13 +6,14 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **application** | **String** | The application being scored. | [optional] |
-| **interview** | **String** | The interview being scored. | [optional] |
-| **interviewer** | **String** | The interviewer doing the scoring. | [optional] |
+| **application** | **String** |  | [optional] |
+| **interview** | **String** |  | [optional] |
+| **interviewer** | **String** |  | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s scorecard was created. | [optional] |
 | **submitted_at** | **Time** | When the scorecard was submitted. | [optional] |
 | **overall_recommendation** | [**OverallRecommendationEnum**](OverallRecommendationEnum.md) | The inteviewer&#39;s recommendation. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted on the third-party. | [optional][readonly] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = MergeATSClient::Scorecard.new(
   remote_created_at: 2021-10-15T00:00Z,
   submitted_at: 2021-10-15T00:00Z,
   overall_recommendation: STRONG_YES,
-  remote_data: [{&quot;path&quot;:&quot;/ratings&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
+  remote_data: [{&quot;path&quot;:&quot;/ratings&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
+  remote_was_deleted: null
 )
 ```
 
