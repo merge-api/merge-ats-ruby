@@ -14,17 +14,15 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position. This is separate from the Candidate object, although some systems may only allow a Candidate to have one Application.  Please note: Application objects are constructed if the object does not exist in the remote system.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
   class Application
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The candidate applying.
     attr_accessor :candidate
 
-    # The job being applied for.
     attr_accessor :job
 
     # When the application was submitted.
@@ -36,19 +34,18 @@ module MergeATSClient
     # The application's source.
     attr_accessor :source
 
-    # The user credited for this application.
     attr_accessor :credited_to
 
-    # The application's current stage.
     attr_accessor :current_stage
 
-    # The application's reason for rejection.
     attr_accessor :reject_reason
 
     attr_accessor :remote_data
 
     # Custom fields configured for a given model.
     attr_accessor :custom_fields
+
+    attr_accessor :remote_was_deleted
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -64,7 +61,8 @@ module MergeATSClient
         :'current_stage' => :'current_stage',
         :'reject_reason' => :'reject_reason',
         :'remote_data' => :'remote_data',
-        :'custom_fields' => :'custom_fields'
+        :'custom_fields' => :'custom_fields',
+        :'remote_was_deleted' => :'remote_was_deleted'
       }
     end
 
@@ -87,7 +85,8 @@ module MergeATSClient
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
         :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, Object>'
+        :'custom_fields' => :'Hash<String, AnyType>',
+        :'remote_was_deleted' => :'Boolean'
       }
     end
 
@@ -104,7 +103,7 @@ module MergeATSClient
         :'current_stage',
         :'reject_reason',
         :'remote_data',
-        :'custom_fields'
+        :'custom_fields',
       ])
     end
 
@@ -174,6 +173,10 @@ module MergeATSClient
           self.custom_fields = value
         end
       end
+
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -205,7 +208,8 @@ module MergeATSClient
           current_stage == o.current_stage &&
           reject_reason == o.reject_reason &&
           remote_data == o.remote_data &&
-          custom_fields == o.custom_fields
+          custom_fields == o.custom_fields &&
+          remote_was_deleted == o.remote_was_deleted
     end
 
     # @see the `==` method
@@ -217,7 +221,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_data, custom_fields].hash
+      [id, remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_data, custom_fields, remote_was_deleted].hash
     end
 
     # Builds the object from hash

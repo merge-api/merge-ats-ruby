@@ -6,14 +6,15 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **application** | **String** | The application who is receiving the offer. | [optional] |
-| **creator** | **String** | The user who created the offer. | [optional] |
+| **application** | **String** |  | [optional] |
+| **creator** | **String** |  | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s offer was created. | [optional] |
 | **closed_at** | **Time** | When the offer was closed. | [optional] |
 | **sent_at** | **Time** | When the offer was sent. | [optional] |
 | **start_date** | **Time** | The employment start date on the offer. | [optional] |
 | **status** | [**OfferStatusEnum**](OfferStatusEnum.md) | The offer&#39;s status. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted on the third-party. | [optional][readonly] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = MergeATSClient::Offer.new(
   sent_at: 2021-10-15T00:00Z,
   start_date: 2021-11-15T00:00Z,
   status: SENT,
-  remote_data: [{&quot;path&quot;:&quot;/offers&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
+  remote_data: [{&quot;path&quot;:&quot;/offers&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
+  remote_was_deleted: null
 )
 ```
 

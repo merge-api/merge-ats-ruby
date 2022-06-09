@@ -23,23 +23,23 @@ require 'merge_ats_client'
 # setup authorization
 MergeATSClient.configure do |config|
   # Configure API key authorization: tokenAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
+  config.api_key['tokenAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  config.api_key_prefix['Authorization'] = 'Bearer'
+  # config.api_key_prefix['tokenAuth'] = 'Bearer'
 end
 
 api_instance = MergeATSClient::LinkedAccountsApi.new
 opts = {
-  category: 'accounting', # String | category
-  cursor: 56, # Integer | The pagination cursor value.
-  end_user_email_address: 'end_user_email_address_example', # String | end_user_email_address
-  end_user_organization_name: 'end_user_organization_name_example', # String | end_user_organization_name
-  end_user_origin_id: 'end_user_origin_id_example', # String | end_user_origin_id
-  end_user_origin_ids: 'end_user_origin_ids_example', # String | Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once
-  id: TODO, # String | id
-  ids: 'ids_example', # String | Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once
-  integration_name: 'integration_name_example', # String | integration_name
-  is_test_account: 'is_test_account_example', # String | If included, will only include test linked accounts. If not included, will only include non-test linked accounts
+  category: 'accounting', # String | 
+  cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
+  end_user_email_address: 'end_user_email_address_example', # String | If provided, will only return linked accounts associated with the given email address.
+  end_user_organization_name: 'end_user_organization_name_example', # String | If provided, will only return linked accounts associated with the given organization name.
+  end_user_origin_id: 'end_user_origin_id_example', # String | If provided, will only return linked accounts associated with the given origin ID.
+  end_user_origin_ids: 'end_user_origin_ids_example', # String | Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once.
+  id: TODO, # String | 
+  ids: 'ids_example', # String | Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once.
+  integration_name: 'integration_name_example', # String | If provided, will only return linked accounts associated with the given integration name.
+  is_test_account: 'is_test_account_example', # String | If included, will only include test linked accounts. If not included, will only include non-test linked accounts.
   page_size: 56, # Integer | Number of results to return per page.
   status: 'status_example' # String | Filter by status. Options: `COMPLETE`, `INCOMPLETE`, `RELINK_NEEDED`
 }
@@ -75,16 +75,16 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **category** | **String** | category | [optional] |
-| **cursor** | **Integer** | The pagination cursor value. | [optional] |
-| **end_user_email_address** | **String** | end_user_email_address | [optional] |
-| **end_user_organization_name** | **String** | end_user_organization_name | [optional] |
-| **end_user_origin_id** | **String** | end_user_origin_id | [optional] |
-| **end_user_origin_ids** | **String** | Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once | [optional] |
-| **id** | [**String**](.md) | id | [optional] |
-| **ids** | **String** | Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once | [optional] |
-| **integration_name** | **String** | integration_name | [optional] |
-| **is_test_account** | **String** | If included, will only include test linked accounts. If not included, will only include non-test linked accounts | [optional] |
+| **category** | **String** |  | [optional] |
+| **cursor** | **String** | The pagination cursor value. | [optional] |
+| **end_user_email_address** | **String** | If provided, will only return linked accounts associated with the given email address. | [optional] |
+| **end_user_organization_name** | **String** | If provided, will only return linked accounts associated with the given organization name. | [optional] |
+| **end_user_origin_id** | **String** | If provided, will only return linked accounts associated with the given origin ID. | [optional] |
+| **end_user_origin_ids** | **String** | Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. | [optional] |
+| **id** | [**String**](.md) |  | [optional] |
+| **ids** | **String** | Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. | [optional] |
+| **integration_name** | **String** | If provided, will only return linked accounts associated with the given integration name. | [optional] |
+| **is_test_account** | **String** | If included, will only include test linked accounts. If not included, will only include non-test linked accounts. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **status** | **String** | Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; | [optional] |
 

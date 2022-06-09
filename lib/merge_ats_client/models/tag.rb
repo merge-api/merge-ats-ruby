@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Tag Object ### Description The `Tag` object is used to represent a tag for a candidate.  ### Usage Example Fetch from the `LIST Tags` endpoint and view the tags used within a company.
+  # # The Tag Object ### Description The `Tag` object is used to represent a tag for a candidate. ### Usage Example Fetch from the `LIST Tags` endpoint and view the tags used within a company.
   class Tag
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
@@ -24,12 +24,16 @@ module MergeATSClient
 
     attr_accessor :remote_data
 
+    # Indicates whether or not this object has been deleted on the third-party.
+    attr_accessor :remote_was_deleted
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'remote_id' => :'remote_id',
         :'name' => :'name',
-        :'remote_data' => :'remote_data'
+        :'remote_data' => :'remote_data',
+        :'remote_was_deleted' => :'remote_was_deleted'
       }
     end
 
@@ -43,7 +47,8 @@ module MergeATSClient
       {
         :'remote_id' => :'String',
         :'name' => :'String',
-        :'remote_data' => :'Array<RemoteData>'
+        :'remote_data' => :'Array<Hash<String, AnyType>>',
+        :'remote_was_deleted' => :'Boolean'
       }
     end
 
@@ -52,7 +57,7 @@ module MergeATSClient
       Set.new([
         :'remote_id',
         :'name',
-        :'remote_data'
+        :'remote_data',
       ])
     end
 
@@ -84,6 +89,10 @@ module MergeATSClient
           self.remote_data = value
         end
       end
+
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -106,7 +115,8 @@ module MergeATSClient
       self.class == o.class &&
           remote_id == o.remote_id &&
           name == o.name &&
-          remote_data == o.remote_data
+          remote_data == o.remote_data &&
+          remote_was_deleted == o.remote_was_deleted
     end
 
     # @see the `==` method
@@ -118,7 +128,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, name, remote_data].hash
+      [remote_id, name, remote_data, remote_was_deleted].hash
     end
 
     # Builds the object from hash
@@ -161,7 +171,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

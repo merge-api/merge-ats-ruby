@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The PhoneNumber Object ### Description The `PhoneNumber` object is used to represent a candidate's phone number.  ### Usage Example Fetch from the `GET Candidate` endpoint and view their phone numbers.
+  # # The PhoneNumber Object ### Description The `PhoneNumber` object is used to represent a candidate's phone number. ### Usage Example Fetch from the `GET Candidate` endpoint and view their phone numbers.
   class PhoneNumber
     # The phone number.
     attr_accessor :value
@@ -149,7 +149,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

@@ -22,6 +22,9 @@
 | **applications** | **Array&lt;String&gt;** | Array of &#x60;Application&#x60; object IDs. | [optional] |
 | **attachments** | **Array&lt;String&gt;** | Array of &#x60;Attachment&#x60; object IDs. | [optional] |
 | **custom_fields** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) | Custom fields configured for a given model. | [optional] |
+| **remote_template_id** | **String** |  | [optional] |
+| **integration_params** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **linked_account_params** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
 
 ## Example
 
@@ -46,7 +49,10 @@ instance = MergeATSClient::CandidateRequest.new(
   tags: [&quot;High-Priority&quot;],
   applications: [&quot;29eb9867-ce2a-403f-b8ce-f2844b89f078&quot;,&quot;b4d08e5c-de00-4d64-a29f-66addac9af99&quot;,&quot;4ff877d2-fb3e-4a5b-a7a5-168ddf2ffa56&quot;],
   attachments: [&quot;bea08964-32b4-4a20-8bb4-2612ba09de1d&quot;],
-  custom_fields: null
+  custom_fields: null,
+  remote_template_id: 92830948203,
+  integration_params: {&quot;unique_integration_field&quot;:&quot;unique_integration_field_value&quot;},
+  linked_account_params: {&quot;unique_linked_account_field&quot;:&quot;unique_linked_account_field_value&quot;}
 )
 ```
 

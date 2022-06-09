@@ -151,7 +151,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

@@ -11,6 +11,7 @@
 | **candidate** | **String** |  | [optional] |
 | **attachment_type** | [**AttachmentTypeEnum**](AttachmentTypeEnum.md) | The attachment&#39;s type. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** |  | [optional][readonly] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = MergeATSClient::Attachment.new(
   file_url: http://alturl.com/p749b,
   candidate: 2872ba14-4084-492b-be96-e5eee6fc33ef,
   attachment_type: RESUME,
-  remote_data: [{&quot;path&quot;:&quot;/attachments&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
+  remote_data: [{&quot;path&quot;:&quot;/attachments&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
+  remote_was_deleted: null
 )
 ```
 

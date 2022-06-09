@@ -80,6 +80,10 @@ module MergeATSClient
         invalid_properties.push('invalid value for "path", path cannot be nil.')
       end
 
+      if @path.to_s.length < 1
+        invalid_properties.push('invalid value for "path", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -87,7 +91,22 @@ module MergeATSClient
     # @return true if the model is valid
     def valid?
       return false if @path.nil?
+      return false if @path.to_s.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] path Value to be assigned
+    def path=(path)
+      if path.nil?
+        fail ArgumentError, 'path cannot be nil'
+      end
+
+      if path.to_s.length < 1
+        fail ArgumentError, 'invalid value for "path", the character length must be great than or equal to 1.'
+      end
+
+      @path = path
     end
 
     # Checks equality by comparing each attribute.
@@ -151,7 +170,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

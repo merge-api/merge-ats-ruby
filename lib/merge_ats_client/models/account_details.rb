@@ -19,6 +19,8 @@ module MergeATSClient
 
     attr_accessor :integration
 
+    attr_accessor :integration_slug
+
     attr_accessor :category
 
     attr_accessor :end_user_origin_id
@@ -29,16 +31,20 @@ module MergeATSClient
 
     attr_accessor :status
 
+    attr_accessor :webhook_listener_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'integration' => :'integration',
+        :'integration_slug' => :'integration_slug',
         :'category' => :'category',
         :'end_user_origin_id' => :'end_user_origin_id',
         :'end_user_organization_name' => :'end_user_organization_name',
         :'end_user_email_address' => :'end_user_email_address',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'webhook_listener_url' => :'webhook_listener_url'
       }
     end
 
@@ -52,11 +58,13 @@ module MergeATSClient
       {
         :'id' => :'String',
         :'integration' => :'String',
+        :'integration_slug' => :'String',
         :'category' => :'CategoryEnum',
         :'end_user_origin_id' => :'String',
         :'end_user_organization_name' => :'String',
         :'end_user_email_address' => :'String',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'webhook_listener_url' => :'String'
       }
     end
 
@@ -90,6 +98,10 @@ module MergeATSClient
         self.integration = attributes[:'integration']
       end
 
+      if attributes.key?(:'integration_slug')
+        self.integration_slug = attributes[:'integration_slug']
+      end
+
       if attributes.key?(:'category')
         self.category = attributes[:'category']
       end
@@ -108,6 +120,10 @@ module MergeATSClient
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'webhook_listener_url')
+        self.webhook_listener_url = attributes[:'webhook_listener_url']
       end
     end
 
@@ -131,11 +147,13 @@ module MergeATSClient
       self.class == o.class &&
           id == o.id &&
           integration == o.integration &&
+          integration_slug == o.integration_slug &&
           category == o.category &&
           end_user_origin_id == o.end_user_origin_id &&
           end_user_organization_name == o.end_user_organization_name &&
           end_user_email_address == o.end_user_email_address &&
-          status == o.status
+          status == o.status &&
+          webhook_listener_url == o.webhook_listener_url
     end
 
     # @see the `==` method
@@ -147,7 +165,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, integration, category, end_user_origin_id, end_user_organization_name, end_user_email_address, status].hash
+      [id, integration, integration_slug, category, end_user_origin_id, end_user_organization_name, end_user_email_address, status, webhook_listener_url].hash
     end
 
     # Builds the object from hash

@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate.  ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
+  # # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
   class Attachment
     attr_accessor :id
 
@@ -34,6 +34,8 @@ module MergeATSClient
 
     attr_accessor :remote_data
 
+    attr_accessor :remote_was_deleted
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -43,7 +45,8 @@ module MergeATSClient
         :'file_url' => :'file_url',
         :'candidate' => :'candidate',
         :'attachment_type' => :'attachment_type',
-        :'remote_data' => :'remote_data'
+        :'remote_data' => :'remote_data',
+        :'remote_was_deleted' => :'remote_was_deleted'
       }
     end
 
@@ -61,7 +64,8 @@ module MergeATSClient
         :'file_url' => :'String',
         :'candidate' => :'String',
         :'attachment_type' => :'AttachmentTypeEnum',
-        :'remote_data' => :'Array<RemoteData>'
+        :'remote_data' => :'Array<RemoteData>',
+        :'remote_was_deleted' => :'Boolean'
       }
     end
 
@@ -73,7 +77,7 @@ module MergeATSClient
         :'file_url',
         :'candidate',
         :'attachment_type',
-        :'remote_data'
+        :'remote_data',
       ])
     end
 
@@ -121,6 +125,10 @@ module MergeATSClient
           self.remote_data = value
         end
       end
+
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -162,7 +170,8 @@ module MergeATSClient
           file_url == o.file_url &&
           candidate == o.candidate &&
           attachment_type == o.attachment_type &&
-          remote_data == o.remote_data
+          remote_data == o.remote_data &&
+          remote_was_deleted == o.remote_was_deleted
     end
 
     # @see the `==` method
@@ -174,7 +183,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, file_name, file_url, candidate, attachment_type, remote_data].hash
+      [id, remote_id, file_name, file_url, candidate, attachment_type, remote_data, remote_was_deleted].hash
     end
 
     # Builds the object from hash

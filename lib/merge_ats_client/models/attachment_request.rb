@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate.  ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
+  # # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
   class AttachmentRequest
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
@@ -30,6 +30,10 @@ module MergeATSClient
     # The attachment's type.
     attr_accessor :attachment_type
 
+    attr_accessor :integration_params
+
+    attr_accessor :linked_account_params
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,7 +41,9 @@ module MergeATSClient
         :'file_name' => :'file_name',
         :'file_url' => :'file_url',
         :'candidate' => :'candidate',
-        :'attachment_type' => :'attachment_type'
+        :'attachment_type' => :'attachment_type',
+        :'integration_params' => :'integration_params',
+        :'linked_account_params' => :'linked_account_params'
       }
     end
 
@@ -53,7 +59,9 @@ module MergeATSClient
         :'file_name' => :'String',
         :'file_url' => :'String',
         :'candidate' => :'String',
-        :'attachment_type' => :'AttachmentTypeEnum'
+        :'attachment_type' => :'AttachmentTypeEnum',
+        :'integration_params' => :'Hash<String, AnyType>',
+        :'linked_account_params' => :'Hash<String, AnyType>'
       }
     end
 
@@ -64,7 +72,9 @@ module MergeATSClient
         :'file_name',
         :'file_url',
         :'candidate',
-        :'attachment_type'
+        :'attachment_type',
+        :'integration_params',
+        :'linked_account_params'
       ])
     end
 
@@ -101,6 +111,18 @@ module MergeATSClient
 
       if attributes.key?(:'attachment_type')
         self.attachment_type = attributes[:'attachment_type']
+      end
+
+      if attributes.key?(:'integration_params')
+        if (value = attributes[:'integration_params']).is_a?(Hash)
+          self.integration_params = value
+        end
+      end
+
+      if attributes.key?(:'linked_account_params')
+        if (value = attributes[:'linked_account_params']).is_a?(Hash)
+          self.linked_account_params = value
+        end
       end
     end
 
@@ -141,7 +163,9 @@ module MergeATSClient
           file_name == o.file_name &&
           file_url == o.file_url &&
           candidate == o.candidate &&
-          attachment_type == o.attachment_type
+          attachment_type == o.attachment_type &&
+          integration_params == o.integration_params &&
+          linked_account_params == o.linked_account_params
     end
 
     # @see the `==` method
@@ -153,7 +177,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, file_name, file_url, candidate, attachment_type].hash
+      [remote_id, file_name, file_url, candidate, attachment_type, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash
@@ -196,7 +220,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

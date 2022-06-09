@@ -23,29 +23,11 @@ module MergeATSClient
 
     attr_accessor :categories
 
+    # The slug of a specific pre-selected integration for this linking flow token, for examples of slugs see https://www.merge.dev/docs/basics/integration-metadata
     attr_accessor :integration
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # An integer number of minutes between [30, 720] for how long this token is valid. Defaults to 30
+    attr_accessor :link_expiry_mins
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -54,7 +36,8 @@ module MergeATSClient
         :'end_user_organization_name' => :'end_user_organization_name',
         :'end_user_origin_id' => :'end_user_origin_id',
         :'categories' => :'categories',
-        :'integration' => :'integration'
+        :'integration' => :'integration',
+        :'link_expiry_mins' => :'link_expiry_mins'
       }
     end
 
@@ -69,15 +52,16 @@ module MergeATSClient
         :'end_user_email_address' => :'String',
         :'end_user_organization_name' => :'String',
         :'end_user_origin_id' => :'String',
-        :'categories' => :'Array<String>',
-        :'integration' => :'String'
+        :'categories' => :'Array<CategoriesEnum>',
+        :'integration' => :'String',
+        :'link_expiry_mins' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'integration'
+        :'integration',
       ])
     end
 
@@ -117,6 +101,12 @@ module MergeATSClient
       if attributes.key?(:'integration')
         self.integration = attributes[:'integration']
       end
+
+      if attributes.key?(:'link_expiry_mins')
+        self.link_expiry_mins = attributes[:'link_expiry_mins']
+      else
+        self.link_expiry_mins = 30
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -127,12 +117,52 @@ module MergeATSClient
         invalid_properties.push('invalid value for "end_user_email_address", end_user_email_address cannot be nil.')
       end
 
+      if @end_user_email_address.to_s.length > 100
+        invalid_properties.push('invalid value for "end_user_email_address", the character length must be smaller than or equal to 100.')
+      end
+
+      if @end_user_email_address.to_s.length < 1
+        invalid_properties.push('invalid value for "end_user_email_address", the character length must be great than or equal to 1.')
+      end
+
       if @end_user_organization_name.nil?
         invalid_properties.push('invalid value for "end_user_organization_name", end_user_organization_name cannot be nil.')
       end
 
+      if @end_user_organization_name.to_s.length > 100
+        invalid_properties.push('invalid value for "end_user_organization_name", the character length must be smaller than or equal to 100.')
+      end
+
+      if @end_user_organization_name.to_s.length < 1
+        invalid_properties.push('invalid value for "end_user_organization_name", the character length must be great than or equal to 1.')
+      end
+
       if @end_user_origin_id.nil?
         invalid_properties.push('invalid value for "end_user_origin_id", end_user_origin_id cannot be nil.')
+      end
+
+      if @end_user_origin_id.to_s.length > 100
+        invalid_properties.push('invalid value for "end_user_origin_id", the character length must be smaller than or equal to 100.')
+      end
+
+      if @end_user_origin_id.to_s.length < 1
+        invalid_properties.push('invalid value for "end_user_origin_id", the character length must be great than or equal to 1.')
+      end
+
+      if @categories.nil?
+        invalid_properties.push('invalid value for "categories", categories cannot be nil.')
+      end
+
+      if !@integration.nil? && @integration.to_s.length < 1
+        invalid_properties.push('invalid value for "integration", the character length must be great than or equal to 1.')
+      end
+
+      if !@link_expiry_mins.nil? && @link_expiry_mins > 720
+        invalid_properties.push('invalid value for "link_expiry_mins", must be smaller than or equal to 720.')
+      end
+
+      if !@link_expiry_mins.nil? && @link_expiry_mins < 30
+        invalid_properties.push('invalid value for "link_expiry_mins", must be greater than or equal to 30.')
       end
 
       invalid_properties
@@ -142,9 +172,97 @@ module MergeATSClient
     # @return true if the model is valid
     def valid?
       return false if @end_user_email_address.nil?
+      return false if @end_user_email_address.to_s.length > 100
+      return false if @end_user_email_address.to_s.length < 1
       return false if @end_user_organization_name.nil?
+      return false if @end_user_organization_name.to_s.length > 100
+      return false if @end_user_organization_name.to_s.length < 1
       return false if @end_user_origin_id.nil?
+      return false if @end_user_origin_id.to_s.length > 100
+      return false if @end_user_origin_id.to_s.length < 1
+      return false if @categories.nil?
+      return false if !@integration.nil? && @integration.to_s.length < 1
+      return false if !@link_expiry_mins.nil? && @link_expiry_mins > 720
+      return false if !@link_expiry_mins.nil? && @link_expiry_mins < 30
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] end_user_email_address Value to be assigned
+    def end_user_email_address=(end_user_email_address)
+      if end_user_email_address.nil?
+        fail ArgumentError, 'end_user_email_address cannot be nil'
+      end
+
+      if end_user_email_address.to_s.length > 100
+        fail ArgumentError, 'invalid value for "end_user_email_address", the character length must be smaller than or equal to 100.'
+      end
+
+      if end_user_email_address.to_s.length < 1
+        fail ArgumentError, 'invalid value for "end_user_email_address", the character length must be great than or equal to 1.'
+      end
+
+      @end_user_email_address = end_user_email_address
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] end_user_organization_name Value to be assigned
+    def end_user_organization_name=(end_user_organization_name)
+      if end_user_organization_name.nil?
+        fail ArgumentError, 'end_user_organization_name cannot be nil'
+      end
+
+      if end_user_organization_name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "end_user_organization_name", the character length must be smaller than or equal to 100.'
+      end
+
+      if end_user_organization_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "end_user_organization_name", the character length must be great than or equal to 1.'
+      end
+
+      @end_user_organization_name = end_user_organization_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] end_user_origin_id Value to be assigned
+    def end_user_origin_id=(end_user_origin_id)
+      if end_user_origin_id.nil?
+        fail ArgumentError, 'end_user_origin_id cannot be nil'
+      end
+
+      if end_user_origin_id.to_s.length > 100
+        fail ArgumentError, 'invalid value for "end_user_origin_id", the character length must be smaller than or equal to 100.'
+      end
+
+      if end_user_origin_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "end_user_origin_id", the character length must be great than or equal to 1.'
+      end
+
+      @end_user_origin_id = end_user_origin_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] integration Value to be assigned
+    def integration=(integration)
+      if !integration.nil? && integration.to_s.length < 1
+        fail ArgumentError, 'invalid value for "integration", the character length must be great than or equal to 1.'
+      end
+
+      @integration = integration
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] link_expiry_mins Value to be assigned
+    def link_expiry_mins=(link_expiry_mins)
+      if !link_expiry_mins.nil? && link_expiry_mins > 720
+        fail ArgumentError, 'invalid value for "link_expiry_mins", must be smaller than or equal to 720.'
+      end
+
+      if !link_expiry_mins.nil? && link_expiry_mins < 30
+        fail ArgumentError, 'invalid value for "link_expiry_mins", must be greater than or equal to 30.'
+      end
+
+      @link_expiry_mins = link_expiry_mins
     end
 
     # Checks equality by comparing each attribute.
@@ -156,7 +274,8 @@ module MergeATSClient
           end_user_organization_name == o.end_user_organization_name &&
           end_user_origin_id == o.end_user_origin_id &&
           categories == o.categories &&
-          integration == o.integration
+          integration == o.integration &&
+          link_expiry_mins == o.link_expiry_mins
     end
 
     # @see the `==` method
@@ -168,7 +287,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories, integration].hash
+      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories, integration, link_expiry_mins].hash
     end
 
     # Builds the object from hash
@@ -211,7 +330,7 @@ module MergeATSClient
       when :Date
         Date.parse(value)
       when :String
-        value.to_s
+        value
       when :Integer
         value.to_i
       when :Float

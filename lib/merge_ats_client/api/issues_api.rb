@@ -21,15 +21,19 @@ module MergeATSClient
     end
     # Gets issues.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :account_token account_token
-    # @option opts [Integer] :cursor The pagination cursor value.
+    # @option opts [String] :account_token 
+    # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :end_date If included, will only include issues whose most recent action occurred before this time
-    # @option opts [String] :end_user_organization_name end_user_organization_name
+    # @option opts [String] :end_user_organization_name 
+    # @option opts [Time] :first_incident_time_after If provided, will only return issues whose first incident time was after this datetime.
+    # @option opts [Time] :first_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
     # @option opts [String] :include_muted If True, will include muted issues
-    # @option opts [String] :integration_name integration_name
+    # @option opts [String] :integration_name 
+    # @option opts [Time] :last_incident_time_after If provided, will only return issues whose first incident time was after this datetime.
+    # @option opts [Time] :last_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :start_date If included, will only include issues whose most recent action occurred after this time
-    # @option opts [String] :status status
+    # @option opts [String] :status 
     # @return [PaginatedIssueList]
     def issues_list(opts = {})
       data, _status_code, _headers = issues_list_with_http_info(opts)
@@ -38,15 +42,19 @@ module MergeATSClient
 
     # Gets issues.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :account_token account_token
-    # @option opts [Integer] :cursor The pagination cursor value.
+    # @option opts [String] :account_token 
+    # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :end_date If included, will only include issues whose most recent action occurred before this time
-    # @option opts [String] :end_user_organization_name end_user_organization_name
+    # @option opts [String] :end_user_organization_name 
+    # @option opts [Time] :first_incident_time_after If provided, will only return issues whose first incident time was after this datetime.
+    # @option opts [Time] :first_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
     # @option opts [String] :include_muted If True, will include muted issues
-    # @option opts [String] :integration_name integration_name
+    # @option opts [String] :integration_name 
+    # @option opts [Time] :last_incident_time_after If provided, will only return issues whose first incident time was after this datetime.
+    # @option opts [Time] :last_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :start_date If included, will only include issues whose most recent action occurred after this time
-    # @option opts [String] :status status
+    # @option opts [String] :status 
     # @return [Array<(PaginatedIssueList, Integer, Hash)>] PaginatedIssueList data, response status code and response headers
     def issues_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -65,8 +73,12 @@ module MergeATSClient
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'end_user_organization_name'] = opts[:'end_user_organization_name'] if !opts[:'end_user_organization_name'].nil?
+      query_params[:'first_incident_time_after'] = opts[:'first_incident_time_after'] if !opts[:'first_incident_time_after'].nil?
+      query_params[:'first_incident_time_before'] = opts[:'first_incident_time_before'] if !opts[:'first_incident_time_before'].nil?
       query_params[:'include_muted'] = opts[:'include_muted'] if !opts[:'include_muted'].nil?
       query_params[:'integration_name'] = opts[:'integration_name'] if !opts[:'integration_name'].nil?
+      query_params[:'last_incident_time_after'] = opts[:'last_incident_time_after'] if !opts[:'last_incident_time_after'].nil?
+      query_params[:'last_incident_time_before'] = opts[:'last_incident_time_before'] if !opts[:'last_incident_time_before'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?

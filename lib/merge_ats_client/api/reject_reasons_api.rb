@@ -25,6 +25,7 @@ module MergeATSClient
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
@@ -42,6 +43,7 @@ module MergeATSClient
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
@@ -64,6 +66,7 @@ module MergeATSClient
       query_params[:'created_after'] = opts[:'created_after'] if !opts[:'created_after'].nil?
       query_params[:'created_before'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'include_deleted_data'] = opts[:'include_deleted_data'] if !opts[:'include_deleted_data'].nil?
       query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
       query_params[:'modified_after'] = opts[:'modified_after'] if !opts[:'modified_after'].nil?
       query_params[:'modified_before'] = opts[:'modified_before'] if !opts[:'modified_before'].nil?

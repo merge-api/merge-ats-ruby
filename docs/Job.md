@@ -16,7 +16,9 @@
 | **departments** | **Array&lt;String&gt;** | IDs of &#x60;Department&#x60; objects for this &#x60;Job&#x60;. | [optional] |
 | **offices** | **Array&lt;String&gt;** | IDs of &#x60;Office&#x60; objects for this &#x60;Job&#x60;. | [optional] |
 | **hiring_managers** | **Array&lt;String&gt;** | IDs of &#x60;RemoteUser&#x60; objects that serve as hiring managers for this &#x60;Job&#x60;. | [optional] |
+| **recruiters** | **Array&lt;String&gt;** | IDs of RemoteUser objects that serve as recruiters for this Job. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted on the third-party. | [optional][readonly] |
 
 ## Example
 
@@ -36,7 +38,9 @@ instance = MergeATSClient::Job.new(
   departments: [&quot;5b3c1341-a20f-4e51-b72c-f3830a16c97b&quot;,&quot;d6e687d6-0c36-48a1-8114-35324b5cb38f&quot;],
   offices: [&quot;9871b4a9-f5d2-4f3b-a66b-dfedbed42c46&quot;],
   hiring_managers: [&quot;787ed912-33ec-444e-a215-8d71cc42fc12&quot;],
-  remote_data: [{&quot;path&quot;:&quot;/positions&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
+  recruiters: [&quot;787ed912-33ec-444e-a215-8d71cc42fc12&quot;],
+  remote_data: [{&quot;path&quot;:&quot;/positions&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
+  remote_was_deleted: null
 )
 ```
 

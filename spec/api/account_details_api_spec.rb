@@ -34,6 +34,7 @@ describe 'AccountDetailsApi' do
 
   # unit tests for account_details_retrieve
   # Get details for a linked account.
+  # @param x_account_token Token identifying the end user.
   # @param [Hash] opts the optional parameters
   # @return [AccountDetails]
   describe 'account_details_retrieve test' do

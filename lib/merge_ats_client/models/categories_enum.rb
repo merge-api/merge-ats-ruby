@@ -18,6 +18,8 @@ module MergeATSClient
     HRIS = "hris".freeze
     ATS = "ats".freeze
     ACCOUNTING = "accounting".freeze
+    TICKETING = "ticketing".freeze
+    CRM = "crm".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
