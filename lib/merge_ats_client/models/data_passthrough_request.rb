@@ -32,6 +32,8 @@ module MergeATSClient
 
     attr_accessor :request_format
 
+    attr_accessor :normalize_response
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -41,7 +43,8 @@ module MergeATSClient
         :'data' => :'data',
         :'multipart_form_data' => :'multipart_form_data',
         :'headers' => :'headers',
-        :'request_format' => :'request_format'
+        :'request_format' => :'request_format',
+        :'normalize_response' => :'normalize_response'
       }
     end
 
@@ -58,8 +61,9 @@ module MergeATSClient
         :'base_url_override' => :'String',
         :'data' => :'String',
         :'multipart_form_data' => :'Array<MultipartFormFieldRequest>',
-        :'headers' => :'Hash<String, AnyType>',
-        :'request_format' => :'RequestFormatEnum'
+        :'headers' => :'Hash<String, Object>',
+        :'request_format' => :'RequestFormatEnum',
+        :'normalize_response' => :'Boolean'
       }
     end
 
@@ -70,7 +74,7 @@ module MergeATSClient
         :'data',
         :'multipart_form_data',
         :'headers',
-        :'request_format'
+        :'request_format',
       ])
     end
 
@@ -119,6 +123,10 @@ module MergeATSClient
 
       if attributes.key?(:'request_format')
         self.request_format = attributes[:'request_format']
+      end
+
+      if attributes.key?(:'normalize_response')
+        self.normalize_response = attributes[:'normalize_response']
       end
     end
 
@@ -205,7 +213,8 @@ module MergeATSClient
           data == o.data &&
           multipart_form_data == o.multipart_form_data &&
           headers == o.headers &&
-          request_format == o.request_format
+          request_format == o.request_format &&
+          normalize_response == o.normalize_response
     end
 
     # @see the `==` method
@@ -217,7 +226,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [method, path, base_url_override, data, multipart_form_data, headers, request_format].hash
+      [method, path, base_url_override, data, multipart_form_data, headers, request_format, normalize_response].hash
     end
 
     # Builds the object from hash

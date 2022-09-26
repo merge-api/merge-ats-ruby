@@ -53,7 +53,7 @@ module MergeATSClient
         :'id' => :'String',
         :'status' => :'IssueStatusEnum',
         :'error_description' => :'String',
-        :'end_user' => :'Hash<String, AnyType>',
+        :'end_user' => :'Hash<String, Object>',
         :'first_incident_time' => :'Time',
         :'last_incident_time' => :'Time',
         :'is_muted' => :'Boolean'

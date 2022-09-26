@@ -27,11 +27,12 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @option opts [String] :status If provided, will only return jobs with this status. Options: (&#39;OPEN&#39;, &#39;CLOSED&#39;, &#39;DRAFT&#39;, &#39;ARCHIVED&#39;, &#39;PENDING&#39;)
     # @return [PaginatedJobList]
@@ -48,11 +49,12 @@ module MergeATSClient
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
     # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
     # @option opts [String] :status If provided, will only return jobs with this status. Options: (&#39;OPEN&#39;, &#39;CLOSED&#39;, &#39;DRAFT&#39;, &#39;ARCHIVED&#39;, &#39;PENDING&#39;)
     # @return [Array<(PaginatedJobList, Integer, Hash)>] PaginatedJobList data, response status code and response headers
@@ -67,6 +69,10 @@ module MergeATSClient
       allowable_values = ["departments", "departments,hiring_managers", "departments,hiring_managers,recruiters", "departments,offices", "departments,offices,hiring_managers", "departments,offices,hiring_managers,recruiters", "departments,offices,recruiters", "departments,recruiters", "hiring_managers", "hiring_managers,recruiters", "offices", "offices,hiring_managers", "offices,hiring_managers,recruiters", "offices,recruiters", "recruiters"]
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["status"]
+      if @api_client.config.client_side_validation && opts[:'remote_fields'] && !allowable_values.include?(opts[:'remote_fields'])
+        fail ArgumentError, "invalid value for \"remote_fields\", must be one of #{allowable_values}"
       end
       allowable_values = ["ARCHIVED", "CLOSED", "DRAFT", "OPEN", "PENDING"]
       if @api_client.config.client_side_validation && opts[:'status'] && !allowable_values.include?(opts[:'status'])
@@ -87,6 +93,7 @@ module MergeATSClient
       query_params[:'modified_after'] = opts[:'modified_after'] if !opts[:'modified_after'].nil?
       query_params[:'modified_before'] = opts[:'modified_before'] if !opts[:'modified_before'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'remote_fields'] = opts[:'remote_fields'] if !opts[:'remote_fields'].nil?
       query_params[:'remote_id'] = opts[:'remote_id'] if !opts[:'remote_id'].nil?
       query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
 
@@ -131,6 +138,7 @@ module MergeATSClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
+    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
     # @return [Job]
     def jobs_retrieve(x_account_token, id, opts = {})
       data, _status_code, _headers = jobs_retrieve_with_http_info(x_account_token, id, opts)
@@ -143,6 +151,7 @@ module MergeATSClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
+    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
     # @return [Array<(Job, Integer, Hash)>] Job data, response status code and response headers
     def jobs_retrieve_with_http_info(x_account_token, id, opts = {})
       if @api_client.config.debugging
@@ -160,6 +169,10 @@ module MergeATSClient
       if @api_client.config.client_side_validation && opts[:'expand'] && !allowable_values.include?(opts[:'expand'])
         fail ArgumentError, "invalid value for \"expand\", must be one of #{allowable_values}"
       end
+      allowable_values = ["status"]
+      if @api_client.config.client_side_validation && opts[:'remote_fields'] && !allowable_values.include?(opts[:'remote_fields'])
+        fail ArgumentError, "invalid value for \"remote_fields\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/jobs/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
@@ -167,6 +180,7 @@ module MergeATSClient
       query_params = opts[:query_params] || {}
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
       query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
+      query_params[:'remote_fields'] = opts[:'remote_fields'] if !opts[:'remote_fields'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

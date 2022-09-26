@@ -24,18 +24,28 @@ module MergeATSClient
     TWO_OR_MORE_RACES = "TWO_OR_MORE_RACES".freeze
     DECLINE_TO_SELF_IDENTIFY = "DECLINE_TO_SELF_IDENTIFY".freeze
 
-    # Builds the enum from string
-    # @param [String] The enum value in the form of the string
-    # @return [String] The enum value
-    def self.build_from_hash(value)
-      new.build_from_hash(value)
-    end
+    MERGE_NONSTANDARD_VALUE = "MERGE_NONSTANDARD_VALUE".freeze
+
+    attr_accessor :value
+    attr_accessor :raw_value
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      value
+      @raw_value = value
+      if ["AMERICAN_INDIAN_OR_ALASKAN_NATIVE", "ASIAN", "BLACK_OR_AFRICAN_AMERICAN", "HISPANIC_OR_LATINO", "WHITE", "NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER", "TWO_OR_MORE_RACES", "DECLINE_TO_SELF_IDENTIFY", ].include? value
+        @value = value
+      else
+        @value = MERGE_NONSTANDARD_VALUE
+      end
+
+      self
+    end
+
+    def self.build_from_hash(value)
+      IssueStatusEnum.new.build_from_hash(value)
     end
   end
+
 end

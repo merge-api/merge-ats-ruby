@@ -10,15 +10,16 @@
 | **description** | **String** | The job&#39;s description. | [optional] |
 | **code** | **String** | The job&#39;s code. Typically an additional identifier used to reference the particular job that is displayed on the ATS. | [optional] |
 | **status** | [**JobStatusEnum**](JobStatusEnum.md) | The job&#39;s status. | [optional] |
+| **job_posting_urls** | [**Array&lt;Url&gt;**](Url.md) |  | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s job was created. | [optional] |
 | **remote_updated_at** | **Time** | When the third party&#39;s job was updated. | [optional] |
 | **confidential** | **Boolean** | Whether the job is confidential. | [optional] |
 | **departments** | **Array&lt;String&gt;** | IDs of &#x60;Department&#x60; objects for this &#x60;Job&#x60;. | [optional] |
 | **offices** | **Array&lt;String&gt;** | IDs of &#x60;Office&#x60; objects for this &#x60;Job&#x60;. | [optional] |
 | **hiring_managers** | **Array&lt;String&gt;** | IDs of &#x60;RemoteUser&#x60; objects that serve as hiring managers for this &#x60;Job&#x60;. | [optional] |
-| **recruiters** | **Array&lt;String&gt;** | IDs of RemoteUser objects that serve as recruiters for this Job. | [optional] |
+| **recruiters** | **Array&lt;String&gt;** | IDs of &#x60;RemoteUser&#x60; objects that serve as recruiters for this &#x60;Job&#x60;. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
-| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted on the third-party. | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted by third party webhooks. | [optional][readonly] |
 
 ## Example
 
@@ -32,6 +33,7 @@ instance = MergeATSClient::Job.new(
   description: &lt;b&gt;If you&#39;re reading this documentation, you might be a good fit for Merge!&lt;/b&gt;,
   code: C0025,
   status: OPEN,
+  job_posting_urls: [{&quot;value&quot;:&quot;https://merge.dev/careers&quot;,&quot;url_type&quot;:&quot;JOB_POSTING&quot;}],
   remote_created_at: 2021-10-15T00:00Z,
   remote_updated_at: 2021-10-16T00:00Z,
   confidential: true,

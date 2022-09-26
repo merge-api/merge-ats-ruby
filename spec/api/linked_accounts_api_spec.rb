@@ -43,6 +43,7 @@ describe 'LinkedAccountsApi' do
   # @option opts [String] :end_user_origin_ids Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once.
   # @option opts [String] :id 
   # @option opts [String] :ids Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once.
+  # @option opts [Boolean] :include_duplicates If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account.
   # @option opts [String] :integration_name If provided, will only return linked accounts associated with the given integration name.
   # @option opts [String] :is_test_account If included, will only include test linked accounts. If not included, will only include non-test linked accounts.
   # @option opts [Integer] :page_size Number of results to return per page.

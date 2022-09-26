@@ -115,14 +115,6 @@ module MergeATSClient
         invalid_properties.push('invalid value for "model_id", model_id cannot be nil.')
       end
 
-      if @last_sync_start.nil?
-        invalid_properties.push('invalid value for "last_sync_start", last_sync_start cannot be nil.')
-      end
-
-      if @next_sync_start.nil?
-        invalid_properties.push('invalid value for "next_sync_start", next_sync_start cannot be nil.')
-      end
-
       if @status.nil?
         invalid_properties.push('invalid value for "status", status cannot be nil.')
       end
@@ -139,8 +131,6 @@ module MergeATSClient
     def valid?
       return false if @model_name.nil?
       return false if @model_id.nil?
-      return false if @last_sync_start.nil?
-      return false if @next_sync_start.nil?
       return false if @status.nil?
       return false if @is_initial_sync.nil?
       true

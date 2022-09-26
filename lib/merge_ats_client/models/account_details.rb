@@ -33,6 +33,9 @@ module MergeATSClient
 
     attr_accessor :webhook_listener_url
 
+    # Whether a Production Linked Account's credentials match another existing Production Linked Account. This field is `null` for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets.
+    attr_accessor :is_duplicate
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -44,7 +47,8 @@ module MergeATSClient
         :'end_user_organization_name' => :'end_user_organization_name',
         :'end_user_email_address' => :'end_user_email_address',
         :'status' => :'status',
-        :'webhook_listener_url' => :'webhook_listener_url'
+        :'webhook_listener_url' => :'webhook_listener_url',
+        :'is_duplicate' => :'is_duplicate'
       }
     end
 
@@ -64,7 +68,8 @@ module MergeATSClient
         :'end_user_organization_name' => :'String',
         :'end_user_email_address' => :'String',
         :'status' => :'String',
-        :'webhook_listener_url' => :'String'
+        :'webhook_listener_url' => :'String',
+        :'is_duplicate' => :'Boolean'
       }
     end
 
@@ -72,6 +77,7 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'category',
+        :'is_duplicate'
       ])
     end
 
@@ -125,6 +131,10 @@ module MergeATSClient
       if attributes.key?(:'webhook_listener_url')
         self.webhook_listener_url = attributes[:'webhook_listener_url']
       end
+
+      if attributes.key?(:'is_duplicate')
+        self.is_duplicate = attributes[:'is_duplicate']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -153,7 +163,8 @@ module MergeATSClient
           end_user_organization_name == o.end_user_organization_name &&
           end_user_email_address == o.end_user_email_address &&
           status == o.status &&
-          webhook_listener_url == o.webhook_listener_url
+          webhook_listener_url == o.webhook_listener_url &&
+          is_duplicate == o.is_duplicate
     end
 
     # @see the `==` method
@@ -165,7 +176,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, integration, integration_slug, category, end_user_origin_id, end_user_organization_name, end_user_email_address, status, webhook_listener_url].hash
+      [id, integration, integration_slug, category, end_user_origin_id, end_user_organization_name, end_user_email_address, status, webhook_listener_url, is_duplicate].hash
     end
 
     # Builds the object from hash

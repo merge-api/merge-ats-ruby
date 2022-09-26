@@ -13,6 +13,7 @@
 | **end_user_email_address** | **String** |  | [optional][readonly] |
 | **status** | **String** |  | [optional][readonly] |
 | **webhook_listener_url** | **String** |  | [optional][readonly] |
+| **is_duplicate** | **Boolean** | Whether a Production Linked Account&#39;s credentials match another existing Production Linked Account. This field is &#x60;null&#x60; for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets. | [optional][readonly] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = MergeATSClient::AccountDetails.new(
   end_user_organization_name: Waystar Royco,
   end_user_email_address: kendall.roy@waystar-royco.com,
   status: COMPLETE,
-  webhook_listener_url: https://api.merge.dev/api/integrations/webhook-listener/7fc3mee0UW8ecV4
+  webhook_listener_url: https://api.merge.dev/api/integrations/webhook-listener/7fc3mee0UW8ecV4,
+  is_duplicate: true
 )
 ```
 

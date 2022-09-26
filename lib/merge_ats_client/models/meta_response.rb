@@ -41,7 +41,7 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'request_schema' => :'Hash<String, AnyType>',
+        :'request_schema' => :'Hash<String, Object>',
         :'status' => :'LinkedAccountStatus',
         :'has_conditional_params' => :'Boolean',
         :'has_required_linked_account_params' => :'Boolean'

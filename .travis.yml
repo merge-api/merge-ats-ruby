@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build merge_ats_client.gemspec
-  - gem install ./merge_ats_client-1.0.0.gem
+  - gem install ./merge_ats_client-2.0.1.gem

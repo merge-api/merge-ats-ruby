@@ -19,6 +19,84 @@ module MergeATSClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Updates the `current_stage` field of an `Application` object
+    # @param x_account_token [String] Token identifying the end user.
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :is_debug_mode Whether to include debug fields (such as log file links) in the response.
+    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
+    # @option opts [UpdateApplicationStageRequest] :update_application_stage_request 
+    # @return [ApplicationResponse]
+    def applications_change_stage_create(x_account_token, id, opts = {})
+      data, _status_code, _headers = applications_change_stage_create_with_http_info(x_account_token, id, opts)
+      data
+    end
+
+    # Updates the &#x60;current_stage&#x60; field of an &#x60;Application&#x60; object
+    # @param x_account_token [String] Token identifying the end user.
+    # @param id [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :is_debug_mode Whether to include debug fields (such as log file links) in the response.
+    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
+    # @option opts [UpdateApplicationStageRequest] :update_application_stage_request 
+    # @return [Array<(ApplicationResponse, Integer, Hash)>] ApplicationResponse data, response status code and response headers
+    def applications_change_stage_create_with_http_info(x_account_token, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ApplicationsApi.applications_change_stage_create ...'
+      end
+      # verify the required parameter 'x_account_token' is set
+      if @api_client.config.client_side_validation && x_account_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling ApplicationsApi.applications_change_stage_create"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ApplicationsApi.applications_change_stage_create"
+      end
+      # resource path
+      local_var_path = '/applications/{id}/change-stage'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'is_debug_mode'] = opts[:'is_debug_mode'] if !opts[:'is_debug_mode'].nil?
+      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])
+      header_params[:'X-Account-Token'] = x_account_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'update_application_stage_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ApplicationResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['tokenAuth']
+
+      new_options = opts.merge(
+        :operation => :"ApplicationsApi.applications_change_stage_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ApplicationsApi#applications_change_stage_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Creates an `Application` object with the given values.
     # @param x_account_token [String] Token identifying the end user.
     # @param application_endpoint_request [ApplicationEndpointRequest] 
@@ -105,7 +183,7 @@ module MergeATSClient
     # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_id If provided, will only return applications for this job.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
@@ -130,7 +208,7 @@ module MergeATSClient
     # @option opts [String] :current_stage_id If provided, will only return applications at this interview stage.
     # @option opts [String] :cursor The pagination cursor value.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-    # @option opts [Boolean] :include_deleted_data Whether to include data that was deleted in the third-party service.
+    # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_id If provided, will only return applications for this job.
     # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.

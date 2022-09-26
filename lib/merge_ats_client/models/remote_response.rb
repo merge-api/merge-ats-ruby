@@ -24,6 +24,10 @@ module MergeATSClient
 
     attr_accessor :response
 
+    attr_accessor :response_headers
+
+    attr_accessor :response_type
+
     attr_accessor :headers
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -33,6 +37,8 @@ module MergeATSClient
         :'path' => :'path',
         :'status' => :'status',
         :'response' => :'response',
+        :'response_headers' => :'response_headers',
+        :'response_type' => :'response_type',
         :'headers' => :'headers'
       }
     end
@@ -48,7 +54,9 @@ module MergeATSClient
         :'method' => :'String',
         :'path' => :'String',
         :'status' => :'Integer',
-        :'response' => :'Hash<String, Object>',
+        :'response' => :'Object',
+        :'response_headers' => :'Hash<String, Object>',
+        :'response_type' => :'ResponseTypeEnum',
         :'headers' => :'Hash<String, Object>'
       }
     end
@@ -56,6 +64,7 @@ module MergeATSClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'response',
       ])
     end
 
@@ -87,9 +96,17 @@ module MergeATSClient
       end
 
       if attributes.key?(:'response')
-        if (value = attributes[:'response']).is_a?(Hash)
-          self.response = value
+        self.response = attributes[:'response']
+      end
+
+      if attributes.key?(:'response_headers')
+        if (value = attributes[:'response_headers']).is_a?(Hash)
+          self.response_headers = value
         end
+      end
+
+      if attributes.key?(:'response_type')
+        self.response_type = attributes[:'response_type']
       end
 
       if attributes.key?(:'headers')
@@ -115,10 +132,6 @@ module MergeATSClient
         invalid_properties.push('invalid value for "status", status cannot be nil.')
       end
 
-      if @response.nil?
-        invalid_properties.push('invalid value for "response", response cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -128,7 +141,6 @@ module MergeATSClient
       return false if @method.nil?
       return false if @path.nil?
       return false if @status.nil?
-      return false if @response.nil?
       true
     end
 
@@ -141,6 +153,8 @@ module MergeATSClient
           path == o.path &&
           status == o.status &&
           response == o.response &&
+          response_headers == o.response_headers &&
+          response_type == o.response_type &&
           headers == o.headers
     end
 
@@ -153,7 +167,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [method, path, status, response, headers].hash
+      [method, path, status, response, response_headers, response_type, headers].hash
     end
 
     # Builds the object from hash

@@ -14,16 +14,17 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  class RemoteDataRequest
-    attr_accessor :path
+  class UpdateApplicationStageRequest
+    # The interview stage to move the application to.
+    attr_accessor :job_interview_stage
 
-    attr_accessor :data
+    attr_accessor :remote_user_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'path' => :'path',
-        :'data' => :'data'
+        :'job_interview_stage' => :'job_interview_stage',
+        :'remote_user_id' => :'remote_user_id'
       }
     end
 
@@ -35,14 +36,15 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'path' => :'String',
-        :'data' => :'Hash<String, AnyType>'
+        :'job_interview_stage' => :'String',
+        :'remote_user_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'job_interview_stage',
       ])
     end
 
@@ -50,25 +52,23 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::RemoteDataRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::UpdateApplicationStageRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::RemoteDataRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::UpdateApplicationStageRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
+      if attributes.key?(:'job_interview_stage')
+        self.job_interview_stage = attributes[:'job_interview_stage']
       end
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Hash)
-          self.data = value
-        end
+      if attributes.key?(:'remote_user_id')
+        self.remote_user_id = attributes[:'remote_user_id']
       end
     end
 
@@ -76,12 +76,8 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @path.nil?
-        invalid_properties.push('invalid value for "path", path cannot be nil.')
-      end
-
-      if @path.to_s.length < 1
-        invalid_properties.push('invalid value for "path", the character length must be great than or equal to 1.')
+      if !@remote_user_id.nil? && @remote_user_id.to_s.length < 1
+        invalid_properties.push('invalid value for "remote_user_id", the character length must be great than or equal to 1.')
       end
 
       invalid_properties
@@ -90,23 +86,18 @@ module MergeATSClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @path.nil?
-      return false if @path.to_s.length < 1
+      return false if !@remote_user_id.nil? && @remote_user_id.to_s.length < 1
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] path Value to be assigned
-    def path=(path)
-      if path.nil?
-        fail ArgumentError, 'path cannot be nil'
+    # @param [Object] remote_user_id Value to be assigned
+    def remote_user_id=(remote_user_id)
+      if !remote_user_id.nil? && remote_user_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "remote_user_id", the character length must be great than or equal to 1.'
       end
 
-      if path.to_s.length < 1
-        fail ArgumentError, 'invalid value for "path", the character length must be great than or equal to 1.'
-      end
-
-      @path = path
+      @remote_user_id = remote_user_id
     end
 
     # Checks equality by comparing each attribute.
@@ -114,8 +105,8 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          path == o.path &&
-          data == o.data
+          job_interview_stage == o.job_interview_stage &&
+          remote_user_id == o.remote_user_id
     end
 
     # @see the `==` method
@@ -127,7 +118,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [path, data].hash
+      [job_interview_stage, remote_user_id].hash
     end
 
     # Builds the object from hash

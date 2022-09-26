@@ -19,11 +19,14 @@ module MergeATSClient
 
     attr_accessor :integration_name
 
+    attr_accessor :magic_link_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'link_token' => :'link_token',
-        :'integration_name' => :'integration_name'
+        :'integration_name' => :'integration_name',
+        :'magic_link_url' => :'magic_link_url'
       }
     end
 
@@ -36,7 +39,8 @@ module MergeATSClient
     def self.openapi_types
       {
         :'link_token' => :'String',
-        :'integration_name' => :'String'
+        :'integration_name' => :'String',
+        :'magic_link_url' => :'String'
       }
     end
 
@@ -67,6 +71,10 @@ module MergeATSClient
 
       if attributes.key?(:'integration_name')
         self.integration_name = attributes[:'integration_name']
+      end
+
+      if attributes.key?(:'magic_link_url')
+        self.magic_link_url = attributes[:'magic_link_url']
       end
     end
 
@@ -99,7 +107,8 @@ module MergeATSClient
       return true if self.equal?(o)
       self.class == o.class &&
           link_token == o.link_token &&
-          integration_name == o.integration_name
+          integration_name == o.integration_name &&
+          magic_link_url == o.magic_link_url
     end
 
     # @see the `==` method
@@ -111,7 +120,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [link_token, integration_name].hash
+      [link_token, integration_name, magic_link_url].hash
     end
 
     # Builds the object from hash

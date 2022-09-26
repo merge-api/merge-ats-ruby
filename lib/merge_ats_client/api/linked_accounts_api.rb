@@ -29,6 +29,7 @@ module MergeATSClient
     # @option opts [String] :end_user_origin_ids Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once.
     # @option opts [String] :id 
     # @option opts [String] :ids Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once.
+    # @option opts [Boolean] :include_duplicates If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account.
     # @option opts [String] :integration_name If provided, will only return linked accounts associated with the given integration name.
     # @option opts [String] :is_test_account If included, will only include test linked accounts. If not included, will only include non-test linked accounts.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -49,6 +50,7 @@ module MergeATSClient
     # @option opts [String] :end_user_origin_ids Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once.
     # @option opts [String] :id 
     # @option opts [String] :ids Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once.
+    # @option opts [Boolean] :include_duplicates If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account.
     # @option opts [String] :integration_name If provided, will only return linked accounts associated with the given integration name.
     # @option opts [String] :is_test_account If included, will only include test linked accounts. If not included, will only include non-test linked accounts.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -75,6 +77,7 @@ module MergeATSClient
       query_params[:'end_user_origin_ids'] = opts[:'end_user_origin_ids'] if !opts[:'end_user_origin_ids'].nil?
       query_params[:'id'] = opts[:'id'] if !opts[:'id'].nil?
       query_params[:'ids'] = opts[:'ids'] if !opts[:'ids'].nil?
+      query_params[:'include_duplicates'] = opts[:'include_duplicates'] if !opts[:'include_duplicates'].nil?
       query_params[:'integration_name'] = opts[:'integration_name'] if !opts[:'integration_name'].nil?
       query_params[:'is_test_account'] = opts[:'is_test_account'] if !opts[:'is_test_account'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?

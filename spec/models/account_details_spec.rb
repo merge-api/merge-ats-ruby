@@ -79,4 +79,10 @@ describe MergeATSClient::AccountDetails do
     end
   end
 
+  describe 'test attribute "is_duplicate"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
