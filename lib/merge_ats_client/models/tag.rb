@@ -24,7 +24,7 @@ module MergeATSClient
 
     attr_accessor :remote_data
 
-    # Indicates whether or not this object has been deleted on the third-party.
+    # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -47,7 +47,7 @@ module MergeATSClient
       {
         :'remote_id' => :'String',
         :'name' => :'String',
-        :'remote_data' => :'Array<Hash<String, AnyType>>',
+        :'remote_data' => :'Array<Hash<String, Object>>',
         :'remote_was_deleted' => :'Boolean'
       }
     end

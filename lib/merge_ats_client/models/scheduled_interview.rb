@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
+  # # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview. ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
   class ScheduledInterview
     attr_accessor :id
 
@@ -50,7 +50,7 @@ module MergeATSClient
 
     attr_accessor :remote_data
 
-    # Indicates whether or not this object has been deleted on the third-party.
+    # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
 
     # Attribute mapping from ruby-style variable name to JSON key.

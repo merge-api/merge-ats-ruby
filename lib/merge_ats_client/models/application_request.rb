@@ -83,10 +83,10 @@ module MergeATSClient
         :'credited_to' => :'String',
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
-        :'custom_fields' => :'Hash<String, AnyType>',
+        :'custom_fields' => :'Hash<String, Object>',
         :'remote_template_id' => :'String',
-        :'integration_params' => :'Hash<String, AnyType>',
-        :'linked_account_params' => :'Hash<String, AnyType>'
+        :'integration_params' => :'Hash<String, Object>',
+        :'linked_account_params' => :'Hash<String, Object>'
       }
     end
 

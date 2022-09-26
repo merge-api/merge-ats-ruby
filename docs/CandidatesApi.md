@@ -194,7 +194,7 @@ opts = {
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
   expand: 'applications', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   first_name: 'first_name_example', # String | If provided, will only return candidates with this first name.
-  include_deleted_data: true, # Boolean | Whether to include data that was deleted in the third-party service.
+  include_deleted_data: true, # Boolean | Whether to include data that was marked as deleted by third party webhooks.
   include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
   last_name: 'last_name_example', # String | If provided, will only return candidates with this last name.
   modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
@@ -240,7 +240,7 @@ end
 | **cursor** | **String** | The pagination cursor value. | [optional] |
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
 | **first_name** | **String** | If provided, will only return candidates with this first name. | [optional] |
-| **include_deleted_data** | **Boolean** | Whether to include data that was deleted in the third-party service. | [optional] |
+| **include_deleted_data** | **Boolean** | Whether to include data that was marked as deleted by third party webhooks. | [optional] |
 | **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 | **last_name** | **String** | If provided, will only return candidates with this last name. | [optional] |
 | **modified_after** | **Time** | If provided, will only return objects modified after this datetime. | [optional] |

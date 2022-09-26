@@ -85,7 +85,7 @@ module MergeATSClient
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
         :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, AnyType>',
+        :'custom_fields' => :'Hash<String, Object>',
         :'remote_was_deleted' => :'Boolean'
       }
     end

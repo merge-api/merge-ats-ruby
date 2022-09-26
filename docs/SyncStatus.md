@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **model_name** | **String** |  |  |
 | **model_id** | **String** |  |  |
-| **last_sync_start** | **Time** |  |  |
-| **next_sync_start** | **Time** |  |  |
+| **last_sync_start** | **Time** |  | [optional] |
+| **next_sync_start** | **Time** |  | [optional] |
 | **status** | [**SyncStatusStatusEnum**](SyncStatusStatusEnum.md) |  |  |
 | **is_initial_sync** | **Boolean** |  |  |
 

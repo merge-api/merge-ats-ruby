@@ -33,6 +33,8 @@ module MergeATSClient
     # The job's status.
     attr_accessor :status
 
+    attr_accessor :job_posting_urls
+
     # When the third party's job was created.
     attr_accessor :remote_created_at
 
@@ -51,12 +53,12 @@ module MergeATSClient
     # IDs of `RemoteUser` objects that serve as hiring managers for this `Job`.
     attr_accessor :hiring_managers
 
-    # IDs of RemoteUser objects that serve as recruiters for this Job.
+    # IDs of `RemoteUser` objects that serve as recruiters for this `Job`.
     attr_accessor :recruiters
 
     attr_accessor :remote_data
 
-    # Indicates whether or not this object has been deleted on the third-party.
+    # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -68,6 +70,7 @@ module MergeATSClient
         :'description' => :'description',
         :'code' => :'code',
         :'status' => :'status',
+        :'job_posting_urls' => :'job_posting_urls',
         :'remote_created_at' => :'remote_created_at',
         :'remote_updated_at' => :'remote_updated_at',
         :'confidential' => :'confidential',
@@ -94,6 +97,7 @@ module MergeATSClient
         :'description' => :'String',
         :'code' => :'String',
         :'status' => :'JobStatusEnum',
+        :'job_posting_urls' => :'Array<Url>',
         :'remote_created_at' => :'Time',
         :'remote_updated_at' => :'Time',
         :'confidential' => :'Boolean',
@@ -158,6 +162,12 @@ module MergeATSClient
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'job_posting_urls')
+        if (value = attributes[:'job_posting_urls']).is_a?(Array)
+          self.job_posting_urls = value
+        end
       end
 
       if attributes.key?(:'remote_created_at')
@@ -231,6 +241,7 @@ module MergeATSClient
           description == o.description &&
           code == o.code &&
           status == o.status &&
+          job_posting_urls == o.job_posting_urls &&
           remote_created_at == o.remote_created_at &&
           remote_updated_at == o.remote_updated_at &&
           confidential == o.confidential &&
@@ -251,7 +262,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, description, code, status, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, recruiters, remote_data, remote_was_deleted].hash
+      [id, remote_id, name, description, code, status, job_posting_urls, remote_created_at, remote_updated_at, confidential, departments, offices, hiring_managers, recruiters, remote_data, remote_was_deleted].hash
     end
 
     # Builds the object from hash

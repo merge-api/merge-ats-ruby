@@ -15,19 +15,26 @@ require 'time'
 
 module MergeATSClient
   class EndUserDetailsRequest
+    # Your end user's email address.
     attr_accessor :end_user_email_address
 
+    # Your end user's organization.
     attr_accessor :end_user_organization_name
 
+    # Unique ID for your end user.
     attr_accessor :end_user_origin_id
 
+    # The integration categories to show in Merge Link.
     attr_accessor :categories
 
-    # The slug of a specific pre-selected integration for this linking flow token, for examples of slugs see https://www.merge.dev/docs/basics/integration-metadata
+    # The slug of a specific pre-selected integration for this linking flow token. For examples of slugs, see https://www.merge.dev/docs/basics/integration-metadata/.
     attr_accessor :integration
 
-    # An integer number of minutes between [30, 720] for how long this token is valid. Defaults to 30
+    # An integer number of minutes between [30, 720 or 10080 if for a Magic Link URL] for how long this token is valid. Defaults to 30.
     attr_accessor :link_expiry_mins
+
+    # Whether to generate a Magic Link URL. Defaults to false. For more information on Magic Link, see https://merge.dev/blog/product/integrations,-fast.-say-hello-to-magic-link/.
+    attr_accessor :should_create_magic_link_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -37,7 +44,8 @@ module MergeATSClient
         :'end_user_origin_id' => :'end_user_origin_id',
         :'categories' => :'categories',
         :'integration' => :'integration',
-        :'link_expiry_mins' => :'link_expiry_mins'
+        :'link_expiry_mins' => :'link_expiry_mins',
+        :'should_create_magic_link_url' => :'should_create_magic_link_url'
       }
     end
 
@@ -54,7 +62,8 @@ module MergeATSClient
         :'end_user_origin_id' => :'String',
         :'categories' => :'Array<CategoriesEnum>',
         :'integration' => :'String',
-        :'link_expiry_mins' => :'Integer'
+        :'link_expiry_mins' => :'Integer',
+        :'should_create_magic_link_url' => :'Boolean'
       }
     end
 
@@ -62,6 +71,7 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'integration',
+        :'should_create_magic_link_url'
       ])
     end
 
@@ -106,6 +116,12 @@ module MergeATSClient
         self.link_expiry_mins = attributes[:'link_expiry_mins']
       else
         self.link_expiry_mins = 30
+      end
+
+      if attributes.key?(:'should_create_magic_link_url')
+        self.should_create_magic_link_url = attributes[:'should_create_magic_link_url']
+      else
+        self.should_create_magic_link_url = false
       end
     end
 
@@ -157,8 +173,8 @@ module MergeATSClient
         invalid_properties.push('invalid value for "integration", the character length must be great than or equal to 1.')
       end
 
-      if !@link_expiry_mins.nil? && @link_expiry_mins > 720
-        invalid_properties.push('invalid value for "link_expiry_mins", must be smaller than or equal to 720.')
+      if !@link_expiry_mins.nil? && @link_expiry_mins > 10080
+        invalid_properties.push('invalid value for "link_expiry_mins", must be smaller than or equal to 10080.')
       end
 
       if !@link_expiry_mins.nil? && @link_expiry_mins < 30
@@ -182,7 +198,7 @@ module MergeATSClient
       return false if @end_user_origin_id.to_s.length < 1
       return false if @categories.nil?
       return false if !@integration.nil? && @integration.to_s.length < 1
-      return false if !@link_expiry_mins.nil? && @link_expiry_mins > 720
+      return false if !@link_expiry_mins.nil? && @link_expiry_mins > 10080
       return false if !@link_expiry_mins.nil? && @link_expiry_mins < 30
       true
     end
@@ -254,8 +270,8 @@ module MergeATSClient
     # Custom attribute writer method with validation
     # @param [Object] link_expiry_mins Value to be assigned
     def link_expiry_mins=(link_expiry_mins)
-      if !link_expiry_mins.nil? && link_expiry_mins > 720
-        fail ArgumentError, 'invalid value for "link_expiry_mins", must be smaller than or equal to 720.'
+      if !link_expiry_mins.nil? && link_expiry_mins > 10080
+        fail ArgumentError, 'invalid value for "link_expiry_mins", must be smaller than or equal to 10080.'
       end
 
       if !link_expiry_mins.nil? && link_expiry_mins < 30
@@ -275,7 +291,8 @@ module MergeATSClient
           end_user_origin_id == o.end_user_origin_id &&
           categories == o.categories &&
           integration == o.integration &&
-          link_expiry_mins == o.link_expiry_mins
+          link_expiry_mins == o.link_expiry_mins &&
+          should_create_magic_link_url == o.should_create_magic_link_url
     end
 
     # @see the `==` method
@@ -287,7 +304,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories, integration, link_expiry_mins].hash
+      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories, integration, link_expiry_mins, should_create_magic_link_url].hash
     end
 
     # Builds the object from hash

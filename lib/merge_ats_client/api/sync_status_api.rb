@@ -19,7 +19,7 @@ module MergeATSClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Get syncing status. Possible values: `DISABLED`, `DONE`, `FAILED`, `SYNCING`
+    # Get syncing status. Possible values: `DISABLED`, `DONE`, `FAILED`, `PAUSED`, `SYNCING`
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :cursor The pagination cursor value.
@@ -30,7 +30,7 @@ module MergeATSClient
       data
     end
 
-    # Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
+    # Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :cursor The pagination cursor value.

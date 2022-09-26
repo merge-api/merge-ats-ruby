@@ -4,10 +4,92 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**applications_change_stage_create**](ApplicationsApi.md#applications_change_stage_create) | **POST** /applications/{id}/change-stage |  |
 | [**applications_create**](ApplicationsApi.md#applications_create) | **POST** /applications |  |
 | [**applications_list**](ApplicationsApi.md#applications_list) | **GET** /applications |  |
 | [**applications_meta_post_retrieve**](ApplicationsApi.md#applications_meta_post_retrieve) | **GET** /applications/meta/post |  |
 | [**applications_retrieve**](ApplicationsApi.md#applications_retrieve) | **GET** /applications/{id} |  |
+
+
+## applications_change_stage_create
+
+> <ApplicationResponse> applications_change_stage_create(x_account_token, id, opts)
+
+
+
+Updates the `current_stage` field of an `Application` object
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['tokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['tokenAuth'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::ApplicationsApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+id = TODO # String | 
+opts = {
+  is_debug_mode: true, # Boolean | Whether to include debug fields (such as log file links) in the response.
+  run_async: true, # Boolean | Whether or not third-party updates should be run asynchronously.
+  update_application_stage_request: MergeATSClient::UpdateApplicationStageRequest.new # UpdateApplicationStageRequest | 
+}
+
+begin
+  
+  result = api_instance.applications_change_stage_create(x_account_token, id, opts)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ApplicationsApi->applications_change_stage_create: #{e}"
+end
+```
+
+#### Using the applications_change_stage_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ApplicationResponse>, Integer, Hash)> applications_change_stage_create_with_http_info(x_account_token, id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.applications_change_stage_create_with_http_info(x_account_token, id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ApplicationResponse>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ApplicationsApi->applications_change_stage_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+| **id** | [**String**](.md) |  |  |
+| **is_debug_mode** | **Boolean** | Whether to include debug fields (such as log file links) in the response. | [optional] |
+| **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
+| **update_application_stage_request** | [**UpdateApplicationStageRequest**](UpdateApplicationStageRequest.md) |  | [optional] |
+
+### Return type
+
+[**ApplicationResponse**](ApplicationResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Accept**: application/json
 
 
 ## applications_create
@@ -120,7 +202,7 @@ opts = {
   current_stage_id: 'current_stage_id_example', # String | If provided, will only return applications at this interview stage.
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
   expand: 'candidate', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-  include_deleted_data: true, # Boolean | Whether to include data that was deleted in the third-party service.
+  include_deleted_data: true, # Boolean | Whether to include data that was marked as deleted by third party webhooks.
   include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
   job_id: 'job_id_example', # String | If provided, will only return applications for this job.
   modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
@@ -170,7 +252,7 @@ end
 | **current_stage_id** | **String** | If provided, will only return applications at this interview stage. | [optional] |
 | **cursor** | **String** | The pagination cursor value. | [optional] |
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
-| **include_deleted_data** | **Boolean** | Whether to include data that was deleted in the third-party service. | [optional] |
+| **include_deleted_data** | **Boolean** | Whether to include data that was marked as deleted by third party webhooks. | [optional] |
 | **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
 | **job_id** | **String** | If provided, will only return applications for this job. | [optional] |
 | **modified_after** | **Time** | If provided, will only return objects modified after this datetime. | [optional] |

@@ -13,7 +13,7 @@
 | **remote_created_at** | **Time** | When the third party&#39;s user was created. | [optional] |
 | **access_role** | [**AccessRoleEnum**](AccessRoleEnum.md) | The user&#39;s role. | [optional] |
 | **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
-| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted on the third-party. | [optional][readonly] |
+| **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted by third party webhooks. | [optional][readonly] |
 
 ## Example
 

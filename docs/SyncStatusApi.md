@@ -13,7 +13,7 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 
 
-Get syncing status. Possible values: `DISABLED`, `DONE`, `FAILED`, `SYNCING`
+Get syncing status. Possible values: `DISABLED`, `DONE`, `FAILED`, `PAUSED`, `SYNCING`
 
 ### Examples
 

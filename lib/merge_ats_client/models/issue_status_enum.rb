@@ -18,18 +18,28 @@ module MergeATSClient
     ONGOING = "ONGOING".freeze
     RESOLVED = "RESOLVED".freeze
 
-    # Builds the enum from string
-    # @param [String] The enum value in the form of the string
-    # @return [String] The enum value
-    def self.build_from_hash(value)
-      new.build_from_hash(value)
-    end
+    MERGE_NONSTANDARD_VALUE = "MERGE_NONSTANDARD_VALUE".freeze
+
+    attr_accessor :value
+    attr_accessor :raw_value
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      value
+      @raw_value = value
+      if ["ONGOING", "RESOLVED", ].include? value
+        @value = value
+      else
+        @value = MERGE_NONSTANDARD_VALUE
+      end
+
+      self
+    end
+
+    def self.build_from_hash(value)
+      IssueStatusEnum.new.build_from_hash(value)
     end
   end
+
 end

@@ -32,6 +32,9 @@ module MergeATSClient
 
     attr_accessor :webhook_listener_url
 
+    # Whether a Production Linked Account's credentials match another existing Production Linked Account. This field is `null` for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets.
+    attr_accessor :is_duplicate
+
     attr_accessor :integration
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -45,6 +48,7 @@ module MergeATSClient
         :'end_user_organization_name' => :'end_user_organization_name',
         :'end_user_email_address' => :'end_user_email_address',
         :'webhook_listener_url' => :'webhook_listener_url',
+        :'is_duplicate' => :'is_duplicate',
         :'integration' => :'integration'
       }
     end
@@ -65,6 +69,7 @@ module MergeATSClient
         :'end_user_organization_name' => :'String',
         :'end_user_email_address' => :'String',
         :'webhook_listener_url' => :'String',
+        :'is_duplicate' => :'Boolean',
         :'integration' => :'AccountDetailsAndActionsIntegration'
       }
     end
@@ -72,6 +77,7 @@ module MergeATSClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'is_duplicate',
       ])
     end
 
@@ -120,6 +126,10 @@ module MergeATSClient
 
       if attributes.key?(:'webhook_listener_url')
         self.webhook_listener_url = attributes[:'webhook_listener_url']
+      end
+
+      if attributes.key?(:'is_duplicate')
+        self.is_duplicate = attributes[:'is_duplicate']
       end
 
       if attributes.key?(:'integration')
@@ -178,6 +188,7 @@ module MergeATSClient
           end_user_organization_name == o.end_user_organization_name &&
           end_user_email_address == o.end_user_email_address &&
           webhook_listener_url == o.webhook_listener_url &&
+          is_duplicate == o.is_duplicate &&
           integration == o.integration
     end
 
@@ -190,7 +201,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, category, status, status_detail, end_user_origin_id, end_user_organization_name, end_user_email_address, webhook_listener_url, integration].hash
+      [id, category, status, status_detail, end_user_origin_id, end_user_organization_name, end_user_email_address, webhook_listener_url, is_duplicate, integration].hash
     end
 
     # Builds the object from hash
