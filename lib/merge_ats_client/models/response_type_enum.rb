@@ -38,7 +38,7 @@ module MergeATSClient
     end
 
     def self.build_from_hash(value)
-      IssueStatusEnum.new.build_from_hash(value)
+      ResponseTypeEnum.new.build_from_hash(value)
     end
   end
 

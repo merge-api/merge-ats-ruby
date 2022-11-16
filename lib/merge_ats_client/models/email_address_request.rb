@@ -22,11 +22,17 @@ module MergeATSClient
     # The type of email address.
     attr_accessor :email_address_type
 
+    attr_accessor :integration_params
+
+    attr_accessor :linked_account_params
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'value' => :'value',
-        :'email_address_type' => :'email_address_type'
+        :'email_address_type' => :'email_address_type',
+        :'integration_params' => :'integration_params',
+        :'linked_account_params' => :'linked_account_params'
       }
     end
 
@@ -39,7 +45,9 @@ module MergeATSClient
     def self.openapi_types
       {
         :'value' => :'String',
-        :'email_address_type' => :'EmailAddressTypeEnum'
+        :'email_address_type' => :'EmailAddressTypeEnum',
+        :'integration_params' => :'Hash<String, Object>',
+        :'linked_account_params' => :'Hash<String, Object>'
       }
     end
 
@@ -47,7 +55,9 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'value',
-        :'email_address_type'
+        :'email_address_type',
+        :'integration_params',
+        :'linked_account_params'
       ])
     end
 
@@ -72,6 +82,18 @@ module MergeATSClient
 
       if attributes.key?(:'email_address_type')
         self.email_address_type = attributes[:'email_address_type']
+      end
+
+      if attributes.key?(:'integration_params')
+        if (value = attributes[:'integration_params']).is_a?(Hash)
+          self.integration_params = value
+        end
+      end
+
+      if attributes.key?(:'linked_account_params')
+        if (value = attributes[:'linked_account_params']).is_a?(Hash)
+          self.linked_account_params = value
+        end
       end
     end
 
@@ -109,7 +131,9 @@ module MergeATSClient
       return true if self.equal?(o)
       self.class == o.class &&
           value == o.value &&
-          email_address_type == o.email_address_type
+          email_address_type == o.email_address_type &&
+          integration_params == o.integration_params &&
+          linked_account_params == o.linked_account_params
     end
 
     # @see the `==` method
@@ -121,7 +145,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [value, email_address_type].hash
+      [value, email_address_type, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash
