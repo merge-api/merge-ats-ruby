@@ -15,13 +15,13 @@ require 'time'
 
 module MergeATSClient
   class EndUserDetailsRequest
-    # Your end user's email address.
+    # Your end user's email address. This is purely for identification purposes - setting this value will not cause any emails to be sent.
     attr_accessor :end_user_email_address
 
     # Your end user's organization.
     attr_accessor :end_user_organization_name
 
-    # Unique ID for your end user.
+    # This unique identifier typically represents the ID for your end user in your product's database. This value must be distinct from other Linked Accounts' unique identifiers.
     attr_accessor :end_user_origin_id
 
     # The integration categories to show in Merge Link.

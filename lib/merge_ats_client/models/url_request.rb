@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Url Object ### Description The `Url` object is used to represent a candidate's website. ### Usage Example Fetch from the `GET Candidate` endpoint and view their website urls.
+  # # The Url Object ### Description The `Url` object is used to represent hyperlinks associated with the parent model. ### Usage Example Fetch from the `GET Candidate` endpoint and view their website urls.
   class UrlRequest
     # The site's url.
     attr_accessor :value
@@ -22,11 +22,17 @@ module MergeATSClient
     # The type of site.
     attr_accessor :url_type
 
+    attr_accessor :integration_params
+
+    attr_accessor :linked_account_params
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'value' => :'value',
-        :'url_type' => :'url_type'
+        :'url_type' => :'url_type',
+        :'integration_params' => :'integration_params',
+        :'linked_account_params' => :'linked_account_params'
       }
     end
 
@@ -39,7 +45,9 @@ module MergeATSClient
     def self.openapi_types
       {
         :'value' => :'String',
-        :'url_type' => :'UrlTypeEnum'
+        :'url_type' => :'UrlTypeEnum',
+        :'integration_params' => :'Hash<String, Object>',
+        :'linked_account_params' => :'Hash<String, Object>'
       }
     end
 
@@ -47,7 +55,9 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'value',
-        :'url_type'
+        :'url_type',
+        :'integration_params',
+        :'linked_account_params'
       ])
     end
 
@@ -72,6 +82,18 @@ module MergeATSClient
 
       if attributes.key?(:'url_type')
         self.url_type = attributes[:'url_type']
+      end
+
+      if attributes.key?(:'integration_params')
+        if (value = attributes[:'integration_params']).is_a?(Hash)
+          self.integration_params = value
+        end
+      end
+
+      if attributes.key?(:'linked_account_params')
+        if (value = attributes[:'linked_account_params']).is_a?(Hash)
+          self.linked_account_params = value
+        end
       end
     end
 
@@ -109,7 +131,9 @@ module MergeATSClient
       return true if self.equal?(o)
       self.class == o.class &&
           value == o.value &&
-          url_type == o.url_type
+          url_type == o.url_type &&
+          integration_params == o.integration_params &&
+          linked_account_params == o.linked_account_params
     end
 
     # @see the `==` method
@@ -121,7 +145,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [value, url_type].hash
+      [value, url_type, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash
