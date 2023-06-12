@@ -6,18 +6,20 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **application** | **String** |  | [optional] |
-| **job_interview_stage** | **String** |  | [optional] |
-| **organizer** | **String** |  | [optional] |
+| **application** | **String** | The application being interviewed. | [optional] |
+| **job_interview_stage** | **String** | The stage of the interview. | [optional] |
+| **organizer** | **String** | The user organizing the interview. | [optional] |
 | **interviewers** | **Array&lt;String&gt;** | Array of &#x60;RemoteUser&#x60; IDs. | [optional] |
 | **location** | **String** | The interview&#39;s location. | [optional] |
 | **start_at** | **Time** | When the interview was started. | [optional] |
 | **end_at** | **Time** | When the interview was ended. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s interview was created. | [optional] |
 | **remote_updated_at** | **Time** | When the third party&#39;s interview was updated. | [optional] |
-| **status** | [**ScheduledInterviewStatusEnum**](ScheduledInterviewStatusEnum.md) | The interview&#39;s status. | [optional] |
-| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **status** | [**ScheduledInterviewStatusEnum**](ScheduledInterviewStatusEnum.md) | The interview&#39;s status.  * &#x60;SCHEDULED&#x60; - SCHEDULED * &#x60;AWAITING_FEEDBACK&#x60; - AWAITING_FEEDBACK * &#x60;COMPLETE&#x60; - COMPLETE | [optional] |
 | **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted by third party webhooks. | [optional][readonly] |
+| **field_mappings** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional][readonly] |
+| **modified_at** | **Time** | This is the datetime that this object was last updated by Merge | [optional][readonly] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -37,8 +39,10 @@ instance = MergeATSClient::ScheduledInterview.new(
   remote_created_at: 2021-10-15T00:00Z,
   remote_updated_at: 2021-10-15T00:00Z,
   status: SCHEDULED,
-  remote_data: [{&quot;path&quot;:&quot;/interviews&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
-  remote_was_deleted: null
+  remote_was_deleted: null,
+  field_mappings: {&quot;organization_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;},&quot;linked_account_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;}},
+  modified_at: 2021-10-16T00:00Z,
+  remote_data: [{&quot;path&quot;:&quot;/interviews&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

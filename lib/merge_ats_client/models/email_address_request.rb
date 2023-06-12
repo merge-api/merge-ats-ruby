@@ -19,7 +19,7 @@ module MergeATSClient
     # The email address.
     attr_accessor :value
 
-    # The type of email address.
+    # The type of email address.  * `PERSONAL` - PERSONAL * `WORK` - WORK * `OTHER` - OTHER
     attr_accessor :email_address_type
 
     attr_accessor :integration_params

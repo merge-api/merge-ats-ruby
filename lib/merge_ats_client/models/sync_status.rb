@@ -28,6 +28,8 @@ module MergeATSClient
 
     attr_accessor :is_initial_sync
 
+    attr_accessor :selective_sync_configurations_usage
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -36,7 +38,8 @@ module MergeATSClient
         :'last_sync_start' => :'last_sync_start',
         :'next_sync_start' => :'next_sync_start',
         :'status' => :'status',
-        :'is_initial_sync' => :'is_initial_sync'
+        :'is_initial_sync' => :'is_initial_sync',
+        :'selective_sync_configurations_usage' => :'selective_sync_configurations_usage'
       }
     end
 
@@ -53,7 +56,8 @@ module MergeATSClient
         :'last_sync_start' => :'Time',
         :'next_sync_start' => :'Time',
         :'status' => :'SyncStatusStatusEnum',
-        :'is_initial_sync' => :'Boolean'
+        :'is_initial_sync' => :'Boolean',
+        :'selective_sync_configurations_usage' => :'SelectiveSyncConfigurationsUsageEnum'
       }
     end
 
@@ -101,6 +105,10 @@ module MergeATSClient
       if attributes.key?(:'is_initial_sync')
         self.is_initial_sync = attributes[:'is_initial_sync']
       end
+
+      if attributes.key?(:'selective_sync_configurations_usage')
+        self.selective_sync_configurations_usage = attributes[:'selective_sync_configurations_usage']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -146,7 +154,8 @@ module MergeATSClient
           last_sync_start == o.last_sync_start &&
           next_sync_start == o.next_sync_start &&
           status == o.status &&
-          is_initial_sync == o.is_initial_sync
+          is_initial_sync == o.is_initial_sync &&
+          selective_sync_configurations_usage == o.selective_sync_configurations_usage
     end
 
     # @see the `==` method
@@ -158,7 +167,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [model_name, model_id, last_sync_start, next_sync_start, status, is_initial_sync].hash
+      [model_name, model_id, last_sync_start, next_sync_start, status, is_initial_sync, selective_sync_configurations_usage].hash
     end
 
     # Builds the object from hash

@@ -32,6 +32,7 @@ module MergeATSClient
 
     attr_accessor :request_format
 
+    # Optional. If true, the response will always be an object of the form `{\"type\": T, \"value\": ...}` where `T` will be one of `string, boolean, number, null, array, object`.
     attr_accessor :normalize_response
 
     # Attribute mapping from ruby-style variable name to JSON key.

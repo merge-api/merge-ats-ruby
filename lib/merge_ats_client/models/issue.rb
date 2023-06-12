@@ -17,6 +17,7 @@ module MergeATSClient
   class Issue
     attr_accessor :id
 
+    # Status of the issue. Options: ('ONGOING', 'RESOLVED')  * `ONGOING` - ONGOING * `RESOLVED` - RESOLVED
     attr_accessor :status
 
     attr_accessor :error_description
@@ -29,6 +30,8 @@ module MergeATSClient
 
     attr_accessor :is_muted
 
+    attr_accessor :error_details
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -38,7 +41,8 @@ module MergeATSClient
         :'end_user' => :'end_user',
         :'first_incident_time' => :'first_incident_time',
         :'last_incident_time' => :'last_incident_time',
-        :'is_muted' => :'is_muted'
+        :'is_muted' => :'is_muted',
+        :'error_details' => :'error_details'
       }
     end
 
@@ -56,7 +60,8 @@ module MergeATSClient
         :'end_user' => :'Hash<String, Object>',
         :'first_incident_time' => :'Time',
         :'last_incident_time' => :'Time',
-        :'is_muted' => :'Boolean'
+        :'is_muted' => :'Boolean',
+        :'error_details' => :'Array<String>'
       }
     end
 
@@ -112,6 +117,12 @@ module MergeATSClient
       if attributes.key?(:'is_muted')
         self.is_muted = attributes[:'is_muted']
       end
+
+      if attributes.key?(:'error_details')
+        if (value = attributes[:'error_details']).is_a?(Array)
+          self.error_details = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -143,7 +154,8 @@ module MergeATSClient
           end_user == o.end_user &&
           first_incident_time == o.first_incident_time &&
           last_incident_time == o.last_incident_time &&
-          is_muted == o.is_muted
+          is_muted == o.is_muted &&
+          error_details == o.error_details
     end
 
     # @see the `==` method
@@ -155,7 +167,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, status, error_description, end_user, first_incident_time, last_incident_time, is_muted].hash
+      [id, status, error_description, end_user, first_incident_time, last_incident_time, is_muted, error_details].hash
     end
 
     # Builds the object from hash

@@ -30,7 +30,7 @@ end
 
 api_instance = MergeATSClient::LinkedAccountsApi.new
 opts = {
-  category: 'accounting', # String | 
+  category: 'accounting', # String | Options: ('hris', 'ats', 'accounting', 'ticketing', 'crm', 'mktg', 'filestorage')  * `hris` - hris * `ats` - ats * `accounting` - accounting * `ticketing` - ticketing * `crm` - crm * `mktg` - mktg * `filestorage` - filestorage
   cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
   end_user_email_address: 'end_user_email_address_example', # String | If provided, will only return linked accounts associated with the given email address.
   end_user_organization_name: 'end_user_organization_name_example', # String | If provided, will only return linked accounts associated with the given organization name.
@@ -76,7 +76,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **category** | **String** |  | [optional] |
+| **category** | **String** | Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage | [optional] |
 | **cursor** | **String** | The pagination cursor value. | [optional] |
 | **end_user_email_address** | **String** | If provided, will only return linked accounts associated with the given email address. | [optional] |
 | **end_user_organization_name** | **String** | If provided, will only return linked accounts associated with the given organization name. | [optional] |

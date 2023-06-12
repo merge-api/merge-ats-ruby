@@ -20,6 +20,7 @@ module MergeATSClient
     FAILED = "FAILED".freeze
     DISABLED = "DISABLED".freeze
     PAUSED = "PAUSED".freeze
+    PARTIALLY_SYNCED = "PARTIALLY_SYNCED".freeze
 
     MERGE_NONSTANDARD_VALUE = "MERGE_NONSTANDARD_VALUE".freeze
 
@@ -31,7 +32,7 @@ module MergeATSClient
     # @return [String] The enum value
     def build_from_hash(value)
       @raw_value = value
-      if ["SYNCING", "DONE", "FAILED", "DISABLED", "PAUSED", ].include? value
+      if ["SYNCING", "DONE", "FAILED", "DISABLED", "PAUSED", "PARTIALLY_SYNCED", ].include? value
         @value = value
       else
         @value = MERGE_NONSTANDARD_VALUE

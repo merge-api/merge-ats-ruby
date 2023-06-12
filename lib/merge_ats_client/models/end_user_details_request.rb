@@ -36,6 +36,9 @@ module MergeATSClient
     # Whether to generate a Magic Link URL. Defaults to false. For more information on Magic Link, see https://merge.dev/blog/product/integrations,-fast.-say-hello-to-magic-link/.
     attr_accessor :should_create_magic_link_url
 
+    # An array of objects to specify the models and fields that will be disabled for a given Linked Account. Each object uses model_id, enabled_actions, and disabled_fields to specify the model, method, and fields that are scoped for a given Linked Account.
+    attr_accessor :common_models
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -45,7 +48,8 @@ module MergeATSClient
         :'categories' => :'categories',
         :'integration' => :'integration',
         :'link_expiry_mins' => :'link_expiry_mins',
-        :'should_create_magic_link_url' => :'should_create_magic_link_url'
+        :'should_create_magic_link_url' => :'should_create_magic_link_url',
+        :'common_models' => :'common_models'
       }
     end
 
@@ -63,7 +67,8 @@ module MergeATSClient
         :'categories' => :'Array<CategoriesEnum>',
         :'integration' => :'String',
         :'link_expiry_mins' => :'Integer',
-        :'should_create_magic_link_url' => :'Boolean'
+        :'should_create_magic_link_url' => :'Boolean',
+        :'common_models' => :'Array<CommonModelScopesBodyRequest>'
       }
     end
 
@@ -71,7 +76,8 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'integration',
-        :'should_create_magic_link_url'
+        :'should_create_magic_link_url',
+        :'common_models'
       ])
     end
 
@@ -122,6 +128,12 @@ module MergeATSClient
         self.should_create_magic_link_url = attributes[:'should_create_magic_link_url']
       else
         self.should_create_magic_link_url = false
+      end
+
+      if attributes.key?(:'common_models')
+        if (value = attributes[:'common_models']).is_a?(Array)
+          self.common_models = value
+        end
       end
     end
 
@@ -292,7 +304,8 @@ module MergeATSClient
           categories == o.categories &&
           integration == o.integration &&
           link_expiry_mins == o.link_expiry_mins &&
-          should_create_magic_link_url == o.should_create_magic_link_url
+          should_create_magic_link_url == o.should_create_magic_link_url &&
+          common_models == o.common_models
     end
 
     # @see the `==` method
@@ -304,7 +317,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories, integration, link_expiry_mins, should_create_magic_link_url].hash
+      [end_user_email_address, end_user_organization_name, end_user_origin_id, categories, integration, link_expiry_mins, should_create_magic_link_url, common_models].hash
     end
 
     # Builds the object from hash

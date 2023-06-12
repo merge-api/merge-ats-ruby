@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Office Object ### Description The `Office` object is used to represent an office within a company. ### Usage Example Fetch from the `LIST Offices` endpoint and view the offices within a company.
+  # # The Office Object ### Description The `Office` object is used to represent an office within a company. A given `Job` has the `Office` ID in its offices field. ### Usage Example Fetch from the `LIST Offices` endpoint and view the offices within a company.
   class Office
     attr_accessor :id
 
@@ -27,10 +27,15 @@ module MergeATSClient
     # The office's location.
     attr_accessor :location
 
-    attr_accessor :remote_data
-
     # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -39,8 +44,10 @@ module MergeATSClient
         :'remote_id' => :'remote_id',
         :'name' => :'name',
         :'location' => :'location',
-        :'remote_data' => :'remote_data',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -56,8 +63,10 @@ module MergeATSClient
         :'remote_id' => :'String',
         :'name' => :'String',
         :'location' => :'String',
-        :'remote_data' => :'Array<RemoteData>',
-        :'remote_was_deleted' => :'Boolean'
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -67,7 +76,8 @@ module MergeATSClient
         :'remote_id',
         :'name',
         :'location',
-        :'remote_data',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -102,14 +112,24 @@ module MergeATSClient
         self.location = attributes[:'location']
       end
 
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
         end
-      end
-
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
     end
 
@@ -135,8 +155,10 @@ module MergeATSClient
           remote_id == o.remote_id &&
           name == o.name &&
           location == o.location &&
-          remote_data == o.remote_data &&
-          remote_was_deleted == o.remote_was_deleted
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -148,7 +170,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, location, remote_data, remote_was_deleted].hash
+      [id, remote_id, name, location, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash

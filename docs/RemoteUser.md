@@ -11,9 +11,11 @@
 | **email** | **String** | The user&#39;s email. | [optional] |
 | **disabled** | **Boolean** | Whether the user&#39;s account had been disabled. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s user was created. | [optional] |
-| **access_role** | [**AccessRoleEnum**](AccessRoleEnum.md) | The user&#39;s role. | [optional] |
-| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **access_role** | [**AccessRoleEnum**](AccessRoleEnum.md) | The user&#39;s role.  * &#x60;SUPER_ADMIN&#x60; - SUPER_ADMIN * &#x60;ADMIN&#x60; - ADMIN * &#x60;TEAM_MEMBER&#x60; - TEAM_MEMBER * &#x60;LIMITED_TEAM_MEMBER&#x60; - LIMITED_TEAM_MEMBER * &#x60;INTERVIEWER&#x60; - INTERVIEWER | [optional] |
 | **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted by third party webhooks. | [optional][readonly] |
+| **field_mappings** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional][readonly] |
+| **modified_at** | **Time** | This is the datetime that this object was last updated by Merge | [optional][readonly] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -29,8 +31,10 @@ instance = MergeATSClient::RemoteUser.new(
   disabled: null,
   remote_created_at: 2020-11-10T00:00Z,
   access_role: SUPER_ADMIN,
-  remote_data: [{&quot;path&quot;:&quot;/users&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
-  remote_was_deleted: null
+  remote_was_deleted: null,
+  field_mappings: {&quot;organization_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;},&quot;linked_account_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;}},
+  modified_at: 2021-10-16T00:00Z,
+  remote_data: [{&quot;path&quot;:&quot;/users&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

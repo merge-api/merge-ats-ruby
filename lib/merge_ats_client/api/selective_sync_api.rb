@@ -155,7 +155,7 @@ module MergeATSClient
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :common_model 
-    # @option opts [Integer] :cursor The pagination cursor value.
+    # @option opts [String] :cursor The pagination cursor value.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @return [PaginatedConditionSchemaList]
     def selective_sync_meta_list(x_account_token, opts = {})
@@ -167,7 +167,7 @@ module MergeATSClient
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :common_model 
-    # @option opts [Integer] :cursor The pagination cursor value.
+    # @option opts [String] :cursor The pagination cursor value.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @return [Array<(PaginatedConditionSchemaList, Integer, Hash)>] PaginatedConditionSchemaList data, response status code and response headers
     def selective_sync_meta_list_with_http_info(x_account_token, opts = {})

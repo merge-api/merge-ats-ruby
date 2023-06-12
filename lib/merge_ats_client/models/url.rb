@@ -19,14 +19,18 @@ module MergeATSClient
     # The site's url.
     attr_accessor :value
 
-    # The type of site.
+    # The type of site.  * `PERSONAL` - PERSONAL * `COMPANY` - COMPANY * `PORTFOLIO` - PORTFOLIO * `BLOG` - BLOG * `SOCIAL_MEDIA` - SOCIAL_MEDIA * `OTHER` - OTHER * `JOB_POSTING` - JOB_POSTING
     attr_accessor :url_type
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'value' => :'value',
-        :'url_type' => :'url_type'
+        :'url_type' => :'url_type',
+        :'modified_at' => :'modified_at'
       }
     end
 
@@ -39,7 +43,8 @@ module MergeATSClient
     def self.openapi_types
       {
         :'value' => :'String',
-        :'url_type' => :'UrlTypeEnum'
+        :'url_type' => :'UrlTypeEnum',
+        :'modified_at' => :'Time'
       }
     end
 
@@ -47,7 +52,7 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'value',
-        :'url_type'
+        :'url_type',
       ])
     end
 
@@ -72,6 +77,10 @@ module MergeATSClient
 
       if attributes.key?(:'url_type')
         self.url_type = attributes[:'url_type']
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
       end
     end
 
@@ -109,7 +118,8 @@ module MergeATSClient
       return true if self.equal?(o)
       self.class == o.class &&
           value == o.value &&
-          url_type == o.url_type
+          url_type == o.url_type &&
+          modified_at == o.modified_at
     end
 
     # @see the `==` method
@@ -121,7 +131,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [value, url_type].hash
+      [value, url_type, modified_at].hash
     end
 
     # Builds the object from hash

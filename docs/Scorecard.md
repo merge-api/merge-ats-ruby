@@ -6,14 +6,16 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional][readonly] |
 | **remote_id** | **String** | The third-party API ID of the matching object. | [optional] |
-| **application** | **String** |  | [optional] |
-| **interview** | **String** |  | [optional] |
-| **interviewer** | **String** |  | [optional] |
+| **application** | **String** | The application being scored. | [optional] |
+| **interview** | **String** | The interview being scored. | [optional] |
+| **interviewer** | **String** | The interviewer doing the scoring. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s scorecard was created. | [optional] |
 | **submitted_at** | **Time** | When the scorecard was submitted. | [optional] |
-| **overall_recommendation** | [**OverallRecommendationEnum**](OverallRecommendationEnum.md) | The inteviewer&#39;s recommendation. | [optional] |
-| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
+| **overall_recommendation** | [**OverallRecommendationEnum**](OverallRecommendationEnum.md) | The inteviewer&#39;s recommendation.  * &#x60;DEFINITELY_NO&#x60; - DEFINITELY_NO * &#x60;NO&#x60; - NO * &#x60;YES&#x60; - YES * &#x60;STRONG_YES&#x60; - STRONG_YES * &#x60;NO_DECISION&#x60; - NO_DECISION | [optional] |
 | **remote_was_deleted** | **Boolean** | Indicates whether or not this object has been deleted by third party webhooks. | [optional][readonly] |
+| **field_mappings** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional][readonly] |
+| **modified_at** | **Time** | This is the datetime that this object was last updated by Merge | [optional][readonly] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -29,8 +31,10 @@ instance = MergeATSClient::Scorecard.new(
   remote_created_at: 2021-10-15T00:00Z,
   submitted_at: 2021-10-15T00:00Z,
   overall_recommendation: STRONG_YES,
-  remote_data: [{&quot;path&quot;:&quot;/ratings&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
-  remote_was_deleted: null
+  remote_was_deleted: null,
+  field_mappings: {&quot;organization_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;},&quot;linked_account_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;}},
+  modified_at: 2021-10-16T00:00Z,
+  remote_data: [{&quot;path&quot;:&quot;/ratings&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

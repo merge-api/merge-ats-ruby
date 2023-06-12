@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+  # # The Candidate Object ### Description The `Candidate` object is used to represent profile information about a given Candidate. Because it is specific to a Candidate, this information stays constant across applications. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
   class Candidate
     attr_accessor :id
 
@@ -39,7 +39,7 @@ module MergeATSClient
     # When the third party's candidate was updated.
     attr_accessor :remote_updated_at
 
-    # When the most recent candidate interaction occurred.
+    # When the most recent interaction with the candidate occurred.
     attr_accessor :last_interaction_at
 
     # Whether or not the candidate is private.
@@ -66,12 +66,14 @@ module MergeATSClient
     # Array of `Attachment` object IDs.
     attr_accessor :attachments
 
-    attr_accessor :remote_data
-
-    # Custom fields configured for a given model.
-    attr_accessor :custom_fields
-
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -94,9 +96,10 @@ module MergeATSClient
         :'tags' => :'tags',
         :'applications' => :'applications',
         :'attachments' => :'attachments',
-        :'remote_data' => :'remote_data',
-        :'custom_fields' => :'custom_fields',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -126,9 +129,10 @@ module MergeATSClient
         :'tags' => :'Array<String>',
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
-        :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, Object>',
-        :'remote_was_deleted' => :'Boolean'
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -146,8 +150,8 @@ module MergeATSClient
         :'is_private',
         :'can_email',
         :'locations',
-        :'remote_data',
-        :'custom_fields',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -252,20 +256,24 @@ module MergeATSClient
         end
       end
 
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
         end
-      end
-
-      if attributes.key?(:'custom_fields')
-        if (value = attributes[:'custom_fields']).is_a?(Hash)
-          self.custom_fields = value
-        end
-      end
-
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
     end
 
@@ -305,9 +313,10 @@ module MergeATSClient
           tags == o.tags &&
           applications == o.applications &&
           attachments == o.attachments &&
-          remote_data == o.remote_data &&
-          custom_fields == o.custom_fields &&
-          remote_was_deleted == o.remote_was_deleted
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -319,7 +328,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_data, custom_fields, remote_was_deleted].hash
+      [id, remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash

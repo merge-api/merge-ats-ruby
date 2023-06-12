@@ -29,11 +29,11 @@ module MergeATSClient
     # @option opts [Time] :first_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
     # @option opts [String] :include_muted If True, will include muted issues
     # @option opts [String] :integration_name 
-    # @option opts [Time] :last_incident_time_after If provided, will only return issues whose first incident time was after this datetime.
-    # @option opts [Time] :last_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
+    # @option opts [Time] :last_incident_time_after If provided, will only return issues whose last incident time was after this datetime.
+    # @option opts [Time] :last_incident_time_before If provided, will only return issues whose last incident time was before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :start_date If included, will only include issues whose most recent action occurred after this time
-    # @option opts [String] :status 
+    # @option opts [String] :status Status of the issue. Options: (&#39;ONGOING&#39;, &#39;RESOLVED&#39;)  * &#x60;ONGOING&#x60; - ONGOING * &#x60;RESOLVED&#x60; - RESOLVED
     # @return [PaginatedIssueList]
     def issues_list(opts = {})
       data, _status_code, _headers = issues_list_with_http_info(opts)
@@ -50,11 +50,11 @@ module MergeATSClient
     # @option opts [Time] :first_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
     # @option opts [String] :include_muted If True, will include muted issues
     # @option opts [String] :integration_name 
-    # @option opts [Time] :last_incident_time_after If provided, will only return issues whose first incident time was after this datetime.
-    # @option opts [Time] :last_incident_time_before If provided, will only return issues whose first incident time was before this datetime.
+    # @option opts [Time] :last_incident_time_after If provided, will only return issues whose last incident time was after this datetime.
+    # @option opts [Time] :last_incident_time_before If provided, will only return issues whose last incident time was before this datetime.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :start_date If included, will only include issues whose most recent action occurred after this time
-    # @option opts [String] :status 
+    # @option opts [String] :status Status of the issue. Options: (&#39;ONGOING&#39;, &#39;RESOLVED&#39;)  * &#x60;ONGOING&#x60; - ONGOING * &#x60;RESOLVED&#x60; - RESOLVED
     # @return [Array<(PaginatedIssueList, Integer, Hash)>] PaginatedIssueList data, response status code and response headers
     def issues_list_with_http_info(opts = {})
       if @api_client.config.debugging

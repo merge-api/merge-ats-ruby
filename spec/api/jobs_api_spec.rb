@@ -43,12 +43,14 @@ describe 'JobsApi' do
   # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
   # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-  # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-  # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+  # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+  # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
+  # @option opts [String] :offices If provided, will only return jobs for this office; multiple offices can be separated by commas.
   # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+  # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
   # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
-  # @option opts [String] :status If provided, will only return jobs with this status. Options: (&#39;OPEN&#39;, &#39;CLOSED&#39;, &#39;DRAFT&#39;, &#39;ARCHIVED&#39;, &#39;PENDING&#39;)
+  # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
+  # @option opts [String] :status If provided, will only return jobs with this status. Options: (&#39;OPEN&#39;, &#39;CLOSED&#39;, &#39;DRAFT&#39;, &#39;ARCHIVED&#39;, &#39;PENDING&#39;)  * &#x60;OPEN&#x60; - OPEN * &#x60;CLOSED&#x60; - CLOSED * &#x60;DRAFT&#x60; - DRAFT * &#x60;ARCHIVED&#x60; - ARCHIVED * &#x60;PENDING&#x60; - PENDING
   # @return [PaginatedJobList]
   describe 'jobs_list test' do
     it 'should work' do
@@ -63,7 +65,8 @@ describe 'JobsApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-  # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+  # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
+  # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
   # @return [Job]
   describe 'jobs_retrieve test' do
     it 'should work' do

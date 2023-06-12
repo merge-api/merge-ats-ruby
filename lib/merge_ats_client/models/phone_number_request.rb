@@ -19,7 +19,7 @@ module MergeATSClient
     # The phone number.
     attr_accessor :value
 
-    # The type of phone number.
+    # The type of phone number.  * `HOME` - HOME * `WORK` - WORK * `MOBILE` - MOBILE * `SKYPE` - SKYPE * `OTHER` - OTHER
     attr_accessor :phone_number_type
 
     attr_accessor :integration_params

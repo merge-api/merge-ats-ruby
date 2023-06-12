@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
+  # # The Attachment Object ### Description The `Attachment` object is used to represent a file attached to a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
   class Attachment
     attr_accessor :id
 
@@ -29,12 +29,17 @@ module MergeATSClient
 
     attr_accessor :candidate
 
-    # The attachment's type.
+    # The attachment's type.  * `RESUME` - RESUME * `COVER_LETTER` - COVER_LETTER * `OFFER_LETTER` - OFFER_LETTER * `OTHER` - OTHER
     attr_accessor :attachment_type
 
-    attr_accessor :remote_data
-
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -45,8 +50,10 @@ module MergeATSClient
         :'file_url' => :'file_url',
         :'candidate' => :'candidate',
         :'attachment_type' => :'attachment_type',
-        :'remote_data' => :'remote_data',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -64,8 +71,10 @@ module MergeATSClient
         :'file_url' => :'String',
         :'candidate' => :'String',
         :'attachment_type' => :'AttachmentTypeEnum',
-        :'remote_data' => :'Array<RemoteData>',
-        :'remote_was_deleted' => :'Boolean'
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -77,7 +86,8 @@ module MergeATSClient
         :'file_url',
         :'candidate',
         :'attachment_type',
-        :'remote_data',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -120,14 +130,24 @@ module MergeATSClient
         self.attachment_type = attributes[:'attachment_type']
       end
 
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
         end
-      end
-
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
     end
 
@@ -170,8 +190,10 @@ module MergeATSClient
           file_url == o.file_url &&
           candidate == o.candidate &&
           attachment_type == o.attachment_type &&
-          remote_data == o.remote_data &&
-          remote_was_deleted == o.remote_was_deleted
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -183,7 +205,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, file_name, file_url, candidate, attachment_type, remote_data, remote_was_deleted].hash
+      [id, remote_id, file_name, file_url, candidate, attachment_type, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash
