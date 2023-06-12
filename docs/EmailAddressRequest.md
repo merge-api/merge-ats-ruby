@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **value** | **String** | The email address. | [optional] |
-| **email_address_type** | [**EmailAddressTypeEnum**](EmailAddressTypeEnum.md) | The type of email address. | [optional] |
+| **email_address_type** | [**EmailAddressTypeEnum**](EmailAddressTypeEnum.md) | The type of email address.  * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;WORK&#x60; - WORK * &#x60;OTHER&#x60; - OTHER | [optional] |
 | **integration_params** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
 | **linked_account_params** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
 

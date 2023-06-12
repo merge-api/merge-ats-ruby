@@ -14,13 +14,12 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position. This is separate from the Candidate object, although some systems may only allow a Candidate to have one Application.  Please note: Application objects are constructed if the object does not exist in the remote system.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+  # # The Application Object ### Description The Application Object is used to represent a candidate's journey through a particular Job's recruiting process. If a Candidate applies for multiple Jobs, there will be a separate Application for each Job if the third-party integration allows it.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
   class ApplicationRequest
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
-
+    # The candidate applying.
     attr_accessor :candidate
 
+    # The job being applied for.
     attr_accessor :job
 
     # When the application was submitted.
@@ -32,14 +31,14 @@ module MergeATSClient
     # The application's source.
     attr_accessor :source
 
+    # The user credited for this application.
     attr_accessor :credited_to
 
+    # The application's current stage.
     attr_accessor :current_stage
 
+    # The application's reason for rejection.
     attr_accessor :reject_reason
-
-    # Custom fields configured for a given model.
-    attr_accessor :custom_fields
 
     attr_accessor :remote_template_id
 
@@ -50,7 +49,6 @@ module MergeATSClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'remote_id' => :'remote_id',
         :'candidate' => :'candidate',
         :'job' => :'job',
         :'applied_at' => :'applied_at',
@@ -59,7 +57,6 @@ module MergeATSClient
         :'credited_to' => :'credited_to',
         :'current_stage' => :'current_stage',
         :'reject_reason' => :'reject_reason',
-        :'custom_fields' => :'custom_fields',
         :'remote_template_id' => :'remote_template_id',
         :'integration_params' => :'integration_params',
         :'linked_account_params' => :'linked_account_params'
@@ -74,7 +71,6 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'remote_id' => :'String',
         :'candidate' => :'String',
         :'job' => :'String',
         :'applied_at' => :'Time',
@@ -83,7 +79,6 @@ module MergeATSClient
         :'credited_to' => :'String',
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
-        :'custom_fields' => :'Hash<String, Object>',
         :'remote_template_id' => :'String',
         :'integration_params' => :'Hash<String, Object>',
         :'linked_account_params' => :'Hash<String, Object>'
@@ -93,7 +88,6 @@ module MergeATSClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
         :'candidate',
         :'job',
         :'applied_at',
@@ -102,7 +96,6 @@ module MergeATSClient
         :'credited_to',
         :'current_stage',
         :'reject_reason',
-        :'custom_fields',
         :'remote_template_id',
         :'integration_params',
         :'linked_account_params'
@@ -123,10 +116,6 @@ module MergeATSClient
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
-      end
 
       if attributes.key?(:'candidate')
         self.candidate = attributes[:'candidate']
@@ -158,12 +147,6 @@ module MergeATSClient
 
       if attributes.key?(:'reject_reason')
         self.reject_reason = attributes[:'reject_reason']
-      end
-
-      if attributes.key?(:'custom_fields')
-        if (value = attributes[:'custom_fields']).is_a?(Hash)
-          self.custom_fields = value
-        end
       end
 
       if attributes.key?(:'remote_template_id')
@@ -216,7 +199,6 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          remote_id == o.remote_id &&
           candidate == o.candidate &&
           job == o.job &&
           applied_at == o.applied_at &&
@@ -225,7 +207,6 @@ module MergeATSClient
           credited_to == o.credited_to &&
           current_stage == o.current_stage &&
           reject_reason == o.reject_reason &&
-          custom_fields == o.custom_fields &&
           remote_template_id == o.remote_template_id &&
           integration_params == o.integration_params &&
           linked_account_params == o.linked_account_params
@@ -240,7 +221,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, custom_fields, remote_template_id, integration_params, linked_account_params].hash
+      [candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_template_id, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash

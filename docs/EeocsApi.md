@@ -39,11 +39,12 @@ opts = {
   expand: 'candidate', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   include_deleted_data: true, # Boolean | Whether to include data that was marked as deleted by third party webhooks.
   include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
-  modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
-  modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified before this datetime.
+  modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, only objects synced by Merge after this date time will be returned.
+  modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, only objects synced by Merge before this date time will be returned.
   page_size: 56, # Integer | Number of results to return per page.
-  remote_fields: 'disability_status', # String | Which fields should be returned in non-normalized form.
-  remote_id: 'remote_id_example' # String | The API provider's ID for the given object.
+  remote_fields: 'disability_status', # String | Deprecated. Use show_enum_origins.
+  remote_id: 'remote_id_example', # String | The API provider's ID for the given object.
+  show_enum_origins: 'disability_status' # String | Which fields should be returned in non-normalized form.
 }
 
 begin
@@ -85,11 +86,12 @@ end
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
 | **include_deleted_data** | **Boolean** | Whether to include data that was marked as deleted by third party webhooks. | [optional] |
 | **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
-| **modified_after** | **Time** | If provided, will only return objects modified after this datetime. | [optional] |
-| **modified_before** | **Time** | If provided, will only return objects modified before this datetime. | [optional] |
+| **modified_after** | **Time** | If provided, only objects synced by Merge after this date time will be returned. | [optional] |
+| **modified_before** | **Time** | If provided, only objects synced by Merge before this date time will be returned. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **remote_fields** | **String** | Which fields should be returned in non-normalized form. | [optional] |
+| **remote_fields** | **String** | Deprecated. Use show_enum_origins. | [optional] |
 | **remote_id** | **String** | The API provider&#39;s ID for the given object. | [optional] |
+| **show_enum_origins** | **String** | Which fields should be returned in non-normalized form. | [optional] |
 
 ### Return type
 
@@ -132,7 +134,8 @@ id = TODO # String |
 opts = {
   expand: 'candidate', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
-  remote_fields: 'disability_status' # String | Which fields should be returned in non-normalized form.
+  remote_fields: 'disability_status', # String | Deprecated. Use show_enum_origins.
+  show_enum_origins: 'disability_status' # String | Which fields should be returned in non-normalized form.
 }
 
 begin
@@ -170,7 +173,8 @@ end
 | **id** | [**String**](.md) |  |  |
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
 | **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
-| **remote_fields** | **String** | Which fields should be returned in non-normalized form. | [optional] |
+| **remote_fields** | **String** | Deprecated. Use show_enum_origins. | [optional] |
+| **show_enum_origins** | **String** | Which fields should be returned in non-normalized form. | [optional] |
 
 ### Return type
 

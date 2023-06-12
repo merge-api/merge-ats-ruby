@@ -19,6 +19,82 @@ module MergeATSClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Creates a `ScheduledInterview` object with the given values.
+    # @param x_account_token [String] Token identifying the end user.
+    # @param scheduled_interview_endpoint_request [ScheduledInterviewEndpointRequest] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :is_debug_mode Whether to include debug fields (such as log file links) in the response.
+    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
+    # @return [ScheduledInterviewResponse]
+    def interviews_create(x_account_token, scheduled_interview_endpoint_request, opts = {})
+      data, _status_code, _headers = interviews_create_with_http_info(x_account_token, scheduled_interview_endpoint_request, opts)
+      data
+    end
+
+    # Creates a &#x60;ScheduledInterview&#x60; object with the given values.
+    # @param x_account_token [String] Token identifying the end user.
+    # @param scheduled_interview_endpoint_request [ScheduledInterviewEndpointRequest] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :is_debug_mode Whether to include debug fields (such as log file links) in the response.
+    # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
+    # @return [Array<(ScheduledInterviewResponse, Integer, Hash)>] ScheduledInterviewResponse data, response status code and response headers
+    def interviews_create_with_http_info(x_account_token, scheduled_interview_endpoint_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: InterviewsApi.interviews_create ...'
+      end
+      # verify the required parameter 'x_account_token' is set
+      if @api_client.config.client_side_validation && x_account_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling InterviewsApi.interviews_create"
+      end
+      # verify the required parameter 'scheduled_interview_endpoint_request' is set
+      if @api_client.config.client_side_validation && scheduled_interview_endpoint_request.nil?
+        fail ArgumentError, "Missing the required parameter 'scheduled_interview_endpoint_request' when calling InterviewsApi.interviews_create"
+      end
+      # resource path
+      local_var_path = '/interviews'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'is_debug_mode'] = opts[:'is_debug_mode'] if !opts[:'is_debug_mode'].nil?
+      query_params[:'run_async'] = opts[:'run_async'] if !opts[:'run_async'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])
+      header_params[:'X-Account-Token'] = x_account_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(scheduled_interview_endpoint_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ScheduledInterviewResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['tokenAuth']
+
+      new_options = opts.merge(
+        :operation => :"InterviewsApi.interviews_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: InterviewsApi#interviews_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Returns a list of `ScheduledInterview` objects.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
@@ -30,12 +106,13 @@ module MergeATSClient
     # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_interview_stage_id If provided, will only return interviews at this stage.
-    # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-    # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+    # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+    # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
     # @option opts [String] :organizer_id If provided, will only return interviews organized by this user.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [PaginatedScheduledInterviewList]
     def interviews_list(x_account_token, opts = {})
       data, _status_code, _headers = interviews_list_with_http_info(x_account_token, opts)
@@ -53,12 +130,13 @@ module MergeATSClient
     # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :job_interview_stage_id If provided, will only return interviews at this stage.
-    # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-    # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+    # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+    # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
     # @option opts [String] :organizer_id If provided, will only return interviews organized by this user.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [Array<(PaginatedScheduledInterviewList, Integer, Hash)>] PaginatedScheduledInterviewList data, response status code and response headers
     def interviews_list_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
@@ -75,6 +153,10 @@ module MergeATSClient
       allowable_values = ["status"]
       if @api_client.config.client_side_validation && opts[:'remote_fields'] && !allowable_values.include?(opts[:'remote_fields'])
         fail ArgumentError, "invalid value for \"remote_fields\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["status"]
+      if @api_client.config.client_side_validation && opts[:'show_enum_origins'] && !allowable_values.include?(opts[:'show_enum_origins'])
+        fail ArgumentError, "invalid value for \"show_enum_origins\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/interviews'
@@ -95,6 +177,7 @@ module MergeATSClient
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'remote_fields'] = opts[:'remote_fields'] if !opts[:'remote_fields'].nil?
       query_params[:'remote_id'] = opts[:'remote_id'] if !opts[:'remote_id'].nil?
+      query_params[:'show_enum_origins'] = opts[:'show_enum_origins'] if !opts[:'show_enum_origins'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -131,13 +214,76 @@ module MergeATSClient
       return data, status_code, headers
     end
 
+    # Returns metadata for `ScheduledInterview` POSTs.
+    # @param x_account_token [String] Token identifying the end user.
+    # @param [Hash] opts the optional parameters
+    # @return [MetaResponse]
+    def interviews_meta_post_retrieve(x_account_token, opts = {})
+      data, _status_code, _headers = interviews_meta_post_retrieve_with_http_info(x_account_token, opts)
+      data
+    end
+
+    # Returns metadata for &#x60;ScheduledInterview&#x60; POSTs.
+    # @param x_account_token [String] Token identifying the end user.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MetaResponse, Integer, Hash)>] MetaResponse data, response status code and response headers
+    def interviews_meta_post_retrieve_with_http_info(x_account_token, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: InterviewsApi.interviews_meta_post_retrieve ...'
+      end
+      # verify the required parameter 'x_account_token' is set
+      if @api_client.config.client_side_validation && x_account_token.nil?
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling InterviewsApi.interviews_meta_post_retrieve"
+      end
+      # resource path
+      local_var_path = '/interviews/meta/post'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'X-Account-Token'] = x_account_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'MetaResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['tokenAuth']
+
+      new_options = opts.merge(
+        :operation => :"InterviewsApi.interviews_meta_post_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: InterviewsApi#interviews_meta_post_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Returns a `ScheduledInterview` object with the given `id`.
     # @param x_account_token [String] Token identifying the end user.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [ScheduledInterview]
     def interviews_retrieve(x_account_token, id, opts = {})
       data, _status_code, _headers = interviews_retrieve_with_http_info(x_account_token, id, opts)
@@ -150,7 +296,8 @@ module MergeATSClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [Array<(ScheduledInterview, Integer, Hash)>] ScheduledInterview data, response status code and response headers
     def interviews_retrieve_with_http_info(x_account_token, id, opts = {})
       if @api_client.config.debugging
@@ -172,6 +319,10 @@ module MergeATSClient
       if @api_client.config.client_side_validation && opts[:'remote_fields'] && !allowable_values.include?(opts[:'remote_fields'])
         fail ArgumentError, "invalid value for \"remote_fields\", must be one of #{allowable_values}"
       end
+      allowable_values = ["status"]
+      if @api_client.config.client_side_validation && opts[:'show_enum_origins'] && !allowable_values.include?(opts[:'show_enum_origins'])
+        fail ArgumentError, "invalid value for \"show_enum_origins\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/interviews/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
@@ -180,6 +331,7 @@ module MergeATSClient
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
       query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
       query_params[:'remote_fields'] = opts[:'remote_fields'] if !opts[:'remote_fields'].nil?
+      query_params[:'show_enum_origins'] = opts[:'show_enum_origins'] if !opts[:'show_enum_origins'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

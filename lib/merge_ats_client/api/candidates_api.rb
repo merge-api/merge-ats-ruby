@@ -100,10 +100,10 @@ module MergeATSClient
     # @param model_id [String] 
     # @param ignore_common_model_request [IgnoreCommonModelRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [IgnoreCommonModel]
+    # @return [nil]
     def candidates_ignore_create(x_account_token, model_id, ignore_common_model_request, opts = {})
-      data, _status_code, _headers = candidates_ignore_create_with_http_info(x_account_token, model_id, ignore_common_model_request, opts)
-      data
+      candidates_ignore_create_with_http_info(x_account_token, model_id, ignore_common_model_request, opts)
+      nil
     end
 
     # Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
@@ -111,7 +111,7 @@ module MergeATSClient
     # @param model_id [String] 
     # @param ignore_common_model_request [IgnoreCommonModelRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(IgnoreCommonModel, Integer, Hash)>] IgnoreCommonModel data, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def candidates_ignore_create_with_http_info(x_account_token, model_id, ignore_common_model_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CandidatesApi.candidates_ignore_create ...'
@@ -136,8 +136,6 @@ module MergeATSClient
 
       # header parameters
       header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])
       header_params[:'X-Account-Token'] = x_account_token
@@ -149,7 +147,7 @@ module MergeATSClient
       post_body = opts[:debug_body] || @api_client.object_to_http_body(ignore_common_model_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'IgnoreCommonModel'
+      return_type = opts[:debug_return_type]
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['tokenAuth']
@@ -177,15 +175,17 @@ module MergeATSClient
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :email_addresses If provided, will only return candidates with these email addresses; multiple addresses can be separated by commas.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [String] :first_name If provided, will only return candidates with this first name.
     # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :last_name If provided, will only return candidates with this last name.
-    # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-    # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+    # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+    # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :tags If provided, will only return candidates with these tags; multiple tags can be separated by commas.
     # @return [PaginatedCandidateList]
     def candidates_list(x_account_token, opts = {})
       data, _status_code, _headers = candidates_list_with_http_info(x_account_token, opts)
@@ -198,15 +198,17 @@ module MergeATSClient
     # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
     # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
     # @option opts [String] :cursor The pagination cursor value.
+    # @option opts [String] :email_addresses If provided, will only return candidates with these email addresses; multiple addresses can be separated by commas.
     # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
     # @option opts [String] :first_name If provided, will only return candidates with this first name.
     # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
     # @option opts [String] :last_name If provided, will only return candidates with this last name.
-    # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-    # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+    # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+    # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :tags If provided, will only return candidates with these tags; multiple tags can be separated by commas.
     # @return [Array<(PaginatedCandidateList, Integer, Hash)>] PaginatedCandidateList data, response status code and response headers
     def candidates_list_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
@@ -228,6 +230,7 @@ module MergeATSClient
       query_params[:'created_after'] = opts[:'created_after'] if !opts[:'created_after'].nil?
       query_params[:'created_before'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'email_addresses'] = opts[:'email_addresses'] if !opts[:'email_addresses'].nil?
       query_params[:'expand'] = opts[:'expand'] if !opts[:'expand'].nil?
       query_params[:'first_name'] = opts[:'first_name'] if !opts[:'first_name'].nil?
       query_params[:'include_deleted_data'] = opts[:'include_deleted_data'] if !opts[:'include_deleted_data'].nil?
@@ -237,6 +240,7 @@ module MergeATSClient
       query_params[:'modified_before'] = opts[:'modified_before'] if !opts[:'modified_before'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'remote_id'] = opts[:'remote_id'] if !opts[:'remote_id'].nil?
+      query_params[:'tags'] = opts[:'tags'] if !opts[:'tags'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

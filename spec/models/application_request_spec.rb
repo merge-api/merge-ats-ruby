@@ -25,12 +25,6 @@ describe MergeATSClient::ApplicationRequest do
       expect(instance).to be_instance_of(MergeATSClient::ApplicationRequest)
     end
   end
-  describe 'test attribute "remote_id"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   describe 'test attribute "candidate"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -74,12 +68,6 @@ describe MergeATSClient::ApplicationRequest do
   end
 
   describe 'test attribute "reject_reason"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "custom_fields"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -19,7 +19,7 @@ module MergeATSClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Force re-sync of all models. This is only available for organizations on Merge's Grow and Expand plans.
+    # Force re-sync of all models. This is available for all organizations via the dashboard. Force re-sync is also available programmatically via API for monthly, quarterly, and highest sync frequency customers on the Core, Professional, or Enterprise plans. Doing so will consume a sync credit for the relevant linked account.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @return [Array<SyncStatus>]
@@ -28,7 +28,7 @@ module MergeATSClient
       data
     end
 
-    # Force re-sync of all models. This is only available for organizations on Merge&#39;s Grow and Expand plans.
+    # Force re-sync of all models. This is available for all organizations via the dashboard. Force re-sync is also available programmatically via API for monthly, quarterly, and highest sync frequency customers on the Core, Professional, or Enterprise plans. Doing so will consume a sync credit for the relevant linked account.
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<SyncStatus>, Integer, Hash)>] Array<SyncStatus> data, response status code and response headers

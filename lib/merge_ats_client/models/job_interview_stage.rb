@@ -14,23 +14,31 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent the stage that a job application is in. ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
+  # # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent a particular recruiting stage for an `Application`. A given `Application` typically has the `JobInterviewStage` object represented in the current_stage field. ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
   class JobInterviewStage
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
-    # The stage's name.
+    # Standard stage names are offered by ATS systems but can be modified by users.
     attr_accessor :name
 
     # This field is populated only if the stage is specific to a particular job. If the stage is generic, this field will not be populated.
     attr_accessor :job
 
-    attr_accessor :remote_data
+    # The stage’s order, with the lowest values ordered first. If the third-party does not return details on the order of stages, this field will not be populated.
+    attr_accessor :stage_order
 
     # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -39,8 +47,11 @@ module MergeATSClient
         :'remote_id' => :'remote_id',
         :'name' => :'name',
         :'job' => :'job',
-        :'remote_data' => :'remote_data',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'stage_order' => :'stage_order',
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -56,8 +67,11 @@ module MergeATSClient
         :'remote_id' => :'String',
         :'name' => :'String',
         :'job' => :'String',
-        :'remote_data' => :'Array<RemoteData>',
-        :'remote_was_deleted' => :'Boolean'
+        :'stage_order' => :'Integer',
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -67,7 +81,9 @@ module MergeATSClient
         :'remote_id',
         :'name',
         :'job',
-        :'remote_data',
+        :'stage_order',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -102,14 +118,28 @@ module MergeATSClient
         self.job = attributes[:'job']
       end
 
-      if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
-        end
+      if attributes.key?(:'stage_order')
+        self.stage_order = attributes[:'stage_order']
       end
 
       if attributes.key?(:'remote_was_deleted')
         self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
       end
     end
 
@@ -117,13 +147,37 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@stage_order.nil? && @stage_order > 2147483647
+        invalid_properties.push('invalid value for "stage_order", must be smaller than or equal to 2147483647.')
+      end
+
+      if !@stage_order.nil? && @stage_order < -2147483648
+        invalid_properties.push('invalid value for "stage_order", must be greater than or equal to -2147483648.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@stage_order.nil? && @stage_order > 2147483647
+      return false if !@stage_order.nil? && @stage_order < -2147483648
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] stage_order Value to be assigned
+    def stage_order=(stage_order)
+      if !stage_order.nil? && stage_order > 2147483647
+        fail ArgumentError, 'invalid value for "stage_order", must be smaller than or equal to 2147483647.'
+      end
+
+      if !stage_order.nil? && stage_order < -2147483648
+        fail ArgumentError, 'invalid value for "stage_order", must be greater than or equal to -2147483648.'
+      end
+
+      @stage_order = stage_order
     end
 
     # Checks equality by comparing each attribute.
@@ -135,8 +189,11 @@ module MergeATSClient
           remote_id == o.remote_id &&
           name == o.name &&
           job == o.job &&
-          remote_data == o.remote_data &&
-          remote_was_deleted == o.remote_was_deleted
+          stage_order == o.stage_order &&
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -148,7 +205,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, job, remote_data, remote_was_deleted].hash
+      [id, remote_id, name, job, stage_order, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash

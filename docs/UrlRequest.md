@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **value** | **String** | The site&#39;s url. | [optional] |
-| **url_type** | [**UrlTypeEnum**](UrlTypeEnum.md) | The type of site. | [optional] |
+| **url_type** | [**UrlTypeEnum**](UrlTypeEnum.md) | The type of site.  * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;COMPANY&#x60; - COMPANY * &#x60;PORTFOLIO&#x60; - PORTFOLIO * &#x60;BLOG&#x60; - BLOG * &#x60;SOCIAL_MEDIA&#x60; - SOCIAL_MEDIA * &#x60;OTHER&#x60; - OTHER * &#x60;JOB_POSTING&#x60; - JOB_POSTING | [optional] |
 | **integration_params** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
 | **linked_account_params** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
 

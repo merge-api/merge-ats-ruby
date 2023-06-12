@@ -28,11 +28,12 @@ module MergeATSClient
     # @option opts [String] :email If provided, will only return remote users with the given email address
     # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-    # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-    # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+    # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+    # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [PaginatedRemoteUserList]
     def users_list(x_account_token, opts = {})
       data, _status_code, _headers = users_list_with_http_info(x_account_token, opts)
@@ -48,11 +49,12 @@ module MergeATSClient
     # @option opts [String] :email If provided, will only return remote users with the given email address
     # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-    # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-    # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+    # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+    # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
     # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [Array<(PaginatedRemoteUserList, Integer, Hash)>] PaginatedRemoteUserList data, response status code and response headers
     def users_list_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
@@ -65,6 +67,10 @@ module MergeATSClient
       allowable_values = ["access_role"]
       if @api_client.config.client_side_validation && opts[:'remote_fields'] && !allowable_values.include?(opts[:'remote_fields'])
         fail ArgumentError, "invalid value for \"remote_fields\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["access_role"]
+      if @api_client.config.client_side_validation && opts[:'show_enum_origins'] && !allowable_values.include?(opts[:'show_enum_origins'])
+        fail ArgumentError, "invalid value for \"show_enum_origins\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/users'
@@ -82,6 +88,7 @@ module MergeATSClient
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'remote_fields'] = opts[:'remote_fields'] if !opts[:'remote_fields'].nil?
       query_params[:'remote_id'] = opts[:'remote_id'] if !opts[:'remote_id'].nil?
+      query_params[:'show_enum_origins'] = opts[:'show_enum_origins'] if !opts[:'show_enum_origins'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -123,7 +130,8 @@ module MergeATSClient
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [RemoteUser]
     def users_retrieve(x_account_token, id, opts = {})
       data, _status_code, _headers = users_retrieve_with_http_info(x_account_token, id, opts)
@@ -135,7 +143,8 @@ module MergeATSClient
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
-    # @option opts [String] :remote_fields Which fields should be returned in non-normalized form.
+    # @option opts [String] :remote_fields Deprecated. Use show_enum_origins.
+    # @option opts [String] :show_enum_origins Which fields should be returned in non-normalized form.
     # @return [Array<(RemoteUser, Integer, Hash)>] RemoteUser data, response status code and response headers
     def users_retrieve_with_http_info(x_account_token, id, opts = {})
       if @api_client.config.debugging
@@ -153,6 +162,10 @@ module MergeATSClient
       if @api_client.config.client_side_validation && opts[:'remote_fields'] && !allowable_values.include?(opts[:'remote_fields'])
         fail ArgumentError, "invalid value for \"remote_fields\", must be one of #{allowable_values}"
       end
+      allowable_values = ["access_role"]
+      if @api_client.config.client_side_validation && opts[:'show_enum_origins'] && !allowable_values.include?(opts[:'show_enum_origins'])
+        fail ArgumentError, "invalid value for \"show_enum_origins\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/users/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
@@ -160,6 +173,7 @@ module MergeATSClient
       query_params = opts[:query_params] || {}
       query_params[:'include_remote_data'] = opts[:'include_remote_data'] if !opts[:'include_remote_data'].nil?
       query_params[:'remote_fields'] = opts[:'remote_fields'] if !opts[:'remote_fields'].nil?
+      query_params[:'show_enum_origins'] = opts[:'show_enum_origins'] if !opts[:'show_enum_origins'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

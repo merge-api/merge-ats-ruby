@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **link_token** | **String** |  |  |
-| **integration_name** | **String** |  |  |
+| **integration_name** | **String** |  | [optional] |
 | **magic_link_url** | **String** |  | [optional] |
 
 ## Example

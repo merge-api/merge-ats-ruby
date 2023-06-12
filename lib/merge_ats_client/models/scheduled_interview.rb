@@ -14,17 +14,20 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview. ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
+  # # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent a scheduled interview for a given candidate’s application to a job. An `Application` can have multiple `ScheduledInterview`s depending on the particular hiring process. ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
   class ScheduledInterview
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
+    # The application being interviewed.
     attr_accessor :application
 
+    # The stage of the interview.
     attr_accessor :job_interview_stage
 
+    # The user organizing the interview.
     attr_accessor :organizer
 
     # Array of `RemoteUser` IDs.
@@ -45,13 +48,18 @@ module MergeATSClient
     # When the third party's interview was updated.
     attr_accessor :remote_updated_at
 
-    # The interview's status.
+    # The interview's status.  * `SCHEDULED` - SCHEDULED * `AWAITING_FEEDBACK` - AWAITING_FEEDBACK * `COMPLETE` - COMPLETE
     attr_accessor :status
-
-    attr_accessor :remote_data
 
     # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -68,8 +76,10 @@ module MergeATSClient
         :'remote_created_at' => :'remote_created_at',
         :'remote_updated_at' => :'remote_updated_at',
         :'status' => :'status',
-        :'remote_data' => :'remote_data',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -93,8 +103,10 @@ module MergeATSClient
         :'remote_created_at' => :'Time',
         :'remote_updated_at' => :'Time',
         :'status' => :'ScheduledInterviewStatusEnum',
-        :'remote_data' => :'Array<RemoteData>',
-        :'remote_was_deleted' => :'Boolean'
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -111,7 +123,8 @@ module MergeATSClient
         :'remote_created_at',
         :'remote_updated_at',
         :'status',
-        :'remote_data',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -180,14 +193,24 @@ module MergeATSClient
         self.status = attributes[:'status']
       end
 
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
         end
-      end
-
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
     end
 
@@ -221,8 +244,10 @@ module MergeATSClient
           remote_created_at == o.remote_created_at &&
           remote_updated_at == o.remote_updated_at &&
           status == o.status &&
-          remote_data == o.remote_data &&
-          remote_was_deleted == o.remote_was_deleted
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -234,7 +259,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, application, job_interview_stage, organizer, interviewers, location, start_at, end_at, remote_created_at, remote_updated_at, status, remote_data, remote_was_deleted].hash
+      [id, remote_id, application, job_interview_stage, organizer, interviewers, location, start_at, end_at, remote_created_at, remote_updated_at, status, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash

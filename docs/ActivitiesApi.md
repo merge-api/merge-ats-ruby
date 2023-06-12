@@ -4,8 +4,89 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**activities_create**](ActivitiesApi.md#activities_create) | **POST** /activities |  |
 | [**activities_list**](ActivitiesApi.md#activities_list) | **GET** /activities |  |
+| [**activities_meta_post_retrieve**](ActivitiesApi.md#activities_meta_post_retrieve) | **GET** /activities/meta/post |  |
 | [**activities_retrieve**](ActivitiesApi.md#activities_retrieve) | **GET** /activities/{id} |  |
+
+
+## activities_create
+
+> <ActivityResponse> activities_create(x_account_token, activity_endpoint_request, opts)
+
+
+
+Creates an `Activity` object with the given values.
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['tokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['tokenAuth'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::ActivitiesApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+activity_endpoint_request = MergeATSClient::ActivityEndpointRequest.new({model: MergeATSClient::ActivityRequest.new, remote_user_id: 'remote_user_id_example'}) # ActivityEndpointRequest | 
+opts = {
+  is_debug_mode: true, # Boolean | Whether to include debug fields (such as log file links) in the response.
+  run_async: true # Boolean | Whether or not third-party updates should be run asynchronously.
+}
+
+begin
+  
+  result = api_instance.activities_create(x_account_token, activity_endpoint_request, opts)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ActivitiesApi->activities_create: #{e}"
+end
+```
+
+#### Using the activities_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ActivityResponse>, Integer, Hash)> activities_create_with_http_info(x_account_token, activity_endpoint_request, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.activities_create_with_http_info(x_account_token, activity_endpoint_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ActivityResponse>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ActivitiesApi->activities_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+| **activity_endpoint_request** | [**ActivityEndpointRequest**](ActivityEndpointRequest.md) |  |  |
+| **is_debug_mode** | **Boolean** | Whether to include debug fields (such as log file links) in the response. | [optional] |
+| **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
+
+### Return type
+
+[**ActivityResponse**](ActivityResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Accept**: application/json
 
 
 ## activities_list
@@ -38,11 +119,12 @@ opts = {
   expand: 'user', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   include_deleted_data: true, # Boolean | Whether to include data that was marked as deleted by third party webhooks.
   include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
-  modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified after this datetime.
-  modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, will only return objects modified before this datetime.
+  modified_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, only objects synced by Merge after this date time will be returned.
+  modified_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | If provided, only objects synced by Merge before this date time will be returned.
   page_size: 56, # Integer | Number of results to return per page.
-  remote_fields: 'activity_type', # String | Which fields should be returned in non-normalized form.
+  remote_fields: 'activity_type', # String | Deprecated. Use show_enum_origins.
   remote_id: 'remote_id_example', # String | The API provider's ID for the given object.
+  show_enum_origins: 'activity_type', # String | Which fields should be returned in non-normalized form.
   user_id: 'user_id_example' # String | If provided, will only return activities done by this user.
 }
 
@@ -84,16 +166,88 @@ end
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
 | **include_deleted_data** | **Boolean** | Whether to include data that was marked as deleted by third party webhooks. | [optional] |
 | **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
-| **modified_after** | **Time** | If provided, will only return objects modified after this datetime. | [optional] |
-| **modified_before** | **Time** | If provided, will only return objects modified before this datetime. | [optional] |
+| **modified_after** | **Time** | If provided, only objects synced by Merge after this date time will be returned. | [optional] |
+| **modified_before** | **Time** | If provided, only objects synced by Merge before this date time will be returned. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **remote_fields** | **String** | Which fields should be returned in non-normalized form. | [optional] |
+| **remote_fields** | **String** | Deprecated. Use show_enum_origins. | [optional] |
 | **remote_id** | **String** | The API provider&#39;s ID for the given object. | [optional] |
+| **show_enum_origins** | **String** | Which fields should be returned in non-normalized form. | [optional] |
 | **user_id** | **String** | If provided, will only return activities done by this user. | [optional] |
 
 ### Return type
 
 [**PaginatedActivityList**](PaginatedActivityList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## activities_meta_post_retrieve
+
+> <MetaResponse> activities_meta_post_retrieve(x_account_token)
+
+
+
+Returns metadata for `Activity` POSTs.
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['tokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['tokenAuth'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::ActivitiesApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+
+begin
+  
+  result = api_instance.activities_meta_post_retrieve(x_account_token)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ActivitiesApi->activities_meta_post_retrieve: #{e}"
+end
+```
+
+#### Using the activities_meta_post_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MetaResponse>, Integer, Hash)> activities_meta_post_retrieve_with_http_info(x_account_token)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.activities_meta_post_retrieve_with_http_info(x_account_token)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MetaResponse>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling ActivitiesApi->activities_meta_post_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+
+### Return type
+
+[**MetaResponse**](MetaResponse.md)
 
 ### Authorization
 
@@ -132,7 +286,8 @@ id = TODO # String |
 opts = {
   expand: 'user', # String | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   include_remote_data: true, # Boolean | Whether to include the original data Merge fetched from the third-party to produce these models.
-  remote_fields: 'activity_type' # String | Which fields should be returned in non-normalized form.
+  remote_fields: 'activity_type', # String | Deprecated. Use show_enum_origins.
+  show_enum_origins: 'activity_type' # String | Which fields should be returned in non-normalized form.
 }
 
 begin
@@ -170,7 +325,8 @@ end
 | **id** | [**String**](.md) |  |  |
 | **expand** | **String** | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] |
 | **include_remote_data** | **Boolean** | Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] |
-| **remote_fields** | **String** | Which fields should be returned in non-normalized form. | [optional] |
+| **remote_fields** | **String** | Deprecated. Use show_enum_origins. | [optional] |
+| **show_enum_origins** | **String** | Which fields should be returned in non-normalized form. | [optional] |
 
 ### Return type
 

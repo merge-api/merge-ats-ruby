@@ -14,11 +14,8 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
+  # # The Attachment Object ### Description The `Attachment` object is used to represent a file attached to a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
   class AttachmentRequest
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
-
     # The attachment's name.
     attr_accessor :file_name
 
@@ -27,7 +24,7 @@ module MergeATSClient
 
     attr_accessor :candidate
 
-    # The attachment's type.
+    # The attachment's type.  * `RESUME` - RESUME * `COVER_LETTER` - COVER_LETTER * `OFFER_LETTER` - OFFER_LETTER * `OTHER` - OTHER
     attr_accessor :attachment_type
 
     attr_accessor :integration_params
@@ -37,7 +34,6 @@ module MergeATSClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'remote_id' => :'remote_id',
         :'file_name' => :'file_name',
         :'file_url' => :'file_url',
         :'candidate' => :'candidate',
@@ -55,7 +51,6 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'remote_id' => :'String',
         :'file_name' => :'String',
         :'file_url' => :'String',
         :'candidate' => :'String',
@@ -68,7 +63,6 @@ module MergeATSClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
         :'file_name',
         :'file_url',
         :'candidate',
@@ -92,10 +86,6 @@ module MergeATSClient
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
-      end
 
       if attributes.key?(:'file_name')
         self.file_name = attributes[:'file_name']
@@ -159,7 +149,6 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          remote_id == o.remote_id &&
           file_name == o.file_name &&
           file_url == o.file_url &&
           candidate == o.candidate &&
@@ -177,7 +166,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, file_name, file_url, candidate, attachment_type, integration_params, linked_account_params].hash
+      [file_name, file_url, candidate, attachment_type, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash

@@ -178,7 +178,7 @@ api_instance = MergeATSClient::SelectiveSyncApi.new
 x_account_token = 'x_account_token_example' # String | Token identifying the end user.
 opts = {
   common_model: 'common_model_example', # String | 
-  cursor: 56, # Integer | The pagination cursor value.
+  cursor: 'cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw', # String | The pagination cursor value.
   page_size: 56 # Integer | Number of results to return per page.
 }
 
@@ -215,7 +215,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **x_account_token** | **String** | Token identifying the end user. |  |
 | **common_model** | **String** |  | [optional] |
-| **cursor** | **Integer** | The pagination cursor value. | [optional] |
+| **cursor** | **String** | The pagination cursor value. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 
 ### Return type

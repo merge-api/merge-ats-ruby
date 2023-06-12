@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **request_schema** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  |  |
+| **remote_field_classes** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
 | **status** | [**LinkedAccountStatus**](LinkedAccountStatus.md) |  | [optional] |
 | **has_conditional_params** | **Boolean** |  |  |
 | **has_required_linked_account_params** | **Boolean** |  |  |
@@ -16,6 +17,7 @@ require 'merge_ats_client'
 
 instance = MergeATSClient::MetaResponse.new(
   request_schema: null,
+  remote_field_classes: null,
   status: null,
   has_conditional_params: null,
   has_required_linked_account_params: null

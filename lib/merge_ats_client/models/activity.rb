@@ -14,19 +14,20 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Activity Object ### Description The `Activity` object is used to represent an activity performed by a user. ### Usage Example Fetch from the `LIST Activities` endpoint and filter by `ID` to show all activities.
+  # # The Activity Object ### Description The `Activity` object is used to represent an activity for a candidate performed by a user. ### Usage Example Fetch from the `LIST Activities` endpoint and filter by `ID` to show all activities.
   class Activity
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
+    # The user that performed the action.
     attr_accessor :user
 
     # When the third party's activity was created.
     attr_accessor :remote_created_at
 
-    # The activity's type.
+    # The activity's type.  * `NOTE` - NOTE * `EMAIL` - EMAIL * `OTHER` - OTHER
     attr_accessor :activity_type
 
     # The activity's subject.
@@ -35,13 +36,21 @@ module MergeATSClient
     # The activity's body.
     attr_accessor :body
 
-    # The activity's visibility.
+    # The activity's visibility.  * `ADMIN_ONLY` - ADMIN_ONLY * `PUBLIC` - PUBLIC * `PRIVATE` - PRIVATE
     attr_accessor :visibility
 
-    attr_accessor :remote_data
+    # The activity’s candidate.
+    attr_accessor :candidate
 
     # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -54,8 +63,11 @@ module MergeATSClient
         :'subject' => :'subject',
         :'body' => :'body',
         :'visibility' => :'visibility',
-        :'remote_data' => :'remote_data',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'candidate' => :'candidate',
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -75,8 +87,11 @@ module MergeATSClient
         :'subject' => :'String',
         :'body' => :'String',
         :'visibility' => :'VisibilityEnum',
-        :'remote_data' => :'Array<RemoteData>',
-        :'remote_was_deleted' => :'Boolean'
+        :'candidate' => :'String',
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -90,7 +105,9 @@ module MergeATSClient
         :'subject',
         :'body',
         :'visibility',
-        :'remote_data',
+        :'candidate',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -141,14 +158,28 @@ module MergeATSClient
         self.visibility = attributes[:'visibility']
       end
 
-      if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
-        end
+      if attributes.key?(:'candidate')
+        self.candidate = attributes[:'candidate']
       end
 
       if attributes.key?(:'remote_was_deleted')
         self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
+      if attributes.key?(:'remote_data')
+        if (value = attributes[:'remote_data']).is_a?(Array)
+          self.remote_data = value
+        end
       end
     end
 
@@ -178,8 +209,11 @@ module MergeATSClient
           subject == o.subject &&
           body == o.body &&
           visibility == o.visibility &&
-          remote_data == o.remote_data &&
-          remote_was_deleted == o.remote_was_deleted
+          candidate == o.candidate &&
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -191,7 +225,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, user, remote_created_at, activity_type, subject, body, visibility, remote_data, remote_was_deleted].hash
+      [id, remote_id, user, remote_created_at, activity_type, subject, body, visibility, candidate, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash

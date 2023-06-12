@@ -12,7 +12,7 @@
 | **title** | **String** | The candidate&#39;s current title. | [optional] |
 | **remote_created_at** | **Time** | When the third party&#39;s candidate was created. | [optional] |
 | **remote_updated_at** | **Time** | When the third party&#39;s candidate was updated. | [optional] |
-| **last_interaction_at** | **Time** | When the most recent candidate interaction occurred. | [optional] |
+| **last_interaction_at** | **Time** | When the most recent interaction with the candidate occurred. | [optional] |
 | **is_private** | **Boolean** | Whether or not the candidate is private. | [optional] |
 | **can_email** | **Boolean** | Whether or not the candidate can be emailed. | [optional] |
 | **locations** | **Array&lt;String&gt;** | The candidate&#39;s locations. | [optional] |
@@ -22,9 +22,10 @@
 | **tags** | **Array&lt;String&gt;** | Array of &#x60;Tag&#x60; names as strings. | [optional] |
 | **applications** | **Array&lt;String&gt;** | Array of &#x60;Application&#x60; object IDs. | [optional] |
 | **attachments** | **Array&lt;String&gt;** | Array of &#x60;Attachment&#x60; object IDs. | [optional] |
-| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
-| **custom_fields** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) | Custom fields configured for a given model. | [optional] |
 | **remote_was_deleted** | **Boolean** |  | [optional][readonly] |
+| **field_mappings** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional][readonly] |
+| **modified_at** | **Time** | This is the datetime that this object was last updated by Merge | [optional][readonly] |
+| **remote_data** | [**Array&lt;RemoteData&gt;**](RemoteData.md) |  | [optional][readonly] |
 
 ## Example
 
@@ -50,9 +51,10 @@ instance = MergeATSClient::Candidate.new(
   tags: [&quot;High-Priority&quot;],
   applications: [&quot;29eb9867-ce2a-403f-b8ce-f2844b89f078&quot;,&quot;b4d08e5c-de00-4d64-a29f-66addac9af99&quot;,&quot;4ff877d2-fb3e-4a5b-a7a5-168ddf2ffa56&quot;],
   attachments: [&quot;bea08964-32b4-4a20-8bb4-2612ba09de1d&quot;],
-  remote_data: [{&quot;path&quot;:&quot;/candidates&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}],
-  custom_fields: null,
-  remote_was_deleted: null
+  remote_was_deleted: null,
+  field_mappings: {&quot;organization_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;},&quot;linked_account_defined_targets&quot;:{&quot;custom_key&quot;:&quot;custom_value&quot;}},
+  modified_at: 2021-10-16T00:00Z,
+  remote_data: [{&quot;path&quot;:&quot;/candidates&quot;,&quot;data&quot;:[&quot;Varies by platform&quot;]}]
 )
 ```
 

@@ -14,11 +14,8 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+  # # The Candidate Object ### Description The `Candidate` object is used to represent profile information about a given Candidate. Because it is specific to a Candidate, this information stays constant across applications. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
   class CandidateRequest
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
-
     # The candidate's first name.
     attr_accessor :first_name
 
@@ -31,13 +28,7 @@ module MergeATSClient
     # The candidate's current title.
     attr_accessor :title
 
-    # When the third party's candidate was created.
-    attr_accessor :remote_created_at
-
-    # When the third party's candidate was updated.
-    attr_accessor :remote_updated_at
-
-    # When the most recent candidate interaction occurred.
+    # When the most recent interaction with the candidate occurred.
     attr_accessor :last_interaction_at
 
     # Whether or not the candidate is private.
@@ -64,9 +55,6 @@ module MergeATSClient
     # Array of `Attachment` object IDs.
     attr_accessor :attachments
 
-    # Custom fields configured for a given model.
-    attr_accessor :custom_fields
-
     attr_accessor :remote_template_id
 
     attr_accessor :integration_params
@@ -76,13 +64,10 @@ module MergeATSClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'remote_id' => :'remote_id',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'company' => :'company',
         :'title' => :'title',
-        :'remote_created_at' => :'remote_created_at',
-        :'remote_updated_at' => :'remote_updated_at',
         :'last_interaction_at' => :'last_interaction_at',
         :'is_private' => :'is_private',
         :'can_email' => :'can_email',
@@ -93,7 +78,6 @@ module MergeATSClient
         :'tags' => :'tags',
         :'applications' => :'applications',
         :'attachments' => :'attachments',
-        :'custom_fields' => :'custom_fields',
         :'remote_template_id' => :'remote_template_id',
         :'integration_params' => :'integration_params',
         :'linked_account_params' => :'linked_account_params'
@@ -108,13 +92,10 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'remote_id' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'company' => :'String',
         :'title' => :'String',
-        :'remote_created_at' => :'Time',
-        :'remote_updated_at' => :'Time',
         :'last_interaction_at' => :'Time',
         :'is_private' => :'Boolean',
         :'can_email' => :'Boolean',
@@ -125,7 +106,6 @@ module MergeATSClient
         :'tags' => :'Array<String>',
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
-        :'custom_fields' => :'Hash<String, Object>',
         :'remote_template_id' => :'String',
         :'integration_params' => :'Hash<String, Object>',
         :'linked_account_params' => :'Hash<String, Object>'
@@ -135,18 +115,14 @@ module MergeATSClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
         :'first_name',
         :'last_name',
         :'company',
         :'title',
-        :'remote_created_at',
-        :'remote_updated_at',
         :'last_interaction_at',
         :'is_private',
         :'can_email',
         :'locations',
-        :'custom_fields',
         :'remote_template_id',
         :'integration_params',
         :'linked_account_params'
@@ -168,10 +144,6 @@ module MergeATSClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
-      end
-
       if attributes.key?(:'first_name')
         self.first_name = attributes[:'first_name']
       end
@@ -186,14 +158,6 @@ module MergeATSClient
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
-      end
-
-      if attributes.key?(:'remote_created_at')
-        self.remote_created_at = attributes[:'remote_created_at']
-      end
-
-      if attributes.key?(:'remote_updated_at')
-        self.remote_updated_at = attributes[:'remote_updated_at']
       end
 
       if attributes.key?(:'last_interaction_at')
@@ -250,12 +214,6 @@ module MergeATSClient
         end
       end
 
-      if attributes.key?(:'custom_fields')
-        if (value = attributes[:'custom_fields']).is_a?(Hash)
-          self.custom_fields = value
-        end
-      end
-
       if attributes.key?(:'remote_template_id')
         self.remote_template_id = attributes[:'remote_template_id']
       end
@@ -306,13 +264,10 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          remote_id == o.remote_id &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           company == o.company &&
           title == o.title &&
-          remote_created_at == o.remote_created_at &&
-          remote_updated_at == o.remote_updated_at &&
           last_interaction_at == o.last_interaction_at &&
           is_private == o.is_private &&
           can_email == o.can_email &&
@@ -323,7 +278,6 @@ module MergeATSClient
           tags == o.tags &&
           applications == o.applications &&
           attachments == o.attachments &&
-          custom_fields == o.custom_fields &&
           remote_template_id == o.remote_template_id &&
           integration_params == o.integration_params &&
           linked_account_params == o.linked_account_params
@@ -338,7 +292,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, custom_fields, remote_template_id, integration_params, linked_account_params].hash
+      [first_name, last_name, company, title, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_template_id, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash

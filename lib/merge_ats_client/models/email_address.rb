@@ -19,14 +19,18 @@ module MergeATSClient
     # The email address.
     attr_accessor :value
 
-    # The type of email address.
+    # The type of email address.  * `PERSONAL` - PERSONAL * `WORK` - WORK * `OTHER` - OTHER
     attr_accessor :email_address_type
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'value' => :'value',
-        :'email_address_type' => :'email_address_type'
+        :'email_address_type' => :'email_address_type',
+        :'modified_at' => :'modified_at'
       }
     end
 
@@ -39,7 +43,8 @@ module MergeATSClient
     def self.openapi_types
       {
         :'value' => :'String',
-        :'email_address_type' => :'EmailAddressTypeEnum'
+        :'email_address_type' => :'EmailAddressTypeEnum',
+        :'modified_at' => :'Time'
       }
     end
 
@@ -47,7 +52,7 @@ module MergeATSClient
     def self.openapi_nullable
       Set.new([
         :'value',
-        :'email_address_type'
+        :'email_address_type',
       ])
     end
 
@@ -72,6 +77,10 @@ module MergeATSClient
 
       if attributes.key?(:'email_address_type')
         self.email_address_type = attributes[:'email_address_type']
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
       end
     end
 
@@ -109,7 +118,8 @@ module MergeATSClient
       return true if self.equal?(o)
       self.class == o.class &&
           value == o.value &&
-          email_address_type == o.email_address_type
+          email_address_type == o.email_address_type &&
+          modified_at == o.modified_at
     end
 
     # @see the `==` method
@@ -121,7 +131,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [value, email_address_type].hash
+      [value, email_address_type, modified_at].hash
     end
 
     # Builds the object from hash

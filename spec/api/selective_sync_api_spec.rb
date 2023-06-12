@@ -60,7 +60,7 @@ describe 'SelectiveSyncApi' do
   # @param x_account_token Token identifying the end user.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :common_model 
-  # @option opts [Integer] :cursor The pagination cursor value.
+  # @option opts [String] :cursor The pagination cursor value.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @return [PaginatedConditionSchemaList]
   describe 'selective_sync_meta_list test' do

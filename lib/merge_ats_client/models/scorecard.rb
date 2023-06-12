@@ -14,17 +14,20 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview. ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
+  # # The Scorecard Object ### Description The `Scorecard` object is used to represent an interviewer's candidate recommendation based on a particular interview. ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
   class Scorecard
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
+    # The application being scored.
     attr_accessor :application
 
+    # The interview being scored.
     attr_accessor :interview
 
+    # The interviewer doing the scoring.
     attr_accessor :interviewer
 
     # When the third party's scorecard was created.
@@ -33,13 +36,18 @@ module MergeATSClient
     # When the scorecard was submitted.
     attr_accessor :submitted_at
 
-    # The inteviewer's recommendation.
+    # The inteviewer's recommendation.  * `DEFINITELY_NO` - DEFINITELY_NO * `NO` - NO * `YES` - YES * `STRONG_YES` - STRONG_YES * `NO_DECISION` - NO_DECISION
     attr_accessor :overall_recommendation
-
-    attr_accessor :remote_data
 
     # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -52,8 +60,10 @@ module MergeATSClient
         :'remote_created_at' => :'remote_created_at',
         :'submitted_at' => :'submitted_at',
         :'overall_recommendation' => :'overall_recommendation',
-        :'remote_data' => :'remote_data',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -73,8 +83,10 @@ module MergeATSClient
         :'remote_created_at' => :'Time',
         :'submitted_at' => :'Time',
         :'overall_recommendation' => :'OverallRecommendationEnum',
-        :'remote_data' => :'Array<RemoteData>',
-        :'remote_was_deleted' => :'Boolean'
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -88,7 +100,8 @@ module MergeATSClient
         :'remote_created_at',
         :'submitted_at',
         :'overall_recommendation',
-        :'remote_data',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -139,14 +152,24 @@ module MergeATSClient
         self.overall_recommendation = attributes[:'overall_recommendation']
       end
 
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
         end
-      end
-
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
     end
 
@@ -176,8 +199,10 @@ module MergeATSClient
           remote_created_at == o.remote_created_at &&
           submitted_at == o.submitted_at &&
           overall_recommendation == o.overall_recommendation &&
-          remote_data == o.remote_data &&
-          remote_was_deleted == o.remote_was_deleted
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -189,7 +214,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, application, interview, interviewer, remote_created_at, submitted_at, overall_recommendation, remote_data, remote_was_deleted].hash
+      [id, remote_id, application, interview, interviewer, remote_created_at, submitted_at, overall_recommendation, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash

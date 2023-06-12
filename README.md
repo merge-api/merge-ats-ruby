@@ -85,7 +85,9 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MergeATSClient::AccountDetailsApi* | [**account_details_retrieve**](docs/AccountDetailsApi.md#account_details_retrieve) | **GET** /account-details | 
 *MergeATSClient::AccountTokenApi* | [**account_token_retrieve**](docs/AccountTokenApi.md#account_token_retrieve) | **GET** /account-token/{public_token} | 
+*MergeATSClient::ActivitiesApi* | [**activities_create**](docs/ActivitiesApi.md#activities_create) | **POST** /activities | 
 *MergeATSClient::ActivitiesApi* | [**activities_list**](docs/ActivitiesApi.md#activities_list) | **GET** /activities | 
+*MergeATSClient::ActivitiesApi* | [**activities_meta_post_retrieve**](docs/ActivitiesApi.md#activities_meta_post_retrieve) | **GET** /activities/meta/post | 
 *MergeATSClient::ActivitiesApi* | [**activities_retrieve**](docs/ActivitiesApi.md#activities_retrieve) | **GET** /activities/{id} | 
 *MergeATSClient::ApplicationsApi* | [**applications_change_stage_create**](docs/ApplicationsApi.md#applications_change_stage_create) | **POST** /applications/{id}/change-stage | 
 *MergeATSClient::ApplicationsApi* | [**applications_create**](docs/ApplicationsApi.md#applications_create) | **POST** /applications | 
@@ -109,7 +111,9 @@ Class | Method | HTTP request | Description
 *MergeATSClient::EeocsApi* | [**eeocs_retrieve**](docs/EeocsApi.md#eeocs_retrieve) | **GET** /eeocs/{id} | 
 *MergeATSClient::ForceResyncApi* | [**sync_status_resync_create**](docs/ForceResyncApi.md#sync_status_resync_create) | **POST** /sync-status/resync | 
 *MergeATSClient::GenerateKeyApi* | [**generate_key_create**](docs/GenerateKeyApi.md#generate_key_create) | **POST** /generate-key | 
+*MergeATSClient::InterviewsApi* | [**interviews_create**](docs/InterviewsApi.md#interviews_create) | **POST** /interviews | 
 *MergeATSClient::InterviewsApi* | [**interviews_list**](docs/InterviewsApi.md#interviews_list) | **GET** /interviews | 
+*MergeATSClient::InterviewsApi* | [**interviews_meta_post_retrieve**](docs/InterviewsApi.md#interviews_meta_post_retrieve) | **GET** /interviews/meta/post | 
 *MergeATSClient::InterviewsApi* | [**interviews_retrieve**](docs/InterviewsApi.md#interviews_retrieve) | **GET** /interviews/{id} | 
 *MergeATSClient::IssuesApi* | [**issues_list**](docs/IssuesApi.md#issues_list) | **GET** /issues | 
 *MergeATSClient::IssuesApi* | [**issues_retrieve**](docs/IssuesApi.md#issues_retrieve) | **GET** /issues/{id} | 
@@ -150,6 +154,9 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::AccountIntegration](docs/AccountIntegration.md)
  - [MergeATSClient::AccountToken](docs/AccountToken.md)
  - [MergeATSClient::Activity](docs/Activity.md)
+ - [MergeATSClient::ActivityEndpointRequest](docs/ActivityEndpointRequest.md)
+ - [MergeATSClient::ActivityRequest](docs/ActivityRequest.md)
+ - [MergeATSClient::ActivityResponse](docs/ActivityResponse.md)
  - [MergeATSClient::ActivityTypeEnum](docs/ActivityTypeEnum.md)
  - [MergeATSClient::Application](docs/Application.md)
  - [MergeATSClient::ApplicationEndpointRequest](docs/ApplicationEndpointRequest.md)
@@ -167,6 +174,7 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::CandidateResponse](docs/CandidateResponse.md)
  - [MergeATSClient::CategoriesEnum](docs/CategoriesEnum.md)
  - [MergeATSClient::CategoryEnum](docs/CategoryEnum.md)
+ - [MergeATSClient::CommonModelScopesBodyRequest](docs/CommonModelScopesBodyRequest.md)
  - [MergeATSClient::ConditionSchema](docs/ConditionSchema.md)
  - [MergeATSClient::ConditionTypeEnum](docs/ConditionTypeEnum.md)
  - [MergeATSClient::DataPassthroughRequest](docs/DataPassthroughRequest.md)
@@ -178,12 +186,12 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::EmailAddress](docs/EmailAddress.md)
  - [MergeATSClient::EmailAddressRequest](docs/EmailAddressRequest.md)
  - [MergeATSClient::EmailAddressTypeEnum](docs/EmailAddressTypeEnum.md)
+ - [MergeATSClient::EnabledActionsEnum](docs/EnabledActionsEnum.md)
  - [MergeATSClient::EncodingEnum](docs/EncodingEnum.md)
  - [MergeATSClient::EndUserDetailsRequest](docs/EndUserDetailsRequest.md)
  - [MergeATSClient::ErrorValidationProblem](docs/ErrorValidationProblem.md)
  - [MergeATSClient::GenderEnum](docs/GenderEnum.md)
  - [MergeATSClient::GenerateRemoteKeyRequest](docs/GenerateRemoteKeyRequest.md)
- - [MergeATSClient::IgnoreCommonModel](docs/IgnoreCommonModel.md)
  - [MergeATSClient::IgnoreCommonModelRequest](docs/IgnoreCommonModelRequest.md)
  - [MergeATSClient::Issue](docs/Issue.md)
  - [MergeATSClient::IssueStatusEnum](docs/IssueStatusEnum.md)
@@ -239,8 +247,12 @@ Class | Method | HTTP request | Description
  - [MergeATSClient::RequestFormatEnum](docs/RequestFormatEnum.md)
  - [MergeATSClient::ResponseTypeEnum](docs/ResponseTypeEnum.md)
  - [MergeATSClient::ScheduledInterview](docs/ScheduledInterview.md)
+ - [MergeATSClient::ScheduledInterviewEndpointRequest](docs/ScheduledInterviewEndpointRequest.md)
+ - [MergeATSClient::ScheduledInterviewRequest](docs/ScheduledInterviewRequest.md)
+ - [MergeATSClient::ScheduledInterviewResponse](docs/ScheduledInterviewResponse.md)
  - [MergeATSClient::ScheduledInterviewStatusEnum](docs/ScheduledInterviewStatusEnum.md)
  - [MergeATSClient::Scorecard](docs/Scorecard.md)
+ - [MergeATSClient::SelectiveSyncConfigurationsUsageEnum](docs/SelectiveSyncConfigurationsUsageEnum.md)
  - [MergeATSClient::SyncStatus](docs/SyncStatus.md)
  - [MergeATSClient::SyncStatusStatusEnum](docs/SyncStatusStatusEnum.md)
  - [MergeATSClient::Tag](docs/Tag.md)

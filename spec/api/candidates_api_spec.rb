@@ -52,7 +52,7 @@ describe 'CandidatesApi' do
   # @param model_id 
   # @param ignore_common_model_request 
   # @param [Hash] opts the optional parameters
-  # @return [IgnoreCommonModel]
+  # @return [nil]
   describe 'candidates_ignore_create test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -66,15 +66,17 @@ describe 'CandidatesApi' do
   # @option opts [Time] :created_after If provided, will only return objects created after this datetime.
   # @option opts [Time] :created_before If provided, will only return objects created before this datetime.
   # @option opts [String] :cursor The pagination cursor value.
+  # @option opts [String] :email_addresses If provided, will only return candidates with these email addresses; multiple addresses can be separated by commas.
   # @option opts [String] :expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
   # @option opts [String] :first_name If provided, will only return candidates with this first name.
   # @option opts [Boolean] :include_deleted_data Whether to include data that was marked as deleted by third party webhooks.
   # @option opts [Boolean] :include_remote_data Whether to include the original data Merge fetched from the third-party to produce these models.
   # @option opts [String] :last_name If provided, will only return candidates with this last name.
-  # @option opts [Time] :modified_after If provided, will only return objects modified after this datetime.
-  # @option opts [Time] :modified_before If provided, will only return objects modified before this datetime.
+  # @option opts [Time] :modified_after If provided, only objects synced by Merge after this date time will be returned.
+  # @option opts [Time] :modified_before If provided, only objects synced by Merge before this date time will be returned.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :remote_id The API provider&#39;s ID for the given object.
+  # @option opts [String] :tags If provided, will only return candidates with these tags; multiple tags can be separated by commas.
   # @return [PaginatedCandidateList]
   describe 'candidates_list test' do
     it 'should work' do

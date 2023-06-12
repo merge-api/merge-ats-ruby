@@ -86,10 +86,6 @@ module MergeATSClient
         invalid_properties.push('invalid value for "link_token", link_token cannot be nil.')
       end
 
-      if @integration_name.nil?
-        invalid_properties.push('invalid value for "integration_name", integration_name cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -97,7 +93,6 @@ module MergeATSClient
     # @return true if the model is valid
     def valid?
       return false if @link_token.nil?
-      return false if @integration_name.nil?
       true
     end
 

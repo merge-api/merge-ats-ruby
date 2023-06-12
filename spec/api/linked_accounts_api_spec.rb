@@ -35,7 +35,7 @@ describe 'LinkedAccountsApi' do
   # unit tests for linked_accounts_list
   # List linked accounts for your organization.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :category 
+  # @option opts [String] :category Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage
   # @option opts [String] :cursor The pagination cursor value.
   # @option opts [String] :end_user_email_address If provided, will only return linked accounts associated with the given email address.
   # @option opts [String] :end_user_organization_name If provided, will only return linked accounts associated with the given organization name.

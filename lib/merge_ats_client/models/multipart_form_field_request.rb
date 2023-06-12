@@ -22,7 +22,7 @@ module MergeATSClient
     # The data for the form field.
     attr_accessor :data
 
-    # The encoding of the value of `data`. Defaults to `RAW` if not defined.
+    # The encoding of the value of `data`. Defaults to `RAW` if not defined.  * `RAW` - RAW * `BASE64` - BASE64 * `GZIP_BASE64` - GZIP_BASE64
     attr_accessor :encoding
 
     # The file name of the form field, if the field is for a file.

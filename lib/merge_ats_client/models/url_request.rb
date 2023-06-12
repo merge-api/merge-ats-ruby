@@ -19,7 +19,7 @@ module MergeATSClient
     # The site's url.
     attr_accessor :value
 
-    # The type of site.
+    # The type of site.  * `PERSONAL` - PERSONAL * `COMPANY` - COMPANY * `PORTFOLIO` - PORTFOLIO * `BLOG` - BLOG * `SOCIAL_MEDIA` - SOCIAL_MEDIA * `OTHER` - OTHER * `JOB_POSTING` - JOB_POSTING
     attr_accessor :url_type
 
     attr_accessor :integration_params

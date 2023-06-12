@@ -17,6 +17,8 @@ module MergeATSClient
   class MetaResponse
     attr_accessor :request_schema
 
+    attr_accessor :remote_field_classes
+
     attr_accessor :status
 
     attr_accessor :has_conditional_params
@@ -27,6 +29,7 @@ module MergeATSClient
     def self.attribute_map
       {
         :'request_schema' => :'request_schema',
+        :'remote_field_classes' => :'remote_field_classes',
         :'status' => :'status',
         :'has_conditional_params' => :'has_conditional_params',
         :'has_required_linked_account_params' => :'has_required_linked_account_params'
@@ -42,6 +45,7 @@ module MergeATSClient
     def self.openapi_types
       {
         :'request_schema' => :'Hash<String, Object>',
+        :'remote_field_classes' => :'Hash<String, Object>',
         :'status' => :'LinkedAccountStatus',
         :'has_conditional_params' => :'Boolean',
         :'has_required_linked_account_params' => :'Boolean'
@@ -72,6 +76,12 @@ module MergeATSClient
       if attributes.key?(:'request_schema')
         if (value = attributes[:'request_schema']).is_a?(Hash)
           self.request_schema = value
+        end
+      end
+
+      if attributes.key?(:'remote_field_classes')
+        if (value = attributes[:'remote_field_classes']).is_a?(Hash)
+          self.remote_field_classes = value
         end
       end
 
@@ -122,6 +132,7 @@ module MergeATSClient
       return true if self.equal?(o)
       self.class == o.class &&
           request_schema == o.request_schema &&
+          remote_field_classes == o.remote_field_classes &&
           status == o.status &&
           has_conditional_params == o.has_conditional_params &&
           has_required_linked_account_params == o.has_required_linked_account_params
@@ -136,7 +147,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [request_schema, status, has_conditional_params, has_required_linked_account_params].hash
+      [request_schema, remote_field_classes, status, has_conditional_params, has_required_linked_account_params].hash
     end
 
     # Builds the object from hash

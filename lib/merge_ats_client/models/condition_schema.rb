@@ -30,6 +30,7 @@ module MergeATSClient
     # Whether this condition can only be applied once. If false, the condition can be AND'd together multiple times.
     attr_accessor :is_unique
 
+    # The type of value(s) that can be set for this condition.  * `BOOLEAN` - BOOLEAN * `DATE` - DATE * `DATE_TIME` - DATE_TIME * `INTEGER` - INTEGER * `FLOAT` - FLOAT * `STRING` - STRING * `LIST_OF_STRINGS` - LIST_OF_STRINGS
     attr_accessor :condition_type
 
     # The schemas for the operators that can be used on a condition.

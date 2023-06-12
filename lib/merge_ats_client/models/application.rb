@@ -14,15 +14,17 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Application Object ### Description The `Application` object is used to represent an Application for a job position. This is separate from the Candidate object, although some systems may only allow a Candidate to have one Application.  Please note: Application objects are constructed if the object does not exist in the remote system.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+  # # The Application Object ### Description The Application Object is used to represent a candidate's journey through a particular Job's recruiting process. If a Candidate applies for multiple Jobs, there will be a separate Application for each Job if the third-party integration allows it.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
   class Application
     attr_accessor :id
 
     # The third-party API ID of the matching object.
     attr_accessor :remote_id
 
+    # The candidate applying.
     attr_accessor :candidate
 
+    # The job being applied for.
     attr_accessor :job
 
     # When the application was submitted.
@@ -34,18 +36,23 @@ module MergeATSClient
     # The application's source.
     attr_accessor :source
 
+    # The user credited for this application.
     attr_accessor :credited_to
 
+    # The application's current stage.
     attr_accessor :current_stage
 
+    # The application's reason for rejection.
     attr_accessor :reject_reason
 
-    attr_accessor :remote_data
-
-    # Custom fields configured for a given model.
-    attr_accessor :custom_fields
-
     attr_accessor :remote_was_deleted
+
+    attr_accessor :field_mappings
+
+    # This is the datetime that this object was last updated by Merge
+    attr_accessor :modified_at
+
+    attr_accessor :remote_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -60,9 +67,10 @@ module MergeATSClient
         :'credited_to' => :'credited_to',
         :'current_stage' => :'current_stage',
         :'reject_reason' => :'reject_reason',
-        :'remote_data' => :'remote_data',
-        :'custom_fields' => :'custom_fields',
-        :'remote_was_deleted' => :'remote_was_deleted'
+        :'remote_was_deleted' => :'remote_was_deleted',
+        :'field_mappings' => :'field_mappings',
+        :'modified_at' => :'modified_at',
+        :'remote_data' => :'remote_data'
       }
     end
 
@@ -84,9 +92,10 @@ module MergeATSClient
         :'credited_to' => :'String',
         :'current_stage' => :'String',
         :'reject_reason' => :'String',
-        :'remote_data' => :'Array<RemoteData>',
-        :'custom_fields' => :'Hash<String, Object>',
-        :'remote_was_deleted' => :'Boolean'
+        :'remote_was_deleted' => :'Boolean',
+        :'field_mappings' => :'Hash<String, Object>',
+        :'modified_at' => :'Time',
+        :'remote_data' => :'Array<RemoteData>'
       }
     end
 
@@ -102,8 +111,8 @@ module MergeATSClient
         :'credited_to',
         :'current_stage',
         :'reject_reason',
-        :'remote_data',
-        :'custom_fields',
+        :'field_mappings',
+        :'remote_data'
       ])
     end
 
@@ -162,20 +171,24 @@ module MergeATSClient
         self.reject_reason = attributes[:'reject_reason']
       end
 
+      if attributes.key?(:'remote_was_deleted')
+        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      end
+
+      if attributes.key?(:'field_mappings')
+        if (value = attributes[:'field_mappings']).is_a?(Hash)
+          self.field_mappings = value
+        end
+      end
+
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
       if attributes.key?(:'remote_data')
         if (value = attributes[:'remote_data']).is_a?(Array)
           self.remote_data = value
         end
-      end
-
-      if attributes.key?(:'custom_fields')
-        if (value = attributes[:'custom_fields']).is_a?(Hash)
-          self.custom_fields = value
-        end
-      end
-
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
     end
 
@@ -207,9 +220,10 @@ module MergeATSClient
           credited_to == o.credited_to &&
           current_stage == o.current_stage &&
           reject_reason == o.reject_reason &&
-          remote_data == o.remote_data &&
-          custom_fields == o.custom_fields &&
-          remote_was_deleted == o.remote_was_deleted
+          remote_was_deleted == o.remote_was_deleted &&
+          field_mappings == o.field_mappings &&
+          modified_at == o.modified_at &&
+          remote_data == o.remote_data
     end
 
     # @see the `==` method
@@ -221,7 +235,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_data, custom_fields, remote_was_deleted].hash
+      [id, remote_id, candidate, job, applied_at, rejected_at, source, credited_to, current_stage, reject_reason, remote_was_deleted, field_mappings, modified_at, remote_data].hash
     end
 
     # Builds the object from hash
