@@ -32,12 +32,12 @@ describe 'DeleteAccountApi' do
     end
   end
 
-  # unit tests for delete_account_create
+  # unit tests for delete_account_delete
   # Delete a linked account.
   # @param x_account_token Token identifying the end user.
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'delete_account_create test' do
+  describe 'delete_account_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
