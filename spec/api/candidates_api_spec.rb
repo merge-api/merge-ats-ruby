@@ -84,12 +84,39 @@ describe 'CandidatesApi' do
     end
   end
 
+  # unit tests for candidates_meta_patch_retrieve
+  # Returns metadata for &#x60;Candidate&#x60; PATCHs.
+  # @param x_account_token Token identifying the end user.
+  # @param id 
+  # @param [Hash] opts the optional parameters
+  # @return [MetaResponse]
+  describe 'candidates_meta_patch_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for candidates_meta_post_retrieve
   # Returns metadata for &#x60;Candidate&#x60; POSTs.
   # @param x_account_token Token identifying the end user.
   # @param [Hash] opts the optional parameters
   # @return [MetaResponse]
   describe 'candidates_meta_post_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for candidates_partial_update
+  # Updates a &#x60;Candidate&#x60; object with the given &#x60;id&#x60;.
+  # @param x_account_token Token identifying the end user.
+  # @param id 
+  # @param patched_candidate_endpoint_request 
+  # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :is_debug_mode Whether to include debug fields (such as log file links) in the response.
+  # @option opts [Boolean] :run_async Whether or not third-party updates should be run asynchronously.
+  # @return [CandidateResponse]
+  describe 'candidates_partial_update test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

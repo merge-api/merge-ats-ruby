@@ -36,13 +36,14 @@ module MergeATSClient
     def self.openapi_types
       {
         :'path' => :'String',
-        :'data' => :'Hash<String, Object>'
+        :'data' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'data'
       ])
     end
 
@@ -66,9 +67,7 @@ module MergeATSClient
       end
 
       if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Hash)
-          self.data = value
-        end
+        self.data = attributes[:'data']
       end
     end
 

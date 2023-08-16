@@ -23,8 +23,8 @@ module MergeATSClient
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def delete_account_create(x_account_token, opts = {})
-      delete_account_create_with_http_info(x_account_token, opts)
+    def delete_account_delete(x_account_token, opts = {})
+      delete_account_delete_with_http_info(x_account_token, opts)
       nil
     end
 
@@ -32,13 +32,13 @@ module MergeATSClient
     # @param x_account_token [String] Token identifying the end user.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def delete_account_create_with_http_info(x_account_token, opts = {})
+    def delete_account_delete_with_http_info(x_account_token, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DeleteAccountApi.delete_account_create ...'
+        @api_client.config.logger.debug 'Calling API: DeleteAccountApi.delete_account_delete ...'
       end
       # verify the required parameter 'x_account_token' is set
       if @api_client.config.client_side_validation && x_account_token.nil?
-        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling DeleteAccountApi.delete_account_create"
+        fail ArgumentError, "Missing the required parameter 'x_account_token' when calling DeleteAccountApi.delete_account_delete"
       end
       # resource path
       local_var_path = '/delete-account'
@@ -63,7 +63,7 @@ module MergeATSClient
       auth_names = opts[:debug_auth_names] || ['tokenAuth']
 
       new_options = opts.merge(
-        :operation => :"DeleteAccountApi.delete_account_create",
+        :operation => :"DeleteAccountApi.delete_account_delete",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -74,7 +74,7 @@ module MergeATSClient
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DeleteAccountApi#delete_account_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: DeleteAccountApi#delete_account_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

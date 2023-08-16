@@ -33,10 +33,10 @@ module MergeATSClient
     # Indicates whether or not this object has been deleted by third party webhooks.
     attr_accessor :remote_was_deleted
 
-    attr_accessor :field_mappings
-
     # This is the datetime that this object was last updated by Merge
     attr_accessor :modified_at
+
+    attr_accessor :field_mappings
 
     attr_accessor :remote_data
 
@@ -49,8 +49,8 @@ module MergeATSClient
         :'job' => :'job',
         :'stage_order' => :'stage_order',
         :'remote_was_deleted' => :'remote_was_deleted',
-        :'field_mappings' => :'field_mappings',
         :'modified_at' => :'modified_at',
+        :'field_mappings' => :'field_mappings',
         :'remote_data' => :'remote_data'
       }
     end
@@ -69,8 +69,8 @@ module MergeATSClient
         :'job' => :'String',
         :'stage_order' => :'Integer',
         :'remote_was_deleted' => :'Boolean',
-        :'field_mappings' => :'Hash<String, Object>',
         :'modified_at' => :'Time',
+        :'field_mappings' => :'Hash<String, Object>',
         :'remote_data' => :'Array<RemoteData>'
       }
     end
@@ -126,14 +126,14 @@ module MergeATSClient
         self.remote_was_deleted = attributes[:'remote_was_deleted']
       end
 
+      if attributes.key?(:'modified_at')
+        self.modified_at = attributes[:'modified_at']
+      end
+
       if attributes.key?(:'field_mappings')
         if (value = attributes[:'field_mappings']).is_a?(Hash)
           self.field_mappings = value
         end
-      end
-
-      if attributes.key?(:'modified_at')
-        self.modified_at = attributes[:'modified_at']
       end
 
       if attributes.key?(:'remote_data')
@@ -191,8 +191,8 @@ module MergeATSClient
           job == o.job &&
           stage_order == o.stage_order &&
           remote_was_deleted == o.remote_was_deleted &&
-          field_mappings == o.field_mappings &&
           modified_at == o.modified_at &&
+          field_mappings == o.field_mappings &&
           remote_data == o.remote_data
     end
 
@@ -205,7 +205,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, job, stage_order, remote_was_deleted, field_mappings, modified_at, remote_data].hash
+      [id, remote_id, name, job, stage_order, remote_was_deleted, modified_at, field_mappings, remote_data].hash
     end
 
     # Builds the object from hash

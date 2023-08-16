@@ -7,7 +7,9 @@ All URIs are relative to *https://api.merge.dev/api/ats/v1*
 | [**candidates_create**](CandidatesApi.md#candidates_create) | **POST** /candidates |  |
 | [**candidates_ignore_create**](CandidatesApi.md#candidates_ignore_create) | **POST** /candidates/ignore/{model_id} |  |
 | [**candidates_list**](CandidatesApi.md#candidates_list) | **GET** /candidates |  |
+| [**candidates_meta_patch_retrieve**](CandidatesApi.md#candidates_meta_patch_retrieve) | **GET** /candidates/meta/patch/{id} |  |
 | [**candidates_meta_post_retrieve**](CandidatesApi.md#candidates_meta_post_retrieve) | **GET** /candidates/meta/post |  |
+| [**candidates_partial_update**](CandidatesApi.md#candidates_partial_update) | **PATCH** /candidates/{id} |  |
 | [**candidates_retrieve**](CandidatesApi.md#candidates_retrieve) | **GET** /candidates/{id} |  |
 
 
@@ -265,6 +267,79 @@ end
 - **Accept**: application/json
 
 
+## candidates_meta_patch_retrieve
+
+> <MetaResponse> candidates_meta_patch_retrieve(x_account_token, id)
+
+
+
+Returns metadata for `Candidate` PATCHs.
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['tokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['tokenAuth'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::CandidatesApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+id = TODO # String | 
+
+begin
+  
+  result = api_instance.candidates_meta_patch_retrieve(x_account_token, id)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling CandidatesApi->candidates_meta_patch_retrieve: #{e}"
+end
+```
+
+#### Using the candidates_meta_patch_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MetaResponse>, Integer, Hash)> candidates_meta_patch_retrieve_with_http_info(x_account_token, id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.candidates_meta_patch_retrieve_with_http_info(x_account_token, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MetaResponse>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling CandidatesApi->candidates_meta_patch_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+| **id** | [**String**](.md) |  |  |
+
+### Return type
+
+[**MetaResponse**](MetaResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## candidates_meta_post_retrieve
 
 > <MetaResponse> candidates_meta_post_retrieve(x_account_token)
@@ -333,6 +408,87 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## candidates_partial_update
+
+> <CandidateResponse> candidates_partial_update(x_account_token, id, patched_candidate_endpoint_request, opts)
+
+
+
+Updates a `Candidate` object with the given `id`.
+
+### Examples
+
+```ruby
+require 'time'
+require 'merge_ats_client'
+# setup authorization
+MergeATSClient.configure do |config|
+  # Configure API key authorization: tokenAuth
+  config.api_key['tokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['tokenAuth'] = 'Bearer'
+end
+
+api_instance = MergeATSClient::CandidatesApi.new
+x_account_token = 'x_account_token_example' # String | Token identifying the end user.
+id = TODO # String | 
+patched_candidate_endpoint_request = MergeATSClient::PatchedCandidateEndpointRequest.new({model: MergeATSClient::PatchedCandidateRequest.new, remote_user_id: 'remote_user_id_example'}) # PatchedCandidateEndpointRequest | 
+opts = {
+  is_debug_mode: true, # Boolean | Whether to include debug fields (such as log file links) in the response.
+  run_async: true # Boolean | Whether or not third-party updates should be run asynchronously.
+}
+
+begin
+  
+  result = api_instance.candidates_partial_update(x_account_token, id, patched_candidate_endpoint_request, opts)
+  p result
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling CandidatesApi->candidates_partial_update: #{e}"
+end
+```
+
+#### Using the candidates_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CandidateResponse>, Integer, Hash)> candidates_partial_update_with_http_info(x_account_token, id, patched_candidate_endpoint_request, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.candidates_partial_update_with_http_info(x_account_token, id, patched_candidate_endpoint_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CandidateResponse>
+rescue MergeATSClient::ApiError => e
+  puts "Error when calling CandidatesApi->candidates_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **x_account_token** | **String** | Token identifying the end user. |  |
+| **id** | [**String**](.md) |  |  |
+| **patched_candidate_endpoint_request** | [**PatchedCandidateEndpointRequest**](PatchedCandidateEndpointRequest.md) |  |  |
+| **is_debug_mode** | **Boolean** | Whether to include debug fields (such as log file links) in the response. | [optional] |
+| **run_async** | **Boolean** | Whether or not third-party updates should be run asynchronously. | [optional] |
+
+### Return type
+
+[**CandidateResponse**](CandidateResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
 - **Accept**: application/json
 
 

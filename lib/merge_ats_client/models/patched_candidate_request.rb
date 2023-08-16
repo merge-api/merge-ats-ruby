@@ -15,12 +15,7 @@ require 'time'
 
 module MergeATSClient
   # # The Candidate Object ### Description The `Candidate` object is used to represent profile information about a given Candidate. Because it is specific to a Candidate, this information stays constant across applications. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
-  class Candidate
-    attr_accessor :id
-
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
-
+  class PatchedCandidateRequest
     # The candidate's first name.
     attr_accessor :first_name
 
@@ -32,12 +27,6 @@ module MergeATSClient
 
     # The candidate's current title.
     attr_accessor :title
-
-    # When the third party's candidate was created.
-    attr_accessor :remote_created_at
-
-    # When the third party's candidate was updated.
-    attr_accessor :remote_updated_at
 
     # When the most recent interaction with the candidate occurred.
     attr_accessor :last_interaction_at
@@ -66,26 +55,19 @@ module MergeATSClient
     # Array of `Attachment` object IDs.
     attr_accessor :attachments
 
-    attr_accessor :remote_was_deleted
+    attr_accessor :remote_template_id
 
-    # This is the datetime that this object was last updated by Merge
-    attr_accessor :modified_at
+    attr_accessor :integration_params
 
-    attr_accessor :field_mappings
-
-    attr_accessor :remote_data
+    attr_accessor :linked_account_params
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'remote_id' => :'remote_id',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'company' => :'company',
         :'title' => :'title',
-        :'remote_created_at' => :'remote_created_at',
-        :'remote_updated_at' => :'remote_updated_at',
         :'last_interaction_at' => :'last_interaction_at',
         :'is_private' => :'is_private',
         :'can_email' => :'can_email',
@@ -96,10 +78,9 @@ module MergeATSClient
         :'tags' => :'tags',
         :'applications' => :'applications',
         :'attachments' => :'attachments',
-        :'remote_was_deleted' => :'remote_was_deleted',
-        :'modified_at' => :'modified_at',
-        :'field_mappings' => :'field_mappings',
-        :'remote_data' => :'remote_data'
+        :'remote_template_id' => :'remote_template_id',
+        :'integration_params' => :'integration_params',
+        :'linked_account_params' => :'linked_account_params'
       }
     end
 
@@ -111,47 +92,40 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'remote_id' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'company' => :'String',
         :'title' => :'String',
-        :'remote_created_at' => :'Time',
-        :'remote_updated_at' => :'Time',
         :'last_interaction_at' => :'Time',
         :'is_private' => :'Boolean',
         :'can_email' => :'Boolean',
         :'locations' => :'Array<String>',
-        :'phone_numbers' => :'Array<PhoneNumber>',
-        :'email_addresses' => :'Array<EmailAddress>',
-        :'urls' => :'Array<Url>',
+        :'phone_numbers' => :'Array<PhoneNumberRequest>',
+        :'email_addresses' => :'Array<EmailAddressRequest>',
+        :'urls' => :'Array<UrlRequest>',
         :'tags' => :'Array<String>',
         :'applications' => :'Array<String>',
         :'attachments' => :'Array<String>',
-        :'remote_was_deleted' => :'Boolean',
-        :'modified_at' => :'Time',
-        :'field_mappings' => :'Hash<String, Object>',
-        :'remote_data' => :'Array<RemoteData>'
+        :'remote_template_id' => :'String',
+        :'integration_params' => :'Hash<String, Object>',
+        :'linked_account_params' => :'Hash<String, Object>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
         :'first_name',
         :'last_name',
         :'company',
         :'title',
-        :'remote_created_at',
-        :'remote_updated_at',
         :'last_interaction_at',
         :'is_private',
         :'can_email',
         :'locations',
-        :'field_mappings',
-        :'remote_data'
+        :'remote_template_id',
+        :'integration_params',
+        :'linked_account_params'
       ])
     end
 
@@ -159,24 +133,16 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::Candidate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::PatchedCandidateRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::Candidate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::PatchedCandidateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
-      end
 
       if attributes.key?(:'first_name')
         self.first_name = attributes[:'first_name']
@@ -192,14 +158,6 @@ module MergeATSClient
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
-      end
-
-      if attributes.key?(:'remote_created_at')
-        self.remote_created_at = attributes[:'remote_created_at']
-      end
-
-      if attributes.key?(:'remote_updated_at')
-        self.remote_updated_at = attributes[:'remote_updated_at']
       end
 
       if attributes.key?(:'last_interaction_at')
@@ -256,23 +214,19 @@ module MergeATSClient
         end
       end
 
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
+      if attributes.key?(:'remote_template_id')
+        self.remote_template_id = attributes[:'remote_template_id']
       end
 
-      if attributes.key?(:'modified_at')
-        self.modified_at = attributes[:'modified_at']
-      end
-
-      if attributes.key?(:'field_mappings')
-        if (value = attributes[:'field_mappings']).is_a?(Hash)
-          self.field_mappings = value
+      if attributes.key?(:'integration_params')
+        if (value = attributes[:'integration_params']).is_a?(Hash)
+          self.integration_params = value
         end
       end
 
-      if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
+      if attributes.key?(:'linked_account_params')
+        if (value = attributes[:'linked_account_params']).is_a?(Hash)
+          self.linked_account_params = value
         end
       end
     end
@@ -281,13 +235,28 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@remote_template_id.nil? && @remote_template_id.to_s.length < 1
+        invalid_properties.push('invalid value for "remote_template_id", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@remote_template_id.nil? && @remote_template_id.to_s.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] remote_template_id Value to be assigned
+    def remote_template_id=(remote_template_id)
+      if !remote_template_id.nil? && remote_template_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "remote_template_id", the character length must be great than or equal to 1.'
+      end
+
+      @remote_template_id = remote_template_id
     end
 
     # Checks equality by comparing each attribute.
@@ -295,14 +264,10 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          remote_id == o.remote_id &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           company == o.company &&
           title == o.title &&
-          remote_created_at == o.remote_created_at &&
-          remote_updated_at == o.remote_updated_at &&
           last_interaction_at == o.last_interaction_at &&
           is_private == o.is_private &&
           can_email == o.can_email &&
@@ -313,10 +278,9 @@ module MergeATSClient
           tags == o.tags &&
           applications == o.applications &&
           attachments == o.attachments &&
-          remote_was_deleted == o.remote_was_deleted &&
-          modified_at == o.modified_at &&
-          field_mappings == o.field_mappings &&
-          remote_data == o.remote_data
+          remote_template_id == o.remote_template_id &&
+          integration_params == o.integration_params &&
+          linked_account_params == o.linked_account_params
     end
 
     # @see the `==` method
@@ -328,7 +292,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, first_name, last_name, company, title, remote_created_at, remote_updated_at, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_was_deleted, modified_at, field_mappings, remote_data].hash
+      [first_name, last_name, company, title, last_interaction_at, is_private, can_email, locations, phone_numbers, email_addresses, urls, tags, applications, attachments, remote_template_id, integration_params, linked_account_params].hash
     end
 
     # Builds the object from hash

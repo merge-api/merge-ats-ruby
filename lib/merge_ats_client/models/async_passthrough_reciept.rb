@@ -14,40 +14,13 @@ require 'date'
 require 'time'
 
 module MergeATSClient
-  # # The Office Object ### Description The `Office` object is used to represent an office within a company. A given `Job` has the `Office` ID in its offices field. ### Usage Example Fetch from the `LIST Offices` endpoint and view the offices within a company.
-  class Office
-    attr_accessor :id
-
-    # The third-party API ID of the matching object.
-    attr_accessor :remote_id
-
-    # The office's name.
-    attr_accessor :name
-
-    # The office's location.
-    attr_accessor :location
-
-    # Indicates whether or not this object has been deleted by third party webhooks.
-    attr_accessor :remote_was_deleted
-
-    # This is the datetime that this object was last updated by Merge
-    attr_accessor :modified_at
-
-    attr_accessor :field_mappings
-
-    attr_accessor :remote_data
+  class AsyncPassthroughReciept
+    attr_accessor :async_passthrough_receipt_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'remote_id' => :'remote_id',
-        :'name' => :'name',
-        :'location' => :'location',
-        :'remote_was_deleted' => :'remote_was_deleted',
-        :'modified_at' => :'modified_at',
-        :'field_mappings' => :'field_mappings',
-        :'remote_data' => :'remote_data'
+        :'async_passthrough_receipt_id' => :'async_passthrough_receipt_id'
       }
     end
 
@@ -59,25 +32,13 @@ module MergeATSClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'remote_id' => :'String',
-        :'name' => :'String',
-        :'location' => :'String',
-        :'remote_was_deleted' => :'Boolean',
-        :'modified_at' => :'Time',
-        :'field_mappings' => :'Hash<String, Object>',
-        :'remote_data' => :'Array<RemoteData>'
+        :'async_passthrough_receipt_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'remote_id',
-        :'name',
-        :'location',
-        :'field_mappings',
-        :'remote_data'
       ])
     end
 
@@ -85,51 +46,19 @@ module MergeATSClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::Office` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `MergeATSClient::AsyncPassthroughReciept` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::Office`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `MergeATSClient::AsyncPassthroughReciept`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'remote_id')
-        self.remote_id = attributes[:'remote_id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'location')
-        self.location = attributes[:'location']
-      end
-
-      if attributes.key?(:'remote_was_deleted')
-        self.remote_was_deleted = attributes[:'remote_was_deleted']
-      end
-
-      if attributes.key?(:'modified_at')
-        self.modified_at = attributes[:'modified_at']
-      end
-
-      if attributes.key?(:'field_mappings')
-        if (value = attributes[:'field_mappings']).is_a?(Hash)
-          self.field_mappings = value
-        end
-      end
-
-      if attributes.key?(:'remote_data')
-        if (value = attributes[:'remote_data']).is_a?(Array)
-          self.remote_data = value
-        end
+      if attributes.key?(:'async_passthrough_receipt_id')
+        self.async_passthrough_receipt_id = attributes[:'async_passthrough_receipt_id']
       end
     end
 
@@ -137,12 +66,17 @@ module MergeATSClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @async_passthrough_receipt_id.nil?
+        invalid_properties.push('invalid value for "async_passthrough_receipt_id", async_passthrough_receipt_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @async_passthrough_receipt_id.nil?
       true
     end
 
@@ -151,14 +85,7 @@ module MergeATSClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          remote_id == o.remote_id &&
-          name == o.name &&
-          location == o.location &&
-          remote_was_deleted == o.remote_was_deleted &&
-          modified_at == o.modified_at &&
-          field_mappings == o.field_mappings &&
-          remote_data == o.remote_data
+          async_passthrough_receipt_id == o.async_passthrough_receipt_id
     end
 
     # @see the `==` method
@@ -170,7 +97,7 @@ module MergeATSClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, remote_id, name, location, remote_was_deleted, modified_at, field_mappings, remote_data].hash
+      [async_passthrough_receipt_id].hash
     end
 
     # Builds the object from hash
